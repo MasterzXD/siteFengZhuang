@@ -8,8 +8,11 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.webkit.DownloadListener;
+import android.webkit.JsResult;
 import android.webkit.WebChromeClient;
+import android.webkit.WebResourceError;
 import android.webkit.WebResourceRequest;
+import android.webkit.WebResourceResponse;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
@@ -63,30 +66,70 @@ public class MainActivity extends Activity {
                 startActivity(intent);
             }
         });
+        webview.setWebChromeClient(new WebChromeClient(){
+            @Override
+            public boolean onJsAlert(WebView view, String url, String message, JsResult result) {
+                result.confirm();
+                return super.onJsAlert(view, url, message, result);
+            }
+        });
         webview.setWebViewClient(new WebViewClient(){
+
 
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                if(!url.startsWith("http")){
-                    Intent intent = new Intent(Intent.ACTION_VIEW);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    intent.setData(Uri.parse(url));
-                    startActivity(intent);
+//                Log.e("----should", ""+url);
+                try {
+                    if(!url.startsWith("http")){
+                        Intent intent = new Intent(Intent.ACTION_VIEW);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        intent.setData(Uri.parse(url));
+                        startActivity(intent);
+                        return true;
+                    }
+                    view.loadUrl(url);
                     return true;
+                }catch (Exception e){
+//                    Log.e("----should--error", ""+e.getMessage());
                 }
-                view.loadUrl(url);
-                return true;
+                return super.shouldOverrideUrlLoading(view,url);
 
             }
 
             @Override
+            public WebResourceResponse shouldInterceptRequest(WebView view, String url) {
+//                Log.e("----Request", ""+url);
+                return super.shouldInterceptRequest(view, url);
+
+            }
+
+            @Override
+            public WebResourceResponse shouldInterceptRequest(WebView view, WebResourceRequest request) {
+                return super.shouldInterceptRequest(view, request);
+            }
+
+            @Override
             public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
+//                Log.e("----shoLoading", ""+request.toString());
                 return super.shouldOverrideUrlLoading(view, request);
+            }
+
+            @Override
+            public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
+                super.onReceivedError(view, request, error);
+//                Log.e("----onReceivedError", ""+error);
+            }
+
+            @Override
+            public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
+                super.onReceivedError(view, errorCode, description, failingUrl);
+//                Log.e("----onReceivedError", "failingUrl:"+failingUrl);
             }
 
             @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
+//                Log.e("----onPageFinished", ""+url);
                 if(HOME_PAGE==null){
                     HOME_PAGE = url;
                 }
@@ -101,6 +144,8 @@ public class MainActivity extends Activity {
 //            }
 //        });
         webview.getSettings().setJavaScriptEnabled(true);
+//        webview.getSettings().setAllowUniversalAccessFromFileURLs(true);
+        webview.getSettings().setAllowContentAccess(true);
         webview.getSettings().setDomStorageEnabled(true);
         webview.loadUrl(HOME);
     }
