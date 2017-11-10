@@ -1,10 +1,9 @@
-package sihuo.app.com.kuaiqian;
+package mianfeiwaptoapp.zhuanqian.com.mianfeiwaptoapp;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.webkit.DownloadListener;
@@ -24,12 +23,12 @@ public class MainActivity extends Activity {
     ImageView back;
     ImageView home;
     ImageView refresh;
-    final String HOME = "http://1bkz.org";
+    final String HOME = "http://app.xianglaishengmy.com/Agent/Buy/index";
     String HOME_PAGE;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.main_style1);
         webview = findViewById(R.id.webview);
         back = findViewById(R.id.back);
         home = findViewById(R.id.home);

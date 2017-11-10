@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    tools:context="sihuo.app.com.kuaiqian.MainActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:background="#FFFFFF"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:text="@string/app_name"/>
+    <ImageView
+        android:id="@+id/back"
+        android:layout_width="50dp"
+        android:layout_height="44dp"
+        android:scaleType="center"
+        android:src="@drawable/back_hb"/>
+
+    <ImageView
+        android:id="@+id/home"
+        android:layout_width="50dp"
+        android:layout_height="44dp"
+        android:scaleType="center"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/home_hb"/>
+
+    <ImageView
+        android:id="@+id/refresh"
+        android:layout_width="50dp"
+        android:layout_height="44dp"
+        android:scaleType="center"
+        android:visibility="gone"
+        android:src="@drawable/refresh"/>
+
+
+
+    <WebView
+        android:id="@+id/webview"
+        android:layout_marginTop="44dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></WebView>
+</RelativeLayout>
