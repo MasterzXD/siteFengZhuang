@@ -4,7 +4,7 @@ android {
     compileSdkVersion 26
     buildToolsVersion "26.0.1"
     defaultConfig {
-        applicationId 'sihuo.app.com.wanhaoyule'
+        applicationId 'sihuo.app.com.wangcai'
         minSdkVersion 15
         targetSdkVersion 26
         versionCode 1

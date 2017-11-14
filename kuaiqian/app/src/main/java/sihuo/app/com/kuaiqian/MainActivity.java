@@ -24,7 +24,7 @@ public class MainActivity extends Activity {
     ImageView back;
     ImageView home;
     ImageView refresh;
-    final String HOME = "http://1bkz.org";
+    final String HOME = "http://m.wangcai020.com";
     String HOME_PAGE;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -154,10 +154,10 @@ public class MainActivity extends Activity {
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if(keyCode==KeyEvent.KEYCODE_BACK){
-            if(!webview.getUrl().equals(HOME) && webview.canGoBack()){
-                webview.goBack();
-                return true;
-            }
+//            if(!webview.getUrl().equals(HOME) && webview.canGoBack()){
+//                webview.goBack();
+//                return true;
+//            }
             if(System.currentTimeMillis()-mills>800){
                 Toast.makeText(this,"再按一次退出",Toast.LENGTH_SHORT).show();
                 mills = System.currentTimeMillis();
