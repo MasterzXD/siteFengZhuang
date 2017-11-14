@@ -2,19 +2,19 @@ package sihuo.app.com.kuaiqian;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.PixelFormat;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
-import android.webkit.DownloadListener;
-import android.webkit.JsResult;
-import android.webkit.WebChromeClient;
-import android.webkit.WebResourceError;
-import android.webkit.WebResourceRequest;
-import android.webkit.WebResourceResponse;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
+import com.tencent.smtt.sdk.DownloadListener;
+import com.tencent.smtt.export.external.interfaces.JsResult;
+import com.tencent.smtt.sdk.WebChromeClient;
+import com.tencent.smtt.export.external.interfaces.WebResourceError;
+import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
+import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
+import com.tencent.smtt.sdk.WebView;
+import com.tencent.smtt.sdk.WebViewClient;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -30,6 +30,7 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getWindow().setFormat(PixelFormat.TRANSLUCENT);
         webview = findViewById(R.id.webview);
         back = findViewById(R.id.back);
         home = findViewById(R.id.home);
@@ -68,13 +69,13 @@ public class MainActivity extends Activity {
         });
         webview.setWebChromeClient(new WebChromeClient(){
             @Override
-            public boolean onJsAlert(WebView view, String url, String message, JsResult result) {
-                result.confirm();
-                return super.onJsAlert(view, url, message, result);
+            public boolean onJsAlert(WebView webView, String s, String s1, JsResult jsResult) {
+                jsResult.confirm();
+                return super.onJsAlert(webView, s, s1, jsResult);
             }
+
         });
         webview.setWebViewClient(new WebViewClient(){
-
 
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
@@ -97,6 +98,11 @@ public class MainActivity extends Activity {
             }
 
             @Override
+            public WebResourceResponse shouldInterceptRequest(WebView webView, WebResourceRequest webResourceRequest, Bundle bundle) {
+                return super.shouldInterceptRequest(webView, webResourceRequest, bundle);
+            }
+
+            @Override
             public WebResourceResponse shouldInterceptRequest(WebView view, String url) {
 //                Log.e("----Request", ""+url);
                 return super.shouldInterceptRequest(view, url);
@@ -108,11 +114,6 @@ public class MainActivity extends Activity {
                 return super.shouldInterceptRequest(view, request);
             }
 
-            @Override
-            public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
-//                Log.e("----shoLoading", ""+request.toString());
-                return super.shouldOverrideUrlLoading(view, request);
-            }
 
             @Override
             public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
@@ -135,16 +136,8 @@ public class MainActivity extends Activity {
                 }
             }
         });
-//        webview.setOnKeyListener(new View.OnKeyListener() {
-//            @Override
-//            public boolean onKey(View view, int i, KeyEvent keyEvent) {
-//                Log.e("----onKey", "bbbb");
-//
-//                return false;
-//            }
-//        });
+
         webview.getSettings().setJavaScriptEnabled(true);
-//        webview.getSettings().setAllowUniversalAccessFromFileURLs(true);
         webview.getSettings().setAllowContentAccess(true);
         webview.getSettings().setDomStorageEnabled(true);
         webview.loadUrl(HOME);
