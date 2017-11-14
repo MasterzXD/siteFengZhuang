@@ -25,7 +25,6 @@ public class MainActivity extends Activity {
     ImageView home;
     ImageView refresh;
     final String HOME = "http://m.wangcai020.com";
-    String HOME_PAGE;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -131,9 +130,6 @@ public class MainActivity extends Activity {
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
 //                Log.e("----onPageFinished", ""+url);
-                if(HOME_PAGE==null){
-                    HOME_PAGE = url;
-                }
             }
         });
 
