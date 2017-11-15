@@ -15,6 +15,8 @@ import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
 import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
 import com.tencent.smtt.sdk.WebView;
 import com.tencent.smtt.sdk.WebViewClient;
+import com.wllj.library.shapeloading.widget.ShapeLoadingDialog;
+
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -25,9 +27,13 @@ public class MainActivity extends Activity {
     ImageView home;
     ImageView refresh;
     final String HOME = "http://sw.sunqb.cn";
+    ShapeLoadingDialog shapeLoadingDialog ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        shapeLoadingDialog  = new ShapeLoadingDialog(MainActivity.this);
+        shapeLoadingDialog.setLoadingText("loading...");
+
         setContentView(R.layout.activity_main);
         getWindow().setFormat(PixelFormat.TRANSLUCENT);
         webview = findViewById(R.id.webview);
@@ -73,6 +79,21 @@ public class MainActivity extends Activity {
                 return super.onJsAlert(webView, s, s1, jsResult);
             }
 
+            @Override
+            public void onProgressChanged(WebView webView, int progress) {
+                super.onProgressChanged(webView, progress);
+                if(progress!=100){
+                    shapeLoadingDialog.show();
+                }else{
+                    webView.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            shapeLoadingDialog.dismiss();
+                        }
+                    },1000);
+
+                }
+            }
         });
         webview.setWebViewClient(new WebViewClient(){
 
