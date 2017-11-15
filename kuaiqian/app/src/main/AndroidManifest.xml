@@ -17,7 +17,7 @@
         <activity android:name=".MainActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:windowSoftInputMode="stateHidden|adjustResize"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
+            android:theme="@android:style/Theme.NoTitleBar">
         </activity>
         <activity android:name=".Loading"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
