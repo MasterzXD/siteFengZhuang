@@ -15,7 +15,7 @@ import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
 import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
 import com.tencent.smtt.sdk.WebView;
 import com.tencent.smtt.sdk.WebViewClient;
-import com.wllj.library.shapeloading.widget.ShapeLoadingDialog;
+import com.wllj.library.shapeloading.ShapeLoadingDialog;
 
 import android.widget.ImageView;
 import android.widget.Toast;

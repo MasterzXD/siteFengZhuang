@@ -1,1 +1,1 @@
-include ':app', ':shapeLoading'
+include ':app', ':library-loading'

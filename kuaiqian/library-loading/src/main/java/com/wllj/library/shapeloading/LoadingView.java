@@ -1,4 +1,4 @@
-package com.wllj.library.shapeloading.widget;
+package com.wllj.library.shapeloading;
 
 import android.animation.Animator;
 import android.animation.AnimatorSet;
@@ -17,7 +17,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.wllj.library.shapeloading.R;
+import com.wllj.library.R;
 
 
 /**

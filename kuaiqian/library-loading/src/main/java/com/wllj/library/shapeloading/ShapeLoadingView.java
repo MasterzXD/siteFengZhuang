@@ -1,4 +1,4 @@
-package com.wllj.library.shapeloading.widget;
+package com.wllj.library.shapeloading;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -7,7 +7,7 @@ import android.graphics.Path;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.wllj.library.shapeloading.R;
+import com.wllj.library.R;
 
 
 /**

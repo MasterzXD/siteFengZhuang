@@ -1,4 +1,4 @@
-package com.wllj.library.shapeloading.widget;
+package com.wllj.library.shapeloading;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -6,7 +6,7 @@ import android.graphics.drawable.GradientDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 
-import com.wllj.library.shapeloading.R;
+import com.wllj.library.R;
 
 
 /**
