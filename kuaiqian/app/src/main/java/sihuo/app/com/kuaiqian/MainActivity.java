@@ -5,10 +5,12 @@ import android.content.Intent;
 import android.graphics.PixelFormat;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import com.tencent.smtt.sdk.DownloadListener;
 import com.tencent.smtt.export.external.interfaces.JsResult;
+import com.tencent.smtt.sdk.ValueCallback;
 import com.tencent.smtt.sdk.WebChromeClient;
 import com.tencent.smtt.export.external.interfaces.WebResourceError;
 import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
@@ -21,7 +23,8 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 public class MainActivity extends Activity {
-
+    final  int FILE_CHOOSER_RESULT_CODE = 40;
+    ValueCallback<Uri[]> uploadMessage;
     WebView webview;
     ImageView back;
     ImageView home;
@@ -94,6 +97,15 @@ public class MainActivity extends Activity {
 
                 }
             }
+
+            @Override
+            public boolean onShowFileChooser(WebView webView, ValueCallback<Uri[]> valueCallback, FileChooserParams fileChooserParams) {
+                Log.e("----onShowFileChooser", ""+fileChooserParams);
+                uploadMessage = valueCallback;
+                openImageChooserActivity();
+//                return super.onShowFileChooser(webView, valueCallback, fileChooserParams);
+                return true;
+            }
         });
         webview.setWebViewClient(new WebViewClient(){
 
@@ -159,6 +171,27 @@ public class MainActivity extends Activity {
         webview.getSettings().setDomStorageEnabled(true);
         webview.loadUrl(HOME);
     }
+
+    private void openImageChooserActivity() {
+        Intent i = new Intent(Intent.ACTION_GET_CONTENT);
+        i.addCategory(Intent.CATEGORY_OPENABLE);
+        i.setType("image/*");
+        startActivityForResult(Intent.createChooser(i,
+                "Image Chooser"), FILE_CHOOSER_RESULT_CODE);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == FILE_CHOOSER_RESULT_CODE) {
+            Uri result = data == null || resultCode != RESULT_OK ? null : data.getData();
+            if (uploadMessage != null) {
+                uploadMessage.onReceiveValue(new Uri[]{result});
+                uploadMessage = null;
+            }
+        }
+    }
+
 
     long mills = 0;
     @Override
