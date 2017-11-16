@@ -29,7 +29,7 @@ public class MainActivity extends Activity {
     ImageView back;
     ImageView home;
     ImageView refresh;
-    final String HOME = "http://you.fmlje.cn/";
+    final String HOME = "http://php5.kq999.net/";
     ShapeLoadingDialog shapeLoadingDialog ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
