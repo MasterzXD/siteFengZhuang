@@ -29,7 +29,7 @@ public class MainActivity extends Activity {
     ImageView back;
     ImageView home;
     ImageView refresh;
-    final String HOME = "http://wap.uu8r.com";
+    final String HOME = "http://ycjf.lookfs.com";
     ShapeLoadingDialog shapeLoadingDialog ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,17 +85,17 @@ public class MainActivity extends Activity {
             @Override
             public void onProgressChanged(WebView webView, int progress) {
                 super.onProgressChanged(webView, progress);
-                if(progress!=100){
-                    shapeLoadingDialog.show();
-                }else{
-                    webView.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            shapeLoadingDialog.dismiss();
-                        }
-                    },1000);
-
-                }
+//                if(progress!=100){
+//                    shapeLoadingDialog.show();
+//                }else{
+//                    webView.postDelayed(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            shapeLoadingDialog.dismiss();
+//                        }
+//                    },1000);
+//
+//                }
             }
 
             @Override

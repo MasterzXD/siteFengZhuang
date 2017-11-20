@@ -22,6 +22,7 @@ public class Loading extends Activity {
     }
     //goldMan  6秒
     //国际在线  6秒
+    // 易昌金服   3秒
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if(keyCode==KeyEvent.KEYCODE_BACK){

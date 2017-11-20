@@ -4,7 +4,7 @@ android {
     compileSdkVersion 26
     buildToolsVersion "26.0.2"
     defaultConfig {
-        applicationId 'sihuo.app.com.kuaiqianyule'
+        applicationId 'sihuo.app.com.yicangjing'
         minSdkVersion 15
         targetSdkVersion 26
         versionCode 1
@@ -24,19 +24,20 @@ android {
     }
     productFlavors {
         kuaiqianyule {
-            applicationId ="sihuo.app.com.kuaiqianyule"
+            applicationId = "sihuo.app.com.kuaiqianyule"
         }
-
         strawberry {
-            applicationId ="sihuo.app.com.strawberry"
+            applicationId = "sihuo.app.com.strawberry"
         }
-        goldman{
+        goldman {
             applicationId = "sihuo.app.com.goldman"
         }
-        guojizaixian{
+        guojizaixian {
             applicationId = "sihuo.app.com.guojizaixian"
         }
-
+        yicangjingfu {
+            applicationId = "sihuo.app.com.yicangjingfu"
+        }
     }
 }
 
