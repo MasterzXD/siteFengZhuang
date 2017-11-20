@@ -18,9 +18,10 @@ public class Loading extends Activity {
                 startActivity(new Intent(Loading.this,MainActivity.class));
                 finish();
             }
-        },3000);
+        },6000);
     }
-
+    //goldMan  6秒
+    //国际在线  6秒
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if(keyCode==KeyEvent.KEYCODE_BACK){

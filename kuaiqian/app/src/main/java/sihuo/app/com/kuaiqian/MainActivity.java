@@ -25,11 +25,11 @@ import android.widget.Toast;
 public class MainActivity extends Activity {
     final  int FILE_CHOOSER_RESULT_CODE = 40;
     ValueCallback<Uri[]> uploadMessage;
-    WebView webview;
+    WebView webview; 
     ImageView back;
     ImageView home;
     ImageView refresh;
-    final String HOME = "http://php5.kq999.net/";
+    final String HOME = "http://wap.uu8r.com";
     ShapeLoadingDialog shapeLoadingDialog ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
