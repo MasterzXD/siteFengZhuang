@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Goldman</string>
+    <string name="home_url">http://koudaimarket.com/Home/Index/</string>
+    <bool name="show_loadng">true</bool>
+    <integer name="loading_delay">6000</integer>
+    <bool name="can_goback">true</bool>
+</resources>

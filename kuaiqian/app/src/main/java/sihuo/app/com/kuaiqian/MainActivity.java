@@ -29,20 +29,22 @@ public class MainActivity extends Activity {
     ImageView back;
     ImageView home;
     ImageView refresh;
-    final String HOME = "http://ycjf.lookfs.com";
     ShapeLoadingDialog shapeLoadingDialog ;
+    String HOME;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        shapeLoadingDialog  = new ShapeLoadingDialog(MainActivity.this);
-        shapeLoadingDialog.setLoadingText("loading...");
 
         setContentView(R.layout.activity_main);
+        HOME = getResources().getString(R.string.home_url);
+        shapeLoadingDialog  = new ShapeLoadingDialog(MainActivity.this);
+        shapeLoadingDialog.setLoadingText("loading...");
         getWindow().setFormat(PixelFormat.TRANSLUCENT);
         webview = findViewById(R.id.webview);
         back = findViewById(R.id.back);
         home = findViewById(R.id.home);
         refresh = findViewById(R.id.refresh);
+
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,17 +87,19 @@ public class MainActivity extends Activity {
             @Override
             public void onProgressChanged(WebView webView, int progress) {
                 super.onProgressChanged(webView, progress);
-//                if(progress!=100){
-//                    shapeLoadingDialog.show();
-//                }else{
-//                    webView.postDelayed(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            shapeLoadingDialog.dismiss();
-//                        }
-//                    },1000);
-//
-//                }
+                if(getResources().getBoolean(R.bool.show_loadng)){
+                    if(progress!=100){
+                        shapeLoadingDialog.show();
+                    }else{
+                        webView.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                shapeLoadingDialog.dismiss();
+                            }
+                        },1000);
+
+                    }
+                }
             }
 
             @Override
@@ -197,7 +201,7 @@ public class MainActivity extends Activity {
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if(keyCode==KeyEvent.KEYCODE_BACK){
-            if(!webview.getUrl().equals(HOME) && webview.canGoBack()){
+            if(getResources().getBoolean(R.bool.can_goback) && !webview.getUrl().equals(HOME) && webview.canGoBack()){
                 webview.goBack();
                 return true;
             }

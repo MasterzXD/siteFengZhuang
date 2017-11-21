@@ -38,6 +38,7 @@ android {
         yicangjingfu {
             applicationId = "sihuo.app.com.yicangjingfu"
         }
+
     }
 }
 

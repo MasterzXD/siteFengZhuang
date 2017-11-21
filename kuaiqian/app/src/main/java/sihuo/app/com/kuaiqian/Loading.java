@@ -18,7 +18,7 @@ public class Loading extends Activity {
                 startActivity(new Intent(Loading.this,MainActivity.class));
                 finish();
             }
-        },6000);
+        },getResources().getInteger(R.integer.loading_delay));
     }
     //goldMan  6秒
     //国际在线  6秒

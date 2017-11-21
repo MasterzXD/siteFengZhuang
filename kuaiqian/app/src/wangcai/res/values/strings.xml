@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">旺彩</string>
+    <string name="home_url">http://m.wangcai020.com</string>
+    <bool name="show_loadng">false</bool>
+    <integer name="loading_delay">3000</integer>
+    <bool name="can_goback">true</bool>
+</resources>
