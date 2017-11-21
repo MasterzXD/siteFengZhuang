@@ -115,9 +115,18 @@ public class MainActivity extends Activity {
 
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
-//                Log.e("----should", ""+url);
+                Log.e("----should", ""+url);
                 try {
-                    if(!url.startsWith("http")){
+                    if(getPackageName().equals("sihuo.app.com.huangjiaguoji") && url.startsWith("intent://")){
+                        if(url.contains("scheme=weixin")){
+                            String result = url.replace("intent://","weixin://");
+                            Intent intent = new Intent(Intent.ACTION_VIEW);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            intent.setData(Uri.parse(result));
+                            startActivity(intent);
+                            return true;
+                        }
+                    }else if(!url.startsWith("http")){
                         Intent intent = new Intent(Intent.ACTION_VIEW);
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         intent.setData(Uri.parse(url));

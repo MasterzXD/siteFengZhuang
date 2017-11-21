@@ -23,22 +23,24 @@ android {
         }
     }
     productFlavors {
-        kuaiqianyule {
-            applicationId = "sihuo.app.com.kuaiqianyule"
+//        kuaiqianyule {
+//            applicationId = "sihuo.app.com.kuaiqianyule"
+//        }
+//        strawberry {
+//            applicationId = "sihuo.app.com.strawberry"
+//        }
+//        goldman {
+//            applicationId = "sihuo.app.com.goldman"
+//        }
+//        guojizaixian {
+//            applicationId = "sihuo.app.com.guojizaixian"
+//        }
+//        yicangjingfu {
+//            applicationId = "sihuo.app.com.yicangjingfu"
+//        }
+        huangjiaguoji {
+            applicationId = "sihuo.app.com.huangjiaguoji"
         }
-        strawberry {
-            applicationId = "sihuo.app.com.strawberry"
-        }
-        goldman {
-            applicationId = "sihuo.app.com.goldman"
-        }
-        guojizaixian {
-            applicationId = "sihuo.app.com.guojizaixian"
-        }
-        yicangjingfu {
-            applicationId = "sihuo.app.com.yicangjingfu"
-        }
-
     }
 }
 
