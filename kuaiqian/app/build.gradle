@@ -41,6 +41,12 @@ android {
         huangjiaguoji {
             applicationId = "sihuo.app.com.huangjiaguoji"
         }
+        shihuijituan {
+            applicationId = "sihuo.app.com.shihuijituan"
+        }
+        aomenweinisiren {
+            applicationId = "sihuo.app.com.aomenweinisiren"
+        }
     }
 }
 

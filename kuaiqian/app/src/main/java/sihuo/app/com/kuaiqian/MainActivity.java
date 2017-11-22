@@ -37,6 +37,8 @@ public class MainActivity extends Activity {
 
         setContentView(R.layout.activity_main);
         HOME = getResources().getString(R.string.home_url);
+        boolean hasDaoHang = getResources().getBoolean(R.bool.save_daohang);
+        findViewById(R.id.title_layout).setVisibility(hasDaoHang?View.VISIBLE:View.GONE);
         shapeLoadingDialog  = new ShapeLoadingDialog(MainActivity.this);
         shapeLoadingDialog.setLoadingText("loading...");
         getWindow().setFormat(PixelFormat.TRANSLUCENT);
@@ -116,16 +118,13 @@ public class MainActivity extends Activity {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 Log.e("----should", ""+url);
+//                Intent.parseUri(url,Intent.URI_INTENT_SCHEME);
                 try {
-                    if(getPackageName().equals("sihuo.app.com.huangjiaguoji") && url.startsWith("intent://")){
-                        if(url.contains("scheme=weixin")){
-                            String result = url.replace("intent://","weixin://");
-                            Intent intent = new Intent(Intent.ACTION_VIEW);
-                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                            intent.setData(Uri.parse(result));
-                            startActivity(intent);
-                            return true;
-                        }
+                    if(url.startsWith("intent://")){
+                        Intent intent = Intent.parseUri(url,Intent.URI_INTENT_SCHEME);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(intent);
+                        return true;
                     }else if(!url.startsWith("http")){
                         Intent intent = new Intent(Intent.ACTION_VIEW);
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

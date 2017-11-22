@@ -4,4 +4,5 @@
     <bool name="show_loadng">false</bool>
     <integer name="loading_delay">3000</integer>
     <bool name="can_goback">true</bool>
+    <bool name="save_daohang">true</bool>
 </resources>
