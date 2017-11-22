@@ -181,6 +181,7 @@ public class MainActivity extends Activity {
         webview.getSettings().setJavaScriptEnabled(true);
         webview.getSettings().setAllowContentAccess(true);
         webview.getSettings().setDomStorageEnabled(true);
+        webview.getSettings().setDatabaseEnabled(true);
         webview.loadUrl(HOME);
     }
 
