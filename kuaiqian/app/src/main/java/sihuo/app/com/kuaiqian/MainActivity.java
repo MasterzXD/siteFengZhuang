@@ -1,12 +1,17 @@
 package sihuo.app.com.kuaiqian;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.PixelFormat;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import com.tencent.smtt.sdk.DownloadListener;
 import com.tencent.smtt.export.external.interfaces.JsResult;
@@ -15,38 +20,72 @@ import com.tencent.smtt.sdk.WebChromeClient;
 import com.tencent.smtt.export.external.interfaces.WebResourceError;
 import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
 import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
+import com.tencent.smtt.sdk.WebSettings;
 import com.tencent.smtt.sdk.WebView;
 import com.tencent.smtt.sdk.WebViewClient;
 import com.wllj.library.shapeloading.ShapeLoadingDialog;
 
+import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 public class MainActivity extends Activity {
     final  int FILE_CHOOSER_RESULT_CODE = 40;
     ValueCallback<Uri[]> uploadMessage;
     WebView webview; 
-    ImageView back;
-    ImageView home;
+    ImageView back,home,floatHome,floatBack;
     ImageView refresh;
     ShapeLoadingDialog shapeLoadingDialog ;
     String HOME;
+    SwipeRefreshLayout refreshLayout;
+    LinearLayout floatLayout;
+    RelativeLayout rootView;
+    RelativeLayout.LayoutParams floatParams;
+
+    int screenW,screenH;
+    float density;
+    boolean refreshable,hasDaoHang,showLoading,guestureNavigation,floatNavigation;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        if(getResources().getBoolean(R.bool.full_screen)){
+            getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                    WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        }
         setContentView(R.layout.activity_main);
-        HOME = getResources().getString(R.string.home_url);
-        boolean hasDaoHang = getResources().getBoolean(R.bool.save_daohang);
-        findViewById(R.id.title_layout).setVisibility(hasDaoHang?View.VISIBLE:View.GONE);
-        shapeLoadingDialog  = new ShapeLoadingDialog(MainActivity.this);
-        shapeLoadingDialog.setLoadingText("loading...");
+        DisplayMetrics dm = getResources().getDisplayMetrics();
+        density = dm.density;
+        screenW = dm.widthPixels;
+        screenH = dm.heightPixels;
+        Log.d("----MainActivity", "onCreate:" + density);
+        initConfig();
+
         getWindow().setFormat(PixelFormat.TRANSLUCENT);
+        HOME = getResources().getString(R.string.home_url);
+
+
+        findViewById(R.id.title_layout).setVisibility(hasDaoHang?View.VISIBLE:View.GONE);
+        shapeLoadingDialog = new ShapeLoadingDialog(MainActivity.this);
+        shapeLoadingDialog.setLoadingText("loading...");
+
         webview = findViewById(R.id.webview);
         back = findViewById(R.id.back);
         home = findViewById(R.id.home);
         refresh = findViewById(R.id.refresh);
+        rootView = findViewById(R.id.root_view);
 
+        refreshLayout = findViewById(R.id.refesh_layout);
+        refreshLayout.setEnabled(refreshable);
+        refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                webview.reload();
+            }
+        });
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,6 +110,87 @@ public class MainActivity extends Activity {
             }
         });
 
+        setupWebview();
+
+        webview.loadUrl(HOME);
+
+        initFloatView();
+    }
+
+    int floatViewDownX,floatViewDownY,finalFloatViewDownX,finalFloatViewDownY;
+    void initFloatView(){
+        if(floatNavigation){
+            floatLayout = (LinearLayout) getLayoutInflater().inflate(R.layout.float_layout,null);
+            final int floatViewW = (int)(40*density);
+            final int floatViewH = (int)(100*density);
+            floatParams = new RelativeLayout.LayoutParams(floatViewW,floatViewH);
+            floatParams.leftMargin =  (int)(270*density);
+            floatParams.topMargin = (int)(300*density);
+            rootView.addView(floatLayout,floatParams);
+
+            floatBack = floatLayout.findViewById(R.id.float_back);
+            floatHome = floatLayout.findViewById(R.id.float_home);
+            floatLayout.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+
+                    switch (event.getAction()){
+                        case MotionEvent.ACTION_DOWN:
+                            floatViewDownX = (int)event.getRawX();
+                            floatViewDownY = (int)event.getRawY();
+                            finalFloatViewDownX = (int)event.getRawX();
+                            finalFloatViewDownY = (int)event.getRawY();
+                            break;
+                        case MotionEvent.ACTION_MOVE:
+
+                            int floatViewCurrentX = (int)event.getRawX();
+                            int floatViewCurrentY = (int)event.getRawY();
+                            if(Math.abs(floatViewCurrentX-finalFloatViewDownX)<10
+                                    && Math.abs(floatViewCurrentY-finalFloatViewDownY)<10){
+                                return true;
+                            }
+                            floatParams.leftMargin += floatViewCurrentX-floatViewDownX;
+                            floatParams.topMargin += floatViewCurrentY-floatViewDownY;
+
+                            if(floatParams.leftMargin<0){
+                                floatParams.leftMargin=0;
+                            }
+                            if(floatParams.topMargin<0){
+                                floatParams.topMargin=0;
+                            }
+                            if(floatParams.leftMargin+floatViewW>screenW){
+                                floatParams.leftMargin = screenW-floatViewW;
+                            }
+                            if(floatParams.topMargin+floatViewH+22>screenH){
+                                floatParams.topMargin = screenH-floatViewH-22;
+                            }
+                            floatViewDownX = floatViewCurrentX;
+                            floatViewDownY = floatViewCurrentY;
+                            rootView.updateViewLayout(floatLayout,floatParams);
+                            break;
+                        case MotionEvent.ACTION_UP:
+                            if(Math.abs(event.getRawY()-finalFloatViewDownY)<10){
+                                if(floatHome.getY()+floatHome.getHeight()>=event.getY()){
+                                    webview.loadUrl("http://www.bff111.com/#/home");
+                                }else{
+                                    if(webview.canGoBack()){
+                                        webview.goBack();
+                                    }
+                                }
+                            }
+                            floatLayout.setLayoutParams(floatParams);
+                            break;
+                    }
+                    return true;
+                }
+            });
+        }
+    }
+
+
+    int startX;
+    final int scrollSize=200;
+    void setupWebview(){
         webview.setDownloadListener(new DownloadListener() {
             @Override
             public void onDownloadStart(String url, String userAgent, String contentDisposition, String mimetype, long contentLength) {
@@ -79,6 +199,36 @@ public class MainActivity extends Activity {
                 startActivity(intent);
             }
         });
+        if(guestureNavigation){
+            webview.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    if(webview.getWebScrollY()==0){
+                        refreshLayout.setEnabled(true);
+                    }else{
+                        refreshLayout.setEnabled(false);
+                    }
+                    switch (event.getAction()) {
+                        case MotionEvent.ACTION_DOWN:
+                            startX = (int) event.getX();
+                            break;
+                        case MotionEvent.ACTION_UP:
+
+                            int endX = (int) event.getX();
+                            if (endX > startX && webview.canGoBack() && endX - startX > scrollSize) {
+                                webview.goBack();
+                            } else if (endX < startX && webview.canGoForward() && startX - endX > scrollSize) {
+                                webview.goForward();
+                            }
+                            break;
+                        default:
+                            break;
+                    }
+                    return false;
+                }
+            });
+        }
+
         webview.setWebChromeClient(new WebChromeClient(){
             @Override
             public boolean onJsAlert(WebView webView, String s, String s1, JsResult jsResult) {
@@ -89,6 +239,11 @@ public class MainActivity extends Activity {
             @Override
             public void onProgressChanged(WebView webView, int progress) {
                 super.onProgressChanged(webView, progress);
+                if(getResources().getBoolean(R.bool.pull_refresh_enable)){
+                    if(progress==100){
+                        refreshLayout.setRefreshing(false);
+                    }
+                }
                 if(getResources().getBoolean(R.bool.show_loadng)){
                     if(progress!=100){
                         shapeLoadingDialog.show();
@@ -178,11 +333,70 @@ public class MainActivity extends Activity {
             }
         });
 
-        webview.getSettings().setJavaScriptEnabled(true);
-        webview.getSettings().setAllowContentAccess(true);
-        webview.getSettings().setDomStorageEnabled(true);
-        webview.getSettings().setDatabaseEnabled(true);
-        webview.loadUrl(HOME);
+        WebSettings webSetting = webview.getSettings();
+        DisplayMetrics metrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        int mDensity = metrics.densityDpi;
+        if (mDensity == 240) {
+            webSetting.setDefaultZoom(WebSettings.ZoomDensity.FAR);
+        } else if (mDensity == 160) {
+            webSetting.setDefaultZoom(WebSettings.ZoomDensity.MEDIUM);
+        } else if(mDensity == 120) {
+            webSetting.setDefaultZoom(WebSettings.ZoomDensity.CLOSE);
+        }else if(mDensity == DisplayMetrics.DENSITY_XHIGH){
+            webSetting.setDefaultZoom(WebSettings.ZoomDensity.FAR);
+        }else if (mDensity == DisplayMetrics.DENSITY_TV){
+            webSetting.setDefaultZoom(WebSettings.ZoomDensity.FAR);
+        }else{
+            webSetting.setDefaultZoom(WebSettings.ZoomDensity.MEDIUM);
+        }
+        WindowManager wm = (WindowManager) this.getSystemService(Context.WINDOW_SERVICE);
+        int width = wm.getDefaultDisplay().getWidth();
+        Log.d("----MainActivity", "setupWebview:" + width);
+        if(width > 650)
+        {
+            webview.setInitialScale(190);
+        }else if(width > 520)
+        {
+            webview.setInitialScale(160);
+        }else if(width > 450)
+        {
+            webview.setInitialScale(140);
+        }else if(width > 300)
+        {
+            webview.setInitialScale(120);
+        }else
+        {
+            webview.setInitialScale(100);
+        }
+
+        webSetting.setJavaScriptEnabled(true);
+        webSetting.setJavaScriptCanOpenWindowsAutomatically(true);
+        webSetting.setAllowFileAccess(true);
+        webSetting.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
+        webSetting.setSupportZoom(true);
+        webSetting.setBuiltInZoomControls(true);
+        webSetting.setUseWideViewPort(true);
+        webSetting.setSupportMultipleWindows(true);
+        // webSetting.setLoadWithOverviewMode(true);
+        webSetting.setAppCacheEnabled(true);
+        // webSetting.setDatabaseEnabled(true);
+        webSetting.setDomStorageEnabled(true);
+        webSetting.setGeolocationEnabled(true);
+        webSetting.setAppCacheMaxSize(Long.MAX_VALUE);
+        // webSetting.setPageCacheCapacity(IX5WebSettings.DEFAULT_CACHE_CAPACITY);
+        webSetting.setPluginState(WebSettings.PluginState.ON_DEMAND);
+        // webSetting.setRenderPriority(WebSettings.RenderPriority.HIGH);
+        webSetting.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
+    }
+
+
+    void initConfig(){
+        refreshable = getResources().getBoolean(R.bool.pull_refresh_enable);
+        showLoading = getResources().getBoolean(R.bool.show_loadng);
+        hasDaoHang = getResources().getBoolean(R.bool.save_daohang);
+        guestureNavigation = getResources().getBoolean(R.bool.gesture_navigation);
+        floatNavigation = getResources().getBoolean(R.bool.float_navigation);
     }
 
     private void openImageChooserActivity() {

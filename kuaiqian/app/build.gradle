@@ -38,18 +38,33 @@ android {
 //        yicangjingfu {
 //            applicationId = "sihuo.app.com.yicangjingfu"
 //        }
-        huangjiaguoji {
-            applicationId = "sihuo.app.com.huangjiaguoji"
+//        huangjiaguoji {
+//            applicationId = "sihuo.app.com.huangjiaguoji"
+//        }
+//        shihuijituan {
+//            applicationId = "sihuo.app.com.shihuijituan"
+//        }
+//        aomenweinisiren {
+//            applicationId = "sihuo.app.com.aomenweinisiren"
+//        }
+//        huixinguoji {
+//            applicationId = "sihuo.app.com.huixinguoji"
+//        }
+//        ronghuijituan {
+//            applicationId = "sihuo.app.com.ronghuijituan"
+//        }
+//        xinyunxing {
+//            applicationId = "sihuo.app.com.xinyunxing"
+//        }
+//        baniguoji {
+//            applicationId = "sihuo.app.com.baniguoji"
+//        }
+        aimaoyingyin {
+            applicationId = "sihuo.app.com.aimaoyingyin"
         }
-        shihuijituan {
-            applicationId = "sihuo.app.com.shihuijituan"
-        }
-        aomenweinisiren {
-            applicationId = "sihuo.app.com.aomenweinisiren"
-        }
-        huixinguoji {
-            applicationId = "sihuo.app.com.huixinguoji"
-        }
+//        huanyuguoji {
+//            applicationId = "sihuo.app.com.huanyuguoji"
+//        }
     }
 }
 
@@ -62,4 +77,5 @@ dependencies {
     //    testCompile 'junit:junit:4.12'
     implementation files('libs/tbs_sdk.jar')
     implementation project(':library-loading')
+    implementation 'com.android.support:support-v4:26.0.0-alpha1'
 }

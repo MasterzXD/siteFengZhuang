@@ -1,15 +1,15 @@
 <resources>
     <!-- APP名字 -->
-    <string name="app_name">测试</string>
+    <string name="app_name">爱猫影音</string>
     <!-- 主页地址 -->
-    <string name="home_url">https://www.baidu.com</string>
+        <string name="home_url">http://www.yotong.com.cn/app/index.php?i=1&#038;c=entry&#038;do=index&#038;m=title_head</string>
     <!-- 是否现在网页加载进度条 -->
     <bool name="show_loadng">false</bool>
     <!-- 启动页面延迟时间，默认2000毫秒 -->
     <integer name="loading_delay">2000</integer>
-    <!-- 物理返回键带回退功能,默认开启 -->
+    <!-- 物理返回键带回退功能 -->
     <bool name="can_goback">true</bool>
-    <!-- 保留导航栏 -->
+    <!-- 保留头部导航栏 -->
     <bool name="save_daohang">true</bool>
     <!-- 是否主页全屏 -->
     <bool name="full_screen">false</bool>
@@ -17,6 +17,6 @@
     <bool name="pull_refresh_enable">false</bool>
     <!-- 手势导航 -->
     <bool name="gesture_navigation">false</bool>
-    <!-- 悬浮导航 -->
-    <bool name="float_navigation"></bool>
+    <!-- 悬浮窗导航 -->
+    <bool name="float_navigation">false</bool>
 </resources>

@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffffff"
+    android:id="@+id/root_view"
     tools:context="sihuo.app.com.kuaiqian.MainActivity">
 
     <RelativeLayout
@@ -49,12 +50,15 @@
     </RelativeLayout>
 
 
-
-    <com.tencent.smtt.sdk.WebView
-        android:id="@+id/webview"
-        android:layout_below="@+id/title_layout"
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/refesh_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_below="@+id/title_layout">
+        <com.tencent.smtt.sdk.WebView
+            android:id="@+id/webview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </android.support.v4.widget.SwipeRefreshLayout>
 
-    </com.tencent.smtt.sdk.WebView>
 </RelativeLayout>
