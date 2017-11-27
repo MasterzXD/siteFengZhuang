@@ -23,7 +23,7 @@ import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
 import com.tencent.smtt.sdk.WebSettings;
 import com.tencent.smtt.sdk.WebView;
 import com.tencent.smtt.sdk.WebViewClient;
-import com.wllj.library.shapeloading.ShapeLoadingDialog;
+//import com.wllj.library.shapeloading.ShapeLoadingDialog;
 
 import android.view.WindowManager;
 import android.widget.ImageView;
@@ -31,13 +31,15 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import sihuo.app.com.kuaiqian.utils.X5WebView;
+
 public class MainActivity extends Activity {
     final  int FILE_CHOOSER_RESULT_CODE = 40;
     ValueCallback<Uri[]> uploadMessage;
-    WebView webview; 
+    X5WebView webview;
     ImageView back,home,floatHome,floatBack;
     ImageView refresh;
-    ShapeLoadingDialog shapeLoadingDialog ;
+//    ShapeLoadingDialog shapeLoadingDialog ;
     String HOME;
     SwipeRefreshLayout refreshLayout;
     LinearLayout floatLayout;
@@ -68,8 +70,8 @@ public class MainActivity extends Activity {
 
 
         findViewById(R.id.title_layout).setVisibility(hasDaoHang?View.VISIBLE:View.GONE);
-        shapeLoadingDialog = new ShapeLoadingDialog(MainActivity.this);
-        shapeLoadingDialog.setLoadingText("loading...");
+//        shapeLoadingDialog = new ShapeLoadingDialog(MainActivity.this);
+//        shapeLoadingDialog.setLoadingText("loading...");
 
         webview = findViewById(R.id.webview);
         back = findViewById(R.id.back);
@@ -269,17 +271,17 @@ public class MainActivity extends Activity {
                     }
                 }
                 if(getResources().getBoolean(R.bool.show_loadng)){
-                    if(progress!=100){
-                        shapeLoadingDialog.show();
-                    }else{
-                        webView.postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                shapeLoadingDialog.dismiss();
-                            }
-                        },1000);
-
-                    }
+//                    if(progress!=100){
+//                        shapeLoadingDialog.show();
+//                    }else{
+//                        webView.postDelayed(new Runnable() {
+//                            @Override
+//                            public void run() {
+//                                shapeLoadingDialog.dismiss();
+//                            }
+//                        },1000);
+//
+//                    }
                 }
             }
 
@@ -357,43 +359,6 @@ public class MainActivity extends Activity {
             }
         });
 
-        WebSettings webSetting = webview.getSettings();
-        DisplayMetrics metrics = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(metrics);
-        int mDensity = metrics.densityDpi;
-        if (mDensity == 240) {
-            webSetting.setDefaultZoom(WebSettings.ZoomDensity.FAR);
-        } else if (mDensity == 160) {
-            webSetting.setDefaultZoom(WebSettings.ZoomDensity.MEDIUM);
-        } else if(mDensity == 120) {
-            webSetting.setDefaultZoom(WebSettings.ZoomDensity.CLOSE);
-        }else if(mDensity == DisplayMetrics.DENSITY_XHIGH){
-            webSetting.setDefaultZoom(WebSettings.ZoomDensity.FAR);
-        }else if (mDensity == DisplayMetrics.DENSITY_TV){
-            webSetting.setDefaultZoom(WebSettings.ZoomDensity.FAR);
-        }else{
-            webSetting.setDefaultZoom(WebSettings.ZoomDensity.MEDIUM);
-        }
-
-
-        webSetting.setJavaScriptEnabled(true);
-        webSetting.setJavaScriptCanOpenWindowsAutomatically(true);
-        webSetting.setAllowFileAccess(true);
-        webSetting.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
-        webSetting.setSupportZoom(true);
-        webSetting.setBuiltInZoomControls(true);
-        webSetting.setUseWideViewPort(true);
-        webSetting.setSupportMultipleWindows(true);
-        // webSetting.setLoadWithOverviewMode(true);
-        webSetting.setAppCacheEnabled(true);
-        // webSetting.setDatabaseEnabled(true);
-        webSetting.setDomStorageEnabled(true);
-        webSetting.setGeolocationEnabled(true);
-        webSetting.setAppCacheMaxSize(Long.MAX_VALUE);
-        // webSetting.setPageCacheCapacity(IX5WebSettings.DEFAULT_CACHE_CAPACITY);
-        webSetting.setPluginState(WebSettings.PluginState.ON_DEMAND);
-        // webSetting.setRenderPriority(WebSettings.RenderPriority.HIGH);
-        webSetting.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
     }
 
 
