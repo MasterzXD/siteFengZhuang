@@ -18,5 +18,5 @@
     <!-- 手势导航 -->
     <bool name="gesture_navigation">false</bool>
     <!-- 悬浮导航 -->
-    <bool name="float_navigation"></bool>
+    <bool name="float_navigation">false</bool>
 </resources>

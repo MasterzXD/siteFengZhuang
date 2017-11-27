@@ -55,10 +55,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/title_layout">
-        <com.tencent.smtt.sdk.WebView
-            android:id="@+id/webview"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+        <!--<com.tencent.smtt.sdk.WebView-->
+            <!--android:id="@+id/webview"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"/>-->
     </android.support.v4.widget.SwipeRefreshLayout>
-
+    <com.tencent.smtt.sdk.WebView
+        android:id="@+id/webview"
+        android:layout_below="@+id/title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 </RelativeLayout>

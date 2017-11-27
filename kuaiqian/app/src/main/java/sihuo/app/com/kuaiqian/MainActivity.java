@@ -61,7 +61,6 @@ public class MainActivity extends Activity {
         density = dm.density;
         screenW = dm.widthPixels;
         screenH = dm.heightPixels;
-        Log.d("----MainActivity", "onCreate:" + density);
         initConfig();
 
         getWindow().setFormat(PixelFormat.TRANSLUCENT);
@@ -111,10 +110,35 @@ public class MainActivity extends Activity {
         });
 
         setupWebview();
-
         webview.loadUrl(HOME);
+        setInitScale();
 
         initFloatView();
+    }
+
+    /**
+     * 设置webview初始化缩放比例，因为某些机型内容不适配,比如三星曲屏
+     */
+    void setInitScale(){
+        WindowManager wm = (WindowManager) this.getSystemService(Context.WINDOW_SERVICE);
+        int width = wm.getDefaultDisplay().getWidth();
+        Log.d("----MainActivity", "setupWebview:" + width);
+        if(width > 650)
+        {
+            webview.setInitialScale(190);
+        }else if(width > 520)
+        {
+            webview.setInitialScale(160);
+        }else if(width > 450)
+        {
+            webview.setInitialScale(140);
+        }else if(width > 300)
+        {
+            webview.setInitialScale(120);
+        }else
+        {
+            webview.setInitialScale(100);
+        }
     }
 
     int floatViewDownX,floatViewDownY,finalFloatViewDownX,finalFloatViewDownY;
@@ -350,25 +374,7 @@ public class MainActivity extends Activity {
         }else{
             webSetting.setDefaultZoom(WebSettings.ZoomDensity.MEDIUM);
         }
-        WindowManager wm = (WindowManager) this.getSystemService(Context.WINDOW_SERVICE);
-        int width = wm.getDefaultDisplay().getWidth();
-        Log.d("----MainActivity", "setupWebview:" + width);
-        if(width > 650)
-        {
-            webview.setInitialScale(190);
-        }else if(width > 520)
-        {
-            webview.setInitialScale(160);
-        }else if(width > 450)
-        {
-            webview.setInitialScale(140);
-        }else if(width > 300)
-        {
-            webview.setInitialScale(120);
-        }else
-        {
-            webview.setInitialScale(100);
-        }
+
 
         webSetting.setJavaScriptEnabled(true);
         webSetting.setJavaScriptCanOpenWindowsAutomatically(true);
