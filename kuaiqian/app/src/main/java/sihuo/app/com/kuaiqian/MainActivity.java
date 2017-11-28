@@ -10,7 +10,6 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.KeyEvent;
-import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import com.tencent.smtt.sdk.DownloadListener;
@@ -20,17 +19,18 @@ import com.tencent.smtt.sdk.WebChromeClient;
 import com.tencent.smtt.export.external.interfaces.WebResourceError;
 import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
 import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
-import com.tencent.smtt.sdk.WebSettings;
 import com.tencent.smtt.sdk.WebView;
 import com.tencent.smtt.sdk.WebViewClient;
 //import com.wllj.library.shapeloading.ShapeLoadingDialog;
 
 import android.view.WindowManager;
+import android.webkit.JavascriptInterface;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import sihuo.app.com.kuaiqian.utils.WebViewJavaScriptFunction;
 import sihuo.app.com.kuaiqian.utils.X5WebView;
 
 public class MainActivity extends Activity {
@@ -254,6 +254,19 @@ public class MainActivity extends Activity {
                 }
             });
         }
+
+        webview.addJavascriptInterface(new WebViewJavaScriptFunction() {
+
+            @Override
+            public void onJsFunctionCalled(String tag) {
+
+            }
+
+            @JavascriptInterface
+            public void toastMessage(String msg) {
+
+            }
+        }, "control");
 
         webview.setWebChromeClient(new WebChromeClient(){
             @Override

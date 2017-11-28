@@ -1,9 +1,9 @@
 <resources>
     <!-- APP名字 -->
-    <string name="app_name">爱猫影音</string>
+    <string name="app_name">福汇</string>
     <!-- 主页地址 -->
-        <string name="home_url">http://www.baidu.com</string>
-    <!-- 是否现在网页加载进度条 -->
+    <string name="home_url">http://m.fuhuiyule.com</string>
+    <!-- 是否显示网页加载进度条,默认false -->
     <bool name="show_loadng">false</bool>
     <!-- 启动页面延迟时间，默认2000毫秒 -->
     <integer name="loading_delay">2000</integer>

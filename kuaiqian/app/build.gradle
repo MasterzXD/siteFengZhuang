@@ -4,7 +4,7 @@ android {
     compileSdkVersion 26
     buildToolsVersion "26.0.2"
     defaultConfig {
-        applicationId 'sihuo.app.com.yicangjing'
+        applicationId 'sihuo.app.com.aimaoyingyin'
         minSdkVersion 15
         targetSdkVersion 26
         versionCode 1
@@ -12,9 +12,16 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
         flavorDimensions "versionCode"
-        ndk{abiFilters "armeabi", "armeabi-v7a", "x86", "mips"}
+        ndk {
+            abiFilters "armeabi", "armeabi-v7a", "x86", "mips"
+        }
     }
 
+    sourceSets {
+        main{
+            jniLibs.srcDirs = ['libs']
+        }
+    }
 
     buildTypes {
         release {
@@ -59,22 +66,20 @@ android {
 //        baniguoji {
 //            applicationId = "sihuo.app.com.baniguoji"
 //        }
-        aimaoyingyin {
-            applicationId = "sihuo.app.com.aimaoyingyin"
-        }
+//        aimaoyingyin {
+//            applicationId = "sihuo.app.com.aimaoyingyin"
+//        }
 //        huanyuguoji {
 //            applicationId = "sihuo.app.com.huanyuguoji"
 //        }
+        fuhui {
+            applicationId = "sihuo.app.com.fuhui"
+        }
     }
 }
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    //    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-    //        exclude group: 'com.android.support', module: 'support-annotations'
-    //    })
-    //    compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    //    testCompile 'junit:junit:4.12'
     implementation files('libs/tbs_sdk.jar')
-    implementation 'com.android.support:support-v4:26.+'
+    implementation 'com.android.support:support-v4:26.0.0-alpha1'
 }
