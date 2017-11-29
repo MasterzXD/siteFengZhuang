@@ -16,6 +16,8 @@ import com.tencent.smtt.sdk.WebView;
 
 public class X5WebView extends WebView {
 
+	private LongClickCallBack mCallBack;
+
 	public X5WebView(Context arg0) {
 		super(arg0);
 		setBackgroundColor(85621);
@@ -26,6 +28,7 @@ public class X5WebView extends WebView {
 		super(arg0, arg1);
 		initWebViewSettings();
 		this.getView().setClickable(true);
+		setOnLongClickListener(this);
 	}
 
 	private void initWebViewSettings() {
@@ -54,4 +57,27 @@ public class X5WebView extends WebView {
 		// settings 的设计
 	}
 
+	@Override
+	public boolean onLongClick(View view) {
+		// 长按事件监听（注意：需要实现LongClickCallBack接口并传入对象）
+		final HitTestResult htr = getHitTestResult();//获取所点击的内容
+		if (htr.getType() == WebView.HitTestResult.IMAGE_TYPE) {//判断被点击的类型为图片
+			mCallBack.onLongClickCallBack(htr.getExtra());
+		}
+
+		return true;
+	}
+
+	public void setmCallBack(LongClickCallBack mCallBack){
+		this.mCallBack = mCallBack;
+	}
+
+	/**
+	 * 长按事件回调接口，传递图片地址
+	 * @author LinZhang
+	 */
+	public interface LongClickCallBack{
+		/**用于传递图片地址*/
+		void onLongClickCallBack(String imgUrl);
+	}
 }

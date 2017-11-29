@@ -1,17 +1,27 @@
 package sihuo.app.com.kuaiqian;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.PixelFormat;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.util.Base64;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
+
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.Result;
 import com.tencent.smtt.sdk.DownloadListener;
 import com.tencent.smtt.export.external.interfaces.JsResult;
 import com.tencent.smtt.sdk.ValueCallback;
@@ -30,8 +40,17 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
 import sihuo.app.com.kuaiqian.utils.WebViewJavaScriptFunction;
 import sihuo.app.com.kuaiqian.utils.X5WebView;
+import sihuo.app.com.kuaiqian.zxing.DecodeImage;
 
 public class MainActivity extends Activity {
     final  int FILE_CHOOSER_RESULT_CODE = 40;
@@ -46,6 +65,7 @@ public class MainActivity extends Activity {
     RelativeLayout rootView;
     RelativeLayout.LayoutParams floatParams;
 
+    String imageUrl;
     int screenW,screenH;
     float density;
     boolean refreshable,hasDaoHang,showLoading,guestureNavigation,floatNavigation;
@@ -66,7 +86,7 @@ public class MainActivity extends Activity {
         initConfig();
 
         getWindow().setFormat(PixelFormat.TRANSLUCENT);
-        HOME = getResources().getString(R.string.home_url);
+        HOME = getResources().getString(R.string.start_url);
 
 
         findViewById(R.id.title_layout).setVisibility(hasDaoHang?View.VISIBLE:View.GONE);
@@ -100,6 +120,7 @@ public class MainActivity extends Activity {
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                HOME = getResources().getString(R.string.home_url);
                 webview.loadUrl(HOME);
             }
         });
@@ -213,6 +234,82 @@ public class MainActivity extends Activity {
         }
     }
 
+    /**
+     * 判断是否为二维码
+     * param url 图片地址
+     * return
+     */
+    private boolean decodeImage(String sUrl){
+        Result result = DecodeImage.handleQRCodeFormBitmap(getBitmap(sUrl));
+
+        return result != null;
+    }
+
+    /**
+     * 根据地址获取网络图片
+     * @param sUrl 图片地址
+     * @return
+     * @throws IOException
+     */
+    public Bitmap getBitmap(String sUrl){
+        try {
+            URL url = new URL(sUrl);
+            HttpURLConnection conn = (HttpURLConnection)url.openConnection();
+            conn.setConnectTimeout(5000);
+            conn.setRequestMethod("GET");
+            if(conn.getResponseCode() == 200){
+                InputStream inputStream = conn.getInputStream();
+                Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+                saveMyBitmap(bitmap,"code");//先把bitmap生成jpg图片
+                return bitmap;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    /**
+     * bitmap 保存为jpg 图片
+     * @param mBitmap 图片源
+     * @param bitName  图片名
+     */
+    public void saveMyBitmap(Bitmap mBitmap,String bitName)  {
+        File file= new File( Environment.getExternalStorageDirectory()+"/"+bitName + ".jpg");
+        FileOutputStream fOut = null;
+        try {
+            fOut = new FileOutputStream(file);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        mBitmap.compress(Bitmap.CompressFormat.JPEG, 100, fOut);
+        try {
+            fOut.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            fOut.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public class MyAsyncTask extends AsyncTask<String, Void, String> {
+
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            decodeImage(params[0]);
+            return null;
+        }
+    }
 
     int startX;
     final int scrollSize=200;
@@ -223,6 +320,32 @@ public class MainActivity extends Activity {
                 Uri uri = Uri.parse(url);
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
+            }
+        });
+        webview.setmCallBack(new X5WebView.LongClickCallBack() {
+            @Override
+            public void onLongClickCallBack(final String imgUrl) {
+                new AlertDialog.Builder(MainActivity.this).setTitle("").setNegativeButton("识别图片", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        if(imgUrl.startsWith("data:image/png;base64,")){
+                            String tempimgUrl = imgUrl.replace("data:image/png;base64","");
+                            byte[] data = Base64.decode(tempimgUrl,Base64.DEFAULT);
+                            Bitmap bitmap = BitmapFactory.decodeByteArray(data,0,data.length);
+                            Result result = DecodeImage.handleQRCodeFormBitmap(bitmap);
+                            if(result!=null){
+                                Log.e("----onLongClickCallBack", ""+result.getText());
+                                webview.loadUrl(result.getText());
+                            }
+                        }else if(imageUrl.startsWith("http")){
+                            imageUrl=imgUrl;
+                            // 获取到图片地址后做相应的处理
+                            MyAsyncTask	mTask = new MyAsyncTask();
+                            mTask.execute(imgUrl);
+                        }
+                    }
+                }).show();
+
             }
         });
         if(guestureNavigation){
@@ -284,17 +407,6 @@ public class MainActivity extends Activity {
                     }
                 }
                 if(getResources().getBoolean(R.bool.show_loadng)){
-//                    if(progress!=100){
-//                        shapeLoadingDialog.show();
-//                    }else{
-//                        webView.postDelayed(new Runnable() {
-//                            @Override
-//                            public void run() {
-//                                shapeLoadingDialog.dismiss();
-//                            }
-//                        },1000);
-//
-//                    }
                 }
             }
 
