@@ -75,15 +75,27 @@ android {
 //        fuhui {
 //            applicationId = "sihuo.app.com.fuhui"
 //        }
-        shishishangcheng {
-            applicationId = "sihuo.app.com.shishishangcheng"
-        }
+//        shishishangcheng {
+//            applicationId = "sihuo.app.com.shishishangcheng"
+//        }
 //        diaomt4 {
 //            applicationId = "sihuo.app.com.diaomt4"
 //        }
 //        zhongqianhui {
 //            applicationId = "sihuo.app.com.zhongqianhui"
 //        }
+//        jingdongcaipiao {
+//            applicationId = "sihuo.app.com.jingdongcaipiao"
+//        }
+//        dihaoguoji {
+//            applicationId = "sihuo.app.com.dihaoguoji"
+//        }
+        yongliguojione {
+            applicationId = "sihuo.app.com.yongliguojione"
+        }
+        yongliguojitwo {
+            applicationId = "sihuo.app.com.yongliguojitwo"
+        }
     }
 }
 

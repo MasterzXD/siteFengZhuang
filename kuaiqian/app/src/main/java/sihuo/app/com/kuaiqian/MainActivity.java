@@ -322,32 +322,32 @@ public class MainActivity extends Activity {
                 startActivity(intent);
             }
         });
-        webview.setmCallBack(new X5WebView.LongClickCallBack() {
-            @Override
-            public void onLongClickCallBack(final String imgUrl) {
-                new AlertDialog.Builder(MainActivity.this).setTitle("").setNegativeButton("识别图片", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        if(imgUrl.startsWith("data:image/png;base64,")){
-                            String tempimgUrl = imgUrl.replace("data:image/png;base64","");
-                            byte[] data = Base64.decode(tempimgUrl,Base64.DEFAULT);
-                            Bitmap bitmap = BitmapFactory.decodeByteArray(data,0,data.length);
-                            Result result = DecodeImage.handleQRCodeFormBitmap(bitmap);
-                            if(result!=null){
-                                Log.e("----onLongClickCallBack", ""+result.getText());
-                                webview.loadUrl(result.getText());
-                            }
-                        }else if(imageUrl.startsWith("http")){
-                            imageUrl=imgUrl;
-                            // 获取到图片地址后做相应的处理
-                            MyAsyncTask	mTask = new MyAsyncTask();
-                            mTask.execute(imgUrl);
-                        }
-                    }
-                }).show();
-
-            }
-        });
+//        webview.setmCallBack(new X5WebView.LongClickCallBack() {
+//            @Override
+//            public void onLongClickCallBack(final String imgUrl) {
+//                new AlertDialog.Builder(MainActivity.this).setTitle("").setNegativeButton("识别图片", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        if(imgUrl.startsWith("data:image/png;base64,")){
+//                            String tempimgUrl = imgUrl.replace("data:image/png;base64","");
+//                            byte[] data = Base64.decode(tempimgUrl,Base64.DEFAULT);
+//                            Bitmap bitmap = BitmapFactory.decodeByteArray(data,0,data.length);
+//                            Result result = DecodeImage.handleQRCodeFormBitmap(bitmap);
+//                            if(result!=null){
+//                                Log.e("----onLongClickCallBack", ""+result.getText());
+//                                webview.loadUrl(result.getText());
+//                            }
+//                        }else if(imageUrl.startsWith("http")){
+//                            imageUrl=imgUrl;
+//                            // 获取到图片地址后做相应的处理
+//                            MyAsyncTask	mTask = new MyAsyncTask();
+//                            mTask.execute(imgUrl);
+//                        }
+//                    }
+//                }).show();
+//
+//            }
+//        });
         if(guestureNavigation){
             webview.setOnTouchListener(new View.OnTouchListener() {
                 @Override
