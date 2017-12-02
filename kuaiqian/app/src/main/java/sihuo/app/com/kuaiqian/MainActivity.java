@@ -348,7 +348,7 @@ public class MainActivity extends Activity {
 //
 //            }
 //        });
-        if(guestureNavigation){
+        if(guestureNavigation||refreshable){
             webview.setOnTouchListener(new View.OnTouchListener() {
                 @Override
                 public boolean onTouch(View v, MotionEvent event) {
@@ -357,22 +357,25 @@ public class MainActivity extends Activity {
                     }else{
                         refreshLayout.setEnabled(false);
                     }
-                    switch (event.getAction()) {
-                        case MotionEvent.ACTION_DOWN:
-                            startX = (int) event.getX();
-                            break;
-                        case MotionEvent.ACTION_UP:
+                    if(guestureNavigation){
+                        switch (event.getAction()) {
+                            case MotionEvent.ACTION_DOWN:
+                                startX = (int) event.getX();
+                                break;
+                            case MotionEvent.ACTION_UP:
 
-                            int endX = (int) event.getX();
-                            if (endX > startX && webview.canGoBack() && endX - startX > scrollSize) {
-                                webview.goBack();
-                            } else if (endX < startX && webview.canGoForward() && startX - endX > scrollSize) {
-                                webview.goForward();
-                            }
-                            break;
-                        default:
-                            break;
+                                int endX = (int) event.getX();
+                                if (endX > startX && webview.canGoBack() && endX - startX > scrollSize) {
+                                    webview.goBack();
+                                } else if (endX < startX && webview.canGoForward() && startX - endX > scrollSize) {
+                                    webview.goForward();
+                                }
+                                break;
+                            default:
+                                break;
+                        }
                     }
+
                     return false;
                 }
             });

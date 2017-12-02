@@ -90,11 +90,17 @@ android {
 //        dihaoguoji {
 //            applicationId = "sihuo.app.com.dihaoguoji"
 //        }
-        yongliguojione {
-            applicationId = "sihuo.app.com.yongliguojione"
-        }
-        yongliguojitwo {
-            applicationId = "sihuo.app.com.yongliguojitwo"
+//        yongliguojione {
+//            applicationId = "sihuo.app.com.yongliguojione"
+//        }
+//        yongliguojitwo {
+//            applicationId = "sihuo.app.com.yongliguojitwo"
+//        }
+//        zhongfuzaixian {
+//            applicationId = "sihuo.app.com.zhongfuzaixian"
+//        }
+        xingjiyulecheng {
+            applicationId = "sihuo.app.com.xingjiyulecheng"
         }
     }
 }
