@@ -22,6 +22,7 @@ import android.view.View;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.Result;
+import com.tencent.smtt.export.external.interfaces.IX5WebChromeClient;
 import com.tencent.smtt.sdk.DownloadListener;
 import com.tencent.smtt.export.external.interfaces.JsResult;
 import com.tencent.smtt.sdk.ValueCallback;
@@ -399,6 +400,19 @@ public class MainActivity extends Activity {
             public boolean onJsAlert(WebView webView, String s, String s1, JsResult jsResult) {
                 jsResult.confirm();
                 return super.onJsAlert(webView, s, s1, jsResult);
+            }
+
+            @Override
+            public void onShowCustomView(View view, IX5WebChromeClient.CustomViewCallback customViewCallback) {
+                Log.e("----onShowCustomView", "onShowCustomView");
+                Toast
+                super.onShowCustomView(view, customViewCallback);
+            }
+
+            @Override
+            public void onShowCustomView(View view, int i, IX5WebChromeClient.CustomViewCallback customViewCallback) {
+                Log.e("----111onShowCustomView", "onShowCustomView");
+                super.onShowCustomView(view, i, customViewCallback);
             }
 
             @Override

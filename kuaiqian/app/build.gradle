@@ -93,15 +93,15 @@ android {
 //        yongliguojione {
 //            applicationId = "sihuo.app.com.yongliguojione"
 //        }
-//        yongliguojitwo {
-//            applicationId = "sihuo.app.com.yongliguojitwo"
-//        }
+        yongliguojitwo {
+            applicationId = "sihuo.app.com.yongliguojitwo"
+        }
 //        zhongfuzaixian {
 //            applicationId = "sihuo.app.com.zhongfuzaixian"
 //        }
-        xingjiyulecheng {
-            applicationId = "sihuo.app.com.xingjiyulecheng"
-        }
+//        xingjiyulecheng {
+//            applicationId = "sihuo.app.com.xingjiyulecheng"
+//        }
     }
 }
 
