@@ -19,8 +19,9 @@ public class X5WebView extends WebView {
 	private LongClickCallBack mCallBack;
 
 	public X5WebView(Context arg0) {
-		super(arg0);
+		this(arg0,null);
 		setBackgroundColor(85621);
+
 	}
 
 	@SuppressLint("SetJavaScriptEnabled")
@@ -40,7 +41,8 @@ public class X5WebView extends WebView {
 		webSetting.setSupportZoom(true);
 		webSetting.setBuiltInZoomControls(true);
 		webSetting.setUseWideViewPort(true);
-		webSetting.setSupportMultipleWindows(true);
+//		webSetting.setSupportMultipleWindows(true);
+		webSetting.setJavaScriptCanOpenWindowsAutomatically(true);
 		// webSetting.setLoadWithOverviewMode(true);
 		webSetting.setAppCacheEnabled(true);
 		// webSetting.setDatabaseEnabled(true);
@@ -63,14 +65,17 @@ public class X5WebView extends WebView {
 		// 长按事件监听（注意：需要实现LongClickCallBack接口并传入对象）
 		final HitTestResult htr = getHitTestResult();//获取所点击的内容
 		if (htr.getType() == WebView.HitTestResult.IMAGE_TYPE) {//判断被点击的类型为图片
-			mCallBack.onLongClickCallBack(htr.getExtra());
-		}
+			if(mCallBack!=null){
+				mCallBack.onLongClickCallBack(htr.getExtra());
+				return true;
+			}
 
-		return true;
+		}
+		return false;
 	}
 
 	public void setmCallBack(LongClickCallBack mCallBack){
-		this.mCallBack = mCallBack;
+//		this.mCallBack = mCallBack;
 	}
 
 	/**

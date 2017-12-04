@@ -1,17 +1,27 @@
 package sihuo.app.com.kuaiqian;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.PixelFormat;
+import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
+import android.os.Message;
+import android.provider.MediaStore;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Base64;
 import android.util.DisplayMetrics;
@@ -34,6 +44,7 @@ import com.tencent.smtt.sdk.WebView;
 import com.tencent.smtt.sdk.WebViewClient;
 //import com.wllj.library.shapeloading.ShapeLoadingDialog;
 
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.webkit.JavascriptInterface;
 import android.widget.ImageView;
@@ -58,7 +69,7 @@ public class MainActivity extends Activity {
     ValueCallback<Uri[]> uploadMessage;
     X5WebView webview;
     ImageView back,home,floatHome,floatBack;
-    ImageView refresh;
+    ImageView refresh,shareBtn;
 //    ShapeLoadingDialog shapeLoadingDialog ;
     String HOME;
     SwipeRefreshLayout refreshLayout;
@@ -99,7 +110,20 @@ public class MainActivity extends Activity {
         home = findViewById(R.id.home);
         refresh = findViewById(R.id.refresh);
         rootView = findViewById(R.id.root_view);
+        shareBtn = findViewById(R.id.share);
 
+        if(shareBtn!=null){
+            shareBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(Intent.ACTION_SEND);
+                    intent.setType("text/plain");
+                    intent.putExtra(Intent.EXTRA_SUBJECT,getResources().getString(R.string.app_name));
+                    intent.putExtra(Intent.EXTRA_TEXT,webview.getUrl());
+                    startActivity(Intent.createChooser(intent,getResources().getString(R.string.app_name)));
+                }
+            });
+        }
         refreshLayout = findViewById(R.id.refesh_layout);
         refreshLayout.setEnabled(refreshable);
         refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -219,7 +243,8 @@ public class MainActivity extends Activity {
                         case MotionEvent.ACTION_UP:
                             if(Math.abs(event.getRawY()-finalFloatViewDownY)<10){
                                 if(floatHome.getY()+floatHome.getHeight()>=event.getY()){
-                                    webview.loadUrl("http://www.bff111.com/#/home");
+                                    HOME = getResources().getString(R.string.home_url);
+                                    webview.loadUrl(HOME);
                                 }else{
                                     if(webview.canGoBack()){
                                         webview.goBack();
@@ -261,8 +286,15 @@ public class MainActivity extends Activity {
             if(conn.getResponseCode() == 200){
                 InputStream inputStream = conn.getInputStream();
                 Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
-                saveMyBitmap(bitmap,"code");//先把bitmap生成jpg图片
+                mmbitmap = bitmap;
                 return bitmap;
+            }else{
+                MainActivity.this.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(MainActivity.this,"请检查网络！",Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -276,24 +308,135 @@ public class MainActivity extends Activity {
      * @param bitName  图片名
      */
     public void saveMyBitmap(Bitmap mBitmap,String bitName)  {
-        File file= new File( Environment.getExternalStorageDirectory()+"/"+bitName + ".jpg");
-        FileOutputStream fOut = null;
-        try {
-            fOut = new FileOutputStream(file);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+        if (ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE}, 30);
+        }else{
+            if(!Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)){
+                MainActivity.this.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(MainActivity.this,"存储卡不可用",Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+                return;
+            }
+            File path = new File( Environment.getExternalStorageDirectory()+"/DCIM/Camera");
+            if(!path.exists()){
+                path.mkdirs();
+            }
+            File file= new File( path,bitName + ".jpg");
+            FileOutputStream fOut = null;
+            try {
+                fOut = new FileOutputStream(file);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+            if(mBitmap==null){
+                MainActivity.this.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(MainActivity.this,"没有获取到图片！",Toast.LENGTH_SHORT).show();
+                    }
+                });
+                return;
+            }
+            mBitmap.compress(Bitmap.CompressFormat.JPEG, 100, fOut);
+            try {
+                fOut.flush();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            try {
+                fOut.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
-        mBitmap.compress(Bitmap.CompressFormat.JPEG, 100, fOut);
-        try {
-            fOut.flush();
-        } catch (IOException e) {
-            e.printStackTrace();
+
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+//根据请求是否通过的返回码进行判断，然后进一步运行程序
+        if (grantResults.length > 0 && requestCode == 29 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            saveMyBitmap(mBitmap,""+System.currentTimeMillis());
+        }else  if (grantResults.length > 0 && requestCode == 30 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            saveMyBitmap(mmbitmap,""+System.currentTimeMillis());
         }
-        try {
-            fOut.close();
-        } catch (IOException e) {
-            e.printStackTrace();
+
+    }
+    Bitmap mmbitmap;
+    byte[] mBitmap;
+
+    /**
+     * bitmap 保存为jpg 图片
+     * @param mBitmap 图片源
+     * @param bitName  图片名
+     */
+    public void saveMyBitmap(byte[] mBitmap,String bitName)  {
+//        int i =ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+//        Toast.makeText(MainActivity.this,"checkSelfPermission:"+i,Toast.LENGTH_SHORT).show();
+        if (ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE}, 29);
+        }//REQUEST_EXTERNAL_STRONGE是自定义个的一个对应码，用来验证请求是否通过
+
+        else {
+            if(!Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)){
+                Toast.makeText(MainActivity.this,"存储卡不可用",Toast.LENGTH_SHORT).show();
+                return;
+            }
+            File path = new File( Environment.getExternalStorageDirectory()+"/DCIM/Camera");
+            if(!path.exists()){
+                path.mkdirs();
+            }
+            File file= new File( path,bitName + ".jpg");
+            FileOutputStream fOut = null;
+            try {
+                fOut = new FileOutputStream(file);
+                fOut.write(mBitmap,0,mBitmap.length);
+                fOut.flush();
+            } catch (FileNotFoundException e) {
+                Toast.makeText(MainActivity.this,"FileNotFoundException",Toast.LENGTH_SHORT).show();
+            } catch (IOException ex){
+                Toast.makeText(MainActivity.this,"IOException:"+ ex.getMessage(),Toast.LENGTH_SHORT).show();
+            }
+            try {
+                if(fOut!=null){
+                    fOut.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            try {
+//                MediaStore.Images.Media.insertImage(getContentResolver(), file.getAbsolutePath(), bitName, "description");
+                //保存图片后发送广播通知更新数据库
+//                Uri uri = Uri.fromFile(file);
+                MediaScannerConnection.scanFile(this,
+                        new String[] { file.getAbsolutePath() }, null,
+                        new MediaScannerConnection.OnScanCompletedListener() {
+                            public void onScanCompleted(String path, Uri uri) {
+
+                            }
+                        });
+//                MainActivity.this.sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, uri));
+
+            }catch (Exception e){
+
+            }
+            Toast.makeText(MainActivity.this,"正在保存...",Toast.LENGTH_LONG).show();
+//            Toast.makeText(MainActivity.this,"正在保存...",Toast.LENGTH_LONG).show();
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    Toast.makeText(MainActivity.this,"成功保存图片到相册，请前往相册查看！",Toast.LENGTH_SHORT).show();
+                }
+            },5000);
         }
+
+
     }
 
     public class MyAsyncTask extends AsyncTask<String, Void, String> {
@@ -302,13 +445,28 @@ public class MainActivity extends Activity {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
+            Toast.makeText(MainActivity.this,"正在保存...",Toast.LENGTH_LONG).show();
+            MediaScannerConnection.scanFile(MainActivity.this,
+                    new String[] { s }, null,
+                    new MediaScannerConnection.OnScanCompletedListener() {
+                        public void onScanCompleted(String path, Uri uri) {
 
+                        }
+                    });
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    Toast.makeText(MainActivity.this,"成功保存图片到相册，请前往相册查看！",Toast.LENGTH_SHORT).show();
+                }
+            },5000);
         }
 
         @Override
         protected String doInBackground(String... params) {
-            decodeImage(params[0]);
-            return null;
+            String name=System.currentTimeMillis()+"";
+            File file= new File( Environment.getExternalStorageDirectory()+"/DCIM/Camera/"+name + ".jpg");
+            saveMyBitmap(getBitmap(params[0]),name);
+            return file.getAbsolutePath();
         }
     }
 
@@ -323,32 +481,37 @@ public class MainActivity extends Activity {
                 startActivity(intent);
             }
         });
-//        webview.setmCallBack(new X5WebView.LongClickCallBack() {
-//            @Override
-//            public void onLongClickCallBack(final String imgUrl) {
-//                new AlertDialog.Builder(MainActivity.this).setTitle("").setNegativeButton("识别图片", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//                        if(imgUrl.startsWith("data:image/png;base64,")){
-//                            String tempimgUrl = imgUrl.replace("data:image/png;base64","");
-//                            byte[] data = Base64.decode(tempimgUrl,Base64.DEFAULT);
+        webview.setmCallBack(new X5WebView.LongClickCallBack() {
+            @Override
+            public void onLongClickCallBack(final String imgUrl) {
+                MainActivity.this.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        new AlertDialog.Builder(MainActivity.this).setTitle("").setNegativeButton("保存图片到相册", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                if(imgUrl.startsWith("data:image/png;base64,")){
+                                    String tempimgUrl = imgUrl.replace("data:image/png;base64","");
+                                    MainActivity.this.mBitmap = Base64.decode(tempimgUrl,Base64.DEFAULT);
+                                    saveMyBitmap(MainActivity.this.mBitmap,""+System.currentTimeMillis());
 //                            Bitmap bitmap = BitmapFactory.decodeByteArray(data,0,data.length);
 //                            Result result = DecodeImage.handleQRCodeFormBitmap(bitmap);
 //                            if(result!=null){
 //                                Log.e("----onLongClickCallBack", ""+result.getText());
 //                                webview.loadUrl(result.getText());
 //                            }
-//                        }else if(imageUrl.startsWith("http")){
-//                            imageUrl=imgUrl;
-//                            // 获取到图片地址后做相应的处理
-//                            MyAsyncTask	mTask = new MyAsyncTask();
-//                            mTask.execute(imgUrl);
-//                        }
-//                    }
-//                }).show();
-//
-//            }
-//        });
+                                }else if(imgUrl.startsWith("http")){
+                                    imageUrl=imgUrl;
+                                    // 获取到图片地址后做相应的处理
+                                    MyAsyncTask	mTask = new MyAsyncTask();
+                                    mTask.execute(imgUrl);
+                                }
+                            }
+                        }).show();
+                    }
+                });
+            }
+        });
         if(guestureNavigation||refreshable){
             webview.setOnTouchListener(new View.OnTouchListener() {
                 @Override
@@ -403,15 +566,35 @@ public class MainActivity extends Activity {
             }
 
             @Override
+            public boolean onCreateWindow(WebView webView, boolean b, boolean b1, Message message) {
+                Toast.makeText(MainActivity.this,"onCreateWindow11",Toast.LENGTH_LONG).show();
+//                WebView.WebViewTransport transport = (WebView.WebViewTransport) message.obj;//以下的操作应该就是让新的webview去加载对应的url等操作。
+//                transport.setWebView(webView);
+//                message.sendToTarget();
+                X5WebView x5WebView = new X5WebView(MainActivity.this);
+                rootView.addView(x5WebView,new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+                WebView.WebViewTransport transport = (WebView.WebViewTransport) message.obj;//以下的操作应该就是让新的webview去加载对应的url等操作。
+                transport.setWebView(x5WebView);
+                message.sendToTarget();
+                return true;
+//                return super.onCreateWindow(webView, b, b1, message);
+            }
+
+            @Override
+            public void onCloseWindow(WebView webView) {
+                super.onCloseWindow(webView);
+            }
+
+            @Override
             public void onShowCustomView(View view, IX5WebChromeClient.CustomViewCallback customViewCallback) {
-                Log.e("----onShowCustomView", "onShowCustomView");
-                Toast
+
+                Toast.makeText(MainActivity.this,"onShowCustomView IX5WebChromeClient",Toast.LENGTH_LONG).show();
                 super.onShowCustomView(view, customViewCallback);
             }
 
             @Override
             public void onShowCustomView(View view, int i, IX5WebChromeClient.CustomViewCallback customViewCallback) {
-                Log.e("----111onShowCustomView", "onShowCustomView");
+                Toast.makeText(MainActivity.this,"onShowCustomView11",Toast.LENGTH_LONG).show();
                 super.onShowCustomView(view, i, customViewCallback);
             }
 

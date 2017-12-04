@@ -6,7 +6,7 @@ android {
     defaultConfig {
         applicationId 'sihuo.app.com.aimaoyingyin'
         minSdkVersion 15
-        targetSdkVersion 26
+        targetSdkVersion 15
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -93,15 +93,21 @@ android {
 //        yongliguojione {
 //            applicationId = "sihuo.app.com.yongliguojione"
 //        }
-        yongliguojitwo {
-            applicationId = "sihuo.app.com.yongliguojitwo"
-        }
+//        yongliguojitwo {
+//            applicationId = "sihuo.app.com.yongliguojitwo"
+//        }
 //        zhongfuzaixian {
 //            applicationId = "sihuo.app.com.zhongfuzaixian"
 //        }
 //        xingjiyulecheng {
 //            applicationId = "sihuo.app.com.xingjiyulecheng"
 //        }
+//        huile {
+//            applicationId = "sihuo.app.com.huile"
+//        }
+        shuzibowuguan {
+            applicationId = "sihuo.app.com.shuzibowuguan"
+        }
     }
 }
 
