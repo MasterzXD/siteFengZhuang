@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_alignParentBottom="false"
         android:layout_height="44dp"
-        android:visibility="gone">
+        android:visibility="visible">
 
         <TextView
             android:layout_width="match_parent"
@@ -37,6 +37,7 @@
             android:layout_width="50dp"
             android:layout_height="44dp"
             android:scaleType="center"
+            android:visibility="invisible"
             android:layout_alignParentRight="true"
             android:src="@drawable/home_hb"/>
         <ImageView
@@ -52,8 +53,9 @@
             android:layout_width="50dp"
             android:layout_height="44dp"
             android:scaleType="center"
-            android:visibility="gone"
-            android:src="@drawable/refresh"/>
+            android:visibility="visible"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/refresh_gray"/>
         <ImageView
             android:id="@+id/more"
             android:layout_width="50dp"

@@ -105,9 +105,31 @@ android {
 //        huile {
 //            applicationId = "sihuo.app.com.huile"
 //        }
-        shuzibowuguan {
-            applicationId = "sihuo.app.com.shuzibowuguan"
-        }
+//        shuzibowuguan {
+//            applicationId = "sihuo.app.com.shuzibowuguan"
+//        }
+
+ //       kuaiqianyule2 {
+//            applicationId = "sihuo.app.com.kuaiqianyule2"
+//        }
+ //       languifangyule {
+  //          applicationId = "sihuo.app.com.languifangyule"
+  //      }
+ //       fuhuiguojione {
+ //           applicationId = "sihuo.app.com.fuhuiguojione"
+//        }
+ //       fuhuiguojitwo {
+ //           applicationId = "sihuo.app.com.fuhuiguojitwo"
+ //       }
+ //       fengkuanghongbao {
+ //           applicationId = "sihuo.app.com.fengkuanghongbao"
+ //       }
+ //       huanyuguojitwo {
+ //           applicationId = "sihuo.app.com.huanyuguojitwo"
+ //       }
+        nicai {
+             applicationId = "sihuo.app.com.nicai"
+      }
     }
 }
 
@@ -116,4 +138,5 @@ dependencies {
     implementation files('libs/tbs_sdk.jar')
     implementation 'com.android.support:support-v4:26.0.0-alpha1'
     implementation 'com.google.zxing:core:3.2.0'
+//    implementation 'com.android.support:appcompat-v7:26.0.0-beta1'
 }

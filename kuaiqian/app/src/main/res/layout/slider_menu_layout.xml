@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:gravity="right"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#00000000"/>
+
+    <View android:layout_width="8dp"
+        android:layout_height="match_parent"
+        android:background="@drawable/ver_line"/>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="250dp"
+        android:background="#ffffff"
+        android:layout_height="match_parent">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:gravity="center_vertical"
+        android:drawablePadding="20dp"
+        android:textSize="18sp"
+
+        android:drawableLeft="@drawable/ty_home"
+        android:paddingLeft="20dp"
+        android:textColor="#111111"
+        android:text="主页"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#dddddd"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:gravity="center_vertical"
+        android:drawablePadding="20dp"
+        android:textSize="18sp"
+        android:drawableLeft="@drawable/ty_data"
+        android:textColor="#111111"
+        android:layout_marginLeft="20dp"
+        android:text="线路检测"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#dddddd"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:gravity="center_vertical"
+        android:drawablePadding="20dp"
+        android:textColor="#111111"
+        android:textSize="18sp"
+        android:layout_marginLeft="20dp"
+        android:drawableLeft="@drawable/ty_money"
+        android:text="现金红包"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#dddddd"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:drawableLeft="@drawable/ty_share"
+        android:gravity="center_vertical"
+        android:drawablePadding="20dp"
+        android:textColor="#111111"
+        android:textSize="18sp"
+        android:layout_marginLeft="20dp"
+        android:text="分享"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#dddddd"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:gravity="center_vertical"
+        android:drawablePadding="20dp"
+        android:textSize="18sp"
+        android:layout_marginLeft="20dp"
+        android:drawableLeft="@drawable/ty_del"
+        android:textColor="#111111"
+        android:text="删除缓存"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#dddddd"/>
+    </LinearLayout>
+
+</LinearLayout>

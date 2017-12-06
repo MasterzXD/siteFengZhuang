@@ -14,6 +14,8 @@ import com.tencent.smtt.sdk.WebSettings;
 import com.tencent.smtt.sdk.WebSettings.LayoutAlgorithm;
 import com.tencent.smtt.sdk.WebView;
 
+import sihuo.app.com.kuaiqian.R;
+
 public class X5WebView extends WebView {
 
 	private LongClickCallBack mCallBack;
@@ -44,7 +46,7 @@ public class X5WebView extends WebView {
 //		webSetting.setSupportMultipleWindows(true);
 		webSetting.setJavaScriptCanOpenWindowsAutomatically(true);
 		// webSetting.setLoadWithOverviewMode(true);
-		webSetting.setAppCacheEnabled(true);
+		webSetting.setAppCacheEnabled(getResources().getBoolean(R.bool.need_cache));
 		// webSetting.setDatabaseEnabled(true);
 		webSetting.setDomStorageEnabled(true);
 		webSetting.setGeolocationEnabled(true);
@@ -53,7 +55,7 @@ public class X5WebView extends WebView {
 		// webSetting.setPageCacheCapacity(IX5WebSettings.DEFAULT_CACHE_CAPACITY);
 		webSetting.setPluginState(WebSettings.PluginState.ON_DEMAND);
 		// webSetting.setRenderPriority(WebSettings.RenderPriority.HIGH);
-		webSetting.setCacheMode(WebSettings.LOAD_NO_CACHE);
+		webSetting.setCacheMode(getResources().getBoolean(R.bool.need_cache)?WebSettings.LOAD_CACHE_ELSE_NETWORK:WebSettings.LOAD_NO_CACHE);
 		CookieSyncManager.createInstance(getContext());
 		CookieSyncManager.getInstance().sync();
 		// this.getSettingsExtension().setPageCacheCapacity(IX5WebSettings.DEFAULT_CACHE_CAPACITY);//extension

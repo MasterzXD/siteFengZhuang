@@ -1,6 +1,7 @@
 package sihuo.app.com.kuaiqian;
 
 import android.Manifest;
+import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -27,6 +28,7 @@ import android.util.Base64;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -46,10 +48,12 @@ import com.tencent.smtt.sdk.WebViewClient;
 
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.view.animation.TranslateAnimation;
 import android.webkit.JavascriptInterface;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
@@ -69,7 +73,7 @@ public class MainActivity extends Activity {
     ValueCallback<Uri[]> uploadMessage;
     X5WebView webview;
     ImageView back,home,floatHome,floatBack;
-    ImageView refresh,shareBtn;
+    ImageView refresh,shareBtn,moreBtn;
 //    ShapeLoadingDialog shapeLoadingDialog ;
     String HOME;
     SwipeRefreshLayout refreshLayout;
@@ -81,6 +85,7 @@ public class MainActivity extends Activity {
     int screenW,screenH;
     float density;
     boolean refreshable,hasDaoHang,showLoading,guestureNavigation,floatNavigation;
+    LinearLayout sliderViewLayout;
 
 
     @Override
@@ -111,16 +116,69 @@ public class MainActivity extends Activity {
         refresh = findViewById(R.id.refresh);
         rootView = findViewById(R.id.root_view);
         shareBtn = findViewById(R.id.share);
+        moreBtn = findViewById(R.id.more);
+
+        moreBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(sliderViewLayout==null){
+                    sliderViewLayout = (LinearLayout)getLayoutInflater().inflate(R.layout.slider_menu_layout,null);
+                    LinearLayout sublayout = (LinearLayout)sliderViewLayout.getChildAt(2);
+                    sliderViewLayout.getChildAt(0).setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            hideMenu();
+                        }
+                    });
+                    for (int i = 0;i< sublayout.getChildCount();i++){
+                        View view = sublayout.getChildAt(i);
+                        if(view instanceof TextView){
+                            view.setTag(i);
+                            view.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    switch ((int)v.getTag()){
+                                        case 0:
+                                            webview.loadUrl("http://aaa.kq999.net");
+                                            break;
+                                        case 2:
+                                            webview.loadUrl("http://zzz.kq999.net");
+                                            break;
+                                        case 4:
+                                            webview.loadUrl("http://sss.kq999.net");
+                                            break;
+                                        case 6:
+                                            shareWebLink("http://kq666.net");
+                                            break;
+                                        case 8:
+                                            new AlertDialog.Builder(MainActivity.this).setMessage("确认清除缓存?").setPositiveButton("取消",null).setNegativeButton("清除", new DialogInterface.OnClickListener() {
+                                                @Override
+                                                public void onClick(DialogInterface dialog, int which) {
+                                                    Toast.makeText(MainActivity.this,"清除缓存成功！",Toast.LENGTH_SHORT).show();
+                                                }
+                                            }).show();
+                                            break;
+                                    }
+                                    hideMenu();
+                                }
+                            });
+                        }
+                    }
+
+                    RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(screenW,screenH);
+                    params.leftMargin = screenW;
+                    rootView.addView(sliderViewLayout, params);
+//                    Toast.makeText(MainActivity.this,"爱到底："+sliderViewLayout.getX(),Toast.LENGTH_SHORT).show();
+                }
+                showMenu();
+            }
+        });
 
         if(shareBtn!=null){
             shareBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(Intent.ACTION_SEND);
-                    intent.setType("text/plain");
-                    intent.putExtra(Intent.EXTRA_SUBJECT,getResources().getString(R.string.app_name));
-                    intent.putExtra(Intent.EXTRA_TEXT,webview.getUrl());
-                    startActivity(Intent.createChooser(intent,getResources().getString(R.string.app_name)));
+                    shareWebLink(webview.getUrl());
                 }
             });
         }
@@ -162,6 +220,59 @@ public class MainActivity extends Activity {
         setInitScale();
 
         initFloatView();
+    }
+
+    void showMenu(){
+//        float curTranslationX = sliderViewLayout.getTranslationX();
+
+//        ObjectAnimator animator = ObjectAnimator.ofFloat(sliderViewLayout, "translationX", curTranslationX, -screenW, curTranslationX);
+//        animator.setDuration(5000);
+//        animator.start();
+//        Toast.makeText(MainActivity.this,"show："+sliderViewLayout.getLeft()+"_"+sliderViewLayout.getWidth(),Toast.LENGTH_SHORT).show();
+        TranslateAnimation translateAnimation = new TranslateAnimation(screenW,0,0,0);
+        translateAnimation.setDuration(100);
+        translateAnimation.setFillAfter(true);
+        sliderViewLayout.startAnimation(translateAnimation);
+        sliderViewLayout.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+
+                RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(screenW,screenH);
+                params.leftMargin = 0;
+                sliderViewLayout.setLayoutParams(params);
+            }
+        },100);
+
+    }
+
+    void hideMenu(){
+//        Toast.makeText(MainActivity.this,"hideMenu："+sliderViewLayout.getLeft(),Toast.LENGTH_SHORT).show();
+        TranslateAnimation translateAnimation = new TranslateAnimation(0,screenW,0,0);
+        translateAnimation.setDuration(500);
+        translateAnimation.setFillAfter(true);
+        sliderViewLayout.startAnimation(translateAnimation);
+        sliderViewLayout.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+
+                RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(screenW,screenH);
+                params.leftMargin = screenW;
+                params.rightMargin = -screenW;
+                sliderViewLayout.setLayoutParams(params);
+            }
+        },600);
+
+    }
+
+    /**
+     *
+     */
+    void shareWebLink(String link){
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("text/plain");
+        intent.putExtra(Intent.EXTRA_SUBJECT,getResources().getString(R.string.app_name));
+        intent.putExtra(Intent.EXTRA_TEXT,link);
+        startActivity(Intent.createChooser(intent,getResources().getString(R.string.app_name)));
     }
 
     /**
