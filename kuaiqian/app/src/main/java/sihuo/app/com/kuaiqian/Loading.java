@@ -15,7 +15,12 @@ public class Loading extends Activity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                startActivity(new Intent(Loading.this,MainActivity.class));
+                if(getResources().getBoolean(R.bool.need_guide)){
+                    startActivity(new Intent(Loading.this,YinDaoActivity.class));
+                }else{
+                    startActivity(new Intent(Loading.this,MainActivity.class));
+                }
+
                 finish();
             }
         },getResources().getInteger(R.integer.loading_delay));

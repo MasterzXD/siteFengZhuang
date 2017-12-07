@@ -21,4 +21,6 @@
     <bool name="gesture_navigation">false</bool>
     <!-- 悬浮窗导航 -->
     <bool name="float_navigation">false</bool>
+    <!-- 缓存 -->
+    <bool name="need_cache">true</bool>
 </resources>

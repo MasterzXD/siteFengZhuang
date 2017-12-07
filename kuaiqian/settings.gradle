@@ -1,1 +1,1 @@
-include ':app', ':library-loading'
+include ':app'

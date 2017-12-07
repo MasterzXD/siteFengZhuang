@@ -4,7 +4,6 @@ import android.Manifest;
 import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -19,7 +18,6 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
-import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -44,7 +42,6 @@ import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
 import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
 import com.tencent.smtt.sdk.WebView;
 import com.tencent.smtt.sdk.WebViewClient;
-//import com.wllj.library.shapeloading.ShapeLoadingDialog;
 
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -72,9 +69,8 @@ public class MainActivity extends Activity {
     final  int FILE_CHOOSER_RESULT_CODE = 40;
     ValueCallback<Uri[]> uploadMessage;
     X5WebView webview;
-    ImageView back,home,floatHome,floatBack;
-    ImageView refresh,shareBtn,moreBtn;
-//    ShapeLoadingDialog shapeLoadingDialog ;
+    ImageView floatHome,floatBack;
+    TextView back,refresh,goForward,closeAp,home,shareBtn,moreBtn;
     String HOME;
     SwipeRefreshLayout refreshLayout;
     LinearLayout floatLayout;
@@ -107,8 +103,6 @@ public class MainActivity extends Activity {
 
 
         findViewById(R.id.title_layout).setVisibility(hasDaoHang?View.VISIBLE:View.GONE);
-//        shapeLoadingDialog = new ShapeLoadingDialog(MainActivity.this);
-//        shapeLoadingDialog.setLoadingText("loading...");
 
         webview = findViewById(R.id.webview);
         back = findViewById(R.id.back);
@@ -117,6 +111,8 @@ public class MainActivity extends Activity {
         rootView = findViewById(R.id.root_view);
         shareBtn = findViewById(R.id.share);
         moreBtn = findViewById(R.id.more);
+        goForward = findViewById(R.id.go_forward);
+        closeAp = findViewById(R.id.close_app);
 
         moreBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -200,11 +196,28 @@ public class MainActivity extends Activity {
             }
         });
 
+        closeAp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                System.exit(0);
+            }
+        });
+
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 HOME = getResources().getString(R.string.home_url);
                 webview.loadUrl(HOME);
+            }
+        });
+
+        goForward.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(webview.canGoForward()){
+                    webview.goForward();
+                }
             }
         });
 
@@ -282,22 +295,7 @@ public class MainActivity extends Activity {
         WindowManager wm = (WindowManager) this.getSystemService(Context.WINDOW_SERVICE);
         int width = wm.getDefaultDisplay().getWidth();
         Log.d("----MainActivity", "setupWebview:" + width);
-        if(width > 650)
-        {
-            webview.setInitialScale(190);
-        }else if(width > 520)
-        {
-            webview.setInitialScale(160);
-        }else if(width > 450)
-        {
-            webview.setInitialScale(140);
-        }else if(width > 300)
-        {
-            webview.setInitialScale(120);
-        }else
-        {
-            webview.setInitialScale(100);
-        }
+
     }
 
     int floatViewDownX,floatViewDownY,finalFloatViewDownX,finalFloatViewDownY;
@@ -420,6 +418,7 @@ public class MainActivity extends Activity {
      */
     public void saveMyBitmap(Bitmap mBitmap,String bitName)  {
         if (ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            if(ActivityCompat.shouldShowRequestPermissionRationale(MainActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE)){}
             ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE}, 30);
         }else{
             if(!Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)){
@@ -595,6 +594,7 @@ public class MainActivity extends Activity {
         webview.setmCallBack(new X5WebView.LongClickCallBack() {
             @Override
             public void onLongClickCallBack(final String imgUrl) {
+
                 MainActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {

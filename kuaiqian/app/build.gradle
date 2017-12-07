@@ -6,7 +6,7 @@ android {
     defaultConfig {
         applicationId 'sihuo.app.com.aimaoyingyin'
         minSdkVersion 15
-        targetSdkVersion 15
+        targetSdkVersion 23
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -18,7 +18,7 @@ android {
     }
 
     sourceSets {
-        main{
+        main {
             jniLibs.srcDirs = ['libs']
         }
     }
@@ -108,35 +108,47 @@ android {
 //        shuzibowuguan {
 //            applicationId = "sihuo.app.com.shuzibowuguan"
 //        }
-
- //       kuaiqianyule2 {
+        //       kuaiqianyule2 {
 //            applicationId = "sihuo.app.com.kuaiqianyule2"
 //        }
- //       languifangyule {
-  //          applicationId = "sihuo.app.com.languifangyule"
-  //      }
- //       fuhuiguojione {
- //           applicationId = "sihuo.app.com.fuhuiguojione"
+//        languifangyule {
+//            applicationId = "sihuo.app.com.languifangyule"
+        //       }
+        //       fuhuiguojione {
+        //           applicationId = "sihuo.app.com.fuhuiguojione"
 //        }
- //       fuhuiguojitwo {
- //           applicationId = "sihuo.app.com.fuhuiguojitwo"
- //       }
- //       fengkuanghongbao {
- //           applicationId = "sihuo.app.com.fengkuanghongbao"
- //       }
- //       huanyuguojitwo {
- //           applicationId = "sihuo.app.com.huanyuguojitwo"
- //       }
-        nicai {
-             applicationId = "sihuo.app.com.nicai"
-      }
+        //       fuhuiguojitwo {
+        //           applicationId = "sihuo.app.com.fuhuiguojitwo"
+        //       }
+        //       fengkuanghongbao {
+        //           applicationId = "sihuo.app.com.fengkuanghongbao"
+        //       }
+        //       huanyuguojitwo {
+        //           applicationId = "sihuo.app.com.huanyuguojitwo"
+        //       }
+//        nicai {
+//             applicationId = "sihuo.app.com.nicai"
+//      }
+//        taiyangcheng {
+//            applicationId = "com.app.com.taiyangcheng"
+//        }
+//        bankujituan {
+//            applicationId = "com.asadqwd.com.bankujituan"
+//        }
+//        tianhuyule {
+//            applicationId = "com.sdgaera.com.tianhuyule"
+//        }
+//        wanzongyi {
+//            applicationId = "com.ahgfr.com.wanzongyi"
+//        }
     }
 }
 
 dependencies {
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     compile fileTree(include: ['*.jar'], dir: 'libs')
     implementation files('libs/tbs_sdk.jar')
     implementation 'com.android.support:support-v4:26.0.0-alpha1'
     implementation 'com.google.zxing:core:3.2.0'
-//    implementation 'com.android.support:appcompat-v7:26.0.0-beta1'
+
 }

@@ -43,7 +43,7 @@ public class X5WebView extends WebView {
 		webSetting.setSupportZoom(true);
 		webSetting.setBuiltInZoomControls(true);
 		webSetting.setUseWideViewPort(true);
-//		webSetting.setSupportMultipleWindows(true);
+		webSetting.setSupportMultipleWindows(false);
 		webSetting.setJavaScriptCanOpenWindowsAutomatically(true);
 		// webSetting.setLoadWithOverviewMode(true);
 		webSetting.setAppCacheEnabled(getResources().getBoolean(R.bool.need_cache));
@@ -55,7 +55,7 @@ public class X5WebView extends WebView {
 		// webSetting.setPageCacheCapacity(IX5WebSettings.DEFAULT_CACHE_CAPACITY);
 		webSetting.setPluginState(WebSettings.PluginState.ON_DEMAND);
 		// webSetting.setRenderPriority(WebSettings.RenderPriority.HIGH);
-		webSetting.setCacheMode(getResources().getBoolean(R.bool.need_cache)?WebSettings.LOAD_CACHE_ELSE_NETWORK:WebSettings.LOAD_NO_CACHE);
+		webSetting.setCacheMode(getResources().getBoolean(R.bool.need_cache)?WebSettings.LOAD_DEFAULT:WebSettings.LOAD_NO_CACHE);
 		CookieSyncManager.createInstance(getContext());
 		CookieSyncManager.getInstance().sync();
 		// this.getSettingsExtension().setPageCacheCapacity(IX5WebSettings.DEFAULT_CACHE_CAPACITY);//extension

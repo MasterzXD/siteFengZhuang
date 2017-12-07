@@ -22,6 +22,6 @@
     <!-- 悬浮窗导航 -->
     <bool name="float_navigation">false</bool>
     <!-- 需要缓存 -->
-    <bool name="need_cache">true</bool>
+    <bool name="need_cache">false</bool>
 
 </resources>
