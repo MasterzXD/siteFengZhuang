@@ -129,9 +129,9 @@ android {
 //        nicai {
 //             applicationId = "sihuo.app.com.nicai"
 //      }
- //       taiyangcheng {
- //           applicationId = "com.app.com.taiyangcheng"
-  //      }
+        taiyangcheng {
+            applicationId = "com.app.com.taiyangcheng"
+        }
 //        bankujituan {
 //            applicationId = "com.asadqwd.com.bankujituan"
 //        }
@@ -147,9 +147,12 @@ android {
  //       zzzzzzz {
 //            applicationId = "com.adsf.asdf.zzzzzzz"
  //       }
-        dinglongguibinhui {
-            applicationId = "com.tyfgh.asdf.dinglongguibinhui"
-        }
+//        dinglongguibinhui {
+//            applicationId = "com.tyfgh.asdf.dinglongguibinhui"
+//        }
+//        daijinrongshangxueyuan {
+//            applicationId = "com.asdf.daijinrongshangxueyuan"
+//        }
     }
 }
 
