@@ -732,20 +732,21 @@ public class MainActivity extends Activity {
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 Log.e("----should", ""+url);
 //                Intent.parseUri(url,Intent.URI_INTENT_SCHEME);
+//                Toast.makeText(MainActivity.this, ""+url, Toast.LENGTH_SHORT).show();
                 try {
-                    if(url.startsWith("intent://")){
+                    if(url.toLowerCase().startsWith("intent://")){
                         Intent intent = Intent.parseUri(url,Intent.URI_INTENT_SCHEME);
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent);
                         return true;
-                    }else if(!url.startsWith("http")){
+                    }else if(!url.toLowerCase().startsWith("http")){
                         Intent intent = new Intent(Intent.ACTION_VIEW);
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         intent.setData(Uri.parse(url));
                         startActivity(intent);
                         return true;
-                    }else if(url.contains("https://qr.alipay.com")){
-                        int index = url.indexOf("https://qr.alipay.com");
+                    }else if(url.toLowerCase().contains("https://qr.alipay.com") ){
+                        int index = url.toLowerCase().indexOf("https://qr.alipay.com");
                         String newUrl = url.substring(index);
                         view.loadUrl(newUrl);
                         return true;
@@ -754,6 +755,7 @@ public class MainActivity extends Activity {
                     return true;
                 }catch (Exception e){
 //                    Log.e("----should--error", ""+e.getMessage());
+                    Toast.makeText(MainActivity.this, "无法打开指定应用，请先确认应用是否安装！", Toast.LENGTH_SHORT).show();
                 }
                 return super.shouldOverrideUrlLoading(view,url);
 
