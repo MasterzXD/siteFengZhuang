@@ -61,6 +61,7 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import sihuo.app.com.kuaiqian.utils.NewWindowView;
 import sihuo.app.com.kuaiqian.utils.WebViewJavaScriptFunction;
 import sihuo.app.com.kuaiqian.utils.X5WebView;
 import sihuo.app.com.kuaiqian.zxing.DecodeImage;
@@ -678,17 +679,12 @@ public class MainActivity extends Activity {
 
             @Override
             public boolean onCreateWindow(WebView webView, boolean b, boolean b1, Message message) {
-                Toast.makeText(MainActivity.this,"onCreateWindow11",Toast.LENGTH_LONG).show();
-//                WebView.WebViewTransport transport = (WebView.WebViewTransport) message.obj;//以下的操作应该就是让新的webview去加载对应的url等操作。
-//                transport.setWebView(webView);
-//                message.sendToTarget();
-                X5WebView x5WebView = new X5WebView(MainActivity.this);
-                rootView.addView(x5WebView,new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+                NewWindowView newview = (NewWindowView) getLayoutInflater().inflate(R.layout.new_window,null);
+                rootView.addView(newview,new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
                 WebView.WebViewTransport transport = (WebView.WebViewTransport) message.obj;//以下的操作应该就是让新的webview去加载对应的url等操作。
-                transport.setWebView(x5WebView);
+                transport.setWebView(newview.x5WebView);
                 message.sendToTarget();
                 return true;
-//                return super.onCreateWindow(webView, b, b1, message);
             }
 
             @Override
@@ -699,13 +695,13 @@ public class MainActivity extends Activity {
             @Override
             public void onShowCustomView(View view, IX5WebChromeClient.CustomViewCallback customViewCallback) {
 
-                Toast.makeText(MainActivity.this,"onShowCustomView IX5WebChromeClient",Toast.LENGTH_LONG).show();
+    //            Toast.makeText(MainActivity.this,"onShowCustomView IX5WebChromeClient",Toast.LENGTH_LONG).show();
                 super.onShowCustomView(view, customViewCallback);
             }
 
             @Override
             public void onShowCustomView(View view, int i, IX5WebChromeClient.CustomViewCallback customViewCallback) {
-                Toast.makeText(MainActivity.this,"onShowCustomView11",Toast.LENGTH_LONG).show();
+       //         Toast.makeText(MainActivity.this,"onShowCustomView11",Toast.LENGTH_LONG).show();
                 super.onShowCustomView(view, i, customViewCallback);
             }
 
@@ -723,7 +719,7 @@ public class MainActivity extends Activity {
 
             @Override
             public boolean onShowFileChooser(WebView webView, ValueCallback<Uri[]> valueCallback, FileChooserParams fileChooserParams) {
-                Log.e("----onShowFileChooser", ""+fileChooserParams);
+    //            Log.e("----onShowFileChooser", ""+fileChooserParams);
                 uploadMessage = valueCallback;
                 openImageChooserActivity();
 //                return super.onShowFileChooser(webView, valueCallback, fileChooserParams);
@@ -734,7 +730,7 @@ public class MainActivity extends Activity {
 
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                Log.e("----should", ""+url);
+             //   Log.e("----should", ""+url);
 //                Intent.parseUri(url,Intent.URI_INTENT_SCHEME);
                 try {
                     if(url.startsWith("intent://")){

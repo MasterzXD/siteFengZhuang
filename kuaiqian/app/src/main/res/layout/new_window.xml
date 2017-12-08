@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sihuo.app.com.kuaiqian.utils.NewWindowView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <sihuo.app.com.kuaiqian.utils.X5WebView
+        android:id="@+id/webview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <TextView
+        android:id="@+id/close_window"
+        android:layout_width="70dp"
+        android:layout_height="40dp"
+        android:text="关闭"
+        android:textColor="#FFFFFF"
+        android:gravity="center"
+        android:layout_gravity="right"
+        android:layout_margin="5dp"
+        android:textSize="20sp"
+        android:background="#aa000000"
+        />
+</sihuo.app.com.kuaiqian.utils.NewWindowView>

@@ -141,6 +141,12 @@ android {
 //        wanzongyi {
 //            applicationId = "com.ahgfr.com.wanzongyi"
 //        }
+//        hexunwaihui {
+//            applicationId = "com.adsf.asdf.hexunwaihui"
+//        }
+        zzzzzzz {
+            applicationId = "com.adsf.asdf.zzzzzzz"
+        }
     }
 }
 
