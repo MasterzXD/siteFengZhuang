@@ -730,7 +730,7 @@ public class MainActivity extends Activity {
 
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
-             //   Log.e("----should", ""+url);
+                Log.e("----should", ""+url);
 //                Intent.parseUri(url,Intent.URI_INTENT_SCHEME);
                 try {
                     if(url.startsWith("intent://")){
@@ -743,6 +743,11 @@ public class MainActivity extends Activity {
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         intent.setData(Uri.parse(url));
                         startActivity(intent);
+                        return true;
+                    }else if(url.contains("https://qr.alipay.com")){
+                        int index = url.indexOf("https://qr.alipay.com");
+                        String newUrl = url.substring(index);
+                        view.loadUrl(newUrl);
                         return true;
                     }
                     view.loadUrl(url);
