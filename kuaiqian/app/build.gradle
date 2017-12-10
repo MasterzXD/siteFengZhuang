@@ -108,30 +108,32 @@ android {
 //        shuzibowuguan {
 //            applicationId = "sihuo.app.com.shuzibowuguan"
 //        }
-        //       kuaiqianyule2 {
+//        kuaiqianyule2 {
 //            applicationId = "sihuo.app.com.kuaiqianyule2"
 //        }
 //        languifangyule {
 //            applicationId = "sihuo.app.com.languifangyule"
-        //       }
-        //       fuhuiguojione {
-        //           applicationId = "sihuo.app.com.fuhuiguojione"
 //        }
-        //       fuhuiguojitwo {
-        //           applicationId = "sihuo.app.com.fuhuiguojitwo"
-        //       }
-        //       fengkuanghongbao {
-        //           applicationId = "sihuo.app.com.fengkuanghongbao"
-        //       }
-        //       huanyuguojitwo {
-        //           applicationId = "sihuo.app.com.huanyuguojitwo"
-        //       }
+//        fuhuiguojione {
+//            applicationId = "sihuo.app.com.fuhuiguojione"
+//        }
+//        fuhuiguojitwo {
+//            applicationId = "sihuo.app.com.fuhuiguojitwo"
+//        }
+//        fengkuanghongbao {
+//            applicationId = "sihuo.app.com.fengkuanghongbao"
+//        }
+//        huanyuguojitwo {
+//            applicationId = "sihuo.app.com.huanyuguojitwo"
+//        }
 //        nicai {
+
 //             applicationId = "sihuo.app.com.nicai"
 //      }
 //        taiyangcheng {
- //           applicationId = "com.app.com.taiyangcheng"
- //       }
+        //           applicationId = "com.app.com.taiyangcheng"
+        //       }
+
 //        bankujituan {
 //            applicationId = "com.asadqwd.com.bankujituan"
 //        }
@@ -144,15 +146,16 @@ android {
 //        hexunwaihui {
 //            applicationId = "com.adsf.asdf.hexunwaihui"
 //        }
- //       zzzzzzz {
-//            applicationId = "com.adsf.asdf.zzzzzzz"
- //       }
+        zzzzzzz {
+            applicationId = "com.adsf.asdf.zzzzzzz"
+        }
 //        dinglongguibinhui {
 //            applicationId = "com.tyfgh.asdf.dinglongguibinhui"
 //        }
 //        daijinrongshangxueyuan {
 //            applicationId = "com.asdf.daijinrongshangxueyuan"
 //        }
+
         aiyouyule {
             applicationId = "com.asdfadsfg.aiyouyulke"
         }
@@ -171,14 +174,18 @@ android {
         yanmingjishu {
             applicationId = "com.ytrver.yanmingjishu"
         }
+        aomenfengyun {
+                applicationId = "com.fhdfth.aomenfengyun"
+            }
+
     }
-}
 
-dependencies {
-    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    implementation files('libs/tbs_sdk.jar')
-    implementation 'com.android.support:support-v4:26.0.0-alpha1'
-    implementation 'com.google.zxing:core:3.2.0'
+    dependencies {
+        implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+        compile fileTree(include: ['*.jar'], dir: 'libs')
+        implementation files('libs/tbs_sdk.jar')
+        implementation 'com.android.support:support-v4:26.0.0-alpha1'
+        implementation 'com.google.zxing:core:3.3.0'
 
+    }
 }
