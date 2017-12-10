@@ -127,11 +127,13 @@ android {
 //            applicationId = "sihuo.app.com.huanyuguojitwo"
 //        }
 //        nicai {
-//            applicationId = "sihuo.app.com.nicai"
-//        }
-        taiyangcheng {
-            applicationId = "com.app.com.taiyangcheng"
-        }
+
+//             applicationId = "sihuo.app.com.nicai"
+//      }
+//        taiyangcheng {
+        //           applicationId = "com.app.com.taiyangcheng"
+        //       }
+
 //        bankujituan {
 //            applicationId = "com.asadqwd.com.bankujituan"
 //        }
@@ -153,20 +155,39 @@ android {
 //        daijinrongshangxueyuan {
 //            applicationId = "com.asdf.daijinrongshangxueyuan"
 //        }
-        aomenfengyun {
-            applicationId = "com.fhdfth.aomenfengyun"
+
+        aiyouyule {
+            applicationId = "com.asdfadsfg.aiyouyulke"
+        }
+        lexunkeji {
+            applicationId = "com.fvrg.lexunkeji"
         }
         jiujiubabayule {
             applicationId = "com.sfsgfhfgh.jiujiubabayule"
         }
+        aochuangyule {
+            applicationId = "com.uikyiuk.aochuangyule"
+        }
+        motongyouxi {
+            applicationId = "com.sergadsf.motongyouxi"
+        }
+        shenzhouyule {
+            applicationId = "com.kljbhjk.shenzhouyule"
+        }
+        yanmingjishu {
+            applicationId = "com.ytrver.yanmingjishu"
+        }
+        aomenfengyun {
+                applicationId = "com.fhdfth.aomenfengyun"
+            }
     }
-}
 
-dependencies {
-    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    implementation files('libs/tbs_sdk.jar')
-    implementation 'com.android.support:support-v4:26.0.0-alpha1'
-    implementation 'com.google.zxing:core:3.3.0'
+    dependencies {
+        implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+        compile fileTree(include: ['*.jar'], dir: 'libs')
+        implementation files('libs/tbs_sdk.jar')
+        implementation 'com.android.support:support-v4:26.0.0-alpha1'
+        implementation 'com.google.zxing:core:3.3.0'
 
+    }
 }
