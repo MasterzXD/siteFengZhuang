@@ -129,9 +129,9 @@ android {
 //        nicai {
 //             applicationId = "sihuo.app.com.nicai"
 //      }
-        taiyangcheng {
-            applicationId = "com.app.com.taiyangcheng"
-        }
+//        taiyangcheng {
+ //           applicationId = "com.app.com.taiyangcheng"
+ //       }
 //        bankujituan {
 //            applicationId = "com.asadqwd.com.bankujituan"
 //        }
@@ -153,6 +153,24 @@ android {
 //        daijinrongshangxueyuan {
 //            applicationId = "com.asdf.daijinrongshangxueyuan"
 //        }
+        aiyouyule {
+            applicationId = "com.asdfadsfg.aiyouyulke"
+        }
+        lexunkeji {
+            applicationId = "com.fvrg.lexunkeji"
+        }
+        aochuangyule {
+            applicationId = "com.uikyiuk.aochuangyule"
+        }
+        motongyouxi {
+            applicationId = "com.sergadsf.motongyouxi"
+        }
+        shenzhouyule {
+            applicationId = "com.kljbhjk.shenzhouyule"
+        }
+        yanmingjishu {
+            applicationId = "com.ytrver.yanmingjishu"
+        }
     }
 }
 
