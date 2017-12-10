@@ -156,6 +156,9 @@ android {
         aomenfengyun {
             applicationId = "com.fhdfth.aomenfengyun"
         }
+        jiujiubabayule {
+            applicationId = "com.sfsgfhfgh.jiujiubabayule"
+        }
     }
 }
 

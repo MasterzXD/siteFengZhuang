@@ -13,6 +13,7 @@
         android:layout_width="match_parent"
         android:layout_alignParentBottom="false"
         android:layout_height="44dp"
+        android:background="#000000"
         android:visibility="visible">
 
         <TextView
@@ -30,8 +31,7 @@
             android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#FFFFFF"
-            android:textColor="#222222"
+            android:textColor="#FFFFFF"
             android:gravity="center"
             android:textSize="20sp"
             android:layout_centerHorizontal="true"
@@ -46,7 +46,7 @@
             android:textSize="18sp"
             android:gravity="center"
             android:textColor="#555555"
-            android:background="@drawable/back_hb"/>
+            android:background="@drawable/back_white"/>
 
         <TextView
             android:id="@+id/home"
@@ -74,7 +74,7 @@
             android:textSize="18sp"
             android:gravity="center"
             android:textColor="#555555"
-            android:drawableLeft="@drawable/refresh_gray"
+            android:drawableLeft="@drawable/refresh_white"
             android:layout_alignParentRight="true"
             />
         <TextView
