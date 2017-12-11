@@ -126,10 +126,9 @@ android {
 //        huanyuguojitwo {
 //            applicationId = "sihuo.app.com.huanyuguojitwo"
 //        }
-//        nicai {
-
-//             applicationId = "sihuo.app.com.nicai"
-//      }
+         nicai {
+             applicationId = "sihuo.app.com.nicai"
+         }
 //        taiyangcheng {
         //           applicationId = "com.app.com.taiyangcheng"
         //       }
@@ -156,30 +155,36 @@ android {
 //            applicationId = "com.asdf.daijinrongshangxueyuan"
 //        }
 
-        aiyouyule {
-            applicationId = "com.asdfadsfg.aiyouyulke"
+//        aiyouyule {
+//            applicationId = "com.asdfadsfg.aiyouyulke"
+//        }
+//        lexunkeji {
+//            applicationId = "com.fvrg.lexunkeji"
+//        }
+//        jiujiubabayule {
+//            applicationId = "com.sfsgfhfgh.jiujiubabayule"
+//        }
+//        aochuangyule {
+//            applicationId = "com.uikyiuk.aochuangyule"
+//        }
+//        motongyouxi {
+//            applicationId = "com.sergadsf.motongyouxi"
+//        }
+//        shenzhouyule {
+//            applicationId = "com.kljbhjk.shenzhouyule"
+//        }
+//        yanmingjishu {
+//            applicationId = "com.ytrver.yanmingjishu"
+//        }
+//        aomenfengyun {
+//                applicationId = "com.fhdfth.aomenfengyun"
+//            }
+        rongzirongquan {
+            applicationId = "com.astrqw.rongzirongquan"
         }
-        lexunkeji {
-            applicationId = "com.fvrg.lexunkeji"
+        xindingguoji {
+            applicationId = "com.rtyrrythra.xindingguoji"
         }
-        jiujiubabayule {
-            applicationId = "com.sfsgfhfgh.jiujiubabayule"
-        }
-        aochuangyule {
-            applicationId = "com.uikyiuk.aochuangyule"
-        }
-        motongyouxi {
-            applicationId = "com.sergadsf.motongyouxi"
-        }
-        shenzhouyule {
-            applicationId = "com.kljbhjk.shenzhouyule"
-        }
-        yanmingjishu {
-            applicationId = "com.ytrver.yanmingjishu"
-        }
-        aomenfengyun {
-                applicationId = "com.fhdfth.aomenfengyun"
-            }
     }
 
     dependencies {
