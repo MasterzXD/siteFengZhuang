@@ -145,9 +145,9 @@ android {
 //        hexunwaihui {
 //            applicationId = "com.adsf.asdf.hexunwaihui"
 //        }
-//        zzzzzzz {
-//            applicationId = "com.adsf.asdf.zzzzzzz"
-//        }
+        zzzzzzz {
+            applicationId = "com.adsf.asdf.zzzzzzz"
+        }
 //        dinglongguibinhui {
 //            applicationId = "com.tyfgh.asdf.dinglongguibinhui"
 //        }
@@ -188,9 +188,9 @@ android {
 //        datongwaihui {
 //            applicationId = "com.erydfaewf.datongwaihui"
 //        }
-        longjuanfeng {
-            applicationId = "com.eyrefw.longjuanfeng"
-        }
+//        longjuanfeng {
+//            applicationId = "com.eyrefw.longjuanfeng"
+//        }
     }
 
     dependencies {
