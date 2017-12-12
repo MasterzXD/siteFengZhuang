@@ -126,9 +126,9 @@ android {
 //        huanyuguojitwo {
 //            applicationId = "sihuo.app.com.huanyuguojitwo"
 //        }
-         nicai {
-             applicationId = "sihuo.app.com.nicai"
-         }
+//         nicai {
+//             applicationId = "sihuo.app.com.nicai"
+//         }
 //        taiyangcheng {
         //           applicationId = "com.app.com.taiyangcheng"
         //       }
@@ -145,9 +145,9 @@ android {
 //        hexunwaihui {
 //            applicationId = "com.adsf.asdf.hexunwaihui"
 //        }
-        zzzzzzz {
-            applicationId = "com.adsf.asdf.zzzzzzz"
-        }
+//        zzzzzzz {
+//            applicationId = "com.adsf.asdf.zzzzzzz"
+//        }
 //        dinglongguibinhui {
 //            applicationId = "com.tyfgh.asdf.dinglongguibinhui"
 //        }
@@ -179,11 +179,17 @@ android {
 //        aomenfengyun {
 //                applicationId = "com.fhdfth.aomenfengyun"
 //            }
-        rongzirongquan {
-            applicationId = "com.astrqw.rongzirongquan"
-        }
-        xindingguoji {
-            applicationId = "com.rtyrrythra.xindingguoji"
+//        rongzirongquan {
+//            applicationId = "com.astrqw.rongzirongquan"
+//        }
+//        xindingguoji {
+//            applicationId = "com.rtyrrythra.xindingguoji"
+//        }
+//        datongwaihui {
+//            applicationId = "com.erydfaewf.datongwaihui"
+//        }
+        longjuanfeng {
+            applicationId = "com.eyrefw.longjuanfeng"
         }
     }
 
