@@ -185,9 +185,9 @@ android {
 //        xindingguoji {
 //            applicationId = "com.rtyrrythra.xindingguoji"
 //        }
-        yuanjijituan {
-            applicationId = "com.ghjaser.yuanjijituan"
-        }
+//        yuanjijituan {
+//            applicationId = "com.ghjaser.yuanjijituan"
+//        }
 //        datongwaihui {
 //            applicationId = "com.erydfaewf.datongwaihui"
 //        }
