@@ -191,6 +191,15 @@ android {
 //        longjuanfeng {
 //            applicationId = "com.eyrefw.longjuanfeng"
 //        }
+//                quanwangyingshi {
+//            applicationId = "com.htsrh.quanwangyingshi"
+//        }
+//        diaomtfour {
+//            applicationId = "com.adsfdsf.diaomtfour"
+//        }
+        huanqiuhengyi {
+            applicationId = "com.ryergrtg.huanqiuhengyi"
+        }
     }
 
     dependencies {
