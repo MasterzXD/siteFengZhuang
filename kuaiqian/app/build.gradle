@@ -200,8 +200,9 @@ android {
 //        diaomtfour {
 //            applicationId = "com.adsfdsf.diaomtfour"
 //        }
-        huanqiuhengyi {
-            applicationId = "com.ryergrtg.huanqiuhengyi"
+//
+        yunqi {
+            applicationId = "com.adfsgsdrre.yunqi"
         }
     }
 
