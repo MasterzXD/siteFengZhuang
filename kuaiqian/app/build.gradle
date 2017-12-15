@@ -209,6 +209,11 @@ android {
         lasiweijiasi {
             applicationId = "com.gfnhty.lasiweijiasi"
         }
+//
+//        yunqi {
+//            applicationId = "com.adfsgsdrre.yunqi"
+//        }
+
     }
 
     dependencies {

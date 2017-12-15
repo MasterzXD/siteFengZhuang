@@ -93,6 +93,7 @@ public class MainActivity extends Activity {
                     WindowManager.LayoutParams.FLAG_FULLSCREEN);
         }
         setContentView(R.layout.activity_main);
+        new LoadingDialog(this).show();
         DisplayMetrics dm = getResources().getDisplayMetrics();
         density = dm.density;
         screenW = dm.widthPixels;
