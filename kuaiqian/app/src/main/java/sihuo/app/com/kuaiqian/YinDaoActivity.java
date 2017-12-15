@@ -37,7 +37,7 @@ public class YinDaoActivity extends Activity implements View.OnTouchListener {
                     if(index<2){
                         rootView.scrollBy(screenW,0);
                     }else if(index==2){
-                        startActivity(new Intent(YinDaoActivity.this,MainActivity.class));
+//                        startActivity(new Intent(YinDaoActivity.this,MainActivity.class));
                         finish();
                     }
                 }

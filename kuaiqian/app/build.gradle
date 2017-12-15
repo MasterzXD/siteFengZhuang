@@ -201,9 +201,9 @@ android {
 //            applicationId = "com.adsfdsf.diaomtfour"
 //        }
 //
-        yunqi {
-            applicationId = "com.adfsgsdrre.yunqi"
-        }
+//        yunqi {
+//            applicationId = "com.adfsgsdrre.yunqi"
+//        }
     }
 
     dependencies {
