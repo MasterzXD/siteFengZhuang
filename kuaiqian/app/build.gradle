@@ -206,14 +206,16 @@ android {
 //        aomenweinisirentwo {
 //            applicationId = "com.sdfasdf.aomenweinisirentwo"
 //        }
-        lasiweijiasi {
-            applicationId = "com.gfnhty.lasiweijiasi"
-        }
+//        lasiweijiasi {
+//            applicationId = "com.gfnhty.lasiweijiasi"
+//        }
 //
 //        yunqi {
 //            applicationId = "com.adfsgsdrre.yunqi"
 //        }
-
+        huanqiucaifu {
+            applicationId = "com.adsgfert.huanqiucaifu"
+        }
     }
 
     dependencies {

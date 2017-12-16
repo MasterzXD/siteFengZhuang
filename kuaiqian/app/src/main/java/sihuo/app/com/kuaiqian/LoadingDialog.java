@@ -58,6 +58,10 @@ public class LoadingDialog extends Dialog
     @Override
     public void show() {
         super.show();
+
+    }
+    public void showWithCallBack(final HideCallBack hideCallBack){
+        this.show();
         WindowManager.LayoutParams lp = getWindow().getAttributes();
         lp.width = WindowManager.LayoutParams.MATCH_PARENT;
         lp.height = WindowManager.LayoutParams.MATCH_PARENT;
@@ -69,7 +73,15 @@ public class LoadingDialog extends Dialog
                     getContext().startActivity(new Intent(getContext(),YinDaoActivity.class));
                 }
                 loadingDialog.dismiss();
+                if(hideCallBack!=null){
+                    hideCallBack.onHide();
+                }
             }
         },getContext().getResources().getInteger(R.integer.loading_delay));
+    }
+
+
+    public interface HideCallBack{
+        void onHide();
     }
 }

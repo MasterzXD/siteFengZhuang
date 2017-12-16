@@ -44,6 +44,7 @@ import com.tencent.smtt.sdk.WebView;
 import com.tencent.smtt.sdk.WebViewClient;
 
 import android.view.ViewGroup;
+import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.TranslateAnimation;
 import android.webkit.JavascriptInterface;
@@ -75,7 +76,7 @@ public class MainActivity extends Activity {
     String HOME;
     SwipeRefreshLayout refreshLayout;
     LinearLayout floatLayout;
-    RelativeLayout rootView;
+    RelativeLayout rootView,titleLayout;
     RelativeLayout.LayoutParams floatParams;
 
     String imageUrl;
@@ -88,12 +89,50 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if(getResources().getBoolean(R.bool.full_screen)){
-            getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                    WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        }
+
         setContentView(R.layout.activity_main);
-        new LoadingDialog(this).show();
+        new LoadingDialog(this).showWithCallBack(new LoadingDialog.HideCallBack(){
+            @Override
+            public void onHide() {
+                if(getResources().getBoolean(R.bool.save_daohang)){//保留导航
+                    if(!getResources().getBoolean(R.bool.full_screen)){
+                        getWindow().setFlags(
+                                WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN,
+                                WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
+                        RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) titleLayout.getLayoutParams();
+                        int statusBarHeight1 = -1;
+                        //获取status_bar_height资源的ID
+                        int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
+                        if (resourceId > 0) {
+                            //根据资源ID获取响应的尺寸值
+                            statusBarHeight1 = getResources().getDimensionPixelSize(resourceId);
+                        }
+                        params.topMargin = statusBarHeight1==-1?50:statusBarHeight1;
+                        titleLayout.setLayoutParams(params);
+                    }
+                }else{
+                    if(!getResources().getBoolean(R.bool.full_screen)){
+                        getWindow().setFlags(
+                                WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN,
+                                WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
+                        RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) titleLayout.getLayoutParams();
+                        int statusBarHeight1 = -1;
+                        //获取status_bar_height资源的ID
+                        int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
+                        if (resourceId > 0) {
+                            //根据资源ID获取响应的尺寸值
+                            statusBarHeight1 = getResources().getDimensionPixelSize(resourceId);
+                        }
+                        params.height = statusBarHeight1==-1?50:statusBarHeight1;
+                        titleLayout.setLayoutParams(params);
+                    }else{
+                        RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) titleLayout.getLayoutParams();
+                        params.height=0;
+                        titleLayout.setLayoutParams(params);
+                    }
+                }
+            }
+        });
         DisplayMetrics dm = getResources().getDisplayMetrics();
         density = dm.density;
         screenW = dm.widthPixels;
@@ -104,7 +143,7 @@ public class MainActivity extends Activity {
         HOME = getResources().getString(R.string.start_url);
 
 
-        findViewById(R.id.title_layout).setVisibility(hasDaoHang?View.VISIBLE:View.GONE);
+        findViewById(R.id.title_layout).setVisibility(hasDaoHang?View.VISIBLE:View.INVISIBLE);
 
         webview = findViewById(R.id.webview);
         back = findViewById(R.id.back);
@@ -115,6 +154,7 @@ public class MainActivity extends Activity {
         moreBtn = findViewById(R.id.more);
         goForward = findViewById(R.id.go_forward);
         closeAp = findViewById(R.id.close_app);
+        titleLayout = findViewById(R.id.title_layout);
 
         moreBtn.setOnClickListener(new View.OnClickListener() {
             @Override
