@@ -13,6 +13,7 @@ import android.graphics.PixelFormat;
 import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
@@ -40,6 +41,8 @@ import com.tencent.smtt.sdk.WebView;
 import com.tencent.smtt.sdk.WebViewClient;
 
 import android.view.ViewGroup;
+import android.view.ViewStub;
+import android.view.ViewTreeObserver;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.TranslateAnimation;
@@ -81,15 +84,17 @@ public class MainActivity extends Activity {
     float density;
     boolean refreshable,hasDaoHang,showLoading,guestureNavigation,floatNavigation;
     LinearLayout sliderViewLayout;
+    ViewStub vs;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+//        setContentView(R.layout.activity_main);
 
-        setContentView(R.layout.activity_main);
+        vs= new ViewStub(this,R.layout.activity_main);
+        setContentView(vs);
         loadingDialog = new PageLoadingDialog(this);
-        loadingDialog.dismiss();
         new LoadingDialog(this).showWithCallBack(new LoadingDialog.HideCallBack(){
             @Override
             public void onHide() {
@@ -133,6 +138,17 @@ public class MainActivity extends Activity {
                 }
             }
         });
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                vs.inflate();
+                initView();
+            }
+        },500);
+
+    }
+
+    void initView(){
         DisplayMetrics dm = getResources().getDisplayMetrics();
         density = dm.density;
         screenW = dm.widthPixels;
@@ -228,6 +244,28 @@ public class MainActivity extends Activity {
                 webview.reload();
             }
         });
+//        refreshLayout.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+//            @Override
+//            public void onGlobalLayout() {
+//                ViewTreeObserver observer = refreshLayout.getViewTreeObserver();
+//                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+//                    observer.removeOnGlobalLayoutListener(this);
+//                } else {
+//                    observer.removeGlobalOnLayoutListener(this);
+//                }
+//                observer.addOnScrollChangedListener(new ViewTreeObserver.OnScrollChangedListener() {
+//                    @Override
+//                    public void onScrollChanged() {
+//
+//                        if (webview.getScrollY()==0) {
+//                            refreshLayout.setEnabled(true);
+//                        } else {
+//                            refreshLayout.setEnabled(false);
+//                        }
+//                    }
+//                });
+//            }
+//        });
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -665,15 +703,24 @@ public class MainActivity extends Activity {
                 });
             }
         });
-        if(guestureNavigation||refreshable){
-            webview.setOnTouchListener(new View.OnTouchListener() {
+        if(refreshable){
+            webview.setScrollChange(new X5WebView.ScrollChange() {
                 @Override
-                public boolean onTouch(View v, MotionEvent event) {
-                    if(webview.getWebScrollY()==0){
+                public void onScrollChanged(int l, int t, int oldl, int oldt) {
+                    Log.d("----MainActivity", "onScrollChanged:" + t);
+                    if(t==0){
                         refreshLayout.setEnabled(true);
                     }else{
                         refreshLayout.setEnabled(false);
                     }
+                }
+            });
+        }
+        if(guestureNavigation){
+
+            webview.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
                     if(guestureNavigation){
                         switch (event.getAction()) {
                             case MotionEvent.ACTION_DOWN:
@@ -717,6 +764,8 @@ public class MainActivity extends Activity {
                 jsResult.confirm();
                 return super.onJsAlert(webView, s, s1, jsResult);
             }
+
+
 
             @Override
             public boolean onCreateWindow(WebView webView, boolean b, boolean b1, Message message) {
@@ -890,7 +939,7 @@ public class MainActivity extends Activity {
 //                webview.goBack();
 //                return true;
 //            }
-            if(System.currentTimeMillis()-mills>800){
+            if(System.currentTimeMillis()-mills>1000){
                 Toast.makeText(this,"再按一次退出",Toast.LENGTH_SHORT).show();
                 mills = System.currentTimeMillis();
             }else{

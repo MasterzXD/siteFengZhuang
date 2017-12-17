@@ -5,7 +5,10 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.os.Build;
+import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 
 import com.tencent.smtt.sdk.CookieSyncManager;
@@ -19,6 +22,7 @@ import sihuo.app.com.kuaiqian.R;
 public class X5WebView extends WebView {
 
 	private LongClickCallBack mCallBack;
+	private ScrollChange scrollChange;
 
 	public X5WebView(Context arg0) {
 		this(arg0,null);
@@ -35,6 +39,7 @@ public class X5WebView extends WebView {
 	}
 
 	private void initWebViewSettings() {
+		setOverScrollMode(OVER_SCROLL_ALWAYS);
 		WebSettings webSetting = this.getSettings();
 		webSetting.setJavaScriptEnabled(true);
 		webSetting.setJavaScriptCanOpenWindowsAutomatically(true);
@@ -80,6 +85,46 @@ public class X5WebView extends WebView {
 //		this.mCallBack = mCallBack;
 	}
 
+	@Override
+	protected void onScrollChanged(int l, int t, int oldl, int oldt) {
+		super.onScrollChanged(l, t, oldl, oldt);
+		Log.d("----X5WebView", "onScrollChanged:" + t);
+		if(scrollChange!=null){
+			scrollChange.onScrollChanged(l,t,oldl,oldt);
+		}
+	}
+
+	@Override
+	protected void onOverScrolled(int scrollX, int scrollY, boolean clampedX, boolean clampedY) {
+		Log.d("----X5WebView", "onOverScrolled:" + scrollY);
+		super.onOverScrolled(scrollX, scrollY, clampedX, clampedY);
+	}
+
+	@Override
+	public boolean onTouchEvent(MotionEvent event) {
+		Log.d("----X5WebView", "onTouchEvent:" + event);
+
+		return super.onTouchEvent(event);
+	}
+
+	@Override
+	public boolean onInterceptTouchEvent(MotionEvent ev) {
+//		requestDisallowInterceptTouchEvent(false);
+		Log.d("----X5WebView", "onInterceptTouchEvent:" +getScrollY() +"_"+getWebScrollY() );
+//		if(scrollChange!=null){
+//			scrollChange.onScrollChanged(0,1,1,1);
+//		}
+		return super.onInterceptTouchEvent(ev);
+	}
+
+	@Override
+	protected boolean overScrollBy(int deltaX, int deltaY, int scrollX, int scrollY, int scrollRangeX, int scrollRangeY, int maxOverScrollX, int maxOverScrollY, boolean isTouchEvent) {
+		Log.d("----X5WebView", "overScrollBy:" + scrollY);
+		return super.overScrollBy(deltaX, deltaY, scrollX, scrollY, scrollRangeX, scrollRangeY, maxOverScrollX, maxOverScrollY, isTouchEvent);
+	}
+
+
+
 	/**
 	 * 长按事件回调接口，传递图片地址
 	 * @author LinZhang
@@ -87,5 +132,13 @@ public class X5WebView extends WebView {
 	public interface LongClickCallBack{
 		/**用于传递图片地址*/
 		void onLongClickCallBack(String imgUrl);
+	}
+
+	public interface ScrollChange{
+		void onScrollChanged(int l, int t, int oldl, int oldt);
+	}
+
+	public void setScrollChange(ScrollChange scrollChange) {
+		this.scrollChange = scrollChange;
 	}
 }
