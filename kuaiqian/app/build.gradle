@@ -213,8 +213,20 @@ android {
 //        yunqi {
 //            applicationId = "com.adfsgsdrre.yunqi"
 //        }
-        huanqiucaifu {
-            applicationId = "com.adsgfert.huanqiucaifu"
+//        huanqiucaifu {
+//            applicationId = "com.adsgfert.huanqiucaifu"
+//        }
+//        miju {
+//            applicationId = "com.dgfyujdsafg.miju"
+//        }
+//        qiaooushangcheng {
+//            applicationId = "com.ehjtygf.qiaooushangcheng"
+//        }
+        tiantianyule {
+            applicationId = "com.dfthwes.tiantianyule"
+        }
+        kuailehongbao {
+            applicationId = "com.uyyyi.kuailehongbao"
         }
     }
 

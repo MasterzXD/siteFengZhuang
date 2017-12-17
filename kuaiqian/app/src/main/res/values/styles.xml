@@ -11,8 +11,9 @@
         <item name="android:windowIsFloating">true</item>
         <!--标题  -->
         <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item><!--背景透明-->
         <!--阴影  -->
-        <item name="android:windowIsTranslucent">true</item><!--半透明-->
+        <item name="android:windowIsTranslucent">false</item><!--半透明-->
         <!-- 点外边可以消失  -->
         <item name="android:windowCloseOnTouchOutside">false</item>
         <item name="android:windowFullscreen">true</item>

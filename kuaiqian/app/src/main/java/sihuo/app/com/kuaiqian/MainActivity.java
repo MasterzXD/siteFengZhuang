@@ -1,7 +1,6 @@
 package sihuo.app.com.kuaiqian;
 
 import android.Manifest;
-import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -20,17 +19,14 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Base64;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.KeyEvent;
-import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.google.zxing.BarcodeFormat;
 import com.google.zxing.Result;
 import com.tencent.smtt.export.external.interfaces.IX5WebChromeClient;
 import com.tencent.smtt.sdk.DownloadListener;
@@ -78,6 +74,7 @@ public class MainActivity extends Activity {
     LinearLayout floatLayout;
     RelativeLayout rootView,titleLayout;
     RelativeLayout.LayoutParams floatParams;
+    PageLoadingDialog loadingDialog;
 
     String imageUrl;
     int screenW,screenH;
@@ -91,9 +88,12 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
+        loadingDialog = new PageLoadingDialog(this);
+        loadingDialog.dismiss();
         new LoadingDialog(this).showWithCallBack(new LoadingDialog.HideCallBack(){
             @Override
             public void onHide() {
+                showLoading = getResources().getBoolean(R.bool.show_loadng);
                 if(getResources().getBoolean(R.bool.save_daohang)){//保留导航
                     if(!getResources().getBoolean(R.bool.full_screen)){
                         getWindow().setFlags(
@@ -833,9 +833,20 @@ public class MainActivity extends Activity {
             }
 
             @Override
+            public void onPageStarted(WebView webView, String s, Bitmap bitmap) {
+                super.onPageStarted(webView, s, bitmap);
+                if(showLoading){
+                    loadingDialog.show();
+                }
+            }
+
+            @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
 //                Log.e("----onPageFinished", ""+url);
+                if(showLoading){
+                    loadingDialog.dismiss();
+                }
             }
         });
 
@@ -844,7 +855,6 @@ public class MainActivity extends Activity {
 
     void initConfig(){
         refreshable = getResources().getBoolean(R.bool.pull_refresh_enable);
-        showLoading = getResources().getBoolean(R.bool.show_loadng);
         hasDaoHang = getResources().getBoolean(R.bool.save_daohang);
         guestureNavigation = getResources().getBoolean(R.bool.gesture_navigation);
         floatNavigation = getResources().getBoolean(R.bool.float_navigation);
@@ -875,11 +885,11 @@ public class MainActivity extends Activity {
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if(keyCode==KeyEvent.KEYCODE_BACK){
-            if(getResources().getBoolean(R.bool.can_goback)&& webview.canGoBack()){
+//            if(getResources().getBoolean(R.bool.can_goback)&& webview.canGoBack()){
 //            if(getResources().getBoolean(R.bool.can_goback) && !webview.getUrl().equals(HOME) && webview.canGoBack()){
-                webview.goBack();
-                return true;
-            }
+//                webview.goBack();
+//                return true;
+//            }
             if(System.currentTimeMillis()-mills>800){
                 Toast.makeText(this,"再按一次退出",Toast.LENGTH_SHORT).show();
                 mills = System.currentTimeMillis();
