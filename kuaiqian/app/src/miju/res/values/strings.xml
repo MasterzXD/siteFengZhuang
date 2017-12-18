@@ -16,7 +16,7 @@
     <!-- 是否主页全屏 -->
     <bool name="full_screen">false</bool>
     <!-- 支付否支持下拉刷新 -->
-    <bool name="pull_refresh_enable">true</bool>
+    <bool name="pull_refresh_enable">false</bool>
     <!-- 手势导航 -->
     <bool name="gesture_navigation">false</bool>
     <!-- 悬浮窗导航 -->

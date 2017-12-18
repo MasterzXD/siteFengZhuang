@@ -47,6 +47,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.TranslateAnimation;
 import android.webkit.JavascriptInterface;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -78,6 +79,7 @@ public class MainActivity extends Activity {
     RelativeLayout rootView,titleLayout;
     RelativeLayout.LayoutParams floatParams;
     PageLoadingDialog loadingDialog;
+    FrameLayout customViewLayout;
 
     String imageUrl;
     int screenW,screenH;
@@ -785,13 +787,13 @@ public class MainActivity extends Activity {
             @Override
             public void onShowCustomView(View view, IX5WebChromeClient.CustomViewCallback customViewCallback) {
 
-    //            Toast.makeText(MainActivity.this,"onShowCustomView IX5WebChromeClient",Toast.LENGTH_LONG).show();
+                customViewLayout = new FrameLayout(MainActivity.this);
                 super.onShowCustomView(view, customViewCallback);
             }
 
             @Override
             public void onShowCustomView(View view, int i, IX5WebChromeClient.CustomViewCallback customViewCallback) {
-       //         Toast.makeText(MainActivity.this,"onShowCustomView11",Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this,"onShowCustomView11",Toast.LENGTH_LONG).show();
                 super.onShowCustomView(view, i, customViewCallback);
             }
 
