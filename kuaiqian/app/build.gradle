@@ -218,9 +218,9 @@ android {
 //            applicationId = "com.adsgfert.huanqiucaifu"
 //        }
         //2017年12月17日
-        miju {
-            applicationId = "com.dgfyujdsafg.miju"
-        }
+//        miju {
+//            applicationId = "com.dgfyujdsafg.miju"
+//        }
 //        qiaooushangcheng {
 //            applicationId = "com.ehjtygf.qiaooushangcheng"
 //        }
@@ -239,6 +239,12 @@ android {
 //        shenpai {
 //            applicationId = "com.hndtrwe.shenpai"
 //        }
+//        hongyuncaipiao {
+//            applicationId = "com.safdsdfas.hongyuncaipiao"
+//        }
+        kuaiqianyulethree {
+            applicationId = "com.asdfweghf.kuaiqianyulethree"
+        }
     }
 
     dependencies {

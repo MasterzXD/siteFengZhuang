@@ -48,7 +48,7 @@ public class X5WebView extends WebView {
 		webSetting.setSupportZoom(true);
 		webSetting.setBuiltInZoomControls(true);
 		webSetting.setUseWideViewPort(true);
-		webSetting.setSupportMultipleWindows(true);
+		webSetting.setSupportMultipleWindows(false);
 		webSetting.setJavaScriptCanOpenWindowsAutomatically(true);
 		// webSetting.setLoadWithOverviewMode(true);
 		webSetting.setAppCacheEnabled(getResources().getBoolean(R.bool.need_cache));
@@ -100,22 +100,22 @@ public class X5WebView extends WebView {
 		super.onOverScrolled(scrollX, scrollY, clampedX, clampedY);
 	}
 
-	@Override
-	public boolean onTouchEvent(MotionEvent event) {
-		Log.d("----X5WebView", "onTouchEvent:" + event);
-
-		return super.onTouchEvent(event);
-	}
-
-	@Override
-	public boolean onInterceptTouchEvent(MotionEvent ev) {
-//		requestDisallowInterceptTouchEvent(false);
-		Log.d("----X5WebView", "onInterceptTouchEvent:" +getScrollY() +"_"+getWebScrollY() );
-//		if(scrollChange!=null){
-//			scrollChange.onScrollChanged(0,1,1,1);
-//		}
-		return super.onInterceptTouchEvent(ev);
-	}
+//	@Override
+//	public boolean onTouchEvent(MotionEvent event) {
+//		Log.d("----X5WebView", "onTouchEvent:" + event);
+//
+//		return super.onTouchEvent(event);
+//	}
+//
+//	@Override
+//	public boolean onInterceptTouchEvent(MotionEvent ev) {
+////		requestDisallowInterceptTouchEvent(false);
+//		Log.d("----X5WebView", "onInterceptTouchEvent:" +getScrollY() +"_"+getWebScrollY() );
+////		if(scrollChange!=null){
+////			scrollChange.onScrollChanged(0,1,1,1);
+////		}
+//		return super.onInterceptTouchEvent(ev);
+//	}
 
 	@Override
 	protected boolean overScrollBy(int deltaX, int deltaY, int scrollX, int scrollY, int scrollRangeX, int scrollRangeY, int maxOverScrollX, int maxOverScrollY, boolean isTouchEvent) {

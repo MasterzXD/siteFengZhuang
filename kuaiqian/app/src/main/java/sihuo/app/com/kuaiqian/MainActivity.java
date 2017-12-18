@@ -87,6 +87,7 @@ public class MainActivity extends Activity {
     boolean refreshable,hasDaoHang,showLoading,guestureNavigation,floatNavigation;
     LinearLayout sliderViewLayout;
     ViewStub vs;
+    int statusBarHeight;
 
 
     @Override
@@ -100,6 +101,7 @@ public class MainActivity extends Activity {
         new LoadingDialog(this).showWithCallBack(new LoadingDialog.HideCallBack(){
             @Override
             public void onHide() {
+
                 showLoading = getResources().getBoolean(R.bool.show_loadng);
                 if(getResources().getBoolean(R.bool.save_daohang)){//保留导航
                     if(!getResources().getBoolean(R.bool.full_screen)){
@@ -107,14 +109,13 @@ public class MainActivity extends Activity {
                                 WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN,
                                 WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
                         RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) titleLayout.getLayoutParams();
-                        int statusBarHeight1 = -1;
                         //获取status_bar_height资源的ID
                         int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
                         if (resourceId > 0) {
                             //根据资源ID获取响应的尺寸值
-                            statusBarHeight1 = getResources().getDimensionPixelSize(resourceId);
+                            statusBarHeight = getResources().getDimensionPixelSize(resourceId);
                         }
-                        params.topMargin = statusBarHeight1==-1?50:statusBarHeight1;
+                        params.topMargin = statusBarHeight==0?50:statusBarHeight;
                         titleLayout.setLayoutParams(params);
                     }
                 }else{
@@ -123,14 +124,13 @@ public class MainActivity extends Activity {
                                 WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN,
                                 WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
                         RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) titleLayout.getLayoutParams();
-                        int statusBarHeight1 = -1;
                         //获取status_bar_height资源的ID
                         int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
                         if (resourceId > 0) {
                             //根据资源ID获取响应的尺寸值
-                            statusBarHeight1 = getResources().getDimensionPixelSize(resourceId);
+                            statusBarHeight = getResources().getDimensionPixelSize(resourceId);
                         }
-                        params.height = statusBarHeight1==-1?50:statusBarHeight1;
+                        params.height = statusBarHeight==0?50:statusBarHeight;
                         titleLayout.setLayoutParams(params);
                     }else{
                         RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) titleLayout.getLayoutParams();
@@ -195,18 +195,21 @@ public class MainActivity extends Activity {
                                 public void onClick(View v) {
                                     switch ((int)v.getTag()){
                                         case 0:
-                                            webview.loadUrl("http://aaa.kq999.net");
+                                            webview.loadUrl("http://2017.kq555.net:88/az");
                                             break;
                                         case 2:
-                                            webview.loadUrl("http://zzz.kq999.net");
+                                            webview.loadUrl("http://2017.kq555.net:88/cz");
                                             break;
                                         case 4:
-                                            webview.loadUrl("http://sss.kq999.net");
+                                            webview.loadUrl("http://2017.kq555.net:88/jc");
                                             break;
                                         case 6:
-                                            shareWebLink("http://kq666.net");
+                                            webview.loadUrl("http://2017.kq555.net:88/hb");
                                             break;
                                         case 8:
+                                            shareWebLink("http://kq333.net");
+                                            break;
+                                        case 10:
                                             new AlertDialog.Builder(MainActivity.this).setMessage("确认清除缓存?").setPositiveButton("取消",null).setNegativeButton("清除", new DialogInterface.OnClickListener() {
                                                 @Override
                                                 public void onClick(DialogInterface dialog, int which) {
@@ -246,28 +249,6 @@ public class MainActivity extends Activity {
                 webview.reload();
             }
         });
-//        refreshLayout.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-//            @Override
-//            public void onGlobalLayout() {
-//                ViewTreeObserver observer = refreshLayout.getViewTreeObserver();
-//                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-//                    observer.removeOnGlobalLayoutListener(this);
-//                } else {
-//                    observer.removeGlobalOnLayoutListener(this);
-//                }
-//                observer.addOnScrollChangedListener(new ViewTreeObserver.OnScrollChangedListener() {
-//                    @Override
-//                    public void onScrollChanged() {
-//
-//                        if (webview.getScrollY()==0) {
-//                            refreshLayout.setEnabled(true);
-//                        } else {
-//                            refreshLayout.setEnabled(false);
-//                        }
-//                    }
-//                });
-//            }
-//        });
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -318,12 +299,6 @@ public class MainActivity extends Activity {
     }
 
     void showMenu(){
-//        float curTranslationX = sliderViewLayout.getTranslationX();
-
-//        ObjectAnimator animator = ObjectAnimator.ofFloat(sliderViewLayout, "translationX", curTranslationX, -screenW, curTranslationX);
-//        animator.setDuration(5000);
-//        animator.start();
-//        Toast.makeText(MainActivity.this,"show："+sliderViewLayout.getLeft()+"_"+sliderViewLayout.getWidth(),Toast.LENGTH_SHORT).show();
         TranslateAnimation translateAnimation = new TranslateAnimation(screenW,0,0,0);
         translateAnimation.setDuration(100);
         translateAnimation.setFillAfter(true);
@@ -334,6 +309,7 @@ public class MainActivity extends Activity {
 
                 RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(screenW,screenH);
                 params.leftMargin = 0;
+                params.topMargin = statusBarHeight;
                 sliderViewLayout.setLayoutParams(params);
             }
         },100);
@@ -377,6 +353,7 @@ public class MainActivity extends Activity {
         WindowManager wm = (WindowManager) this.getSystemService(Context.WINDOW_SERVICE);
         int width = wm.getDefaultDisplay().getWidth();
         Log.d("----MainActivity", "setupWebview:" + width);
+        webview.setInitialScale(50);
 
     }
 
