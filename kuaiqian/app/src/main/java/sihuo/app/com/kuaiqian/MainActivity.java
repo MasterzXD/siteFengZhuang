@@ -62,6 +62,7 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import sihuo.app.com.kuaiqian.utils.CheckUpdate;
 import sihuo.app.com.kuaiqian.utils.NewWindowView;
 import sihuo.app.com.kuaiqian.utils.WebViewJavaScriptFunction;
 import sihuo.app.com.kuaiqian.utils.X5WebView;
@@ -138,6 +139,14 @@ public class MainActivity extends Activity {
                         titleLayout.setLayoutParams(params);
                     }
                 }
+                new CheckUpdate().check(MainActivity.this, new CheckUpdate.CheckUpdateCallBack() {
+                    @Override
+                    public void onResult(boolean update,String newVersion ,String url) {
+                        if(update){
+                            new UpdateDialog(MainActivity.this,"发现新版本 "+newVersion+"\n是否现在更新",url).show();
+                        }
+                    }
+                });
             }
         });
         new Handler().postDelayed(new Runnable() {

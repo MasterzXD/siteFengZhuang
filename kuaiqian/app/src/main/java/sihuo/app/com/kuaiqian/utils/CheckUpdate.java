@@ -1,5 +1,8 @@
 package sihuo.app.com.kuaiqian.utils;
 
+import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 import android.util.Log;
 
@@ -31,16 +34,17 @@ public class CheckUpdate {
 
     }
 
-    public void check(CheckUpdateCallBack callBack){
+    public void check(Context context, CheckUpdateCallBack callBack){
         this.callBack = callBack;
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
+        new DownloadTask(context).execute("http://app.trking.today/app/update.xml");
 
-            }
-        }).start();
     }
     private class DownloadTask extends AsyncTask<String, Object, HashMap> {
+
+        Context context;
+        public DownloadTask(Context context){
+            this.context = context;
+        }
 
         @Override
         protected HashMap doInBackground(String... strings) {
@@ -53,19 +57,33 @@ public class CheckUpdate {
                     //得到输入流
                     InputStream is =urlConnection.getInputStream();
                     HashMap map = readXML(is);
-                    if()
+                    PackageManager pm = context.getPackageManager();
+                    PackageInfo pi = pm.getPackageInfo(context.getPackageName(), 0);
+                    if(map.get("version").toString().equalsIgnoreCase(pi.versionName)){
+                        return null;
+                    }else{
+                        return map;
+                    }
                 }
-            }  catch (IOException e) {
+
+            } catch (PackageManager.NameNotFoundException e) {
+                e.printStackTrace();
+            }catch (IOException e) {
                 Log.d("----DownloadTask", "doInBackground:" + e.getMessage());
                 return null;
             }
-
             return null;
         }
 
         @Override
         protected void onPostExecute(HashMap hashMap) {
             super.onPostExecute(hashMap);
+            if(callBack!=null){
+                if(hashMap!=null){
+                    callBack.onResult(true,hashMap.get("showVersion").toString(),hashMap.get("downloadUrl").toString());
+                }else
+                    callBack.onResult(false,null,null);
+            }
         }
     }
 
@@ -80,7 +98,6 @@ public class CheckUpdate {
             Document dom = builder.parse(inStream);
 
             Element root = dom.getDocumentElement();
-            NodeList items = root.getChildNodes();//查找所有子节点
             String version =  root.getElementsByTagName("version").item(0).getNodeValue();
             String downloadUrl =  root.getElementsByTagName("downloadurl").item(0).getNodeValue();
             String showVersion =  root.getElementsByTagName("showversion").item(0).getNodeValue();
@@ -96,6 +113,6 @@ public class CheckUpdate {
     }
 
     public interface CheckUpdateCallBack{
-        void onResult(boolean update,String url);
+        void onResult(boolean update,String newVersion,String url);
     }
 }
