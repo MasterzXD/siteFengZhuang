@@ -1,5 +1,4 @@
 apply plugin: 'com.android.application'
-
 android {
     compileSdkVersion 26
     buildToolsVersion "26.0.2"
@@ -8,7 +7,7 @@ android {
         minSdkVersion 15
         targetSdkVersion 23
         versionCode 1
-        versionName "1.0"
+        versionName '1.0'
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
         flavorDimensions "versionCode"
@@ -132,7 +131,6 @@ android {
 //        taiyangcheng {
         //           applicationId = "com.app.com.taiyangcheng"
         //       }
-
 //        bankujituan {
 //            applicationId = "com.asadqwd.com.bankujituan"
 //        }
@@ -154,7 +152,6 @@ android {
 //        daijinrongshangxueyuan {
 //            applicationId = "com.asdf.daijinrongshangxueyuan"
 //        }
-
 //        aiyouyule {
 //            applicationId = "com.asdfadsfg.aiyouyulke"
 //        }
@@ -239,11 +236,19 @@ android {
 //        shenpai {
 //            applicationId = "com.hndtrwe.shenpai"
 //        }
-
         //2017年12月18日
-        daxiyangcheng {
-            applicationId = "com.asdfasd.daxiyangcheng"
+//        daxiyangcheng {
+//            applicationId = "com.asdfasd.daxiyangcheng"
+//        }
+//        hongyuncaipiao {
+//            applicationId = "com.safdsdfas.hongyuncaipiao"
+//        }
+        kuaiqianyulethree {
+            applicationId = "com.asdfweghf.kuaiqianyulethree"
         }
+//        xapp {
+//            applicationId = "com.dfgsdrgf.xapp"
+//        }
     }
 
     dependencies {
@@ -254,4 +259,6 @@ android {
         implementation 'com.google.zxing:core:3.3.0'
 
     }
+}
+dependencies {
 }

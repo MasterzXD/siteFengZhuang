@@ -1,18 +1,18 @@
 <resources>
     <!-- APP名字 -->
-    <string name="app_name">大西洋城</string>
+    <string name="app_name">Xapp</string>
     <!-- 启动地址 -->
-    <string name="start_url">http://www.piguo5.cn/Agent/Buy/index</string>
+    <string name="start_url">http://app.trking.today/app/index.php</string>
     <!-- 主页地址 -->
-    <string name="home_url">http://www.piguo5.cn/Agent/Buy/index</string>
+    <string name="home_url">http://app.trking.today/app/index.php</string>
     <!-- 是否显示网页加载进度条,默认false -->
     <bool name="show_loadng">false</bool>
     <!-- 启动页面延迟时间，默认2000毫秒 -->
-    <integer name="loading_delay">3000</integer>
+    <integer name="loading_delay">0</integer>
     <!-- 物理返回键带回退功能 -->
     <bool name="can_goback">true</bool>
     <!-- 保留头部导航栏 -->
-    <bool name="save_daohang">true</bool>
+    <bool name="save_daohang">false</bool>
     <!-- 是否主页全屏 -->
     <bool name="full_screen">false</bool>
     <!-- 支付否支持下拉刷新 -->
