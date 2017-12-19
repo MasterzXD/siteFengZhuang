@@ -212,16 +212,16 @@ public class MainActivity extends Activity {
                                 public void onClick(View v) {
                                     switch ((int)v.getTag()){
                                         case 0:
-                                            webview.loadUrl("http://2017.kq555.net:88/az");
+                                            webview.loadUrl("http://2017.kq444.net/az");
                                             break;
                                         case 2:
-                                            webview.loadUrl("http://2017.kq555.net:88/cz");
+                                            webview.loadUrl("http://2017.kq444.net/cz");
                                             break;
                                         case 4:
-                                            webview.loadUrl("http://2017.kq555.net:88/jc");
+                                            webview.loadUrl("http://2017.kq444.net/jc");
                                             break;
                                         case 6:
-                                            webview.loadUrl("http://2017.kq555.net:88/hb");
+                                            webview.loadUrl("http://2017.kq444.net/hb");
                                             break;
                                         case 8:
                                             shareWebLink("http://kq333.net");

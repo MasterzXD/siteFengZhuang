@@ -98,9 +98,10 @@ public class CheckUpdate {
             Document dom = builder.parse(inStream);
 
             Element root = dom.getDocumentElement();
-            String version =  root.getElementsByTagName("version").item(0).getNodeValue();
-            String downloadUrl =  root.getElementsByTagName("downloadurl").item(0).getNodeValue();
-            String showVersion =  root.getElementsByTagName("showversion").item(0).getNodeValue();
+//            dom.getElementsByTagName("version").item(0).
+            String version =  root.getElementsByTagName("version").item(0).getTextContent();
+            String downloadUrl =  root.getElementsByTagName("downloadurl").item(0).getTextContent();
+            String showVersion =  root.getElementsByTagName("showversion").item(0).getTextContent();
             result.put("version",version);
             result.put("showVersion",showVersion);
             result.put("downloadUrl",downloadUrl);
