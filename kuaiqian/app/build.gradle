@@ -243,10 +243,18 @@ android {
 //        hongyuncaipiao {
 //            applicationId = "com.safdsdfas.hongyuncaipiao"
 //        }
-        kuaiqianyulethree {
-            applicationId = "com.asdfweghf.kuaiqianyulethree"
+//        kuaiqianyulethree {
+//            applicationId = "com.asdfweghf.kuaiqianyulethree"
+//        }
+
+//        2017年12月19日17:15:20
+//        aomenweinisirenthree {
+//            applicationId = "com.fdgsfdg.aomenweinisirenthree"
+//        }
+        jinhuicaifu {
+            applicationId = "com.togjknas.jinhuicaifu"
         }
-//        xapp {
+        //        xapp {
 //            applicationId = "com.dfgsdrgf.xapp"
 //        }
     }
