@@ -246,17 +246,26 @@ android {
 //        kuaiqianyulethree {
 //            applicationId = "com.asdfweghf.kuaiqianyulethree"
 //        }
-
 //        2017年12月19日17:15:20
 //        aomenweinisirenthree {
 //            applicationId = "com.fdgsfdg.aomenweinisirenthree"
 //        }
-        jinhuicaifu {
-            applicationId = "com.togjknas.jinhuicaifu"
-        }
-        //        xapp {
+//        -----未给
+//        jinhuicaifu {
+//            applicationId = "com.togjknas.jinhuicaifu"
+//        }
+//        xapp {
 //            applicationId = "com.dfgsdrgf.xapp"
 //        }
+//        weinisi {
+//            applicationId = "com.adgfsdf.weinisi"
+//        }
+//        hailifang {
+//            applicationId = "com.dgjtyrdet.hailifang"
+//        }
+        xinhaotiandi {
+            applicationId = "com.sdfgsdre.xinhaotiandi"
+        }
     }
 
     dependencies {

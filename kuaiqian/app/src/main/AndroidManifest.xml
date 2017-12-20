@@ -18,11 +18,13 @@
         android:icon="@drawable/iconx"
         android:label="@string/app_name"
         android:supportsRtl="true"
+        android:hardwareAccelerated="true"
         android:theme="@android:style/Theme.Light.NoTitleBar">
         <activity
             android:name=".MainActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            android:hardwareAccelerated="true"
             android:windowSoftInputMode="stateHidden|adjustResize"
             >
             <intent-filter>

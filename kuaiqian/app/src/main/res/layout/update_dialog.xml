@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#cc000000">
+    >
 
     <RelativeLayout
         android:visibility="invisible"
@@ -21,8 +21,8 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="8dp"
             android:gravity="center"
-            android:text="更新下载中"
-            android:textColor="#010101"
+            android:text="Downloading"
+            android:textColor="#222222"
             android:textSize="17sp" />
 
         <ProgressBar
@@ -36,7 +36,7 @@
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:max="100"
-            android:progress="20" />
+            android:progress="0" />
 
         <TextView
             android:id="@+id/progress"
@@ -45,8 +45,8 @@
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/progressBar"
             android:layout_marginTop="-21dp"
-            android:text="asd"
-            android:textColor="#ffffff"
+            android:text="0%"
+            android:textColor="#222222"
             android:textSize="14sp" />
     </RelativeLayout>
 
@@ -54,10 +54,9 @@
         android:id="@+id/notice_panel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="20dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
         android:background="@drawable/update_dialog">
 
         <TextView
@@ -65,7 +64,7 @@
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:gravity="center"
-            android:text="更新"
+            android:text="Update"
             android:textColor="#010101"
             android:textSize="18sp" />
 
@@ -75,12 +74,12 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/title"
             android:gravity="center"
-            android:minHeight="60dp"
+            android:minHeight="80dp"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            android:text="内容"
+            android:text=""
             android:textColor="#010101"
-            android:textSize="16sp" />
+            android:textSize="15sp" />
 
         <View
             android:layout_width="match_parent"
@@ -102,7 +101,7 @@
                 android:layout_weight="0.5"
                 android:gravity="center"
                 android:minHeight="30dp"
-                android:text="更新"
+                android:text="Update"
                 android:textColor="#010101"
                 android:textSize="16sp" />
 
@@ -120,7 +119,7 @@
                 android:layout_weight="0.5"
                 android:gravity="center"
                 android:minHeight="30dp"
-                android:text="稍后"
+                android:text="Later"
                 android:textColor="#010101"
                 android:textSize="16sp" />
         </LinearLayout>

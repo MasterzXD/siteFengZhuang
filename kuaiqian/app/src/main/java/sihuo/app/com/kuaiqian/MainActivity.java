@@ -73,7 +73,7 @@ public class MainActivity extends Activity {
     ValueCallback<Uri[]> uploadMessage;
     X5WebView webview;
     ImageView floatHome,floatBack;
-    TextView back,refresh,goForward,closeAp,home,shareBtn,moreBtn;
+    TextView back,refresh,goForward,closeAp,home,shareBtn,moreBtn,youhui,kefu,loadview;
     String HOME;
     SwipeRefreshLayout refreshLayout;
     LinearLayout floatLayout;
@@ -127,15 +127,17 @@ public class MainActivity extends Activity {
                 getWindow().setFlags(
                         WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN,
                         WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
-                RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) titleLayout.getLayoutParams();
-                //获取status_bar_height资源的ID
-                int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
-                if (resourceId > 0) {
-                    //根据资源ID获取响应的尺寸值
-                    statusBarHeight = getResources().getDimensionPixelSize(resourceId);
+                if(!getPackageName().equals("com.adgfsdf.weinisi")){
+                    RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) titleLayout.getLayoutParams();
+                    //获取status_bar_height资源的ID
+                    int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
+                    if (resourceId > 0) {
+                        //根据资源ID获取响应的尺寸值
+                        statusBarHeight = getResources().getDimensionPixelSize(resourceId);
+                    }
+                    params.topMargin = statusBarHeight==0?50:statusBarHeight;
+                    titleLayout.setLayoutParams(params);
                 }
-                params.topMargin = statusBarHeight==0?50:statusBarHeight;
-                titleLayout.setLayoutParams(params);
             }
         }else{
             if(!getResources().getBoolean(R.bool.full_screen)){
@@ -157,11 +159,11 @@ public class MainActivity extends Activity {
                 titleLayout.setLayoutParams(params);
             }
         }
-        new CheckUpdate().check(MainActivity.this, new CheckUpdate.CheckUpdateCallBack() {
+        CheckUpdate.getInstance().check(MainActivity.this, new CheckUpdate.CheckUpdateCallBack() {
             @Override
             public void onResult(boolean update,String newVersion ,String url) {
                 if(update){
-                    new UpdateDialog(MainActivity.this,"发现新版本 "+newVersion+"\n是否现在更新",url).show();
+                    new UpdateDialog(MainActivity.this,"New version "+newVersion+" detected\nUpdate Now？",url).show();
                 }
             }
         });
@@ -190,6 +192,23 @@ public class MainActivity extends Activity {
         goForward = findViewById(R.id.go_forward);
         closeAp = findViewById(R.id.close_app);
         titleLayout = findViewById(R.id.title_layout);
+        youhui = findViewById(R.id.youhui);
+        kefu = findViewById(R.id.kefu);
+        loadview = findViewById(R.id.loadview);
+
+        youhui.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                webview.loadUrl("http://313224.com");
+            }
+        });
+
+        kefu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                webview.loadUrl("https://f18.livechatvalue.com/chat/chatClient/chatbox.jsp?companyID=831625&configID=75491&jid=6113380956&s=1");
+            }
+        });
 
         moreBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -244,7 +263,6 @@ public class MainActivity extends Activity {
                     RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(screenW,screenH);
                     params.leftMargin = screenW;
                     rootView.addView(sliderViewLayout, params);
-//                    Toast.makeText(MainActivity.this,"爱到底："+sliderViewLayout.getX(),Toast.LENGTH_SHORT).show();
                 }
                 showMenu();
             }
@@ -334,7 +352,6 @@ public class MainActivity extends Activity {
     }
 
     void hideMenu(){
-//        Toast.makeText(MainActivity.this,"hideMenu："+sliderViewLayout.getLeft(),Toast.LENGTH_SHORT).show();
         TranslateAnimation translateAnimation = new TranslateAnimation(0,screenW,0,0);
         translateAnimation.setDuration(500);
         translateAnimation.setFillAfter(true);
@@ -370,7 +387,7 @@ public class MainActivity extends Activity {
         WindowManager wm = (WindowManager) this.getSystemService(Context.WINDOW_SERVICE);
         int width = wm.getDefaultDisplay().getWidth();
         Log.d("----MainActivity", "setupWebview:" + width);
-        webview.setInitialScale(50);
+//        webview.setInitialScale(50);
 
     }
 
@@ -889,6 +906,13 @@ public class MainActivity extends Activity {
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
 //                Log.e("----onPageFinished", ""+url);
+                view.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        loadview.setVisibility(View.GONE);
+                    }
+                },800);
+
                 if(showLoading){
                     loadingDialog.dismiss();
                 }
@@ -930,13 +954,13 @@ public class MainActivity extends Activity {
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if(keyCode==KeyEvent.KEYCODE_BACK){
-//            if(getResources().getBoolean(R.bool.can_goback)&& webview.canGoBack()){
+            if(getResources().getBoolean(R.bool.can_goback)&& webview.canGoBack()){
 //            if(getResources().getBoolean(R.bool.can_goback) && !webview.getUrl().equals(HOME) && webview.canGoBack()){
-//                webview.goBack();
-//                return true;
-//            }
+                webview.goBack();
+                return true;
+            }
             if(System.currentTimeMillis()-mills>1000){
-                Toast.makeText(this,"再按一次退出",Toast.LENGTH_SHORT).show();
+                Toast.makeText(this,getString(R.string.exit),Toast.LENGTH_SHORT).show();
                 mills = System.currentTimeMillis();
             }else{
                 finish();

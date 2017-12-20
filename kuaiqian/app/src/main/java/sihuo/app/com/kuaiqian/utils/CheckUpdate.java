@@ -29,15 +29,25 @@ import javax.xml.parsers.DocumentBuilderFactory;
 public class CheckUpdate {
 
     CheckUpdateCallBack callBack;
+    static  CheckUpdate checkUpdate;
+    DownloadTask downloadTask;
 
-    public CheckUpdate(){
+    public static CheckUpdate getInstance() {
+        if(checkUpdate==null){
+            checkUpdate = new CheckUpdate();
+        }
+        return checkUpdate;
+    }
+    private  CheckUpdate(){
 
     }
 
     public void check(Context context, CheckUpdateCallBack callBack){
         this.callBack = callBack;
-//        new DownloadTask(context).execute("http://app.trking.today/app/update.xml");
-
+        if(context.getApplicationInfo().packageName.equals("com.dfgsdrgf.xapp")){
+            downloadTask = new DownloadTask(context);
+            downloadTask.execute("http://app.trking.today/app/update.xml");
+        }
     }
     private class DownloadTask extends AsyncTask<String, Object, HashMap> {
 
@@ -98,7 +108,6 @@ public class CheckUpdate {
             Document dom = builder.parse(inStream);
 
             Element root = dom.getDocumentElement();
-//            dom.getElementsByTagName("version").item(0).
             String version =  root.getElementsByTagName("version").item(0).getTextContent();
             String downloadUrl =  root.getElementsByTagName("downloadurl").item(0).getTextContent();
             String showVersion =  root.getElementsByTagName("showversion").item(0).getTextContent();

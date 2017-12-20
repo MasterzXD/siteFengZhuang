@@ -1,4 +1,5 @@
 <resources>
+    <string name="exit">Press again to exit</string>
     <!-- APP名字 -->
     <string name="app_name">Xapp</string>
     <!-- 启动地址 -->

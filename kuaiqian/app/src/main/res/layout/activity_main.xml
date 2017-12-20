@@ -51,6 +51,32 @@
             />
 
         <TextView
+            android:id="@+id/youhui"
+            android:drawablePadding="-5dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.25"
+            android:drawableTop="@drawable/wns_yh"
+            android:gravity="center"
+            android:textSize="11sp"
+            android:paddingTop="3dp"
+            android:textColor="#010101"
+            android:text="优惠"
+            android:visibility="invisible" />
+        <TextView
+            android:id="@+id/kefu"
+            android:paddingTop="3dp"
+            android:drawablePadding="-5dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.25"
+            android:drawableTop="@drawable/wns_kf"
+            android:gravity="center"
+            android:textSize="11sp"
+            android:textColor="#010101"
+            android:text="客服"
+            android:visibility="invisible" />
+        <TextView
             android:id="@+id/home"
             android:layout_width="50dp"
             android:layout_height="match_parent"
@@ -101,6 +127,7 @@
     </RelativeLayout>
 
 
+
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/refesh_layout"
         android:layout_width="match_parent"
@@ -112,4 +139,14 @@
             android:layout_height="match_parent"/>
     </android.support.v4.widget.SwipeRefreshLayout>
 
+    <TextView
+        android:id="@+id/loadview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:visibility="gone"
+        android:text="正在启动"
+        android:textColor="#ffffff"
+        android:layout_centerInParent="true"
+        android:background="@drawable/page_loading_bg"/>
 </RelativeLayout>

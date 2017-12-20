@@ -46,7 +46,7 @@ public class X5WebView extends WebView {
 		webSetting.setAllowFileAccess(true);
 		webSetting.setLayoutAlgorithm(LayoutAlgorithm.SINGLE_COLUMN);
 		webSetting.setSupportZoom(true);
-		webSetting.setBuiltInZoomControls(true);
+//		webSetting.setBuiltInZoomControls(true);
 		webSetting.setUseWideViewPort(true);
 		webSetting.setSupportMultipleWindows(false);
 		webSetting.setJavaScriptCanOpenWindowsAutomatically(true);
