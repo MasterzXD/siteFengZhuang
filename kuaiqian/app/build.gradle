@@ -272,6 +272,9 @@ android {
         zhifubao {
             applicationId = "com.erwtwerg.zhifubao"
         }
+        huangguanyule {
+            applicationId = "com.tyrtydrt.huangguanyule"
+        }
     }
 
     dependencies {
