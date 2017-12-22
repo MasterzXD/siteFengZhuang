@@ -110,9 +110,9 @@ android {
 //        kuaiqianyule2 {
 //            applicationId = "sihuo.app.com.kuaiqianyule2"
 //        }
-//        languifangyule {
-//            applicationId = "sihuo.app.com.languifangyule"
-//        }
+        languifangyule {
+            applicationId = "sihuo.app.com.languifangyule"
+        }
 //        fuhuiguojione {
 //            applicationId = "sihuo.app.com.fuhuiguojione"
 //        }

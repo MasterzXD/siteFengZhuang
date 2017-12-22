@@ -118,6 +118,7 @@
             android:layout_height="match_parent"
             android:scaleType="center"
             android:text=""
+            android:visibility="invisible"
             android:textSize="18sp"
             android:gravity="center"
             android:textColor="#555555"
