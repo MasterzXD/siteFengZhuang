@@ -276,8 +276,11 @@ android {
 //            applicationId = "com.tyrtydrt.huangguanyule"
 //        }
 //        2017年12月22日18:02:24
-        jinshayulecheng {
-            applicationId = "com.yurrtj.jinshayulecheng"
+//        jinshayulecheng {
+//            applicationId = "com.yurrtj.jinshayulecheng"
+//        }
+        huoliwangxinjiankang {
+            applicationId = "com.dgsdfg.huoliwangxinjiankang"
         }
     }
 
