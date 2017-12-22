@@ -96,6 +96,10 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
 //        setContentView(R.layout.activity_main);
 
+        if ((getIntent().getFlags() & Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT) != 0) {
+            finish();
+            return;
+        }
         vs= new ViewStub(this,R.layout.activity_main);
         setContentView(vs);
         loadingDialog = new PageLoadingDialog(this);
@@ -970,4 +974,33 @@ public class MainActivity extends Activity {
         }
         return super.onKeyDown(keyCode, event);
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        try {
+            webview.onResume();
+        }catch (Exception e){
+
+        }
+
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        try {
+            webview.onPause();
+        }catch (Exception e){
+
+        }
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        System.exit(0);
+    }
 }
+

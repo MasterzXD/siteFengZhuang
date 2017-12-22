@@ -250,7 +250,6 @@ android {
 //        aomenweinisirenthree {
 //            applicationId = "com.fdgsfdg.aomenweinisirenthree"
 //        }
-//        -----未给
 //        jinhuicaifu {
 //            applicationId = "com.togjknas.jinhuicaifu"
 //        }
@@ -269,11 +268,16 @@ android {
         xinhaotiandi {
             applicationId = "com.dfhtfhdt.xinhaotiandi2"
         }
-        zhifubao {
-            applicationId = "com.erwtwerg.zhifubao"
-        }
-        huangguanyule {
-            applicationId = "com.tyrtydrt.huangguanyule"
+//        zhifubao {
+//            applicationId = "com.erwtwerg.zhifubao"
+//        }
+//
+//        huangguanyule {
+//            applicationId = "com.tyrtydrt.huangguanyule"
+//        }
+//        2017年12月22日18:02:24
+        jinshayulecheng {
+            applicationId = "com.yurrtj.jinshayulecheng"
         }
     }
 
