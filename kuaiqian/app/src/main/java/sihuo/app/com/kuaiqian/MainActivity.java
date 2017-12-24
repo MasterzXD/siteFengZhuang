@@ -61,6 +61,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
 
 import sihuo.app.com.kuaiqian.utils.CheckUpdate;
 import sihuo.app.com.kuaiqian.utils.NewWindowView;
@@ -192,7 +194,6 @@ public class MainActivity extends Activity {
         getWindow().setFormat(PixelFormat.TRANSLUCENT);
         HOME = getResources().getString(R.string.start_url);
 
-
         findViewById(R.id.title_layout).setVisibility(hasDaoHang?View.VISIBLE:View.INVISIBLE);
 
         webview = findViewById(R.id.webview);
@@ -219,7 +220,12 @@ public class MainActivity extends Activity {
         kefu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                webview.loadUrl("https://f18.livechatvalue.com/chat/chatClient/chatbox.jsp?companyID=831625&configID=75491&jid=6113380956&s=1");
+                new AlertDialog.Builder(MainActivity.this).setMessage("确认清除缓存?").setPositiveButton("取消",null).setNegativeButton("清除", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(MainActivity.this,"清除缓存成功！",Toast.LENGTH_SHORT).show();
+                    }
+                }).show();
             }
         });
 
@@ -688,6 +694,8 @@ public class MainActivity extends Activity {
 
     int startX;
     final int scrollSize=200;
+    String tempUrl;
+
     void setupWebview(){
         webview.setDownloadListener(new DownloadListener() {
             @Override
@@ -846,9 +854,10 @@ public class MainActivity extends Activity {
 
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                Log.e("----should", ""+url);
-//                Intent.parseUri(url,Intent.URI_INTENT_SCHEME);
-//                Toast.makeText(MainActivity.this, ""+url, Toast.LENGTH_SHORT).show();
+                Uri uri = Uri.parse(url);
+
+                Log.e("----should", ""+url+"__"+tempUrl);
+
                 try {
                     if(url.toLowerCase().startsWith("intent://")){
                         Intent intent = Intent.parseUri(url,Intent.URI_INTENT_SCHEME);
@@ -866,7 +875,13 @@ public class MainActivity extends Activity {
                         String newUrl = url.substring(index);
                         view.loadUrl(newUrl);
                         return true;
+                    }else if(url.toLowerCase().contains("wx.tenpay.com")){
+                        Map<String, String> extraHeaders = new HashMap<String, String>();
+                        extraHeaders.put("Referer", tempUrl);
+                        view.loadUrl(url, extraHeaders);
+                        return true;
                     }
+                    tempUrl = uri.getScheme()+"://"+uri.getHost();
                     view.loadUrl(url);
                     return true;
                 }catch (Exception e){

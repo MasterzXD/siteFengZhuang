@@ -110,9 +110,9 @@ android {
 //        kuaiqianyule2 {
 //            applicationId = "sihuo.app.com.kuaiqianyule2"
 //        }
-        languifangyule {
-            applicationId = "sihuo.app.com.languifangyule"
-        }
+//        languifangyule {
+//            applicationId = "sihuo.app.com.languifangyule"
+//        }
 //        fuhuiguojione {
 //            applicationId = "sihuo.app.com.fuhuiguojione"
 //        }
@@ -265,9 +265,9 @@ android {
 //        xinhaotiandi {
 //            applicationId = "com.sdfgsdre.xinhaotiandi"
 //        }
-        xinhaotiandi {
-            applicationId = "com.dfhtfhdt.xinhaotiandi2"
-        }
+//        xinhaotiandi {
+//            applicationId = "com.dfhtfhdt.xinhaotiandi2"
+//        }
 //        zhifubao {
 //            applicationId = "com.erwtwerg.zhifubao"
 //        }
@@ -279,9 +279,34 @@ android {
 //        jinshayulecheng {
 //            applicationId = "com.yurrtj.jinshayulecheng"
 //        }
-        huoliwangxinjiankang {
-            applicationId = "com.dgsdfg.huoliwangxinjiankang"
+//        huoliwangxinjiankang {
+//            applicationId = "com.dgsdfg.huoliwangxinjiankang"
+//        }
+//        weinisi {
+//            applicationId = "com.asdfsd.weinisi"
+//        }
+//        aomenweinisirenfour {
+//            applicationId = "com.dsafasd.aomenweinisirenfour"
+//        }
+//        lefantian {
+//            applicationId = "com.sdfgsdgkj.lefantian"
+//        }
+//        2017年12月23日12:52:49 --未结
+//        huangjia {
+//            applicationId = "com.yurrtsew.huangjia"
+//        }
+//        bankujituantwo {
+//            applicationId = "com.sdfhgsdfg.bankujituantwo"
+//        }
+//        yundingqipai {
+//            applicationId = "com.dhstgse.yundingqipai"
+//        }
+        tianshijituan {
+            applicationId = "com.yuasdsgrt.tianshijituan"
         }
+//        mengtekaluoyulecheng {
+//            applicationId = "com.grte.mengtekaluoyulecheng"
+//        }
     }
 
     dependencies {

@@ -4,7 +4,9 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.Display;
@@ -62,20 +64,38 @@ public class LoadingDialog extends Dialog
     }
     public void showWithCallBack(final HideCallBack hideCallBack){
         this.show();
+        final android.os.Handler handler = new android.os.Handler(){
+            @Override
+            public void handleMessage(Message msg) {
+                super.handleMessage(msg);
+
+            }
+        };
         WindowManager.LayoutParams lp = getWindow().getAttributes();
         lp.width = WindowManager.LayoutParams.MATCH_PARENT;
         lp.height = WindowManager.LayoutParams.MATCH_PARENT;
         getWindow().setAttributes(lp);
-        new android.os.Handler().postDelayed(new Runnable() {
+        handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                if(getContext().getResources().getBoolean(R.bool.need_guide)){
+//                 &&  getContext().getSharedPreferences("config",Context.MODE_PRIVATE).getBoolean("aaa",true)
+                if(getContext().getResources().getBoolean(R.bool.need_guide)&& getContext().getSharedPreferences("config",Context.MODE_PRIVATE).getBoolean("aaa",true)){
+                    SharedPreferences sp = getContext().getSharedPreferences("config",Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sp.edit();
+                    editor.putBoolean("aaa",false);
+                    editor.commit();
                     getContext().startActivity(new Intent(getContext(),YinDaoActivity.class));
                 }
-                loadingDialog.dismiss();
-                if(hideCallBack!=null){
-                    hideCallBack.onHide();
-                }
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        loadingDialog.dismiss();
+                        if(hideCallBack!=null){
+                            hideCallBack.onHide();
+                        }
+                    }
+                },1000);
+
             }
         },getContext().getResources().getInteger(R.integer.loading_delay));
     }
