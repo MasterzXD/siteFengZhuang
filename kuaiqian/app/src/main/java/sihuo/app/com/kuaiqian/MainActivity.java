@@ -30,6 +30,8 @@ import android.view.View;
 
 import com.google.zxing.Result;
 import com.tencent.smtt.export.external.interfaces.IX5WebChromeClient;
+import com.tencent.smtt.export.external.interfaces.SslError;
+import com.tencent.smtt.export.external.interfaces.SslErrorHandler;
 import com.tencent.smtt.sdk.DownloadListener;
 import com.tencent.smtt.export.external.interfaces.JsResult;
 import com.tencent.smtt.sdk.ValueCallback;
@@ -849,6 +851,7 @@ public class MainActivity extends Activity {
 //                return super.onShowFileChooser(webView, valueCallback, fileChooserParams);
                 return true;
             }
+
         });
         webview.setWebViewClient(new WebViewClient(){
 
@@ -914,6 +917,12 @@ public class MainActivity extends Activity {
             public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
                 super.onReceivedError(view, request, error);
 //                Log.e("----onReceivedError", ""+error);
+            }
+
+            @Override
+            public void onReceivedSslError(WebView webView, SslErrorHandler sslErrorHandler, SslError sslError) {
+                sslErrorHandler.proceed();
+//                super.onReceivedSslError(webView, sslErrorHandler, sslError);
             }
 
             @Override

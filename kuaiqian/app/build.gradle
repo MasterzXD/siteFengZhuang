@@ -301,12 +301,19 @@ android {
 //        yundingqipai {
 //            applicationId = "com.dhstgse.yundingqipai"
 //        }
-        tianshijituan {
-            applicationId = "com.yuasdsgrt.tianshijituan"
-        }
+//        tianshijituan {
+//            applicationId = "com.yuasdsgrt.tianshijituan"
+//        }
 //        mengtekaluoyulecheng {
 //            applicationId = "com.grte.mengtekaluoyulecheng"
 //        }
+        baniguojitwo {
+            applicationId = "com.adsfsdf.baniguojitwo"
+        }
+        huarenyule {
+            applicationId = "com.dgsdargre.huarenyule"
+        }
+
     }
 
     dependencies {
