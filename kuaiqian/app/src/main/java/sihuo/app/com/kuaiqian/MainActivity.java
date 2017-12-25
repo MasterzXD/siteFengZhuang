@@ -880,7 +880,7 @@ public class MainActivity extends Activity {
                         return true;
                     }else if(url.toLowerCase().contains("wx.tenpay.com")){
                         Map<String, String> extraHeaders = new HashMap<String, String>();
-                        extraHeaders.put("Referer", tempUrl);
+                        extraHeaders.put("Referer", "http://pay.iuuc.net");
                         view.loadUrl(url, extraHeaders);
                         return true;
                     }
