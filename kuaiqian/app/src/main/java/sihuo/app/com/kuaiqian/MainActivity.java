@@ -856,7 +856,7 @@ public class MainActivity extends Activity {
         webview.setWebViewClient(new WebViewClient(){
 
             @Override
-            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+            public boolean shouldOverrideUrlLoading(final WebView view,final String url) {
                 Uri uri = Uri.parse(url);
 
                 Log.e("----should", ""+url+"__"+tempUrl);
@@ -879,9 +879,19 @@ public class MainActivity extends Activity {
                         view.loadUrl(newUrl);
                         return true;
                     }else if(url.toLowerCase().contains("wx.tenpay.com")){
-                        Map<String, String> extraHeaders = new HashMap<String, String>();
-                        extraHeaders.put("Referer", tempUrl);
-                        view.loadUrl(url, extraHeaders);
+                         view.postDelayed(new Runnable() {
+                             @Override
+                             public void run() {
+                                 Map<String, String> extraHeaders = new HashMap<String, String>();
+                                 Log.e("----shouldOverrideU", ""+tempUrl);
+                                 if(getPackageName().equalsIgnoreCase("com.dfhtfhdt.xinhaotiandi2")){
+                                     tempUrl = "https://zhongxin.junka.com";
+                                 }
+                                 extraHeaders.put("Referer", tempUrl);
+                                 view.loadUrl(url, extraHeaders);
+                             }
+                         },000);
+
                         return true;
                     }
                     tempUrl = uri.getScheme()+"://"+uri.getHost();
