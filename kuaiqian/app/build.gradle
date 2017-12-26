@@ -265,9 +265,9 @@ android {
 //        xinhaotiandi {
 //            applicationId = "com.sdfgsdre.xinhaotiandi"
 //        }
-        xinhaotiandi {
-            applicationId = "com.dfhtfhdt.xinhaotiandi2"
-        }
+//        xinhaotiandi {
+//            applicationId = "com.dfhtfhdt.xinhaotiandi2"
+//        }
 //        zhifubao {
 //            applicationId = "com.erwtwerg.zhifubao"
 //        }
@@ -291,7 +291,7 @@ android {
 //        lefantian {
 //            applicationId = "com.sdfgsdgkj.lefantian"
 //        }
-//        2017年12月23日12:52:49 --未结
+//        2017年12月23日12:52:49
 //        huangjia {
 //            applicationId = "com.yurrtsew.huangjia"
 //        }
@@ -313,6 +313,13 @@ android {
 //        huarenyule {
 //            applicationId = "com.dgsdargre.huarenyule"
 //        }
+//        2017年12月26日16:53:18--未结
+        aomenweinisirenyulecheng {
+            applicationId = "com.dfghtsd.aomenweinisirenyulecheng"
+        }
+        wanbaoguoji {
+            applicationId = "com.knakjhe.wanbaoguoji"
+        }
 
     }
 
