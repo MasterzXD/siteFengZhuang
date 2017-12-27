@@ -265,9 +265,9 @@ android {
 //        xinhaotiandi {
 //            applicationId = "com.sdfgsdre.xinhaotiandi"
 //        }
-        xinhaotiandi {
-            applicationId = "com.dfhtfhdt.xinhaotiandi2"
-        }
+//        xinhaotiandi {
+//            applicationId = "com.dfhtfhdt.xinhaotiandi2"
+//        }
 //        zhifubao {
 //            applicationId = "com.erwtwerg.zhifubao"
 //        }
@@ -320,13 +320,28 @@ android {
 //        wanbaoguoji {
 //            applicationId = "com.knakjhe.wanbaoguoji"
 //        }
-
+//        tisudai {  //50
+//            applicationId = "com.yukef.tisudai"
+//        }
+//        fulicaipiao {
+//            applicationId = "com.tyuiykl.fulicaipiao"
+//        }
+//        yunqitwo {
+//            applicationId = "com.tueyrtr.yunqitwo"
+//        }
+//        shiduhui {
+//            applicationId = "com.hfrtsy.shiduhui"
+//        }
+        yh {
+            applicationId = "com.rthdrthrth.yh"
+        }
     }
 
     dependencies {
         implementation 'com.android.support.constraint:constraint-layout:1.0.2'
         compile fileTree(include: ['*.jar'], dir: 'libs')
         implementation files('libs/tbs_sdk.jar')
+//        compile 'com.android.support:appcompat-v7:26.0.0-beta1'
         implementation 'com.android.support:support-v4:26.0.0-alpha1'
         implementation 'com.google.zxing:core:3.3.0'
 

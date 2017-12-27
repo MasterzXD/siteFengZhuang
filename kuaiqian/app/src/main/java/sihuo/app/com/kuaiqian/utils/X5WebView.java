@@ -48,15 +48,17 @@ public class X5WebView extends WebView {
 		webSetting.setSupportZoom(true);
 //		webSetting.setBuiltInZoomControls(true);
 		webSetting.setUseWideViewPort(true);
+		webSetting.setDefaultZoom(WebSettings.ZoomDensity.FAR);
 		webSetting.setSupportMultipleWindows(false);
 		webSetting.setJavaScriptCanOpenWindowsAutomatically(true);
-		// webSetting.setLoadWithOverviewMode(true);
+		webSetting.setLoadWithOverviewMode(true);
 		webSetting.setAppCacheEnabled(getResources().getBoolean(R.bool.need_cache));
 		// webSetting.setDatabaseEnabled(true);
 		webSetting.setDomStorageEnabled(true);
 		webSetting.setGeolocationEnabled(true);
 		webSetting.setAppCacheMaxSize(Long.MAX_VALUE);
 		webSetting.setPluginsEnabled(true);
+		webSetting.setBlockNetworkImage(true);
 		// webSetting.setPageCacheCapacity(IX5WebSettings.DEFAULT_CACHE_CAPACITY);
 		webSetting.setPluginState(WebSettings.PluginState.ON_DEMAND);
 		// webSetting.setRenderPriority(WebSettings.RenderPriority.HIGH);

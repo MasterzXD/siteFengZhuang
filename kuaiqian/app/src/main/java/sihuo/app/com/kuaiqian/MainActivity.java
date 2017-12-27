@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.graphics.PixelFormat;
 import android.media.MediaScannerConnection;
 import android.net.Uri;
@@ -18,6 +19,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -74,6 +76,7 @@ import sihuo.app.com.kuaiqian.zxing.DecodeImage;
 
 public class MainActivity extends Activity {
     final  int FILE_CHOOSER_RESULT_CODE = 40;
+    final  int FILE_CHOOSER_CAMERA = 22;
     ValueCallback<Uri[]> uploadMessage;
     X5WebView webview;
     ImageView floatHome,floatBack;
@@ -113,13 +116,20 @@ public class MainActivity extends Activity {
             finish();
             return;
         }
-        vs= new ViewStub(this,R.layout.activity_main);
-        setContentView(vs);
+
+        setContentView(R.layout.temp);
+        vs = findViewById(R.id.viewStub);
         loadingDialog = new PageLoadingDialog(this);
         if(getResources().getInteger(R.integer.loading_delay)==0){
-            vs.inflate();
-            initView();
-            doCallback();
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    vs.inflate();
+                    initView();
+                    doCallback();
+                }
+            },500);
+
         }else{
             new LoadingDialog(this).showWithCallBack(new LoadingDialog.HideCallBack(){
                 @Override
@@ -878,7 +888,8 @@ public class MainActivity extends Activity {
                         String newUrl = url.substring(index);
                         view.loadUrl(newUrl);
                         return true;
-                    }else if(url.toLowerCase().contains("wx.tenpay.com")){
+                    }
+                    else if(url.toLowerCase().contains("wx.tenpay.com")){
                          view.postDelayed(new Runnable() {
                              @Override
                              public void run() {
@@ -894,8 +905,11 @@ public class MainActivity extends Activity {
 
                         return true;
                     }
-                    tempUrl = uri.getScheme()+"://"+uri.getHost();
-                    view.loadUrl(url);
+                    tempUrl = url;
+                    Map<String, String> extraHeaders = new HashMap<String, String>();
+                    extraHeaders.put("Referer", tempUrl);
+                    view.loadUrl(url,extraHeaders);
+//                    view.loadUrl(url);
                     return true;
                 }catch (Exception e){
 //                    Log.e("----should--error", ""+e.getMessage());
@@ -926,7 +940,7 @@ public class MainActivity extends Activity {
             @Override
             public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
                 super.onReceivedError(view, request, error);
-//                Log.e("----onReceivedError", ""+error);
+                Log.e("----onReceivedError", ""+error.getErrorCode());
             }
 
             @Override
@@ -944,6 +958,7 @@ public class MainActivity extends Activity {
             @Override
             public void onPageStarted(WebView webView, String s, Bitmap bitmap) {
                 super.onPageStarted(webView, s, bitmap);
+                webView.getSettings().setBlockNetworkImage(false);
                 if(showLoading){
                     loadingDialog.show();
                 }
@@ -977,11 +992,34 @@ public class MainActivity extends Activity {
     }
 
     private void openImageChooserActivity() {
-        Intent i = new Intent(Intent.ACTION_GET_CONTENT);
-        i.addCategory(Intent.CATEGORY_OPENABLE);
-        i.setType("image/*");
-        startActivityForResult(Intent.createChooser(i,
-                "Image Chooser"), FILE_CHOOSER_RESULT_CODE);
+        new AlertDialog.Builder(MainActivity.this).setMessage("请选择方式")
+                .setNegativeButton("相机", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        try{
+                            Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                            //根据路径实例化图片文件
+                            File photoFile=new File(getExternalFilesDir(Environment.DIRECTORY_PICTURES),"temp.jpg");
+                            //设置拍照后图片保存到文件中
+                            intent.putExtra(MediaStore.EXTRA_OUTPUT,Uri.fromFile(photoFile));
+                            //启动拍照activity并获取返回数据
+                            startActivityForResult(intent,FILE_CHOOSER_CAMERA);
+                        }catch (Exception e){
+                            Toast.makeText(MainActivity.this,"请打开相机权限",Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }).setPositiveButton("图库", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Intent i = new Intent(Intent.ACTION_GET_CONTENT);
+                i.addCategory(Intent.CATEGORY_OPENABLE);
+                i.setType("image/*");
+                startActivityForResult(Intent.createChooser(i,
+                        "Image Chooser"), FILE_CHOOSER_RESULT_CODE);
+            }
+            }).show();
+//        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);// 启动系统相机
+//        startActivityForResult(intent, 444);
     }
 
     @Override
@@ -991,6 +1029,14 @@ public class MainActivity extends Activity {
             Uri result = data == null || resultCode != RESULT_OK ? null : data.getData();
             if (uploadMessage != null) {
                 uploadMessage.onReceiveValue(new Uri[]{result});
+                uploadMessage = null;
+            }
+        }
+        if (requestCode == FILE_CHOOSER_CAMERA) {
+//            Uri result = data == null || resultCode != RESULT_OK ? null : data.getData();
+            File photoFile = new File(getExternalFilesDir(Environment.DIRECTORY_PICTURES),"temp.jpg");
+            if (uploadMessage != null) {
+                uploadMessage.onReceiveValue(new Uri[]{Uri.fromFile(photoFile)});
                 uploadMessage = null;
             }
         }
