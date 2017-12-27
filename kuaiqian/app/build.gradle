@@ -338,6 +338,9 @@ android {
 //        zhuimengzhe {
 //            applicationId = "com.oefjaki.zhuimengzhe"
 //        }
+//        huhangguoji {
+//            applicationId = "com.dfasgdfg.huhangguoji"
+//        }
     }
 
     dependencies {
@@ -351,5 +354,6 @@ android {
     }
 }
 dependencies {
-//    implementation 'com.google.android.gms:play-services-ads:11.6.2'
+//        implementation 'com.google.android.gms:play-services-ads:11.0.4'
+//    implementation 'com.google.android.gms:play-services-ads:11.8.0'
 }
