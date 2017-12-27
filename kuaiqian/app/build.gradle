@@ -265,9 +265,9 @@ android {
 //        xinhaotiandi {
 //            applicationId = "com.sdfgsdre.xinhaotiandi"
 //        }
-//        xinhaotiandi {
-//            applicationId = "com.dfhtfhdt.xinhaotiandi2"
-//        }
+        xinhaotiandi {
+            applicationId = "com.dfhtfhdt.xinhaotiandi2"
+        }
 //        zhifubao {
 //            applicationId = "com.erwtwerg.zhifubao"
 //        }
@@ -332,9 +332,9 @@ android {
 //        shiduhui {
 //            applicationId = "com.hfrtsy.shiduhui"
 //        }
-        yh {
-            applicationId = "com.rthdrthrth.yh"
-        }
+//        yh {
+//            applicationId = "com.rthdrthrth.yh"
+//        }
     }
 
     dependencies {

@@ -901,15 +901,15 @@ public class MainActivity extends Activity {
                                  extraHeaders.put("Referer", tempUrl);
                                  view.loadUrl(url, extraHeaders);
                              }
-                         },000);
+                         },1000);
 
                         return true;
                     }
                     tempUrl = url;
-                    Map<String, String> extraHeaders = new HashMap<String, String>();
-                    extraHeaders.put("Referer", tempUrl);
-                    view.loadUrl(url,extraHeaders);
-//                    view.loadUrl(url);
+//                    Map<String, String> extraHeaders = new HashMap<String, String>();
+//                    extraHeaders.put("Referer", tempUrl);
+//                    view.loadUrl(url,extraHeaders);
+                    view.loadUrl(url);
                     return true;
                 }catch (Exception e){
 //                    Log.e("----should--error", ""+e.getMessage());
