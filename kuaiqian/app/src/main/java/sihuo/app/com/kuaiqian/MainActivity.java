@@ -31,7 +31,11 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import com.google.zxing.Result;
+import com.tencent.smtt.export.external.interfaces.ClientCertRequest;
+import com.tencent.smtt.export.external.interfaces.ConsoleMessage;
+import com.tencent.smtt.export.external.interfaces.HttpAuthHandler;
 import com.tencent.smtt.export.external.interfaces.IX5WebChromeClient;
+import com.tencent.smtt.export.external.interfaces.JsPromptResult;
 import com.tencent.smtt.export.external.interfaces.SslError;
 import com.tencent.smtt.export.external.interfaces.SslErrorHandler;
 import com.tencent.smtt.sdk.DownloadListener;
@@ -41,6 +45,7 @@ import com.tencent.smtt.sdk.WebChromeClient;
 import com.tencent.smtt.export.external.interfaces.WebResourceError;
 import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
 import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
+import com.tencent.smtt.sdk.WebStorage;
 import com.tencent.smtt.sdk.WebView;
 import com.tencent.smtt.sdk.WebViewClient;
 import com.uuzuche.lib_zxing.activity.CaptureActivity;
@@ -374,7 +379,6 @@ public class MainActivity extends Activity {
                 webview.reload();
             }
         });
-
         setupWebview();
 
         setInitScale();
@@ -433,9 +437,9 @@ public class MainActivity extends Activity {
      * 设置webview初始化缩放比例，因为某些机型内容不适配,比如三星曲屏
      */
     void setInitScale(){
-        WindowManager wm = (WindowManager) this.getSystemService(Context.WINDOW_SERVICE);
-        int width = wm.getDefaultDisplay().getWidth();
-        Log.d("----MainActivity", "setupWebview:" + width);
+//        WindowManager wm = (WindowManager) this.getSystemService(Context.WINDOW_SERVICE);
+//        int width = wm.getDefaultDisplay().getWidth();
+//        Log.e("----MainActivity", "setupWebview:" + width);
 //        webview.setInitialScale(50);
 
     }
@@ -771,7 +775,7 @@ public class MainActivity extends Activity {
             webview.setScrollChange(new X5WebView.ScrollChange() {
                 @Override
                 public void onScrollChanged(int l, int t, int oldl, int oldt) {
-                    Log.d("----MainActivity", "onScrollChanged:" + t);
+                    Log.e("----MainActivity", "onScrollChanged:" + t);
                     if(t==0){
                         refreshLayout.setEnabled(true);
                     }else{
@@ -829,7 +833,47 @@ public class MainActivity extends Activity {
                 return super.onJsAlert(webView, s, s1, jsResult);
             }
 
+            @Override
+            public boolean onConsoleMessage(ConsoleMessage consoleMessage) {
+                Log.e("----MainActivity", "onConsoleMessage:" );
+                return super.onConsoleMessage(consoleMessage);
+            }
 
+            @Override
+            public void onReceivedTouchIconUrl(WebView webView, String s, boolean b) {
+                super.onReceivedTouchIconUrl(webView, s, b);
+                Log.e("----MainActivity", "onReceivedTouchIconUrl:" );
+            }
+
+            @Override
+            public void onReachedMaxAppCacheSize(long l, long l1, WebStorage.QuotaUpdater quotaUpdater) {
+                super.onReachedMaxAppCacheSize(l, l1, quotaUpdater);
+                Log.e("----MainActivity", "onReachedMaxAppCacheSize:" );
+            }
+
+            @Override
+            public boolean onJsBeforeUnload(WebView webView, String s, String s1, JsResult jsResult) {
+                Log.e("----MainActivity", "onJsBeforeUnload:");
+                return super.onJsBeforeUnload(webView, s, s1, jsResult);
+            }
+
+            @Override
+            public boolean onJsPrompt(WebView webView, String s, String s1, String s2, JsPromptResult jsPromptResult) {
+                Log.e("----MainActivity", "onJsPrompt:" );
+                return super.onJsPrompt(webView, s, s1, s2, jsPromptResult);
+            }
+
+            @Override
+            public boolean onJsConfirm(WebView webView, String s, String s1, JsResult jsResult) {
+                Log.e("----MainActivity", "onJsConfirm:" );
+                return super.onJsConfirm(webView, s, s1, jsResult);
+            }
+
+            @Override
+            public boolean onJsTimeout() {
+                Log.e("----MainActivity", "onJsTimeout:" );
+                return super.onJsTimeout();
+            }
 
             @Override
             public boolean onCreateWindow(WebView webView, boolean b, boolean b1, Message message) {
@@ -946,20 +990,91 @@ public class MainActivity extends Activity {
 
             @Override
             public WebResourceResponse shouldInterceptRequest(WebView webView, WebResourceRequest webResourceRequest, Bundle bundle) {
+                Log.e("----MainActivity", "shouldInterceptRequest22222222:" +webResourceRequest.getMethod()
+                        +"\n__"+webResourceRequest.getRequestHeaders()
+                        +"\n__"+webResourceRequest.getMethod()
+                        +"\n__"+webResourceRequest.getUrl());
+
                 return super.shouldInterceptRequest(webView, webResourceRequest, bundle);
             }
 
             @Override
             public WebResourceResponse shouldInterceptRequest(WebView view, String url) {
 //                Log.e("----Request", ""+url);
+                Log.e("----MainActivity", "shouldInterceptRequest11111:"+url );
                 return super.shouldInterceptRequest(view, url);
 
             }
-
             @Override
             public WebResourceResponse shouldInterceptRequest(WebView view, WebResourceRequest request) {
+                Log.e("----MainActivity", "shouldInterceptRequest:" +request.getUrl()
+                        +"\n__"+request.getRequestHeaders()
+                        +"\n__"+request.getMethod()
+                        +"\n__"+request.getUrl());
                 return super.shouldInterceptRequest(view, request);
             }
+            @Override
+            public void onReceivedLoginRequest(WebView webView, String s, String s1, String s2) {
+                Log.e("----MainActivity", "onReceivedLoginRequest:" + s);
+                super.onReceivedLoginRequest(webView, s, s1, s2);
+            }
+
+            @Override
+            public void onFormResubmission(WebView webView, Message message, Message message1) {
+                Log.e("----MainActivity", "onFormResubmission:" );
+                super.onFormResubmission(webView, message, message1);
+            }
+
+            @Override
+            public void onReceivedHttpError(WebView webView, WebResourceRequest webResourceRequest, WebResourceResponse webResourceResponse) {
+                super.onReceivedHttpError(webView, webResourceRequest, webResourceResponse);
+                Log.e("----MainActivity", "onReceivedHttpError:"+webResourceRequest.getRequestHeaders()
+                +"\n__"+webResourceRequest.getUrl().getHost()
+                        +"\n__"+webResourceResponse.getReasonPhrase()
+                        +"\n__"+webResourceResponse.getStatusCode()
+                        +"\n__"+webResourceResponse.getResponseHeaders());
+            }
+
+            @Override
+            public void onReceivedHttpAuthRequest(WebView webView, HttpAuthHandler httpAuthHandler, String s, String s1) {
+
+                super.onReceivedHttpAuthRequest(webView, httpAuthHandler, s, s1);
+                Log.e("----MainActivity", "onReceivedHttpAuthRequest:");
+            }
+
+            @Override
+            public void onLoadResource(WebView webView, String s) {
+                super.onLoadResource(webView, s);
+                Log.e("----MainActivity", "onLoadResource:" );
+            }
+
+            @Override
+            public void onReceivedClientCertRequest(WebView webView, ClientCertRequest clientCertRequest) {
+                super.onReceivedClientCertRequest(webView, clientCertRequest);
+                Log.e("----MainActivity", "onReceivedClientCertRequest:" );
+            }
+
+            @Override
+            public void onScaleChanged(WebView webView, float v, float v1) {
+                Log.e("----MainActivity", "onScaleChanged:");
+                super.onScaleChanged(webView, v, v1);
+            }
+
+
+            @Override
+            public void onTooManyRedirects(WebView webView, Message message, Message message1) {
+                super.onTooManyRedirects(webView, message, message1);
+                Log.e("----MainActivity", "onTooManyRedirects:");
+            }
+
+            @Override
+            public void onDetectedBlankScreen(String s, int i) {
+                super.onDetectedBlankScreen(s, i);
+                Log.e("----MainActivity", "onDetectedBlankScreen:");
+            }
+
+
+
 
 
             @Override
