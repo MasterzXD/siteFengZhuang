@@ -338,18 +338,18 @@ android {
 //        zhuimengzhe {
 //            applicationId = "com.oefjaki.zhuimengzhe"
 //        }
-         eg {
-            applicationId = "com.dfsgsdgf.eg"
-        }
+//         eg {
+//            applicationId = "com.dfsgsdgf.eg"
+//         }
 //        huhangguoji {
 //            applicationId = "com.dfasgdfg.huhangguoji"
 //        }
-        feilvbintaiyangcheng {
-            applicationId = "com.yukyuyu.feilvbintaiyangcheng"
-        }
-        weinisirenyulecheng {
-            applicationId = "com.dgdsgr.weinisirenyulecheng"
-        }
+//        feilvbintaiyangcheng {
+//            applicationId = "com.yukyuyu.feilvbintaiyangcheng"
+//        }
+//        weinisirenyulecheng {
+//            applicationId = "com.dgdsgr.weinisirenyulecheng"
+//        }
 
     }
 
