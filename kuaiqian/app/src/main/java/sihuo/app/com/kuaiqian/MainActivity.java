@@ -149,7 +149,7 @@ public class MainActivity extends Activity {
                 @Override
                 public void run() {
                     vs.inflate();
-                    initView();
+                    loadHome();
                 }
             },500);
         }
