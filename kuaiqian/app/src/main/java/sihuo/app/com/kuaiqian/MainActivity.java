@@ -48,6 +48,8 @@ import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
 import com.tencent.smtt.sdk.WebStorage;
 import com.tencent.smtt.sdk.WebView;
 import com.tencent.smtt.sdk.WebViewClient;
+import com.uuzuche.lib_zxing.activity.CaptureActivity;
+import com.uuzuche.lib_zxing.activity.CodeUtils;
 
 import android.view.ViewGroup;
 import android.view.ViewStub;
@@ -82,6 +84,7 @@ import sihuo.app.com.kuaiqian.zxing.DecodeImage;
 public class MainActivity extends Activity {
     final  int FILE_CHOOSER_RESULT_CODE = 40;
     final  int FILE_CHOOSER_CAMERA = 22;
+    final  int QUCODE_REQUEST = 11;
     ValueCallback<Uri[]> uploadMessage;
     X5WebView webview;
     ImageView floatHome,floatBack;
@@ -130,10 +133,10 @@ public class MainActivity extends Activity {
                 @Override
                 public void run() {
                     vs.inflate();
-                    initView();
-                    doCallback();
+                    loadHome();
+
                 }
-            },500);
+            },100);
 
         }else{
             new LoadingDialog(this).showWithCallBack(new LoadingDialog.HideCallBack(){
@@ -201,19 +204,34 @@ public class MainActivity extends Activity {
         });
     }
 
+    void loadHome(){
+        initConfig();
+        HOME = getResources().getString(R.string.start_url);
+        webview = findViewById(R.id.webview);
+        webview.loadUrl(HOME);
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                initView();
+                doCallback();
+            }
+        },500);
+    }
+
     void initView(){
         DisplayMetrics dm = getResources().getDisplayMetrics();
         density = dm.density;
         screenW = dm.widthPixels;
         screenH = dm.heightPixels;
-        initConfig();
+
 
         getWindow().setFormat(PixelFormat.TRANSLUCENT);
-        HOME = getResources().getString(R.string.start_url);
+
 
         findViewById(R.id.title_layout).setVisibility(hasDaoHang?View.VISIBLE:View.INVISIBLE);
 
-        webview = findViewById(R.id.webview);
+
         back = findViewById(R.id.back);
         home = findViewById(R.id.home);
         refresh = findViewById(R.id.refresh);
@@ -362,7 +380,7 @@ public class MainActivity extends Activity {
             }
         });
         setupWebview();
-        webview.loadUrl(HOME);
+
         setInitScale();
 
         initFloatView();
@@ -928,7 +946,14 @@ public class MainActivity extends Activity {
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent);
                         return true;
-                    }else if(!url.toLowerCase().startsWith("http")){
+                    }else if(url.toLowerCase().startsWith("saoyisao")){
+                        Intent intent = new Intent(MainActivity.this,CaptureActivity.class);
+//                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                        intent.setData(Uri.parse(url));
+                        startActivityForResult(intent,QUCODE_REQUEST);
+                        return true;
+                    }
+                    else if(!url.toLowerCase().startsWith("http")){
                         Intent intent = new Intent(Intent.ACTION_VIEW);
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         intent.setData(Uri.parse(url));
@@ -1150,13 +1175,25 @@ public class MainActivity extends Activity {
                 uploadMessage.onReceiveValue(new Uri[]{result});
                 uploadMessage = null;
             }
-        }
-        if (requestCode == FILE_CHOOSER_CAMERA) {
+        }else if (requestCode == FILE_CHOOSER_CAMERA) {
 //            Uri result = data == null || resultCode != RESULT_OK ? null : data.getData();
             File photoFile = new File(getExternalFilesDir(Environment.DIRECTORY_PICTURES),"temp.jpg");
             if (uploadMessage != null) {
                 uploadMessage.onReceiveValue(new Uri[]{Uri.fromFile(photoFile)});
                 uploadMessage = null;
+            }
+        }else if (requestCode == QUCODE_REQUEST) {
+            if (null != data) {
+                Bundle bundle = data.getExtras();
+                if (bundle == null) {
+                    return;
+                }
+                if (bundle.getInt(CodeUtils.RESULT_TYPE) == CodeUtils.RESULT_SUCCESS) {
+                    String result = bundle.getString(CodeUtils.RESULT_STRING);
+                    Toast.makeText(this, "解析结果:" + result, Toast.LENGTH_LONG).show();
+                } else if (bundle.getInt(CodeUtils.RESULT_TYPE) == CodeUtils.RESULT_FAILED) {
+                    Toast.makeText(MainActivity.this, "解析二维码失败", Toast.LENGTH_LONG).show();
+                }
             }
         }
     }
