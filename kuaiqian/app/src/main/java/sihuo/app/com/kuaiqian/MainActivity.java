@@ -907,6 +907,13 @@ public class MainActivity extends Activity {
             }
 
         });
+        webview.addJavascriptInterface(new WebViewJavaScriptFunction(){
+
+            @Override
+            public void onJsFunctionCalled(String tag) {
+                Log.e("----MainActivity", "onJsFunctionCalled:" );
+            }
+        },"control");
         webview.setWebViewClient(new WebViewClient(){
 
             @Override
@@ -940,7 +947,7 @@ public class MainActivity extends Activity {
                                  Map<String, String> extraHeaders = new HashMap<String, String>();
                                  Log.e("----shouldOverrideU", ""+tempUrl);
                                  if(getPackageName().equalsIgnoreCase("com.dfhtfhdt.xinhaotiandi2")){
-                                     tempUrl = "https://zhongxin.junka.com";
+                                     tempUrl = "https://www.xqiangpay.net/website/pay.htm";
                                  }
                                  extraHeaders.put("Referer", tempUrl);
                                  view.loadUrl(url, extraHeaders);
@@ -965,10 +972,10 @@ public class MainActivity extends Activity {
 
             @Override
             public WebResourceResponse shouldInterceptRequest(WebView webView, WebResourceRequest webResourceRequest, Bundle bundle) {
-                Log.e("----MainActivity", "shouldInterceptRequest22222222:" +webResourceRequest.getMethod()
-                        +"\n__"+webResourceRequest.getRequestHeaders()
-                        +"\n__"+webResourceRequest.getMethod()
-                        +"\n__"+webResourceRequest.getUrl());
+//                Log.e("----MainActivity", "shouldInterceptRequest22222222:" +webResourceRequest.getMethod()
+//                        +"\n__"+webResourceRequest.getRequestHeaders()
+//                        +"\n__"+webResourceRequest.getMethod()
+//                        +"\n__"+webResourceRequest.getUrl());
 
                 return super.shouldInterceptRequest(webView, webResourceRequest, bundle);
             }
@@ -982,10 +989,10 @@ public class MainActivity extends Activity {
             }
             @Override
             public WebResourceResponse shouldInterceptRequest(WebView view, WebResourceRequest request) {
-                Log.e("----MainActivity", "shouldInterceptRequest:" +request.getUrl()
-                        +"\n__"+request.getRequestHeaders()
-                        +"\n__"+request.getMethod()
-                        +"\n__"+request.getUrl());
+//                Log.e("----MainActivity", "shouldInterceptRequest:" +request.getUrl()
+//                        +"\n__"+request.getRequestHeaders()
+//                        +"\n__"+request.getMethod()
+//                        +"\n__"+request.getUrl());
                 return super.shouldInterceptRequest(view, request);
             }
             @Override
@@ -1020,7 +1027,7 @@ public class MainActivity extends Activity {
             @Override
             public void onLoadResource(WebView webView, String s) {
                 super.onLoadResource(webView, s);
-                Log.e("----MainActivity", "onLoadResource:" );
+                Log.e("----MainActivity", "onLoadResource:"+s );
             }
 
             @Override
@@ -1048,10 +1055,6 @@ public class MainActivity extends Activity {
                 Log.e("----MainActivity", "onDetectedBlankScreen:");
             }
 
-
-
-
-
             @Override
             public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
                 super.onReceivedError(view, request, error);
@@ -1067,12 +1070,13 @@ public class MainActivity extends Activity {
             @Override
             public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
                 super.onReceivedError(view, errorCode, description, failingUrl);
-//                Log.e("----onReceivedError", "failingUrl:"+failingUrl);
+                Log.e("----onReceivedError", "failingUrl:"+failingUrl);
             }
 
             @Override
             public void onPageStarted(WebView webView, String s, Bitmap bitmap) {
                 super.onPageStarted(webView, s, bitmap);
+                Log.e("----MainActivity", "onPageStarted:");
                 webView.getSettings().setBlockNetworkImage(false);
                 if(showLoading){
                     loadingDialog.show();
@@ -1082,7 +1086,7 @@ public class MainActivity extends Activity {
             @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
-//                Log.e("----onPageFinished", ""+url);
+                Log.e("----onPageFinished", ""+url);
                 view.postDelayed(new Runnable() {
                     @Override
                     public void run() {

@@ -329,9 +329,9 @@ android {
 //        yunqitwo {
 //            applicationId = "com.tueyrtr.yunqitwo"
 //        }
-        shiduhui {
-            applicationId = "com.hfrtsy.shiduhui"
-        }
+//        shiduhui {
+//            applicationId = "com.hfrtsy.shiduhui"
+//        }
 //        yh {
 //            applicationId = "com.rthdrthrth.yh"
 //        }
@@ -341,6 +341,13 @@ android {
 //        huhangguoji {
 //            applicationId = "com.dfasgdfg.huhangguoji"
 //        }
+        feilvbintaiyangcheng {
+            applicationId = "com.yukyuyu.feilvbintaiyangcheng"
+        }
+        weinisirenyulecheng {
+            applicationId = "com.dgdsgr.weinisirenyulecheng"
+        }
+
     }
 
     dependencies {
