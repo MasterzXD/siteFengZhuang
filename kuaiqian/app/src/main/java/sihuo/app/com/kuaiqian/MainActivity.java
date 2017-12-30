@@ -30,7 +30,7 @@ import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.google.zxing.Result;
+//import com.google.zxing.Result;
 import com.tencent.smtt.export.external.interfaces.ClientCertRequest;
 import com.tencent.smtt.export.external.interfaces.ConsoleMessage;
 import com.tencent.smtt.export.external.interfaces.HttpAuthHandler;
@@ -48,8 +48,8 @@ import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
 import com.tencent.smtt.sdk.WebStorage;
 import com.tencent.smtt.sdk.WebView;
 import com.tencent.smtt.sdk.WebViewClient;
-import com.uuzuche.lib_zxing.activity.CaptureActivity;
-import com.uuzuche.lib_zxing.activity.CodeUtils;
+//import com.uuzuche.lib_zxing.activity.CaptureActivity;
+//import com.uuzuche.lib_zxing.activity.CodeUtils;
 
 import android.view.ViewGroup;
 import android.view.ViewStub;
@@ -79,7 +79,7 @@ import sihuo.app.com.kuaiqian.utils.CheckUpdate;
 import sihuo.app.com.kuaiqian.utils.NewWindowView;
 import sihuo.app.com.kuaiqian.utils.WebViewJavaScriptFunction;
 import sihuo.app.com.kuaiqian.utils.X5WebView;
-import sihuo.app.com.kuaiqian.zxing.DecodeImage;
+//import sihuo.app.com.kuaiqian.zxing.DecodeImage;
 
 public class MainActivity extends Activity {
     final  int FILE_CHOOSER_RESULT_CODE = 40;
@@ -521,9 +521,9 @@ public class MainActivity extends Activity {
      * return
      */
     private boolean decodeImage(String sUrl){
-        Result result = DecodeImage.handleQRCodeFormBitmap(getBitmap(sUrl));
+//        Result result = DecodeImage.handleQRCodeFormBitmap(getBitmap(sUrl));
 
-        return result != null;
+        return false;
     }
 
     /**
@@ -947,10 +947,10 @@ public class MainActivity extends Activity {
                         startActivity(intent);
                         return true;
                     }else if(url.toLowerCase().startsWith("saoyisao")){
-                        Intent intent = new Intent(MainActivity.this,CaptureActivity.class);
-//                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                        intent.setData(Uri.parse(url));
-                        startActivityForResult(intent,QUCODE_REQUEST);
+//                        Intent intent = new Intent(MainActivity.this,CaptureActivity.class);
+////                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+////                        intent.setData(Uri.parse(url));
+//                        startActivityForResult(intent,QUCODE_REQUEST);
                         return true;
                     }
                     else if(!url.toLowerCase().startsWith("http")){
@@ -1188,12 +1188,12 @@ public class MainActivity extends Activity {
                 if (bundle == null) {
                     return;
                 }
-                if (bundle.getInt(CodeUtils.RESULT_TYPE) == CodeUtils.RESULT_SUCCESS) {
-                    String result = bundle.getString(CodeUtils.RESULT_STRING);
-                    Toast.makeText(this, "解析结果:" + result, Toast.LENGTH_LONG).show();
-                } else if (bundle.getInt(CodeUtils.RESULT_TYPE) == CodeUtils.RESULT_FAILED) {
-                    Toast.makeText(MainActivity.this, "解析二维码失败", Toast.LENGTH_LONG).show();
-                }
+//                if (bundle.getInt(CodeUtils.RESULT_TYPE) == CodeUtils.RESULT_SUCCESS) {
+//                    String result = bundle.getString(CodeUtils.RESULT_STRING);
+//                    Toast.makeText(this, "解析结果:" + result, Toast.LENGTH_LONG).show();
+//                } else if (bundle.getInt(CodeUtils.RESULT_TYPE) == CodeUtils.RESULT_FAILED) {
+//                    Toast.makeText(MainActivity.this, "解析二维码失败", Toast.LENGTH_LONG).show();
+//                }
             }
         }
     }
