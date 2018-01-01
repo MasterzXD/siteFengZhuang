@@ -265,9 +265,9 @@ android {
 //        xinhaotiandi {
 //            applicationId = "com.sdfgsdre.xinhaotiandi"
 //        }
-//        xinhaotiandi {
-//            applicationId = "com.dfhtfhdt.xinhaotiandi2"
-//        }
+        xinhaotiandi {
+            applicationId = "com.dfhtfhdt.xinhaotiandi2"
+        }
 //        zhifubao {
 //            applicationId = "com.erwtwerg.zhifubao"
 //        }
@@ -351,9 +351,9 @@ android {
 //            applicationId = "com.dgdsgr.weinisirenyulecheng"
 //        }
 //        s2017年12月31日11:37:36 --未结
-        jindaotouzi {
-            applicationId = "com.fghdgfhdgf.jindaotouzi"
-        }
+//        jindaotouzi {
+//            applicationId = "com.fghdgfhdgf.jindaotouzi"
+//        }
 
     }
 

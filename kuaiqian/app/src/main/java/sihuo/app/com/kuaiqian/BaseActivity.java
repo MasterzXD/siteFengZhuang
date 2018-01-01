@@ -103,6 +103,20 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected final void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (!this.isTaskRoot()) { // 判断当前activity是不是所在任务栈的根
+            Intent intent = getIntent();
+            if (intent != null) {
+                String action = intent.getAction();
+                if (intent.hasCategory(Intent.CATEGORY_LAUNCHER) && Intent.ACTION_MAIN.equals(action)) {
+                    finish();
+                    return;
+                }
+            }
+        }
+        if ((getIntent().getFlags() & Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT) != 0) {
+            finish();
+            return;
+        }
         setContentView(R.layout.activity_base);
         initConfig();
         x5WebView = findViewById(R.id.x5webview);
@@ -111,6 +125,8 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         loadingImage = findViewById(R.id.loadingImage);
         refeshLayout = findViewById(R.id.refesh_layout);
         rootView = findViewById(R.id.root_view);
+
+        refeshLayout.setEnabled(refreshable);
         if(loadingTime==0){
             initFloatNavigation();
             if(!fullScreen){
@@ -454,7 +470,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onProgressChanged(WebView webView, int progress) {
                 super.onProgressChanged(webView, progress);
-                if(getResources().getBoolean(R.bool.pull_refresh_enable)){
+                if(refreshable){
                     if(progress==100){
                         refeshLayout.setRefreshing(false);
                     }
