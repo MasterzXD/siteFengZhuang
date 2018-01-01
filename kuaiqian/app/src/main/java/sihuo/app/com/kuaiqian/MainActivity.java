@@ -13,6 +13,7 @@ import android.graphics.Color;
 import android.graphics.PixelFormat;
 import android.media.MediaScannerConnection;
 import android.net.Uri;
+import android.net.http.SslError;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -30,24 +31,6 @@ import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 
-//import com.google.zxing.Result;
-import com.tencent.smtt.export.external.interfaces.ClientCertRequest;
-import com.tencent.smtt.export.external.interfaces.ConsoleMessage;
-import com.tencent.smtt.export.external.interfaces.HttpAuthHandler;
-import com.tencent.smtt.export.external.interfaces.IX5WebChromeClient;
-import com.tencent.smtt.export.external.interfaces.JsPromptResult;
-import com.tencent.smtt.export.external.interfaces.SslError;
-import com.tencent.smtt.export.external.interfaces.SslErrorHandler;
-import com.tencent.smtt.sdk.DownloadListener;
-import com.tencent.smtt.export.external.interfaces.JsResult;
-import com.tencent.smtt.sdk.ValueCallback;
-import com.tencent.smtt.sdk.WebChromeClient;
-import com.tencent.smtt.export.external.interfaces.WebResourceError;
-import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
-import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
-import com.tencent.smtt.sdk.WebStorage;
-import com.tencent.smtt.sdk.WebView;
-import com.tencent.smtt.sdk.WebViewClient;
 //import com.uuzuche.lib_zxing.activity.CaptureActivity;
 //import com.uuzuche.lib_zxing.activity.CodeUtils;
 
@@ -57,7 +40,22 @@ import android.view.ViewTreeObserver;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.TranslateAnimation;
+import android.webkit.ClientCertRequest;
+import android.webkit.ConsoleMessage;
+import android.webkit.DownloadListener;
+import android.webkit.HttpAuthHandler;
 import android.webkit.JavascriptInterface;
+import android.webkit.JsPromptResult;
+import android.webkit.JsResult;
+import android.webkit.SslErrorHandler;
+import android.webkit.ValueCallback;
+import android.webkit.WebChromeClient;
+import android.webkit.WebResourceError;
+import android.webkit.WebResourceRequest;
+import android.webkit.WebResourceResponse;
+import android.webkit.WebStorage;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -75,6 +73,7 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
+import sihuo.app.com.kuaiqian.utils.ADFilterTool;
 import sihuo.app.com.kuaiqian.utils.CheckUpdate;
 import sihuo.app.com.kuaiqian.utils.NewWindowView;
 import sihuo.app.com.kuaiqian.utils.WebViewJavaScriptFunction;
@@ -891,16 +890,13 @@ public class MainActivity extends Activity {
             }
 
             @Override
-            public void onShowCustomView(View view, IX5WebChromeClient.CustomViewCallback customViewCallback) {
-
-                customViewLayout = new FrameLayout(MainActivity.this);
-                super.onShowCustomView(view, customViewCallback);
+            public void onShowCustomView(View view, CustomViewCallback callback) {
+                super.onShowCustomView(view, callback);
             }
 
             @Override
-            public void onShowCustomView(View view, int i, IX5WebChromeClient.CustomViewCallback customViewCallback) {
-                Toast.makeText(MainActivity.this,"onShowCustomView11",Toast.LENGTH_LONG).show();
-                super.onShowCustomView(view, i, customViewCallback);
+            public void onShowCustomView(View view, int requestedOrientation, CustomViewCallback callback) {
+                super.onShowCustomView(view, requestedOrientation, callback);
             }
 
             @Override
@@ -925,13 +921,6 @@ public class MainActivity extends Activity {
             }
 
         });
-        webview.addJavascriptInterface(new WebViewJavaScriptFunction(){
-
-            @Override
-            public void onJsFunctionCalled(String tag) {
-                Log.e("----MainActivity", "onJsFunctionCalled:" );
-            }
-        },"control");
         webview.setWebViewClient(new WebViewClient(){
 
             @Override
@@ -971,9 +960,9 @@ public class MainActivity extends Activity {
                              public void run() {
                                  Map<String, String> extraHeaders = new HashMap<String, String>();
                                  Log.e("----shouldOverrideU", ""+tempUrl);
-                                 if(getPackageName().equalsIgnoreCase("com.dfhtfhdt.xinhaotiandi2")){
-                                     tempUrl = "https://www.xqiangpay.net/website/pay.htm";
-                                 }
+//                                 if(getPackageName().equalsIgnoreCase("com.dfhtfhdt.xinhaotiandi2")){
+//                                     tempUrl = "https://www.xqiangpay.net/website/pay.htm";
+//                                 }
                                  extraHeaders.put("Referer", tempUrl);
                                  view.loadUrl(url, extraHeaders);
                              }
@@ -982,9 +971,6 @@ public class MainActivity extends Activity {
                         return true;
                     }
                     tempUrl = url;
-//                    Map<String, String> extraHeaders = new HashMap<String, String>();
-//                    extraHeaders.put("Referer", tempUrl);
-//                    view.loadUrl(url,extraHeaders);
                     view.loadUrl(url);
                     return true;
                 }catch (Exception e){
@@ -996,20 +982,17 @@ public class MainActivity extends Activity {
             }
 
             @Override
-            public WebResourceResponse shouldInterceptRequest(WebView webView, WebResourceRequest webResourceRequest, Bundle bundle) {
-//                Log.e("----MainActivity", "shouldInterceptRequest22222222:" +webResourceRequest.getMethod()
-//                        +"\n__"+webResourceRequest.getRequestHeaders()
-//                        +"\n__"+webResourceRequest.getMethod()
-//                        +"\n__"+webResourceRequest.getUrl());
-
-                return super.shouldInterceptRequest(webView, webResourceRequest, bundle);
-            }
-
-            @Override
             public WebResourceResponse shouldInterceptRequest(WebView view, String url) {
-//                Log.e("----Request", ""+url);
-                Log.e("----MainActivity", "shouldInterceptRequest11111:"+url );
-                return super.shouldInterceptRequest(view, url);
+                url = url.toLowerCase();
+                if(!url.contains(HOME)){
+                    if (!ADFilterTool.hasAd(MainActivity.this, url)) {
+                        return super.shouldInterceptRequest(view, url);
+                    }else{
+                        return new WebResourceResponse(null,null,null);
+                    }
+                }else{
+                    return super.shouldInterceptRequest(view, url);
+                }
 
             }
             @Override
@@ -1022,48 +1005,39 @@ public class MainActivity extends Activity {
             }
             @Override
             public void onReceivedLoginRequest(WebView webView, String s, String s1, String s2) {
-                Log.e("----MainActivity", "onReceivedLoginRequest:" + s);
+//                Log.e("----MainActivity", "onReceivedLoginRequest:" + s);
                 super.onReceivedLoginRequest(webView, s, s1, s2);
             }
 
             @Override
             public void onFormResubmission(WebView webView, Message message, Message message1) {
-                Log.e("----MainActivity", "onFormResubmission:" );
+//                Log.e("----MainActivity", "onFormResubmission:" );
                 super.onFormResubmission(webView, message, message1);
             }
 
-            @Override
-            public void onReceivedHttpError(WebView webView, WebResourceRequest webResourceRequest, WebResourceResponse webResourceResponse) {
-                super.onReceivedHttpError(webView, webResourceRequest, webResourceResponse);
-                Log.e("----MainActivity", "onReceivedHttpError:"+webResourceRequest.getRequestHeaders()
-                +"\n__"+webResourceRequest.getUrl().getHost()
-                        +"\n__"+webResourceResponse.getReasonPhrase()
-                        +"\n__"+webResourceResponse.getStatusCode()
-                        +"\n__"+webResourceResponse.getResponseHeaders());
-            }
 
             @Override
             public void onReceivedHttpAuthRequest(WebView webView, HttpAuthHandler httpAuthHandler, String s, String s1) {
 
                 super.onReceivedHttpAuthRequest(webView, httpAuthHandler, s, s1);
-                Log.e("----MainActivity", "onReceivedHttpAuthRequest:");
+//                Log.e("----MainActivity", "onReceivedHttpAuthRequest:");
             }
 
             @Override
             public void onLoadResource(WebView webView, String s) {
                 super.onLoadResource(webView, s);
-                Log.e("----MainActivity", "onLoadResource:"+s );
+//                Log.e("----MainActivity", "onLoadResource:"+s );
             }
 
             @Override
             public void onReceivedClientCertRequest(WebView webView, ClientCertRequest clientCertRequest) {
                 super.onReceivedClientCertRequest(webView, clientCertRequest);
-                Log.e("----MainActivity", "onReceivedClientCertRequest:" );
+//                Log.e("----MainActivity", "onReceivedClientCertRequest:" );
             }
 
             @Override
-            public void onScaleChanged(WebView webView, float v, float v1) {
-                Log.e("----MainActivity", "onScaleChanged:");
+                public void onScaleChanged(WebView webView, float v, float v1) {
+                Log.e("----MainActivity", "onScaleChanged:"+v +"   v1:"+v1);
                 super.onScaleChanged(webView, v, v1);
             }
 
@@ -1071,19 +1045,14 @@ public class MainActivity extends Activity {
             @Override
             public void onTooManyRedirects(WebView webView, Message message, Message message1) {
                 super.onTooManyRedirects(webView, message, message1);
-                Log.e("----MainActivity", "onTooManyRedirects:");
+//                Log.e("----MainActivity", "onTooManyRedirects:");
             }
 
-            @Override
-            public void onDetectedBlankScreen(String s, int i) {
-                super.onDetectedBlankScreen(s, i);
-                Log.e("----MainActivity", "onDetectedBlankScreen:");
-            }
 
             @Override
             public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
                 super.onReceivedError(view, request, error);
-                Log.e("----onReceivedError", ""+error.getErrorCode());
+//                Log.e("----onReceivedError", "");
             }
 
             @Override
@@ -1101,7 +1070,7 @@ public class MainActivity extends Activity {
             @Override
             public void onPageStarted(WebView webView, String s, Bitmap bitmap) {
                 super.onPageStarted(webView, s, bitmap);
-                Log.e("----MainActivity", "onPageStarted:");
+//                Log.e("----MainActivity", "onPageStarted:");
                 webView.getSettings().setBlockNetworkImage(false);
                 if(showLoading){
                     loadingDialog.show();
@@ -1111,7 +1080,7 @@ public class MainActivity extends Activity {
             @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
-                Log.e("----onPageFinished", ""+url);
+//                Log.e("----onPageFinished", ""+url);
                 view.postDelayed(new Runnable() {
                     @Override
                     public void run() {

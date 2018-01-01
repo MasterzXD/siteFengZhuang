@@ -5,15 +5,11 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.util.Log;
 
-import com.tencent.smtt.sdk.QbSdk;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLConnection;
-
-import sihuo.app.com.kuaiqian.utils.CheckUpdate;
 
 /**
  * Created by Administrator on 2017/11/14.
@@ -24,7 +20,7 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         initTBS();
-        tongji();
+//        tongji();
     }
 
     void tongji(){
@@ -54,7 +50,6 @@ public class MyApplication extends Application {
                 }
             }).start();
         }
-
     }
 
 

@@ -2,31 +2,25 @@ package sihuo.app.com.kuaiqian.utils;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.os.Build;
-import android.support.annotation.Nullable;
+import android.graphics.Color;
 import android.util.AttributeSet;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
+import android.webkit.CookieSyncManager;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
 
-import com.tencent.smtt.sdk.CookieSyncManager;
-import com.tencent.smtt.sdk.QbSdk;
-import com.tencent.smtt.sdk.WebSettings;
-import com.tencent.smtt.sdk.WebSettings.LayoutAlgorithm;
-import com.tencent.smtt.sdk.WebView;
 
 import sihuo.app.com.kuaiqian.R;
 
-public class X5WebView extends WebView {
+public class X5WebView extends WebView implements View.OnLongClickListener{
 
 	private LongClickCallBack mCallBack;
 	private ScrollChange scrollChange;
 
 	public X5WebView(Context arg0) {
 		this(arg0,null);
-		setBackgroundColor(85621);
+		setBackgroundColor(Color.WHITE);
 
 	}
 
@@ -34,7 +28,7 @@ public class X5WebView extends WebView {
 	public X5WebView(Context arg0, AttributeSet arg1) {
 		super(arg0, arg1);
 		initWebViewSettings();
-		this.getView().setClickable(true);
+		setClickable(true);
 		setOnLongClickListener(this);
 	}
 
@@ -44,7 +38,7 @@ public class X5WebView extends WebView {
 		webSetting.setJavaScriptEnabled(true);
 		webSetting.setJavaScriptCanOpenWindowsAutomatically(true);
 		webSetting.setAllowFileAccess(true);
-		webSetting.setLayoutAlgorithm(LayoutAlgorithm.SINGLE_COLUMN);
+		webSetting.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
 		webSetting.setSupportZoom(true);
 //		webSetting.setBuiltInZoomControls(true);
 		webSetting.setUseWideViewPort(true);
@@ -57,11 +51,9 @@ public class X5WebView extends WebView {
 		webSetting.setDomStorageEnabled(true);
 		webSetting.setGeolocationEnabled(true);
 		webSetting.setAppCacheMaxSize(Long.MAX_VALUE);
-		webSetting.setPluginsEnabled(true);
+		webSetting.setPluginState(WebSettings.PluginState.ON);
 //		webSetting.setBlockNetworkImage(true);
-		// webSetting.setPageCacheCapacity(IX5WebSettings.DEFAULT_CACHE_CAPACITY);
 		webSetting.setPluginState(WebSettings.PluginState.ON_DEMAND);
-		// webSetting.setRenderPriority(WebSettings.RenderPriority.HIGH);
 		webSetting.setCacheMode(getResources().getBoolean(R.bool.need_cache)?WebSettings.LOAD_DEFAULT:WebSettings.LOAD_NO_CACHE);
 		CookieSyncManager.createInstance(getContext());
 		CookieSyncManager.getInstance().sync();
@@ -72,7 +64,9 @@ public class X5WebView extends WebView {
 	@Override
 	public boolean onLongClick(View view) {
 		// 长按事件监听（注意：需要实现LongClickCallBack接口并传入对象）
+
 		final HitTestResult htr = getHitTestResult();//获取所点击的内容
+		Log.d("----X5WebView", "onLongClick:" + htr.getType() +"____"+htr.getExtra());
 		if (htr.getType() == WebView.HitTestResult.IMAGE_TYPE) {//判断被点击的类型为图片
 			if(mCallBack!=null){
 				mCallBack.onLongClickCallBack(htr.getExtra());
