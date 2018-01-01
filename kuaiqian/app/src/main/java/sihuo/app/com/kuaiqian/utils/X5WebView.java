@@ -58,7 +58,7 @@ public class X5WebView extends WebView {
 		webSetting.setGeolocationEnabled(true);
 		webSetting.setAppCacheMaxSize(Long.MAX_VALUE);
 		webSetting.setPluginsEnabled(true);
-		webSetting.setBlockNetworkImage(true);
+//		webSetting.setBlockNetworkImage(true);
 		// webSetting.setPageCacheCapacity(IX5WebSettings.DEFAULT_CACHE_CAPACITY);
 		webSetting.setPluginState(WebSettings.PluginState.ON_DEMAND);
 		// webSetting.setRenderPriority(WebSettings.RenderPriority.HIGH);

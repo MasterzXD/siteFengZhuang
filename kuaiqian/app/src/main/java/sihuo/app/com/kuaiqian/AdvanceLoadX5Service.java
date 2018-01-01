@@ -43,6 +43,7 @@ public class AdvanceLoadX5Service extends Service {
 
         @Override
         public void onCoreInitFinished() {
+            Log.d("----X5Service", "onCoreInitFinished:" );
             // TODO Auto-generated method stub
         }
     };
