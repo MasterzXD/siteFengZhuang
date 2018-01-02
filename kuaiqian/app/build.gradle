@@ -265,9 +265,9 @@ android {
 //        xinhaotiandi {
 //            applicationId = "com.sdfgsdre.xinhaotiandi"
 //        }
-        xinhaotiandi {
-            applicationId = "com.dfhtfhdt.xinhaotiandi2"
-        }
+//        xinhaotiandi {
+//            applicationId = "com.dfhtfhdt.xinhaotiandi2"
+//        }
 //        zhifubao {
 //            applicationId = "com.erwtwerg.zhifubao"
 //        }
@@ -354,7 +354,21 @@ android {
 //        jindaotouzi {
 //            applicationId = "com.fghdgfhdgf.jindaotouzi"
 //        }
-
+        xxzhibojian { //50
+            applicationId = "com.rtyhe.xxzhibojian"
+        }
+//        hengtaiyulecheng {
+//            applicationId = "com.radg.hengtaiyulecheng"
+//        }
+//        wufulinmen {
+//            applicationId = "com.dasfdgf.wufulinmen"
+//        }
+//        yidaibao {
+//            applicationId = "com.drgsre.yidaibao"
+//        }
+//        wangzheyule {
+//            applicationId = "com.dsfad.wangzheyule"
+//        }
     }
 
     dependencies {

@@ -10,13 +10,15 @@
         android:id="@+id/titleLayoutStub"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
+        android:layout_alignParentBottom="true"
         android:layout="@layout/title_layout"/>
 
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/refesh_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/titleLayout"
+        android:layout_marginTop="20dp"
+        android:layout_above="@+id/aaaa"
         >
 
         <sihuo.app.com.kuaiqian.utils.X5WebView
@@ -25,6 +27,11 @@
             android:layout_height="match_parent" />
     </android.support.v4.widget.SwipeRefreshLayout>
 
+    <include layout="@layout/title_layout"
+        android:id="@+id/aaaa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"/>
     <TextView
         android:id="@+id/errorNotice"
         android:layout_width="0dp"

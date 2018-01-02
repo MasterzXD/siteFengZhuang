@@ -53,6 +53,30 @@
                 />
 
             <TextView
+                android:id="@+id/xiazhu"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:scaleType="center"
+                android:text=""
+                android:textSize="18sp"
+                android:gravity="center"
+                android:textColor="#555555"
+                android:paddingRight="10dp"
+                android:drawableRight="@drawable/back_hb"
+                />
+            <TextView
+                android:id="@+id/zhibo"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:scaleType="center"
+                android:text=""
+                android:textSize="18sp"
+                android:gravity="center"
+                android:textColor="#555555"
+                android:paddingRight="10dp"
+                android:drawableRight="@drawable/back_hb"
+                />
+            <TextView
                 android:id="@+id/youhui"
                 android:drawablePadding="-5dp"
                 android:layout_width="match_parent"

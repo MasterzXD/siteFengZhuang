@@ -80,7 +80,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
 
     private ValueCallback<Uri[]> uploadMessage;
 
-    private TextView back,refresh,goForward,closeAp,home,shareBtn,moreBtn,youhui,kefu,loadview;
+    private TextView back,refresh,goForward,closeAp,home,shareBtn,moreBtn,youhui,kefu,loadview,xiazhu,zhibo;
     /*float navigation*/
     private LinearLayout floatLayout;
     private RelativeLayout.LayoutParams floatParams;
@@ -148,11 +148,17 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         loadHome();
         setupWebview();
         if(hasDaoHang){
-            titleLayout = (RelativeLayout) titleLayoutStub.inflate();
-            RelativeLayout.LayoutParams layout = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT,(int)(44*density));
-            layout.topMargin = (int)(20*density);
-            titleLayout.setLayoutParams(layout);
+//            titleLayout = (RelativeLayout) titleLayoutStub.inflate();
+//            RelativeLayout.LayoutParams layout = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT,(int)(44*density));
+//            layout.topMargin = (int)(20*density);
+//            titleLayout.setLayoutParams(layout);
             loadTitle();
+        }else{
+            if(!fullScreen){
+                RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) refeshLayout.getLayoutParams();
+                params.topMargin = (int)(20*density);
+                refeshLayout.setLayoutParams(params);
+            }
         }
     }
 
@@ -175,6 +181,10 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         if(youhui!=null) youhui.setOnClickListener(this);
         kefu = findViewById(R.id.kefu);
         if(kefu!=null) kefu.setOnClickListener(this);
+        xiazhu = findViewById(R.id.xiazhu);
+        if(xiazhu!=null) xiazhu.setOnClickListener(this);
+        zhibo = findViewById(R.id.zhibo);
+        if(zhibo!=null) zhibo.setOnClickListener(this);
         loadview = findViewById(R.id.loadview);
         if(loadview!=null) loadview.setOnClickListener(this);
     }
@@ -201,7 +211,11 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         }else if(v==youhui){
 
         }else if(v==kefu){
-
+            x5WebView.loadUrl("https://kf.gzyscs.cn/");
+        }else if(v==xiazhu){
+            x5WebView.loadUrl("https://www.hs551.com/ssc/wufen");
+        }else if(v==zhibo){
+            x5WebView.loadUrl("http://zb.gzyscs.cn/room/m/?rid=1");
         }
     }
     /**
@@ -306,7 +320,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
                 WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
         if(Build.VERSION.SDK_INT>=21){
-            getWindow().setStatusBarColor(Color.TRANSPARENT);
+//            getWindow().setStatusBarColor(Color.TRANSPARENT);
         }
     }
 
@@ -408,7 +422,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
 
             @Override
             public void onReceivedTouchIconUrl(WebView webView, String s, boolean b) {
-                super.onReceivedTouchIconUrl(webView, s, b);
+//                super.onReceivedTouchIconUrl(webView, s, b);
                 Log.e("----MainActivity", "onReceivedTouchIconUrl:" );
             }
 
@@ -460,11 +474,13 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onShowCustomView(View view, CustomViewCallback callback) {
                 super.onShowCustomView(view, callback);
+                Log.e("----onShowCustomView", "----1111");
             }
 
             @Override
             public void onShowCustomView(View view, int requestedOrientation, CustomViewCallback callback) {
                 super.onShowCustomView(view, requestedOrientation, callback);
+                Log.e("----onShowCustomView", "----2222");
             }
 
             @Override
@@ -528,7 +544,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
 //                                 if(getPackageName().equalsIgnoreCase("com.dfhtfhdt.xinhaotiandi2")){
 //                                     tempUrl = "https://www.xqiangpay.net/website/pay.htm";
 //                                 }
-//                                extraHeaders.put("Referer", tempUrl);
+                                extraHeaders.put("Referer", "http://m.sycdai.com");
                                 view.loadUrl(url, extraHeaders);
                             }
                         },1000);
