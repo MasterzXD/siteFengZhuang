@@ -26,4 +26,6 @@
     <bool name="need_cache">true</bool>
     <!-- 需要引导 -->
     <bool name="need_guide">false</bool>
+    <!-- 底部导航 -->
+    <bool name="bottom_navigation">false</bool>
 </resources>

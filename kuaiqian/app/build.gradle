@@ -354,9 +354,9 @@ android {
 //        jindaotouzi {
 //            applicationId = "com.fghdgfhdgf.jindaotouzi"
 //        }
-        xxzhibojian { //50
-            applicationId = "com.rtyhe.xxzhibojian"
-        }
+//        xxzhibojian { //50
+//            applicationId = "com.rtyhe.xxzhibojian"
+//        }
 //        hengtaiyulecheng {
 //            applicationId = "com.radg.hengtaiyulecheng"
 //        }
@@ -369,6 +369,12 @@ android {
 //        wangzheyule {
 //            applicationId = "com.dsfad.wangzheyule"
 //        }
+//        tiantianhongbaotwo {
+//            applicationId = "com.etyj.tiantianhongbaotwo"
+//        }
+        hongyunyule {
+            applicationId = "com.sdfagh.hongyunyule"
+        }
     }
 
     dependencies {

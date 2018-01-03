@@ -88,7 +88,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
     private int screenW,screenH;
     private float density;
 
-    private boolean refreshable,hasDaoHang,guestureNavigation,fullScreen,floatNavigation;
+    private boolean refreshable,hasDaoHang,guestureNavigation,fullScreen,floatNavigation,bottomNavigation;
     private int loadingTime;
     private ImageView loadingImage;
 
@@ -148,10 +148,10 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         loadHome();
         setupWebview();
         if(hasDaoHang){
-//            titleLayout = (RelativeLayout) titleLayoutStub.inflate();
-//            RelativeLayout.LayoutParams layout = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT,(int)(44*density));
-//            layout.topMargin = (int)(20*density);
-//            titleLayout.setLayoutParams(layout);
+            titleLayout = (RelativeLayout) titleLayoutStub.inflate();
+            RelativeLayout.LayoutParams layout = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT,(int)(44*density));
+            layout.topMargin = (int)(20*density);
+            titleLayout.setLayoutParams(layout);
             loadTitle();
         }else{
             if(!fullScreen){
@@ -301,6 +301,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         loadingTime = getResources().getInteger(R.integer.loading_delay);
         fullScreen = getResources().getBoolean(R.bool.full_screen);
         floatNavigation = getResources().getBoolean(R.bool.float_navigation);
+        bottomNavigation = getResources().getBoolean(R.bool.bottom_navigation);
 
         DisplayMetrics dm = getResources().getDisplayMetrics();
         density = dm.density;
@@ -411,6 +412,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public boolean onJsAlert(WebView webView, String s, String s1, JsResult jsResult) {
                 jsResult.confirm();
+                Log.e("----onJsAlert", "_"+s+"_"+s1);
                 return super.onJsAlert(webView, s, s1, jsResult);
             }
 
@@ -423,7 +425,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onReceivedTouchIconUrl(WebView webView, String s, boolean b) {
 //                super.onReceivedTouchIconUrl(webView, s, b);
-                Log.e("----MainActivity", "onReceivedTouchIconUrl:" );
+                Log.e("----MainActivity", "onReceivedTouchIconUrl:"+s );
             }
 
             @Override
@@ -458,6 +460,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
 
             @Override
             public boolean onCreateWindow(WebView webView, boolean b, boolean b1, Message message) {
+                Log.e("----onCreateWindow", ""+message);
 //                NewWindowView newview = (NewWindowView) getLayoutInflater().inflate(R.layout.new_window,null);
 //                rootView.addView(newview,new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
 //                WebView.WebViewTransport transport = (WebView.WebViewTransport) message.obj;//以下的操作应该就是让新的webview去加载对应的url等操作。
@@ -564,7 +567,12 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
 
             @Override
             public WebResourceResponse shouldInterceptRequest(WebView view, String url) {
+//                Log.e("----", "shouldInterceptRequest----"+url);
                 url = url.toLowerCase();
+                if(url.contains(".swf")||url.contains(".mp4")){
+                    interceptVideo(url);
+                    return new WebResourceResponse(null,null,null);
+                }
                 if(!url.contains(HOME)){ //过滤广告
                     if (!ADFilterTool.hasAd(BaseActivity.this, url)) {
                         return super.shouldInterceptRequest(view, url);
@@ -572,6 +580,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
                         return new WebResourceResponse(null,null,null);
                     }
                 }else{
+
                     return super.shouldInterceptRequest(view, url);
                 }
             }
@@ -600,8 +609,10 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
 
             @Override
             public void onLoadResource(WebView webView, String s) {
-                super.onLoadResource(webView, s);
 //                Log.e("----MainActivity", "onLoadResource:"+s );
+
+                super.onLoadResource(webView, s);
+
             }
 
             @Override
@@ -620,20 +631,21 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onTooManyRedirects(WebView webView, Message message, Message message1) {
                 super.onTooManyRedirects(webView, message, message1);
-//                Log.e("----MainActivity", "onTooManyRedirects:");
+                Log.e("----MainActivity", "onTooManyRedirects:");
             }
 
 
             @Override
             public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
                 super.onReceivedError(view, request, error);
-//                Log.e("----onReceivedError", "");
+                Log.e("----onReceivedError", "");
             }
+
 
             @Override
             public void onReceivedSslError(WebView webView, SslErrorHandler sslErrorHandler, SslError sslError) {
                 sslErrorHandler.proceed();
-//                super.onReceivedSslError(webView, sslErrorHandler, sslError);
+                super.onReceivedSslError(webView, sslErrorHandler, sslError);
             }
 
             @Override
@@ -656,6 +668,15 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
                 BaseActivity.this.onPageFinished(view,url);
             }
         });
+    }
+
+    private void interceptVideo(final String url){
+//        new AlertDialog.Builder(this).setMessage("请选择操作").setPositiveButton("在线播放", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int which) {
+//                x5WebView.loadUrl(url);
+//            }
+//        }).setNegativeButton("取消",null).show();
     }
 
     protected void onPageFinished(WebView view, String url){}
