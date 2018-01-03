@@ -6,17 +6,18 @@
     android:id="@+id/root_view"
     tools:context="sihuo.app.com.kuaiqian.BaseActivity">
 
-    <ViewStub
-        android:id="@+id/titleLayoutStub"
-        android:layout_height="wrap_content"
+    <FrameLayout
+        android:id="@+id/topNavi"
         android:layout_width="match_parent"
-        android:layout="@layout/title_layout"/>
+        android:layout_height="wrap_content"
+        />
 
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/refesh_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/titleLayout"
+        android:layout_below="@+id/topNavi"
+        android:layout_above="@+id/bottomNavi"
         >
 
         <sihuo.app.com.kuaiqian.utils.X5WebView
@@ -25,10 +26,17 @@
             android:layout_height="match_parent" />
     </android.support.v4.widget.SwipeRefreshLayout>
 
+    <FrameLayout
+        android:id="@+id/bottomNavi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        />
+
     <TextView
         android:id="@+id/errorNotice"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:background="#fefefe"
         android:gravity="center"
         android:visibility="invisible"

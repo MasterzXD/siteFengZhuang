@@ -372,8 +372,11 @@ android {
 //        tiantianhongbaotwo {
 //            applicationId = "com.etyj.tiantianhongbaotwo"
 //        }
-        hongyunyule {
-            applicationId = "com.sdfagh.hongyunyule"
+//        hongyunyule {
+//            applicationId = "com.sdfagh.hongyunyule"
+//        }
+        huangguanxianjinwang {
+            applicationId = "com.dasf.huangguanxianjinwang"
         }
     }
 

@@ -72,11 +72,11 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
 
     private X5WebView x5WebView;
     private TextView errorNotice;
-    private ViewStub titleLayoutStub;
     private String HOME;
     private RelativeLayout rootView,titleLayout;
     private LinearLayout sliderViewLayout;
     private SwipeRefreshLayout refeshLayout;
+
 
     private ValueCallback<Uri[]> uploadMessage;
 
@@ -87,9 +87,10 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
     private ImageView floatHome,floatBack;
     private int screenW,screenH;
     private float density;
+    private FrameLayout topNavi,bottomNavi;
 
     private boolean refreshable,hasDaoHang,guestureNavigation,fullScreen,floatNavigation,bottomNavigation;
-    private int loadingTime;
+    private int loadingTime,statusBarHeight;
     private ImageView loadingImage;
 
     private Handler handler = new Handler(){
@@ -121,7 +122,6 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         initConfig();
         x5WebView = findViewById(R.id.x5webview);
         errorNotice = findViewById(R.id.errorNotice);
-        titleLayoutStub = findViewById(R.id.titleLayoutStub);
         loadingImage = findViewById(R.id.loadingImage);
         refeshLayout = findViewById(R.id.refesh_layout);
         rootView = findViewById(R.id.root_view);
@@ -148,20 +148,35 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         loadHome();
         setupWebview();
         if(hasDaoHang){
-            titleLayout = (RelativeLayout) titleLayoutStub.inflate();
-            RelativeLayout.LayoutParams layout = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT,(int)(44*density));
-            layout.topMargin = (int)(20*density);
-            titleLayout.setLayoutParams(layout);
+            topNavi = findViewById(R.id.topNavi);
+            bottomNavi = findViewById(R.id.bottomNavi);
+            View view = getLayoutInflater().inflate(R.layout.title_layout,null);
+            FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,(int)(44*density));
+            if(bottomNavigation){
+                bottomNavi.addView(view,params);
+                if(!fullScreen){
+                    RelativeLayout.LayoutParams params1 = (RelativeLayout.LayoutParams) refeshLayout.getLayoutParams();
+                    params1.topMargin = statusBarHeight;
+                    refeshLayout.setLayoutParams(params1);
+                }
+            }else{
+                topNavi.addView(view,params);
+                if(!fullScreen){
+                    RelativeLayout.LayoutParams layout = (RelativeLayout.LayoutParams) topNavi.getLayoutParams();
+                    layout.topMargin = statusBarHeight;
+                    topNavi.setLayoutParams(layout);
+                }
+            }
             loadTitle();
         }else{
             if(!fullScreen){
                 RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) refeshLayout.getLayoutParams();
-                params.topMargin = (int)(20*density);
+                params.topMargin = statusBarHeight;
                 refeshLayout.setLayoutParams(params);
             }
         }
     }
-
+//13550171708
     protected void loadTitle(){
         back = findViewById(R.id.back);
         if(back!=null) back.setOnClickListener(this);
@@ -303,6 +318,10 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         floatNavigation = getResources().getBoolean(R.bool.float_navigation);
         bottomNavigation = getResources().getBoolean(R.bool.bottom_navigation);
 
+        int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
+        if (resourceId > 0) {
+            statusBarHeight = getResources().getDimensionPixelSize(resourceId);
+        }
         DisplayMetrics dm = getResources().getDisplayMetrics();
         density = dm.density;
         screenW = dm.widthPixels;
