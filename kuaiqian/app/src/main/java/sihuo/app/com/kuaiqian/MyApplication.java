@@ -21,6 +21,16 @@ public class MyApplication extends Application {
         super.onCreate();
         initTBS();
 //        tongji();
+        String src = "55020A0A3232";
+        int l=src.length()/2;
+        //System.out.println(l);
+        byte[] ret = new byte[l];
+        for (int i = 0; i < l; i++)
+        {
+            ret[i] = Byte.decode("0x" + src.substring(i*2,(i+1)*2));
+
+        }
+        Log.d("----MainActivity", "initView:" + ret.length);
     }
 
     void tongji(){

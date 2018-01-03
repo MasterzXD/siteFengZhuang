@@ -45,6 +45,7 @@ import android.webkit.WebViewClient;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -88,6 +89,8 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
     private int screenW,screenH;
     private float density;
 
+    private ProgressBar progressBarH;
+
     private boolean refreshable,hasDaoHang,guestureNavigation,fullScreen,floatNavigation;
     private int loadingTime;
     private ImageView loadingImage;
@@ -118,6 +121,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
             return;
         }
         setContentView(R.layout.activity_base);
+
         initConfig();
         x5WebView = findViewById(R.id.x5webview);
         errorNotice = findViewById(R.id.errorNotice);
@@ -125,8 +129,18 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         loadingImage = findViewById(R.id.loadingImage);
         refeshLayout = findViewById(R.id.refesh_layout);
         rootView = findViewById(R.id.root_view);
+        progressBarH = findViewById(R.id.progressBar);
+        progressBarH.setMax(100);
 
         refeshLayout.setEnabled(refreshable);
+        if(refreshable){
+            refeshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+                @Override
+                public void onRefresh() {
+                    x5WebView.reload();
+                }
+            });
+        }
         if(loadingTime==0){
             initFloatNavigation();
             if(!fullScreen){
@@ -148,10 +162,10 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         loadHome();
         setupWebview();
         if(hasDaoHang){
-//            titleLayout = (RelativeLayout) titleLayoutStub.inflate();
-//            RelativeLayout.LayoutParams layout = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT,(int)(44*density));
-//            layout.topMargin = (int)(20*density);
-//            titleLayout.setLayoutParams(layout);
+            titleLayout = (RelativeLayout) titleLayoutStub.inflate();
+            RelativeLayout.LayoutParams layout = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT,(int)(44*density));
+            layout.topMargin = (int)(20*density);
+            titleLayout.setLayoutParams(layout);
             loadTitle();
         }else{
             if(!fullScreen){
@@ -486,6 +500,15 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onProgressChanged(WebView webView, int progress) {
                 super.onProgressChanged(webView, progress);
+                if(progressBarH!=null){
+                    progressBarH.setProgress(progress);
+                    if(progress==100){
+                        progressBarH.setVisibility(View.INVISIBLE);
+                    }else{
+                        progressBarH.setVisibility(View.VISIBLE);
+                    }
+                }
+
                 if(refreshable){
                     if(progress==100){
                         refeshLayout.setRefreshing(false);

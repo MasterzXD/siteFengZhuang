@@ -219,6 +219,8 @@ public class MainActivity extends Activity {
     }
 
     void initView(){
+
+
         DisplayMetrics dm = getResources().getDisplayMetrics();
         density = dm.density;
         screenW = dm.widthPixels;

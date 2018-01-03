@@ -23,8 +23,15 @@
             android:id="@+id/x5webview"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
-    </android.support.v4.widget.SwipeRefreshLayout>
 
+    </android.support.v4.widget.SwipeRefreshLayout>
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/titleLayoutStub" />
     <TextView
         android:id="@+id/errorNotice"
         android:layout_width="0dp"
@@ -45,4 +52,6 @@
         android:visibility="invisible"
         android:scaleType="centerCrop"
         />
+
+
 </RelativeLayout>
