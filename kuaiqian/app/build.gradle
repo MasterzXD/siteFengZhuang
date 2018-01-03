@@ -224,9 +224,9 @@ android {
 //        tiantianyule {
 //            applicationId = "com.dfthwes.tiantianyule"
 //        }
-        kuailehongbao {
-            applicationId = "com.uyyyi.kuailehongbao"
-        }
+//        kuailehongbao {
+//            applicationId = "com.uyyyi.kuailehongbao"
+//        }
 //        ned {
 //            applicationId = "com.skjdhga.ned"
 //        }
@@ -372,6 +372,18 @@ android {
 //        lcc{
 //            applicationId = "com.hgjf.lcc"
 //        }
+//        tiantianhongbaotwo {
+//            applicationId = "com.etyj.tiantianhongbaotwo"
+//        }
+//        hongyunyule {
+//            applicationId = "com.sdfagh.hongyunyule"
+//        }
+//        huangguanxianjinwang {
+//            applicationId = "com.dasf.huangguanxianjinwang"
+//        }
+        huangguanguiji {
+            applicationId = "com.ewrwer.huangguanguiji"
+        }
     }
 
     dependencies {

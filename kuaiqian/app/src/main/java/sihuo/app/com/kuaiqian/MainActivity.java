@@ -75,6 +75,7 @@ import java.util.Map;
 
 import sihuo.app.com.kuaiqian.utils.ADFilterTool;
 import sihuo.app.com.kuaiqian.utils.CheckUpdate;
+import sihuo.app.com.kuaiqian.utils.LogUtil;
 import sihuo.app.com.kuaiqian.utils.NewWindowView;
 import sihuo.app.com.kuaiqian.utils.WebViewJavaScriptFunction;
 import sihuo.app.com.kuaiqian.utils.X5WebView;
@@ -440,7 +441,7 @@ public class MainActivity extends Activity {
     void setInitScale(){
 //        WindowManager wm = (WindowManager) this.getSystemService(Context.WINDOW_SERVICE);
 //        int width = wm.getDefaultDisplay().getWidth();
-//        Log.e("----MainActivity", "setupWebview:" + width);
+//        LogUtil.le("----MainActivity", "setupWebview:" + width);
 //        webview.setInitialScale(50);
 
     }
@@ -757,7 +758,7 @@ public class MainActivity extends Activity {
 //                            Bitmap bitmap = BitmapFactory.decodeByteArray(data,0,data.length);
 //                            Result result = DecodeImage.handleQRCodeFormBitmap(bitmap);
 //                            if(result!=null){
-//                                Log.e("----onLongClickCallBack", ""+result.getText());
+//                                LogUtil.le("----onLongClickCallBack", ""+result.getText());
 //                                webview.loadUrl(result.getText());
 //                            }
                                 }else if(imgUrl.startsWith("http")){
@@ -776,7 +777,7 @@ public class MainActivity extends Activity {
             webview.setScrollChange(new X5WebView.ScrollChange() {
                 @Override
                 public void onScrollChanged(int l, int t, int oldl, int oldt) {
-                    Log.e("----MainActivity", "onScrollChanged:" + t);
+                    LogUtil.le("----MainActivity", "onScrollChanged:" + t);
                     if(t==0){
                         refreshLayout.setEnabled(true);
                     }else{
@@ -836,43 +837,43 @@ public class MainActivity extends Activity {
 
             @Override
             public boolean onConsoleMessage(ConsoleMessage consoleMessage) {
-                Log.e("----MainActivity", "onConsoleMessage:" );
+                LogUtil.le("----MainActivity", "onConsoleMessage:" );
                 return super.onConsoleMessage(consoleMessage);
             }
 
             @Override
             public void onReceivedTouchIconUrl(WebView webView, String s, boolean b) {
                 super.onReceivedTouchIconUrl(webView, s, b);
-                Log.e("----MainActivity", "onReceivedTouchIconUrl:" );
+                LogUtil.le("----MainActivity", "onReceivedTouchIconUrl:"+s );
             }
 
             @Override
             public void onReachedMaxAppCacheSize(long l, long l1, WebStorage.QuotaUpdater quotaUpdater) {
                 super.onReachedMaxAppCacheSize(l, l1, quotaUpdater);
-                Log.e("----MainActivity", "onReachedMaxAppCacheSize:" );
+                LogUtil.le("----MainActivity", "onReachedMaxAppCacheSize:" );
             }
 
             @Override
             public boolean onJsBeforeUnload(WebView webView, String s, String s1, JsResult jsResult) {
-                Log.e("----MainActivity", "onJsBeforeUnload:");
+                LogUtil.le("----MainActivity", "onJsBeforeUnload:");
                 return super.onJsBeforeUnload(webView, s, s1, jsResult);
             }
 
             @Override
             public boolean onJsPrompt(WebView webView, String s, String s1, String s2, JsPromptResult jsPromptResult) {
-                Log.e("----MainActivity", "onJsPrompt:" );
+                LogUtil.le("----MainActivity", "onJsPrompt:" );
                 return super.onJsPrompt(webView, s, s1, s2, jsPromptResult);
             }
 
             @Override
             public boolean onJsConfirm(WebView webView, String s, String s1, JsResult jsResult) {
-                Log.e("----MainActivity", "onJsConfirm:" );
+                LogUtil.le("----MainActivity", "onJsConfirm:" );
                 return super.onJsConfirm(webView, s, s1, jsResult);
             }
 
             @Override
             public boolean onJsTimeout() {
-                Log.e("----MainActivity", "onJsTimeout:" );
+                LogUtil.le("----MainActivity", "onJsTimeout:" );
                 return super.onJsTimeout();
             }
 
@@ -915,7 +916,7 @@ public class MainActivity extends Activity {
 
             @Override
             public boolean onShowFileChooser(WebView webView, ValueCallback<Uri[]> valueCallback, FileChooserParams fileChooserParams) {
-    //            Log.e("----onShowFileChooser", ""+fileChooserParams);
+    //            LogUtil.le("----onShowFileChooser", ""+fileChooserParams);
                 uploadMessage = valueCallback;
                 openImageChooserActivity();
 //                return super.onShowFileChooser(webView, valueCallback, fileChooserParams);
@@ -929,7 +930,7 @@ public class MainActivity extends Activity {
             public boolean shouldOverrideUrlLoading(final WebView view,final String url) {
                 Uri uri = Uri.parse(url);
 
-                Log.e("----should", ""+url+"__"+tempUrl);
+                LogUtil.le("----should", ""+url+"__"+tempUrl);
 
                 try {
                     if(url.toLowerCase().startsWith("intent://")){
@@ -961,7 +962,7 @@ public class MainActivity extends Activity {
                              @Override
                              public void run() {
                                  Map<String, String> extraHeaders = new HashMap<String, String>();
-                                 Log.e("----shouldOverrideU", ""+tempUrl);
+                                 LogUtil.le("----shouldOverrideU", ""+tempUrl);
 //                                 if(getPackageName().equalsIgnoreCase("com.dfhtfhdt.xinhaotiandi2")){
 //                                     tempUrl = "https://www.xqiangpay.net/website/pay.htm";
 //                                 }
@@ -976,7 +977,7 @@ public class MainActivity extends Activity {
                     view.loadUrl(url);
                     return true;
                 }catch (Exception e){
-//                    Log.e("----should--error", ""+e.getMessage());
+//                    LogUtil.le("----should--error", ""+e.getMessage());
                     Toast.makeText(MainActivity.this, "无法打开指定应用，请先确认应用是否安装！", Toast.LENGTH_SHORT).show();
                 }
                 return super.shouldOverrideUrlLoading(view,url);
@@ -999,7 +1000,7 @@ public class MainActivity extends Activity {
             }
             @Override
             public WebResourceResponse shouldInterceptRequest(WebView view, WebResourceRequest request) {
-//                Log.e("----MainActivity", "shouldInterceptRequest:" +request.getUrl()
+//                LogUtil.le("----MainActivity", "shouldInterceptRequest:" +request.getUrl()
 //                        +"\n__"+request.getRequestHeaders()
 //                        +"\n__"+request.getMethod()
 //                        +"\n__"+request.getUrl());
@@ -1007,13 +1008,13 @@ public class MainActivity extends Activity {
             }
             @Override
             public void onReceivedLoginRequest(WebView webView, String s, String s1, String s2) {
-//                Log.e("----MainActivity", "onReceivedLoginRequest:" + s);
+//                LogUtil.le("----MainActivity", "onReceivedLoginRequest:" + s);
                 super.onReceivedLoginRequest(webView, s, s1, s2);
             }
 
             @Override
             public void onFormResubmission(WebView webView, Message message, Message message1) {
-//                Log.e("----MainActivity", "onFormResubmission:" );
+//                LogUtil.le("----MainActivity", "onFormResubmission:" );
                 super.onFormResubmission(webView, message, message1);
             }
 
@@ -1022,24 +1023,24 @@ public class MainActivity extends Activity {
             public void onReceivedHttpAuthRequest(WebView webView, HttpAuthHandler httpAuthHandler, String s, String s1) {
 
                 super.onReceivedHttpAuthRequest(webView, httpAuthHandler, s, s1);
-//                Log.e("----MainActivity", "onReceivedHttpAuthRequest:");
+//                LogUtil.le("----MainActivity", "onReceivedHttpAuthRequest:");
             }
 
             @Override
             public void onLoadResource(WebView webView, String s) {
                 super.onLoadResource(webView, s);
-//                Log.e("----MainActivity", "onLoadResource:"+s );
+//                LogUtil.le("----MainActivity", "onLoadResource:"+s );
             }
 
             @Override
             public void onReceivedClientCertRequest(WebView webView, ClientCertRequest clientCertRequest) {
                 super.onReceivedClientCertRequest(webView, clientCertRequest);
-//                Log.e("----MainActivity", "onReceivedClientCertRequest:" );
+//                LogUtil.le("----MainActivity", "onReceivedClientCertRequest:" );
             }
 
             @Override
                 public void onScaleChanged(WebView webView, float v, float v1) {
-                Log.e("----MainActivity", "onScaleChanged:"+v +"   v1:"+v1);
+                LogUtil.le("----MainActivity", "onScaleChanged:"+v +"   v1:"+v1);
                 super.onScaleChanged(webView, v, v1);
             }
 
@@ -1047,14 +1048,14 @@ public class MainActivity extends Activity {
             @Override
             public void onTooManyRedirects(WebView webView, Message message, Message message1) {
                 super.onTooManyRedirects(webView, message, message1);
-//                Log.e("----MainActivity", "onTooManyRedirects:");
+//                LogUtil.le("----MainActivity", "onTooManyRedirects:");
             }
 
 
             @Override
             public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
                 super.onReceivedError(view, request, error);
-//                Log.e("----onReceivedError", "");
+//                LogUtil.le("----onReceivedError", "");
             }
 
             @Override
@@ -1066,13 +1067,13 @@ public class MainActivity extends Activity {
             @Override
             public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
                 super.onReceivedError(view, errorCode, description, failingUrl);
-                Log.e("----onReceivedError", "failingUrl:"+failingUrl);
+                LogUtil.le("----onReceivedError", "failingUrl:"+failingUrl);
             }
 
             @Override
             public void onPageStarted(WebView webView, String s, Bitmap bitmap) {
                 super.onPageStarted(webView, s, bitmap);
-//                Log.e("----MainActivity", "onPageStarted:");
+//                LogUtil.le("----MainActivity", "onPageStarted:");
                 webView.getSettings().setBlockNetworkImage(false);
                 if(showLoading){
                     loadingDialog.show();
@@ -1082,7 +1083,7 @@ public class MainActivity extends Activity {
             @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
-//                Log.e("----onPageFinished", ""+url);
+//                LogUtil.le("----onPageFinished", ""+url);
                 view.postDelayed(new Runnable() {
                     @Override
                     public void run() {
