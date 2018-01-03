@@ -378,12 +378,12 @@ android {
 //        hongyunyule {
 //            applicationId = "com.sdfagh.hongyunyule"
 //        }
-//        huangguanxianjinwang {
-//            applicationId = "com.dasf.huangguanxianjinwang"
-//        }
-        huangguanguiji {
-            applicationId = "com.ewrwer.huangguanguiji"
+        huangguanxianjinwang {
+            applicationId = "com.dasf.huangguanxianjinwang"
         }
+//        huangguanguiji {
+//            applicationId = "com.ewrwer.huangguanguiji"
+//        }
     }
 
     dependencies {

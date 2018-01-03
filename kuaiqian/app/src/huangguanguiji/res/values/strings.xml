@@ -14,7 +14,7 @@
     <!-- 保留头部导航栏 -->
     <bool name="save_daohang">true</bool>
     <!-- 是否主页全屏 -->
-    <bool name="full_screen">false</bool>
+    <bool name="full_screen">true</bool>
     <!-- 支付否支持下拉刷新 -->
     <bool name="pull_refresh_enable">false</bool>
     <!-- 手势导航 -->
