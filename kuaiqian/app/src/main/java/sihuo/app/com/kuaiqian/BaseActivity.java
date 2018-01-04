@@ -360,6 +360,8 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    String tempUrl;
+
     void setupWebview() {
         x5WebView.setDownloadListener(new DownloadListener() {
             @Override
@@ -453,7 +455,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
 
             @Override
             public boolean onConsoleMessage(ConsoleMessage consoleMessage) {
-                Log.e("----MainActivity", "onConsoleMessage:" + consoleMessage.message());
+//                Log.e("----MainActivity", "onConsoleMessage:" + consoleMessage.message());
                 return super.onConsoleMessage(consoleMessage);
             }
 
@@ -559,7 +561,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
 
             @Override
             public boolean shouldOverrideUrlLoading(final WebView view, final String url) {
-                Uri uri = Uri.parse(url);
+//                Uri uri = Uri.parse(url);
 
                 Log.e("----should", "" + url);
 
@@ -569,32 +571,42 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent);
                         return true;
-                    } else if (!url.toLowerCase().startsWith("http")) {
+                    }else if (!url.toLowerCase().startsWith("http")) {
                         Intent intent = new Intent(Intent.ACTION_VIEW);
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         intent.setData(Uri.parse(url));
                         startActivity(intent);
                         return true;
-                    } else if (url.toLowerCase().contains("https://qr.alipay.com")) {
+                    }
+                    else if (url.toLowerCase().contains("https://qr.alipay.com")) {
                         int index = url.toLowerCase().indexOf("https://qr.alipay.com");
                         String newUrl = url.substring(index);
                         view.loadUrl(newUrl);
                         return true;
-                    } else if (url.toLowerCase().contains("wx.tenpay.com")) {
-                        Map<String, String> extraHeaders = new HashMap<String, String>();
-                        extraHeaders.put("Referer", "http://pay.iuuc.net/");
-                        view.loadUrl(url, extraHeaders);
-//                        view.loadUrl(url);
-                        return true;
-                    }else if (url.toLowerCase().contains("https://payh5.bbnpay.com")) {
-                        Map<String, String> extraHeaders = new HashMap<String, String>();
-                        extraHeaders.put("Referer", "http://pay.iuuc.net/");
-                        view.loadUrl(url, extraHeaders);
-//                        view.loadUrl(url);
-                        return true;
                     }
-//                    tempUrl = url;
+//                    else if (url.toLowerCase().contains("wx.tenpay.com")) {
+//                        Map<String, String> extraHeaders = new HashMap<String, String>();
+//                        extraHeaders.put("Referer", "http://pay.iuuc.net/");
+//                        view.loadUrl(url, extraHeaders);
+//                        return true;
+//                    }
+//                    else if (url.toLowerCase().contains("https://payh5.bbnpay.com/h5payc/singlepay_wxc.php")) {
+//                        Map<String, String> extraHeaders = new HashMap<String, String>();
+//                        extraHeaders.put("Referer", "http://pay.iuuc.net/");
+//                        view.loadUrl(url, extraHeaders);
+////                        view.loadUrl(url);
+//                        return true;
+//                    }
+//                    else if (url.toLowerCase().contains("https://payh5.bbnpay.com/h5payc/wayc.php")) {
+//                        Map<String, String> extraHeaders = new HashMap<String, String>();
+//                        extraHeaders.put("Referer", tempUrl);
+//                        view.loadUrl(url, extraHeaders);
+////                        view.loadUrl(url);
+//                        return true;
+//                    }
+                    tempUrl = url;
                     view.loadUrl(url);
+//                    super.shouldOverrideUrlLoading(view,url);
                     return true;
                 } catch (Exception e) {
 //                    Log.e("----should--error", ""+e.getMessage());
@@ -608,20 +620,20 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
             public WebResourceResponse shouldInterceptRequest(WebView view, String url) {
                 Log.e("----", "shouldInterceptRequest----" + url);
                 url = url.toLowerCase();
-                if (url.contains(".swf") || url.contains(".mp4")) {
-                    interceptVideo(url);
-                    return new WebResourceResponse(null, null, null);
-                }
-                if (!url.contains(HOME)) { //过滤广告
-                    if (!ADFilterTool.hasAd(BaseActivity.this, url)) {
-                        return super.shouldInterceptRequest(view, url);
-                    } else {
-                        return new WebResourceResponse(null, null, null);
-                    }
-                } else {
+//                if (url.contains(".swf") || url.contains(".mp4")) {
+//                    interceptVideo(url);
+//                    return new WebResourceResponse(null, null, null);
+//                }
+//                if (!url.contains(HOME)) { //过滤广告
+//                    if (!ADFilterTool.hasAd(BaseActivity.this, url)) {
+//                        return super.shouldInterceptRequest(view, url);
+//                    } else {
+//                        return new WebResourceResponse(null, null, null);
+//                    }
+//                } else {
 
                     return super.shouldInterceptRequest(view, url);
-                }
+//                }
             }
 
             @Override
@@ -629,7 +641,6 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
                 if(Build.VERSION.SDK_INT>=21){
                     Log.d("----BaseActivity", "shouldInterceptRequest:" + request.getUrl()+"\n"+request.getRequestHeaders());
                 }
-
                 return super.shouldInterceptRequest(view, request);
             }
 
@@ -705,13 +716,11 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
             public void onPageStarted(WebView webView, String s, Bitmap bitmap) {
                 super.onPageStarted(webView, s, bitmap);
                 errorNotice.setVisibility(View.INVISIBLE);
-                BaseActivity.this.onPageStarted(webView, s);
             }
 
             @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
-                BaseActivity.this.onPageFinished(view, url);
             }
         });
     }
@@ -724,13 +733,6 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
 //            }
 //        }).setNegativeButton("取消",null).show();
     }
-
-    protected void onPageFinished(WebView view, String url) {
-    }
-
-    protected void onPageStarted(WebView view, String url) {
-    }
-
 
     private void openImageChooserActivity() {
         new AlertDialog.Builder(BaseActivity.this).setMessage("请选择方式")

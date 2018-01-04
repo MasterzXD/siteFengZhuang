@@ -384,6 +384,9 @@ android {
 //        huangguanguiji {
 //            applicationId = "com.ewrwer.huangguanguiji"
 //        }
+//        lasiweijiasitwo {
+//            applicationId = "com.ydearf.lasiweijiasitwo"
+//        }
     }
 
     dependencies {
