@@ -323,9 +323,9 @@ android {
 //        tisudai {  //50
 //            applicationId = "com.yukef.tisudai"
 //        }
-//        fulicaipiao {
-//            applicationId = "com.tyuiykl.fulicaipiao"
-//        }
+        fulicaipiao {
+            applicationId = "com.tyuiykl.fulicaipiao"
+        }
 //        yunqitwo {
 //            applicationId = "com.tueyrtr.yunqitwo"
 //        }
@@ -378,14 +378,17 @@ android {
 //        hongyunyule {
 //            applicationId = "com.sdfagh.hongyunyule"
 //        }
-        huangguanxianjinwang {
-            applicationId = "com.dasf.huangguanxianjinwang"
-        }
+//        huangguanxianjinwang {
+//            applicationId = "com.dasf.huangguanxianjinwang"
+//        }
 //        huangguanguiji {
 //            applicationId = "com.ewrwer.huangguanguiji"
 //        }
 //        lasiweijiasitwo {
 //            applicationId = "com.ydearf.lasiweijiasitwo"
+//        }
+//        fuhuiguojithree {
+//            applicationId = "com.rtysr.fuhuiguojithree"
 //        }
     }
 

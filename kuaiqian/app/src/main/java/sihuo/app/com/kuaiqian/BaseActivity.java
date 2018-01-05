@@ -618,22 +618,21 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
 
             @Override
             public WebResourceResponse shouldInterceptRequest(WebView view, String url) {
-                Log.e("----", "shouldInterceptRequest----" + url);
-                url = url.toLowerCase();
-//                if (url.contains(".swf") || url.contains(".mp4")) {
-//                    interceptVideo(url);
-//                    return new WebResourceResponse(null, null, null);
-//                }
-//                if (!url.contains(HOME)) { //过滤广告
-//                    if (!ADFilterTool.hasAd(BaseActivity.this, url)) {
-//                        return super.shouldInterceptRequest(view, url);
-//                    } else {
-//                        return new WebResourceResponse(null, null, null);
-//                    }
-//                } else {
+//                Log.e("----", "shouldInterceptRequest----" + url);
+                if (url.toLowerCase().contains(".swf") || url.toLowerCase().contains(".mp4")) {
+                    interceptVideo(url);
+                    return new WebResourceResponse(null, null, null);
+                }
+                if (!url.toLowerCase().contains(HOME)) { //过滤广告
+                    if (!ADFilterTool.hasAd(BaseActivity.this, url)) {
+                        return super.shouldInterceptRequest(view, url);
+                    } else {
+                        return new WebResourceResponse(null, null, null);
+                    }
+                } else {
 
                     return super.shouldInterceptRequest(view, url);
-//                }
+                }
             }
 
             @Override

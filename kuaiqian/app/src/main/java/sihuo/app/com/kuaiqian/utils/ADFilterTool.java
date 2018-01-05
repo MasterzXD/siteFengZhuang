@@ -14,7 +14,7 @@ public class ADFilterTool {
         Resources res = context.getResources();
         String[] adUrls = res.getStringArray(R.array.adBlockUrl);
         for (String adUrl : adUrls) {
-            if (url.contains(adUrl)) {
+            if (url.toLowerCase().contains(adUrl)) {
                 return true;
             }
         }
