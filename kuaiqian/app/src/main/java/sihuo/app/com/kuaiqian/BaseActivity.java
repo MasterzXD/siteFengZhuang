@@ -461,8 +461,8 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
 
             @Override
             public void onReceivedTouchIconUrl(WebView webView, String s, boolean b) {
-//                super.onReceivedTouchIconUrl(webView, s, b);
-                Log.e("----MainActivity", "onReceivedTouchIconUrl:" + s);
+                super.onReceivedTouchIconUrl(webView, s, b);
+//                Log.e("----MainActivity", "onReceivedTouchIconUrl:" + s);
             }
 
             @Override
@@ -584,30 +584,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
                         view.loadUrl(newUrl);
                         return true;
                     }
-//                    else if (url.toLowerCase().contains("wx.tenpay.com")) {
-//                        Map<String, String> extraHeaders = new HashMap<String, String>();
-//                        extraHeaders.put("Referer", "http://pay.iuuc.net/");
-//                        view.loadUrl(url, extraHeaders);
-//                        return true;
-//                    }
-//                    else if (url.toLowerCase().contains("https://payh5.bbnpay.com/h5payc/singlepay_wxc.php")) {
-//                        Map<String, String> extraHeaders = new HashMap<String, String>();
-//                        extraHeaders.put("Referer", "http://pay.iuuc.net/");
-//                        view.loadUrl(url, extraHeaders);
-////                        view.loadUrl(url);
-//                        return true;
-//                    }
-//                    else if (url.toLowerCase().contains("https://payh5.bbnpay.com/h5payc/wayc.php")) {
-//                        Map<String, String> extraHeaders = new HashMap<String, String>();
-//                        extraHeaders.put("Referer", tempUrl);
-//                        view.loadUrl(url, extraHeaders);
-////                        view.loadUrl(url);
-//                        return true;
-//                    }
-                    tempUrl = url;
-                    view.loadUrl(url);
-//                    super.shouldOverrideUrlLoading(view,url);
-                    return true;
+                    return super.shouldOverrideUrlLoading(view,url);
                 } catch (Exception e) {
 //                    Log.e("----should--error", ""+e.getMessage());
                     Toast.makeText(BaseActivity.this, "无法打开指定应用，请先确认应用是否安装！", Toast.LENGTH_SHORT).show();
@@ -638,7 +615,6 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public WebResourceResponse shouldInterceptRequest(WebView view, WebResourceRequest request) {
                 if(Build.VERSION.SDK_INT>=21){
-                    Log.d("----BaseActivity", "shouldInterceptRequest:" + request.getUrl()+"\n"+request.getRequestHeaders());
                 }
                 return super.shouldInterceptRequest(view, request);
             }
@@ -646,7 +622,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
 
             @Override
             public void onReceivedLoginRequest(WebView webView, String s, String s1, String s2) {
-                Log.e("----MainActivity", "onReceivedLoginRequest:" + s);
+//                Log.e("----MainActivity", "onReceivedLoginRequest:" + s);
                 super.onReceivedLoginRequest(webView, s, s1, s2);
             }
 
@@ -660,7 +636,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
             public void onReceivedHttpAuthRequest(WebView webView, HttpAuthHandler httpAuthHandler, String s, String s1) {
 
                 super.onReceivedHttpAuthRequest(webView, httpAuthHandler, s, s1);
-                Log.e("----MainActivity", "onReceivedHttpAuthRequest:");
+//                Log.e("----MainActivity", "onReceivedHttpAuthRequest:");
             }
 
             @Override
@@ -674,12 +650,12 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onReceivedClientCertRequest(WebView webView, ClientCertRequest clientCertRequest) {
                 super.onReceivedClientCertRequest(webView, clientCertRequest);
-                Log.e("----MainActivity", "onReceivedClientCertRequest:" );
+//                Log.e("----MainActivity", "onReceivedClientCertRequest:" );
             }
 
             @Override
             public void onScaleChanged(WebView webView, float v, float v1) {
-                Log.e("----MainActivity", "onScaleChanged:" + v + "   v1:" + v1);
+//                Log.e("----MainActivity", "onScaleChanged:" + v + "   v1:" + v1);
                 super.onScaleChanged(webView, v, v1);
             }
 
@@ -687,14 +663,14 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onTooManyRedirects(WebView webView, Message message, Message message1) {
                 super.onTooManyRedirects(webView, message, message1);
-                Log.e("----MainActivity", "onTooManyRedirects:");
+//                Log.e("----MainActivity", "onTooManyRedirects:");
             }
 
 
             @Override
             public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
                 super.onReceivedError(view, request, error);
-                Log.e("----onReceivedError", "");
+//                Log.e("----onReceivedError", "");
             }
 
 
@@ -707,7 +683,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
                 super.onReceivedError(view, errorCode, description, failingUrl);
-                Log.e("----onReceivedError", "failingUrl:" + failingUrl);
+//                Log.e("----onReceivedError", "failingUrl:" + failingUrl);
                 errorNotice.setVisibility(View.VISIBLE);
             }
 
