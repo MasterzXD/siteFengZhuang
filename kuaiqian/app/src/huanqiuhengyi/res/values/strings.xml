@@ -1,6 +1,6 @@
 <resources>
     <!-- APP名字 -->
-    <string name="app_name">环球恒亿</string>
+    <string name="app_name">恒亿商城</string>
     <!-- 启动地址 -->
     <string name="start_url">http://mdatac.cn/</string>
     <!-- 主页地址 -->

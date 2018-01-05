@@ -197,9 +197,9 @@ android {
 //        diaomtfour {
 //            applicationId = "com.adsfdsf.diaomtfour"
 //        }
-//        huanqiuhengyi {
-//            applicationId = "com.ryergrtg.huanqiuhengyi"
-//        }
+        huanqiuhengyi {
+            applicationId = "com.ryergrtg.huanqiuhengyi"
+        }
 //        aomenweinisirentwo {
 //            applicationId = "com.sdfasdf.aomenweinisirentwo"
 //        }
