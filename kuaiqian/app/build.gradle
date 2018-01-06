@@ -101,9 +101,9 @@ android {
 //        xingjiyulecheng {
 //            applicationId = "sihuo.app.com.xingjiyulecheng"
 //        }
-//        huile {
-//            applicationId = "sihuo.app.com.huile"
-//        }
+        huile {
+            applicationId = "sihuo.app.com.huile"
+       }
 //        shuzibowuguan {
 //            applicationId = "sihuo.app.com.shuzibowuguan"
 //        }
