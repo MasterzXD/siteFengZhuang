@@ -36,6 +36,8 @@ public class X5WebView extends WebView implements View.OnLongClickListener{
 	private void initWebViewSettings() {
 		setOverScrollMode(OVER_SCROLL_ALWAYS);
 		WebSettings webSetting = this.getSettings();
+		if(Build.VERSION.SDK_INT>=19)
+			setWebContentsDebuggingEnabled(false);
 		webSetting.setJavaScriptEnabled(true);
 		webSetting.setJavaScriptCanOpenWindowsAutomatically(true);
 		webSetting.setAllowFileAccess(true);

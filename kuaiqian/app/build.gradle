@@ -197,9 +197,9 @@ android {
 //        diaomtfour {
 //            applicationId = "com.adsfdsf.diaomtfour"
 //        }
-//        huanqiuhengyi {
-//            applicationId = "com.ryergrtg.huanqiuhengyi"
-//        }
+        huanqiuhengyi {
+            applicationId = "com.ryergrtg.huanqiuhengyi"
+        }
 //        aomenweinisirentwo {
 //            applicationId = "com.sdfasdf.aomenweinisirentwo"
 //        }
@@ -387,9 +387,15 @@ android {
 //        yilufa {
 //            applicationId = "com.fjyj.yilufa"
 //        }
-        shuihuzhuan {
-            applicationId = "com.fgsfg.shuihuzhuan"
-        }
+//        shuihuzhuan {
+//            applicationId = "com.fgsfg.shuihuzhuan"
+//        }
+//        lasiweijiasitwo {
+//            applicationId = "com.ydearf.lasiweijiasitwo"
+//        }
+//        fuhuiguojithree {
+//            applicationId = "com.rtysr.fuhuiguojithree"
+//        }
     }
 
     dependencies {
