@@ -53,6 +53,8 @@ import android.widget.Toast;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import sihuo.app.com.kuaiqian.utils.ADFilterTool;
 import sihuo.app.com.kuaiqian.utils.NewWindowView;
@@ -158,6 +160,8 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
                 }
             }, loadingTime);
         }
+        Log.d("----BaseActivity", "onCreate:开始timmer" );
+
         loadHome();
         setupWebview();
         if (hasDaoHang) {
@@ -801,11 +805,12 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
-            if (getResources().getBoolean(R.bool.can_goback) && x5WebView.canGoBack()) {
-//            if(getResources().getBoolean(R.bool.can_goback) && !webview.getUrl().equals(HOME) && webview.canGoBack()){
-                x5WebView.goBack();
-                return true;
-            }
+//            if ((getResources().getBoolean(R.bool.can_goback) && x5WebView.canGoBack()) || x5WebView.getUrl().equals(HOME)) {
+////            if(getResources().getBoolean(R.bool.can_goback) && !webview.getUrl().equals(HOME) && webview.canGoBack()){
+//                Log.d("----BaseActivity", "onKeyDown:" + x5WebView.getUrl());
+//                x5WebView.goBack();
+//                return true;
+//            }
             if (System.currentTimeMillis() - mills > 1000) {
                 Toast.makeText(this, getString(R.string.exit), Toast.LENGTH_SHORT).show();
                 mills = System.currentTimeMillis();
