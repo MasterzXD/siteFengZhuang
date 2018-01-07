@@ -350,11 +350,10 @@ android {
 //        weinisirenyulecheng {
 //            applicationId = "com.dgdsgr.weinisirenyulecheng"
 //        }
-//        s2017年12月31日11:37:36 --未结
 //        jindaotouzi {
 //            applicationId = "com.fghdgfhdgf.jindaotouzi"
 //        }
-//        xxzhibojian { //50
+//        xxzhibojian {
 //            applicationId = "com.rtyhe.xxzhibojian"
 //        }
 //        hengtaiyulecheng {
@@ -396,11 +395,20 @@ android {
 //        fuhuiguojithree {
 //            applicationId = "com.rtysr.fuhuiguojithree"
 //        }
+//        2018年1月7日12:52:00--未结
+        xinzongwaihui {
+            applicationId = "com.rtewer.xinzongwaihui"
+        }
+        weichuangcaopan{
+            applicationId = "com.dsfa.weichuangcaopan"
+        }
+        lianyin{
+            applicationId = "com.sdfhsfd.lianyin"
+        }
     }
 
     dependencies {
         compile fileTree(include: ['*.jar'], dir: 'libs')
-//        implementation files('libs/tbs_sdk.jar')
         compile 'com.android.support:appcompat-v7:26.0.0-beta1'
         implementation 'com.android.support:support-v4:26.0.0-alpha1'
 //        implementation 'com.google.zxing:core:3.3.0'
@@ -409,5 +417,4 @@ android {
 }
 dependencies {
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
-//    implementation 'com.google.android.gms:play-services-ads:11.8.0'
 }
