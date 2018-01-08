@@ -560,7 +560,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public boolean onShowFileChooser(WebView webView, ValueCallback<Uri[]> valueCallback, FileChooserParams fileChooserParams) {
                 if(uploadMessage!=null){
-                    return false;
+                    return true;
                 }
                 uploadMessage = valueCallback;
                 openImageChooserActivity();
@@ -766,22 +766,21 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == FILE_CHOOSER_RESULT_CODE) {
             Uri result = data == null || resultCode != RESULT_OK ? null : data.getData();
-//            String path = getPathByUri4kitkat(BaseActivity.this,result);
-//            Bitmap bitmap = getimage(path);
-//            Uri imageUri = Uri.parse(MediaStore.Images.Media.insertImage(
-//                    getContentResolver(), bitmap, null, null));
-            if (uploadMessage != null) {
-                Uri []uri = new Uri[]{result};
-                uploadMessage.onReceiveValue(uri);
+            if(result!=null){
+                String path = getPathByUri4kitkat(BaseActivity.this,result);
+                if (uploadMessage != null) {
+                    Uri []uri = new Uri[]{Uri.fromFile(new File(path))};
+                    uploadMessage.onReceiveValue(uri);
+                }
+                if(singleUploadMessage!=null){
+                    singleUploadMessage.onReceiveValue(Uri.fromFile(new File(path)));
+                }
+                singleUploadMessage = null;
+                uploadMessage = null;
             }
-            if(singleUploadMessage!=null){
-                singleUploadMessage.onReceiveValue(result);
-            }
-            singleUploadMessage = null;
-            uploadMessage = null;
+
         } else if (requestCode == FILE_CHOOSER_CAMERA) {
             File photoFile = getCameraTmpFile();
             if (uploadMessage != null) {
@@ -809,9 +808,11 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         }
         if (uploadMessage != null) {
             uploadMessage.onReceiveValue(null);
+            uploadMessage = null;
         }
         if(singleUploadMessage!=null){
             singleUploadMessage.onReceiveValue(null);
+            singleUploadMessage = null;
         }
     }
 
