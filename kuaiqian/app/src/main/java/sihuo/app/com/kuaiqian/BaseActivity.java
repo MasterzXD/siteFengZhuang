@@ -769,12 +769,12 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
 //        super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == FILE_CHOOSER_RESULT_CODE) {
             Uri result = data == null || resultCode != RESULT_OK ? null : data.getData();
-            String path = getPathByUri4kitkat(BaseActivity.this,result);
+//            String path = getPathByUri4kitkat(BaseActivity.this,result);
 //            Bitmap bitmap = getimage(path);
 //            Uri imageUri = Uri.parse(MediaStore.Images.Media.insertImage(
 //                    getContentResolver(), bitmap, null, null));
             if (uploadMessage != null) {
-                Uri []uri = new Uri[]{Uri.fromFile(new File(path))};
+                Uri []uri = new Uri[]{result};
                 uploadMessage.onReceiveValue(uri);
             }
             if(singleUploadMessage!=null){
@@ -806,6 +806,12 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
 //                    Toast.makeText(MainActivity.this, "解析二维码失败", Toast.LENGTH_LONG).show();
 //                }
             }
+        }
+        if (uploadMessage != null) {
+            uploadMessage.onReceiveValue(null);
+        }
+        if(singleUploadMessage!=null){
+            singleUploadMessage.onReceiveValue(null);
         }
     }
 
