@@ -197,9 +197,9 @@ android {
 //        diaomtfour {
 //            applicationId = "com.adsfdsf.diaomtfour"
 //        }
-        huanqiuhengyi {
-            applicationId = "com.ryergrtg.huanqiuhengyi"
-        }
+//        huanqiuhengyi {
+//            applicationId = "com.ryergrtg.huanqiuhengyi"
+//        }
 //        aomenweinisirentwo {
 //            applicationId = "com.sdfasdf.aomenweinisirentwo"
 //        }
@@ -396,14 +396,17 @@ android {
 //            applicationId = "com.rtysr.fuhuiguojithree"
 //        }
 //        2018年1月7日12:52:00--未结
-        xinzongwaihui {
-            applicationId = "com.rtewer.xinzongwaihui"
-        }
-        weichuangcaopan{
-            applicationId = "com.dsfa.weichuangcaopan"
-        }
-        lianyin{
-            applicationId = "com.sdfhsfd.lianyin"
+//        xinzongwaihui {
+//            applicationId = "com.rtewer.xinzongwaihui"
+//        }
+//        weichuangcaopan{
+//            applicationId = "com.dsfa.weichuangcaopan"
+//        }
+//        lianyin{
+//            applicationId = "com.sdfhsfd.lianyin"
+//        }
+        tiantianhongbao{
+            applicationId = "com.dghjghj.tiantianhongbao"
         }
     }
 
