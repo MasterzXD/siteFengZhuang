@@ -237,7 +237,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
                                 x5WebView.loadUrl("https://m.51qubo.com/bank/Add/0.html");
                                 break;
                             case 4:
-                                x5WebView.loadUrl("https://mobile_user_account_invest_tz.html");
+                                x5WebView.loadUrl("https://m.51qubo.com/mobile_user_account_invest_tz.html");
                                 break;
                             case 5:
                                 new AlertDialog.Builder(BaseActivity.this).setMessage("确认需要清理缓存？")
