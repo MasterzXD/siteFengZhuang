@@ -408,6 +408,12 @@ android {
         tiantianhongbao{
             applicationId = "com.dghjghj.tiantianhongbao"
         }
+//        qubocaipiao{ //100
+//            applicationId = "com.trrasd.qubocaipiao"
+//        }
+//        huanqiulicai{
+//            applicationId = "com.dfhs.huanqiulicai"
+//        }
     }
 
     dependencies {

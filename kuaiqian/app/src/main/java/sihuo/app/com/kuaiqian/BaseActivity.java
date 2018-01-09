@@ -20,6 +20,7 @@ import android.os.Message;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.support.constraint.ConstraintLayout;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -70,6 +71,8 @@ import sihuo.app.com.kuaiqian.utils.Share;
 import sihuo.app.com.kuaiqian.utils.WebViewJavaScriptFunction;
 import sihuo.app.com.kuaiqian.utils.X5WebView;
 
+import static sihuo.app.com.kuaiqian.utils.FileUtils.getRealPathByUri;
+
 public class BaseActivity extends AppCompatActivity implements View.OnClickListener {
     final boolean DEBUG_ALL = true;
     final boolean DEBUG = true;
@@ -87,6 +90,9 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
     private RelativeLayout rootView, titleLayout;
     private LinearLayout sliderViewLayout;
     private SwipeRefreshLayout refeshLayout;
+    private DrawerLayout drawerLayout;
+    private FrameLayout sliderMenuParent;
+
 
 
     private ValueCallback<Uri[]> uploadMessage;
@@ -102,7 +108,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
     private FrameLayout topNavi, bottomNavi;
 
     private ProgressBar progressBarH;
-    private boolean refreshable, hasDaoHang, guestureNavigation, fullScreen, floatNavigation, bottomNavigation;
+    private boolean refreshable, hasDaoHang, guestureNavigation, fullScreen, floatNavigation, bottomNavigation, rightSliderMenu;
     private int loadingTime, statusBarHeight;
     private ImageView loadingImage;
 
@@ -139,6 +145,8 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         loadingImage = findViewById(R.id.loadingImage);
         refeshLayout = findViewById(R.id.refesh_layout);
         rootView = findViewById(R.id.root_view);
+        drawerLayout = findViewById(R.id.drawerLayout);
+        sliderMenuParent = findViewById(R.id.slider_parent);
         progressBarH = findViewById(R.id.progressBar);
         progressBarH.setMax(100);
 
@@ -201,9 +209,66 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
                 refeshLayout.setLayoutParams(params);
             }
         }
+        initSlider();
     }
 
-    //13550171708
+
+    private void initSlider(){
+        drawerLayout.setEnabled(rightSliderMenu);
+        if(rightSliderMenu){
+            LinearLayout linearLayout = (LinearLayout) getLayoutInflater().inflate(R.layout.slider_menu_layout,null);
+            sliderMenuParent.addView(linearLayout);
+            for (int i = 1; i < linearLayout.getChildCount(); i++) {
+                View child = linearLayout.getChildAt(i);
+                child.setTag(i);
+                child.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Integer tag = (Integer) v.getTag();
+                        switch (tag){
+                            case 1:
+                                x5WebView.loadUrl("https://m.51qubo.com/Kefu.html");
+
+                                break;
+                            case 2:
+                                x5WebView.loadUrl("https://m.51qubo.com/rechangelist.html");
+                                break;
+                            case 3:
+                                x5WebView.loadUrl("https://m.51qubo.com/bank/Add/0.html");
+                                break;
+                            case 4:
+                                x5WebView.loadUrl("https://mobile_user_account_invest_tz.html");
+                                break;
+                            case 5:
+                                new AlertDialog.Builder(BaseActivity.this).setMessage("确认需要清理缓存？")
+                                        .setNegativeButton("取消",null)
+                                        .setPositiveButton("清理", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                clearWebViewCache();
+                                                Toast.makeText(BaseActivity.this,"已成功清理缓存",Toast.LENGTH_SHORT).show();
+                                            }
+                                        }).show();
+                                break;
+                            case 6:
+                                new AlertDialog.Builder(BaseActivity.this).setMessage("确认现在退出应用？")
+                                        .setNegativeButton("取消",null)
+                                        .setPositiveButton("退出", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                finish();
+                                                System.exit(0);
+                                            }
+                                        }).show();
+                                break;
+                        }
+                        drawerLayout.closeDrawers();
+                    }
+                });
+            }
+        }
+    }
+
     protected void loadTitle() {
         back = findViewById(R.id.back);
         if (back != null) back.setOnClickListener(this);
@@ -346,6 +411,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         fullScreen = getResources().getBoolean(R.bool.full_screen);
         floatNavigation = getResources().getBoolean(R.bool.float_navigation);
         bottomNavigation = getResources().getBoolean(R.bool.bottom_navigation);
+        rightSliderMenu =  getResources().getBoolean(R.bool.slider_menu);
 
         int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
         if (resourceId > 0) {
@@ -560,6 +626,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public boolean onShowFileChooser(WebView webView, ValueCallback<Uri[]> valueCallback, FileChooserParams fileChooserParams) {
                 if(uploadMessage!=null){
+                    uploadMessage.onReceiveValue(null);
                     return true;
                 }
                 uploadMessage = valueCallback;
@@ -568,6 +635,10 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
             }
 
             public void openFileChooser(ValueCallback<Uri> uploadMsg, String acceptType, String capture) {
+                if(singleUploadMessage!=null){
+                    singleUploadMessage.onReceiveValue(null);
+                    return;
+                }
                 singleUploadMessage = uploadMsg;
                 openImageChooserActivity();
             }
@@ -769,13 +840,18 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         if (requestCode == FILE_CHOOSER_RESULT_CODE) {
             Uri result = data == null || resultCode != RESULT_OK ? null : data.getData();
             if(result!=null){
-                String path = getPathByUri4kitkat(BaseActivity.this,result);
-                if (uploadMessage != null) {
-                    Uri []uri = new Uri[]{Uri.fromFile(new File(path))};
-                    uploadMessage.onReceiveValue(uri);
+                String path = getRealPathByUri(BaseActivity.this,result);
+                Log.e("----onActivityResult", ""+path);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    if (uploadMessage != null) {
+
+                        Uri []uri = path==null?null:new Uri[]{Uri.fromFile(new File(path))};
+                        Log.e("----onActivityResult", ""+path);
+                        uploadMessage.onReceiveValue(uri);
+                    }
                 }
                 if(singleUploadMessage!=null){
-                    singleUploadMessage.onReceiveValue(Uri.fromFile(new File(path)));
+                    singleUploadMessage.onReceiveValue(path==null?null:Uri.fromFile(new File(path)));
                 }
                 singleUploadMessage = null;
                 uploadMessage = null;
@@ -816,147 +892,16 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    /*
- * 压缩图片
- * */
-    private Bitmap getimage(String srcPath) {
-
-        BitmapFactory.Options newOpts = new BitmapFactory.Options();
-        // 开始读入图片，此时把options.inJustDecodeBounds 设回true了
-        newOpts.inJustDecodeBounds = true;
-        Bitmap bitmap = BitmapFactory.decodeFile(srcPath, newOpts);// 此时返回bm为空
-
-        newOpts.inJustDecodeBounds = false;
-        int w = newOpts.outWidth;
-        int h = newOpts.outHeight;
-        // 现在主流手机比较多是800*480分辨率，所以高和宽我们设置为
-        float hh = 800f;// 这里设置高度为800f
-        float ww = 480f;// 这里设置宽度为480f
-        // 缩放比。由于是固定比例缩放，只用高或者宽其中一个数据进行计算即可
-        int be = 1;// be=1表示不缩放
-        if (w > h && w > ww) {// 如果宽度大的话根据宽度固定大小缩放
-            be = (int) (newOpts.outWidth / ww);
-        } else if (w < h && h > hh) {// 如果高度高的话根据高度固定大小缩放
-            be = (int) (newOpts.outHeight / hh);
-        }
-        if (be <= 0)
-            be = 1;
-        newOpts.inSampleSize = be;// 设置缩放比例
-        // 重新读入图片，注意此时已经把options.inJustDecodeBounds 设回false了
-        bitmap = BitmapFactory.decodeFile(srcPath, newOpts);
-        return compressImage(bitmap);// 压缩好比例大小后再进行质量压缩
-    }
-
-    private Bitmap compressImage(Bitmap image) {
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        image.compress(Bitmap.CompressFormat.JPEG, 100, baos);// 质量压缩方法，这里100表示不压缩，把压缩后的数据存放到baos中
-        int options = 100;
-        while (baos.toByteArray().length / 1024 > 100) { // 循环判断如果压缩后图片是否大于100kb,大于继续压缩
-            baos.reset();// 重置baos即清空baos
-            image.compress(Bitmap.CompressFormat.JPEG, options, baos);// 这里压缩options%，把压缩后的数据存放到baos中
-            options -= 10;// 每次都减少10
-        }
-        ByteArrayInputStream isBm = new ByteArrayInputStream(baos.toByteArray());// 把压缩后的数据baos存放到ByteArrayInputStream中
-        Bitmap bitmap = BitmapFactory.decodeStream(isBm, null, null);// 把ByteArrayInputStream数据生成图片
-        return bitmap;
-    }
-
-    protected String getAbsoluteImagePath(Uri uri) {
-        String[] proj = { MediaStore.Images.Media.DATA };
-        @SuppressWarnings("deprecation")
-        Cursor cursor = managedQuery(uri, proj, // Which columns to return
-                null, // WHERE clause; which rows to return (all rows)
-                null, // WHERE clause selection arguments (none)
-                null); // Order-by clause (ascending by name)
-
-        int column_index = cursor
-                .getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-        cursor.moveToFirst();
-
-        return cursor.getString(column_index);
-    }
-
-    public static String getPathByUri4kitkat(final Context context, final Uri uri) {
-        final boolean isKitKat = Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT;
-        // DocumentProvider
-        if (isKitKat && DocumentsContract.isDocumentUri(context, uri)) {
-            if (isExternalStorageDocument(uri)) {// ExternalStorageProvider
-                final String docId = DocumentsContract.getDocumentId(uri);
-                final String[] split = docId.split(":");
-                final String type = split[0];
-                if ("primary".equalsIgnoreCase(type)) {
-                    return Environment.getExternalStorageDirectory() + "/" + split[1];
-                }
-            } else if (isDownloadsDocument(uri)) {// DownloadsProvider
-                final String id = DocumentsContract.getDocumentId(uri);
-                final Uri contentUri = ContentUris.withAppendedId(Uri.parse("content://downloads/public_downloads"),
-                        Long.valueOf(id));
-                return getDataColumn(context, contentUri, null, null);
-            } else if (isMediaDocument(uri)) {// MediaProvider
-                final String docId = DocumentsContract.getDocumentId(uri);
-                final String[] split = docId.split(":");
-                final String type = split[0];
-                Uri contentUri = null;
-                if ("image".equals(type)) {
-                    contentUri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
-                } else if ("video".equals(type)) {
-                    contentUri = MediaStore.Video.Media.EXTERNAL_CONTENT_URI;
-                } else if ("audio".equals(type)) {
-                    contentUri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
-                }
-                final String selection = "_id=?";
-                final String[] selectionArgs = new String[] { split[1] };
-                return getDataColumn(context, contentUri, selection, selectionArgs);
-            }
-        } else if ("content".equalsIgnoreCase(uri.getScheme())) {// MediaStore
-            // (and
-            // general)
-            return getDataColumn(context, uri, null, null);
-        } else if ("file".equalsIgnoreCase(uri.getScheme())) {// File
-            return uri.getPath();
-        }
-        return null;
-    }
-
-    public static String getDataColumn(Context context, Uri uri, String selection, String[] selectionArgs) {
-        Cursor cursor = null;
-        final String column = "_data";
-        final String[] projection = { column };
+    public void clearWebViewCache(){
+        //清理Webview缓存数据库
         try {
-            cursor = context.getContentResolver().query(uri, projection, selection, selectionArgs, null);
-            if (cursor != null && cursor.moveToFirst()) {
-                final int column_index = cursor.getColumnIndexOrThrow(column);
-                return cursor.getString(column_index);
-            }
-        } finally {
-            if (cursor != null)
-                cursor.close();
+            deleteDatabase("webview.db");
+            deleteDatabase("webviewCache.db");
+        } catch (Exception e) {
+//            e.printStackTrace();
+            Log.e("----clearWebViewCache", ""+e.getMessage());
         }
-        return null;
     }
-
-    public static boolean isExternalStorageDocument(Uri uri) {
-        return "com.android.externalstorage.documents".equals(uri.getAuthority());
-    }
-
-    /**
-     * @param uri
-     *            The Uri to check.
-     * @return Whether the Uri authority is DownloadsProvider.
-     */
-    public static boolean isDownloadsDocument(Uri uri) {
-        return "com.android.providers.downloads.documents".equals(uri.getAuthority());
-    }
-
-    /**
-     * @param uri
-     *            The Uri to check.
-     * @return Whether the Uri authority is MediaProvider.
-     */
-    public static boolean isMediaDocument(Uri uri) {
-        return "com.android.providers.media.documents".equals(uri.getAuthority());
-    }
-
 
     long mills = 0;
 
@@ -964,7 +909,6 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
 //            if ((getResources().getBoolean(R.bool.can_goback) && x5WebView.canGoBack()) || x5WebView.getUrl().equals(HOME)) {
-////            if(getResources().getBoolean(R.bool.can_goback) && !webview.getUrl().equals(HOME) && webview.canGoBack()){
 //                Log.d("----BaseActivity", "onKeyDown:" + x5WebView.getUrl());
 //                x5WebView.goBack();
 //                return true;
@@ -981,59 +925,5 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         return super.onKeyDown(keyCode, event);
     }
 
-    void moreBtnClick() {
-        if (sliderViewLayout == null) {
-            sliderViewLayout = (LinearLayout) getLayoutInflater().inflate(R.layout.slider_menu_layout, null);
-            LinearLayout sublayout = (LinearLayout) sliderViewLayout.getChildAt(2);
-            sliderViewLayout.getChildAt(0).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-//                    hideMenu();
-                }
-            });
-            for (int i = 0; i < sublayout.getChildCount(); i++) {
-                View view = sublayout.getChildAt(i);
-                if (view instanceof TextView) {
-                    view.setTag(i);
-                    view.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            switch ((int) v.getTag()) {
-                                case 0:
-                                    x5WebView.loadUrl("http://2017.kq444.net/az");
-                                    break;
-                                case 2:
-                                    x5WebView.loadUrl("http://2017.kq444.net/cz");
-                                    break;
-                                case 4:
-                                    x5WebView.loadUrl("http://2017.kq444.net/jc");
-                                    break;
-                                case 6:
-                                    x5WebView.loadUrl("http://2017.kq444.net/hb");
-                                    break;
-                                case 8:
-                                    Share.shareWebLink(BaseActivity.this, "http://kq333.net");
-                                    break;
-                                case 10:
-                                    new AlertDialog.Builder(BaseActivity.this).setMessage("确认清除缓存?").setPositiveButton("取消", null).setNegativeButton("清除", new DialogInterface.OnClickListener() {
-                                        @Override
-                                        public void onClick(DialogInterface dialog, int which) {
-                                            Toast.makeText(BaseActivity.this, "清除缓存成功！", Toast.LENGTH_SHORT).show();
-                                        }
-                                    }).show();
-                                    break;
-                            }
-//                            hideMenu();
-                        }
-                    });
-                }
-            }
-
-            RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(screenW, screenH);
-            params.leftMargin = screenW;
-            rootView.addView(sliderViewLayout, params);
-        }
-//        showMenu();
-    }
 
 }
