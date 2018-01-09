@@ -405,12 +405,12 @@ android {
 //        lianyin{
 //            applicationId = "com.sdfhsfd.lianyin"
 //        }
-        tiantianhongbao{
-            applicationId = "com.dghjghj.tiantianhongbao"
-        }
-//        qubocaipiao{ //100
-//            applicationId = "com.trrasd.qubocaipiao"
+//        tiantianhongbao{
+//            applicationId = "com.dghjghj.tiantianhongbao"
 //        }
+        qubocaipiao{ //100
+            applicationId = "com.trrasd.qubocaipiao"
+        }
 //        huanqiulicai{
 //            applicationId = "com.dfhs.huanqiulicai"
 //        }
