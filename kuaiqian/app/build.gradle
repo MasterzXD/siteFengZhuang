@@ -405,15 +405,27 @@ android {
 //        lianyin{
 //            applicationId = "com.sdfhsfd.lianyin"
 //        }
-        tiantianhongbao{
-            applicationId = "com.dghjghj.tiantianhongbao"
-        }
+//        tiantianhongbao{
+//            applicationId = "com.dghjghj.tiantianhongbao"
+//        }
 //        qubocaipiao{ //100
 //            applicationId = "com.trrasd.qubocaipiao"
 //        }
 //        huanqiulicai{
 //            applicationId = "com.dfhs.huanqiulicai"
 //        }
+//        jinbaocheng{
+//            applicationId = "com.ytjdty.jinbaocheng"
+//        }
+//        yundingguoji{
+//            applicationId = "com.ruya.yundingguoji"
+//        }
+//        xinlongguoji {
+//            applicationId = "com.ruty.xinlongguoji"
+//        }
+        dingjiyule { //70
+            applicationId = "com.rhrte.dingjiyule"
+        }
     }
 
     dependencies {
