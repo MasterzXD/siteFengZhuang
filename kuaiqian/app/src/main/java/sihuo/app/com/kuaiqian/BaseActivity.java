@@ -643,6 +643,15 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
                 openImageChooserActivity();
             }
 
+            public void openFileChooser(ValueCallback<Uri> uploadMsg){
+                this.openFileChooser(uploadMsg, "*/*");
+            }
+
+            // For Android >= 3.0
+            public void openFileChooser(ValueCallback<Uri> uploadMsg,
+                                        String acceptType) {
+                this.openFileChooser(uploadMsg, acceptType, null);
+            }
         });
         x5WebView.setWebViewClient(new WebViewClient() {
 

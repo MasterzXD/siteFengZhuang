@@ -1,5 +1,6 @@
 package sihuo.app.com.kuaiqian.utils;
 
+import android.annotation.TargetApi;
 import android.content.ContentUris;
 import android.content.Context;
 import android.database.Cursor;
@@ -63,7 +64,8 @@ public class FileUtils {
                 }
                 final String selection = "_id=?";
                 final String[] selectionArgs = new String[] { split[1] };
-                return getDataColumn(context, contentUri, selection, selectionArgs);
+                String s = getDataColumn(context, contentUri, selection, selectionArgs);
+                return s;
             }
         } else if ("content".equalsIgnoreCase(uri.getScheme())) {// MediaStore
             // (and
@@ -74,6 +76,27 @@ public class FileUtils {
         }
         return null;
     }
+
+    @TargetApi(Build.VERSION_CODES.KITKAT)
+    private static String getRealPathFromUri_AboveApi19(Context context, Uri uri) {
+        String filePath = null;
+        String wholeID = DocumentsContract.getDocumentId(uri);
+
+        // 使用':'分割
+        String id = wholeID.split(":")[1];
+
+        String[] projection = {MediaStore.Images.Media.DATA};
+        String selection = MediaStore.Images.Media._ID + "=?";
+        String[] selectionArgs = {id};
+
+        Cursor cursor = context.getContentResolver().query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,//
+                projection, selection, selectionArgs, null);
+        int columnIndex = cursor.getColumnIndex(projection[0]);
+        if (cursor.moveToFirst()) filePath = cursor.getString(columnIndex);
+        cursor.close();
+        return filePath;
+    }
+
 
     public static String getDataColumn(Context context, Uri uri, String selection, String[] selectionArgs) {
         Cursor cursor = null;
