@@ -420,8 +420,11 @@ android {
 //        yundingguoji{
 //            applicationId = "com.ruya.yundingguoji"
 //        }
-        xinlongguoji {
-            applicationId = "com.ruty.xinlongguoji"
+//        xinlongguoji {
+//            applicationId = "com.ruty.xinlongguoji"
+//        }
+        dingjiyule { //70
+            applicationId = "com.rhrte.dingjiyule"
         }
     }
 

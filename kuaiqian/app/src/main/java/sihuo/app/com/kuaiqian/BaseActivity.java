@@ -228,7 +228,9 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
 
 
     private void initSlider(){
-        drawerLayout.setEnabled(rightSliderMenu);
+        if(!rightSliderMenu){
+            drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+        }
         if(rightSliderMenu){
             LinearLayout linearLayout = (LinearLayout) getLayoutInflater().inflate(R.layout.slider_menu_layout,null);
             sliderMenuParent.addView(linearLayout);
@@ -326,7 +328,9 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         } else if (v == moreBtn) {
 
         } else if (v == goForward) {
-
+            if (x5WebView.canGoForward()) {
+                x5WebView.goForward();
+            }
         } else if (v == closeAp) {
 
         } else if (v == youhui) {
