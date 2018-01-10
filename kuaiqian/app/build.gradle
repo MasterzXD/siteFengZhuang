@@ -408,12 +408,21 @@ android {
 //        tiantianhongbao{
 //            applicationId = "com.dghjghj.tiantianhongbao"
 //        }
-        qubocaipiao{ //100
-            applicationId = "com.trrasd.qubocaipiao"
-        }
+//        qubocaipiao{ //100
+//            applicationId = "com.trrasd.qubocaipiao"
+//        }
 //        huanqiulicai{
 //            applicationId = "com.dfhs.huanqiulicai"
 //        }
+//        jinbaocheng{
+//            applicationId = "com.ytjdty.jinbaocheng"
+//        }
+//        yundingguoji{
+//            applicationId = "com.ruya.yundingguoji"
+//        }
+        xinlongguoji {
+            applicationId = "com.ruty.xinlongguoji"
+        }
     }
 
     dependencies {

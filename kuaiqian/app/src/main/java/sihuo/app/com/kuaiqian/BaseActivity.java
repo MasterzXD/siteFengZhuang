@@ -6,6 +6,7 @@ import android.content.ContentUris;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -108,7 +109,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
     private FrameLayout topNavi, bottomNavi;
 
     private ProgressBar progressBarH;
-    private boolean refreshable, hasDaoHang, guestureNavigation, fullScreen, floatNavigation, bottomNavigation, rightSliderMenu;
+    private boolean refreshable, hasDaoHang, guestureNavigation, fullScreen, floatNavigation, bottomNavigation, rightSliderMenu,hasguide;
     private int loadingTime, statusBarHeight;
     private ImageView loadingImage;
 
@@ -169,11 +170,24 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    loadingImage.setVisibility(View.INVISIBLE);
+                    initFloatNavigation();
                     if (!fullScreen) {
                         fullscreenNo();
                     }
-                    initFloatNavigation();
+                    if(hasguide && getSharedPreferences("config",MODE_PRIVATE).getBoolean("isfirst",true)){
+//                    if(hasguide){
+                        SharedPreferences.Editor editor = getSharedPreferences("config",MODE_PRIVATE).edit();
+                        editor.putBoolean("isfirst",false);
+                        editor.commit();
+                        startActivity(new Intent(BaseActivity.this,YinDaoActivity.class));
+                    }
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            loadingImage.setVisibility(View.INVISIBLE);
+                        }
+                    },500);
+
                 }
             }, loadingTime);
         }
@@ -412,6 +426,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         floatNavigation = getResources().getBoolean(R.bool.float_navigation);
         bottomNavigation = getResources().getBoolean(R.bool.bottom_navigation);
         rightSliderMenu =  getResources().getBoolean(R.bool.slider_menu);
+        hasguide = getResources().getBoolean(R.bool.need_guide);
 
         int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
         if (resourceId > 0) {
@@ -625,22 +640,38 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
 
             @Override
             public boolean onShowFileChooser(WebView webView, ValueCallback<Uri[]> valueCallback, FileChooserParams fileChooserParams) {
+                Log.e("----openFileChooser", "4");
                 if(uploadMessage!=null){
                     uploadMessage.onReceiveValue(null);
                     return true;
                 }
+                if(Build.VERSION.SDK_INT>=21){
+                    Intent intent = fileChooserParams.createIntent();
+                    startActivityForResult(Intent.createChooser(intent, "选择图片"), FILE_CHOOSER_RESULT_CODE);
+                }
+
                 uploadMessage = valueCallback;
-                openImageChooserActivity();
+//                openImageChooserActivity();
                 return true;
             }
 
             public void openFileChooser(ValueCallback<Uri> uploadMsg, String acceptType, String capture) {
+                Log.e("----openFileChooser", "3");
                 if(singleUploadMessage!=null){
                     singleUploadMessage.onReceiveValue(null);
                     return;
                 }
                 singleUploadMessage = uploadMsg;
                 openImageChooserActivity();
+            }
+
+            public void openFileChooser(ValueCallback<Uri> uploadMsg) {
+                this.openFileChooser(uploadMsg,"");
+                Log.e("----openFileChooser", "1");
+            }
+            public void openFileChooser(ValueCallback<Uri> uploadMsg, String acceptType) {
+               this.openFileChooser(uploadMsg,"","");
+                Log.e("----openFileChooser", "2");
             }
 
         });
@@ -846,6 +877,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
                     if (uploadMessage != null) {
 
                         Uri []uri = path==null?null:new Uri[]{Uri.fromFile(new File(path))};
+//                        Uri []uri = path==null?null:new Uri[]{result};
                         Log.e("----onActivityResult", ""+path);
                         uploadMessage.onReceiveValue(uri);
                     }
