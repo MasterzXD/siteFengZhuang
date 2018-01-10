@@ -669,7 +669,6 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
                 openImageChooserActivity();
             }
 
-<<<<<<< HEAD
             public void openFileChooser(ValueCallback<Uri> uploadMsg){
                 this.openFileChooser(uploadMsg, "*/*");
             }
@@ -679,17 +678,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
                                         String acceptType) {
                 this.openFileChooser(uploadMsg, acceptType, null);
             }
-=======
-            public void openFileChooser(ValueCallback<Uri> uploadMsg) {
-                this.openFileChooser(uploadMsg,"");
-                Log.e("----openFileChooser", "1");
-            }
-            public void openFileChooser(ValueCallback<Uri> uploadMsg, String acceptType) {
-               this.openFileChooser(uploadMsg,"","");
-                Log.e("----openFileChooser", "2");
-            }
 
->>>>>>> 80a3f6575d5e619e2455b8c0571b6f3889c5cb68
         });
         x5WebView.setWebViewClient(new WebViewClient() {
 
