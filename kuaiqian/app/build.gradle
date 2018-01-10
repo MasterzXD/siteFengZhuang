@@ -395,7 +395,7 @@ android {
 //        fuhuiguojithree {
 //            applicationId = "com.rtysr.fuhuiguojithree"
 //        }
-//        2018年1月7日12:52:00--未结
+//        2018年1月7日12:52:00
 //        xinzongwaihui {
 //            applicationId = "com.rtewer.xinzongwaihui"
 //        }
@@ -423,9 +423,14 @@ android {
 //        xinlongguoji {
 //            applicationId = "com.ruty.xinlongguoji"
 //        }
-        dingjiyule { //70
-            applicationId = "com.rhrte.dingjiyule"
-        }
+//        dingjiyule { //70
+//            applicationId = "com.rhrte.dingjiyule"
+//        }
+//        yilianyunjiaoyi {
+//            applicationId = "com.dgre.yilianyunjiaoyi"
+//        }
+//        2018年1月10日23:00:18 --未结
+
     }
 
     dependencies {
