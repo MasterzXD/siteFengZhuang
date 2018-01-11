@@ -74,9 +74,9 @@ android {
 //        fuhui {
 //            applicationId = "sihuo.app.com.fuhui"
 //        }
-//        shishishangcheng {
-//            applicationId = "sihuo.app.com.shishishangcheng"
-//        }
+        shishishangcheng {
+            applicationId = "sihuo.app.com.shishishangcheng"
+        }
 //        diaomt4 {
 //            applicationId = "sihuo.app.com.diaomt4"
 //        }
@@ -430,9 +430,9 @@ android {
 //            applicationId = "com.dgre.yilianyunjiaoyi"
 //        }
 //        2018年1月10日23:00:18 --未结
-        pingguoyuleguoji{
-            applicationId = "com.uyrji.pingguoyuleguoji"
-        }
+//        pingguoyuleguoji{
+//            applicationId = "com.uyrji.pingguoyuleguoji"
+//        }
 
     }
 
