@@ -430,6 +430,9 @@ android {
 //            applicationId = "com.dgre.yilianyunjiaoyi"
 //        }
 //        2018年1月10日23:00:18 --未结
+        pingguoyuleguoji{
+            applicationId = "com.uyrji.pingguoyuleguoji"
+        }
 
     }
 
