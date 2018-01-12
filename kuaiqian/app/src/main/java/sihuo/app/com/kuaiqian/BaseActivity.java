@@ -692,8 +692,12 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
             public boolean shouldOverrideUrlLoading(final WebView view, final String url) {
 //                Uri uri = Uri.parse(url);
 
-                Log.e("----should", "" + url);
-
+//                Log.e("----should", "" + url);
+//                Intent intent = new Intent(Intent.ACTION_VIEW);
+//                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                intent.setData(Uri.parse(url));
+//                startActivity(intent);
+//                return true;
                 try {
                     if (url.toLowerCase().startsWith("intent://")) {
                         Intent intent = Intent.parseUri(url, Intent.URI_INTENT_SCHEME);

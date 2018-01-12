@@ -74,9 +74,9 @@ android {
 //        fuhui {
 //            applicationId = "sihuo.app.com.fuhui"
 //        }
-        shishishangcheng {
-            applicationId = "sihuo.app.com.shishishangcheng"
-        }
+//        shishishangcheng {
+//            applicationId = "sihuo.app.com.shishishangcheng"
+//        }
 //        diaomt4 {
 //            applicationId = "sihuo.app.com.diaomt4"
 //        }
@@ -433,6 +433,9 @@ android {
 //        pingguoyuleguoji{
 //            applicationId = "com.uyrji.pingguoyuleguoji"
 //        }
+        lasiweijiasithree {
+            applicationId = "com.ertt.lasiweijiasithree"
+        }
 
     }
 
