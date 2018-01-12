@@ -433,8 +433,11 @@ android {
 //        pingguoyuleguoji{
 //            applicationId = "com.uyrji.pingguoyuleguoji"
 //        }
-        lasiweijiasithree {
-            applicationId = "com.ertt.lasiweijiasithree"
+//        lasiweijiasithree {
+//            applicationId = "com.ertt.lasiweijiasithree"
+//        }
+        fffsp { //100
+            applicationId = "com.dytjut.fffsp"
         }
 
     }

@@ -28,6 +28,7 @@ import android.os.Bundle;
 import android.util.Base64;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
@@ -234,7 +235,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         if(rightSliderMenu){
             LinearLayout linearLayout = (LinearLayout) getLayoutInflater().inflate(R.layout.slider_menu_layout,null);
             sliderMenuParent.addView(linearLayout);
-            for (int i = 1; i < linearLayout.getChildCount(); i++) {
+            for (int i = 0; i < linearLayout.getChildCount(); i++) {
                 View child = linearLayout.getChildAt(i);
                 child.setTag(i);
                 child.setOnClickListener(new View.OnClickListener() {
@@ -242,20 +243,25 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
                     public void onClick(View v) {
                         Integer tag = (Integer) v.getTag();
                         switch (tag){
-                            case 1:
-                                x5WebView.loadUrl("https://m.51qubo.com/Kefu.html");
-
+                            case 0:
+                                x5WebView.loadUrl(getString(R.string.home_url));
                                 break;
                             case 2:
-                                x5WebView.loadUrl("https://m.51qubo.com/rechangelist.html");
-                                break;
-                            case 3:
-                                x5WebView.loadUrl("https://m.51qubo.com/bank/Add/0.html");
+                                x5WebView.loadUrl("http://wuyisaoziyuan.com:1359/hy");
                                 break;
                             case 4:
-                                x5WebView.loadUrl("https://m.51qubo.com/mobile_user_account_invest_tz.html");
+                                x5WebView.loadUrl("http://wuyisaoziyuan.com:1359/ty");
                                 break;
-                            case 5:
+                            case 6:
+                                x5WebView.loadUrl("http://wuyisaoziyuan.com:1359/hb");
+                                break;
+                            case 8:
+                                x5WebView.loadUrl("http://wuyisaoziyuan.com:1359/jc");
+                                break;
+                            case 10:
+                                Share.shareWebLink(BaseActivity.this, "http://789ssp.com");
+                                break;
+                            case 12:
                                 new AlertDialog.Builder(BaseActivity.this).setMessage("确认需要清理缓存？")
                                         .setNegativeButton("取消",null)
                                         .setPositiveButton("清理", new DialogInterface.OnClickListener() {
@@ -263,17 +269,6 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
                                             public void onClick(DialogInterface dialog, int which) {
                                                 clearWebViewCache();
                                                 Toast.makeText(BaseActivity.this,"已成功清理缓存",Toast.LENGTH_SHORT).show();
-                                            }
-                                        }).show();
-                                break;
-                            case 6:
-                                new AlertDialog.Builder(BaseActivity.this).setMessage("确认现在退出应用？")
-                                        .setNegativeButton("取消",null)
-                                        .setPositiveButton("退出", new DialogInterface.OnClickListener() {
-                                            @Override
-                                            public void onClick(DialogInterface dialog, int which) {
-                                                finish();
-                                                System.exit(0);
                                             }
                                         }).show();
                                 break;
@@ -326,7 +321,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         } else if (v == shareBtn) {
             Share.shareWebLink(BaseActivity.this, x5WebView.getUrl());
         } else if (v == moreBtn) {
-
+            drawerLayout.openDrawer(Gravity.END);
         } else if (v == goForward) {
             if (x5WebView.canGoForward()) {
                 x5WebView.goForward();

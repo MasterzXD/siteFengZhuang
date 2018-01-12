@@ -75,7 +75,7 @@
     <FrameLayout
         android:id="@+id/slider_parent"
         android:layout_height="match_parent"
-        android:layout_width="240dp"
+        android:layout_width="230dp"
         android:layout_gravity="end"/>
 </android.support.v4.widget.DrawerLayout>
 
