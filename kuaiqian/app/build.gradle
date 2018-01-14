@@ -436,8 +436,14 @@ android {
 //        lasiweijiasithree {
 //            applicationId = "com.ertt.lasiweijiasithree"
 //        }
-        fffsp { //100
-            applicationId = "com.dytjut.fffsp"
+//        fffsp { //100
+//            applicationId = "com.dytjut.fffsp"
+//        }
+        boleyulecheng {
+            applicationId = "com.yuks.boleyulecheng"
+        }
+        longtengyule {
+            applicationId = "com.tyudt.longtengyule"
         }
 
     }
