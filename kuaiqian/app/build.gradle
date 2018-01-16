@@ -405,9 +405,9 @@ android {
 //        lianyin{
 //            applicationId = "com.sdfhsfd.lianyin"
 //        }
-        tiantianhongbao{
-            applicationId = "com.dghjghj.tiantianhongbao"
-        }
+//        tiantianhongbao{
+//            applicationId = "com.dghjghj.tiantianhongbao"
+//        }
 //        qubocaipiao{ //100
 //            applicationId = "com.trrasd.qubocaipiao"
 //        }
@@ -448,7 +448,9 @@ android {
 //        huangjiaguojitwo{
 //            applicationId = "com.rtyhe.huangjiaguojitwo"
 //        }
-
+        yongfengvip{
+            applicationId = "com.ftryua.yongfengvip"
+        }
     }
 
     dependencies {
