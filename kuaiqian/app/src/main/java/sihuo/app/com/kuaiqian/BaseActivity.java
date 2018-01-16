@@ -62,6 +62,11 @@ import android.widget.Toast;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Timer;
@@ -879,11 +884,21 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
                 Log.e("----onActivityResult", ""+path);
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                     if (uploadMessage != null) {
-
                         Uri []uri = path==null?null:new Uri[]{Uri.fromFile(new File(path))};
-//                        Uri []uri = path==null?null:new Uri[]{result};
                         Log.e("----onActivityResult", ""+path);
                         uploadMessage.onReceiveValue(uri);
+//                        File file = new File(path);
+//                        if(file.exists()){
+//                            File tempfile = new File(Environment.getExternalStorageDirectory(),"temp.png");
+//                            if(!tempfile.exists()){
+//                                try {
+//                                    tempfile.createNewFile();
+//                                } catch (IOException e) {
+//                                    e.printStackTrace();
+//                                }
+//                            }
+//                            copyFile(file.getAbsolutePath(),tempfile.getAbsolutePath());
+//                        }
                     }
                 }
                 if(singleUploadMessage!=null){
@@ -926,6 +941,32 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
             singleUploadMessage.onReceiveValue(null);
             singleUploadMessage = null;
         }
+    }
+
+    public void copyFile(String oldPath, String newPath) {
+        try {
+            int bytesum = 0;
+            int byteread = 0;
+            File oldfile = new File(oldPath);
+            if (oldfile.exists()) { //文件存在时
+                InputStream inStream = new FileInputStream(oldPath); //读入原文件
+                FileOutputStream fs = new FileOutputStream(newPath);
+                byte[] buffer = new byte[1024];
+                int length;
+                while ( (byteread = inStream.read(buffer)) != -1) {
+                    bytesum += byteread; //字节数 文件大小
+                    System.out.println(bytesum);
+                    fs.write(buffer, 0, byteread);
+                }
+                inStream.close();
+            }
+        }
+        catch (Exception e) {
+            System.out.println("复制单个文件操作出错");
+            e.printStackTrace();
+
+        }
+
     }
 
     public void clearWebViewCache(){

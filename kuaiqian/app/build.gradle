@@ -405,9 +405,9 @@ android {
 //        lianyin{
 //            applicationId = "com.sdfhsfd.lianyin"
 //        }
-//        tiantianhongbao{
-//            applicationId = "com.dghjghj.tiantianhongbao"
-//        }
+        tiantianhongbao{
+            applicationId = "com.dghjghj.tiantianhongbao"
+        }
 //        qubocaipiao{ //100
 //            applicationId = "com.trrasd.qubocaipiao"
 //        }
@@ -445,9 +445,9 @@ android {
 //        longtengyule {
 //            applicationId = "com.tyudt.longtengyule"
 //        }
-        huangjiaguojitwo{
-            applicationId = "com.rtyhe.huangjiaguojitwo"
-        }
+//        huangjiaguojitwo{
+//            applicationId = "com.rtyhe.huangjiaguojitwo"
+//        }
 
     }
 
