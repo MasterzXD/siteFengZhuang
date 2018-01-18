@@ -252,22 +252,22 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
                                 x5WebView.loadUrl(getString(R.string.home_url));
                                 break;
                             case 2:
-                                x5WebView.loadUrl("http://5555.KQ888888888.com:5555/cz");
+                                x5WebView.loadUrl("http://6666.KQ888888888.com:5555/cz");
                                 break;
                             case 4:
-                                x5WebView.loadUrl("http://5555.KQ888888888.com:5555/jc");
+                                x5WebView.loadUrl("http://6666.KQ888888888.com:5555/jc");
                                 break;
                             case 6:
-                                x5WebView.loadUrl("http://5555.KQ888888888.com:5555/zs");
+                                x5WebView.loadUrl("http://6666.KQ888888888.com:5555/zs");
                                 break;
                             case 8:
-                                x5WebView.loadUrl("http://5555.KQ888888888.com:5555/kf");
+                                x5WebView.loadUrl("http://6666.KQ888888888.com:5555/kf");
                                 break;
                             case 10:
-                                x5WebView.loadUrl("http://5555.KQ888888888.com:5555/gg");
+                                x5WebView.loadUrl("http://6666.KQ888888888.com:5555/gg");
                                 break;
                             case 12:
-                                x5WebView.loadUrl("http://5555.KQ888888888.com:5555/hb");
+                                x5WebView.loadUrl("http://6666.KQ888888888.com:5555/hb");
                                 break;
                             case 14:
                                 Share.shareWebLink(BaseActivity.this, "https://kq2666.com");
@@ -890,21 +890,11 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
                 Log.e("----onActivityResult", ""+path);
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                     if (uploadMessage != null) {
+
                         Uri []uri = path==null?null:new Uri[]{Uri.fromFile(new File(path))};
                         Log.e("----onActivityResult", ""+path);
-                        uploadMessage.onReceiveValue(uri);
-//                        File file = new File(path);
-//                        if(file.exists()){
-//                            File tempfile = new File(Environment.getExternalStorageDirectory(),"temp.png");
-//                            if(!tempfile.exists()){
-//                                try {
-//                                    tempfile.createNewFile();
-//                                } catch (IOException e) {
-//                                    e.printStackTrace();
-//                                }
-//                            }
-//                            copyFile(file.getAbsolutePath(),tempfile.getAbsolutePath());
-//                        }
+                        uploadMessage.onReceiveValue(WebChromeClient.FileChooserParams
+                                .parseResult(resultCode, data));
                     }
                 }
                 if(singleUploadMessage!=null){
