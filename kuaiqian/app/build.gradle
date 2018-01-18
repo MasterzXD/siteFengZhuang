@@ -448,8 +448,11 @@ android {
 //        huangjiaguojitwo{
 //            applicationId = "com.rtyhe.huangjiaguojitwo"
 //        }
-        yongfengvip{
-            applicationId = "com.ftryua.yongfengvip"
+//        yongfengvip{
+//            applicationId = "com.ftryua.yongfengvip"
+//        }
+        kuaiqiantiyu { //100
+            applicationId = "com.dyfd.kuaiqiantiyu"
         }
     }
 

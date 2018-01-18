@@ -252,21 +252,27 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
                                 x5WebView.loadUrl(getString(R.string.home_url));
                                 break;
                             case 2:
-                                x5WebView.loadUrl("http://wuyisaoziyuan.com:1359/hy");
+                                x5WebView.loadUrl("http://5555.KQ888888888.com:5555/cz");
                                 break;
                             case 4:
-                                x5WebView.loadUrl("http://wuyisaoziyuan.com:1359/ty");
+                                x5WebView.loadUrl("http://5555.KQ888888888.com:5555/jc");
                                 break;
                             case 6:
-                                x5WebView.loadUrl("http://wuyisaoziyuan.com:1359/hb");
+                                x5WebView.loadUrl("http://5555.KQ888888888.com:5555/zs");
                                 break;
                             case 8:
-                                x5WebView.loadUrl("http://wuyisaoziyuan.com:1359/jc");
+                                x5WebView.loadUrl("http://5555.KQ888888888.com:5555/kf");
                                 break;
                             case 10:
-                                Share.shareWebLink(BaseActivity.this, "http://789ssp.com");
+                                x5WebView.loadUrl("http://5555.KQ888888888.com:5555/gg");
                                 break;
                             case 12:
+                                x5WebView.loadUrl("http://5555.KQ888888888.com:5555/hb");
+                                break;
+                            case 14:
+                                Share.shareWebLink(BaseActivity.this, "https://kq2666.com");
+                                break;
+                            case 16:
                                 new AlertDialog.Builder(BaseActivity.this).setMessage("确认需要清理缓存？")
                                         .setNegativeButton("取消",null)
                                         .setPositiveButton("清理", new DialogInterface.OnClickListener() {
