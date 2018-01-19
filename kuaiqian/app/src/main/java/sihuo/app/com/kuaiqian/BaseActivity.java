@@ -653,15 +653,12 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
                 Log.e("----openFileChooser", "4");
                 if(uploadMessage!=null){
                     uploadMessage.onReceiveValue(null);
-                    return true;
                 }
+                uploadMessage = valueCallback;
                 if(Build.VERSION.SDK_INT>=21){
                     Intent intent = fileChooserParams.createIntent();
                     startActivityForResult(Intent.createChooser(intent, "选择图片"), FILE_CHOOSER_RESULT_CODE);
                 }
-
-                uploadMessage = valueCallback;
-//                openImageChooserActivity();
                 return true;
             }
 
@@ -890,8 +887,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
                 Log.e("----onActivityResult", ""+path);
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                     if (uploadMessage != null) {
-
-                        Uri []uri = path==null?null:new Uri[]{Uri.fromFile(new File(path))};
+//                        Uri []uri = path==null?null:new Uri[]{Uri.fromFile(new File(path))};
                         Log.e("----onActivityResult", ""+path);
                         uploadMessage.onReceiveValue(WebChromeClient.FileChooserParams
                                 .parseResult(resultCode, data));

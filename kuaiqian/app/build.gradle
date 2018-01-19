@@ -405,9 +405,9 @@ android {
 //        lianyin{
 //            applicationId = "com.sdfhsfd.lianyin"
 //        }
-//        tiantianhongbao{
-//            applicationId = "com.dghjghj.tiantianhongbao"
-//        }
+        tiantianhongbao{
+            applicationId = "com.dghjghj.tiantianhongbao"
+        }
 //        qubocaipiao{ //100
 //            applicationId = "com.trrasd.qubocaipiao"
 //        }
@@ -429,7 +429,7 @@ android {
 //        yilianyunjiaoyi {
 //            applicationId = "com.dgre.yilianyunjiaoyi"
 //        }
-//        2018年1月10日23:00:18 --未结
+//        2018年1月10日23:00:18
 //        pingguoyuleguoji{
 //            applicationId = "com.uyrji.pingguoyuleguoji"
 //        }
@@ -451,9 +451,10 @@ android {
 //        yongfengvip{
 //            applicationId = "com.ftryua.yongfengvip"
 //        }
-        kuaiqiantiyu { //100
-            applicationId = "com.dyfd.kuaiqiantiyu"
-        }
+//        kuaiqiantiyu { //100
+//            applicationId = "com.dyfd.kuaiqiantiyu"
+//        }
+//        2018年1月19日09:34:11 --未结
     }
 
     dependencies {
