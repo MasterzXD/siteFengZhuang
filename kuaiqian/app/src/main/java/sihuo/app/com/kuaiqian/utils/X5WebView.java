@@ -7,10 +7,11 @@ import android.os.Build;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
-import android.webkit.CookieSyncManager;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
 
+
+import com.tencent.smtt.sdk.CookieSyncManager;
+import com.tencent.smtt.sdk.WebSettings;
+import com.tencent.smtt.sdk.WebView;
 
 import sihuo.app.com.kuaiqian.R;
 
@@ -61,7 +62,7 @@ public class X5WebView extends WebView implements View.OnLongClickListener{
 		CookieSyncManager.createInstance(getContext());
 		CookieSyncManager.getInstance().sync();
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-			webSetting.setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
+//			webSetting.setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
 		}
 		// this.getSettingsExtension().setPageCacheCapacity(IX5WebSettings.DEFAULT_CACHE_CAPACITY);//extension
 		// settings 的设计

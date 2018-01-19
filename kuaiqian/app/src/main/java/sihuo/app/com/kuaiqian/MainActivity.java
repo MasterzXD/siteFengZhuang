@@ -3,19 +3,15 @@ package sihuo.app.com.kuaiqian;
 import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.graphics.PixelFormat;
 import android.media.MediaScannerConnection;
 import android.net.Uri;
-import android.net.http.SslError;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
@@ -26,42 +22,39 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Base64;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 
-//import com.uuzuche.lib_zxing.activity.CaptureActivity;
-//import com.uuzuche.lib_zxing.activity.CodeUtils;
-
 import android.view.ViewGroup;
 import android.view.ViewStub;
-import android.view.ViewTreeObserver;
-import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.TranslateAnimation;
-import android.webkit.ClientCertRequest;
-import android.webkit.ConsoleMessage;
-import android.webkit.DownloadListener;
-import android.webkit.HttpAuthHandler;
+
 import android.webkit.JavascriptInterface;
-import android.webkit.JsPromptResult;
-import android.webkit.JsResult;
-import android.webkit.SslErrorHandler;
-import android.webkit.ValueCallback;
-import android.webkit.WebChromeClient;
-import android.webkit.WebResourceError;
-import android.webkit.WebResourceRequest;
-import android.webkit.WebResourceResponse;
-import android.webkit.WebStorage;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.tencent.smtt.export.external.interfaces.ClientCertRequest;
+import com.tencent.smtt.export.external.interfaces.ConsoleMessage;
+import com.tencent.smtt.export.external.interfaces.HttpAuthHandler;
+import com.tencent.smtt.export.external.interfaces.IX5WebChromeClient;
+import com.tencent.smtt.export.external.interfaces.JsPromptResult;
+import com.tencent.smtt.export.external.interfaces.JsResult;
+import com.tencent.smtt.export.external.interfaces.SslErrorHandler;
+import com.tencent.smtt.export.external.interfaces.WebResourceError;
+import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
+import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
+import com.tencent.smtt.sdk.DownloadListener;
+import com.tencent.smtt.sdk.ValueCallback;
+import com.tencent.smtt.sdk.WebChromeClient;
+import com.tencent.smtt.sdk.WebStorage;
+import com.tencent.smtt.sdk.WebView;
+import com.tencent.smtt.sdk.WebViewClient;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -79,7 +72,6 @@ import sihuo.app.com.kuaiqian.utils.LogUtil;
 import sihuo.app.com.kuaiqian.utils.NewWindowView;
 import sihuo.app.com.kuaiqian.utils.WebViewJavaScriptFunction;
 import sihuo.app.com.kuaiqian.utils.X5WebView;
-//import sihuo.app.com.kuaiqian.zxing.DecodeImage;
 
 public class MainActivity extends Activity {
     final  int FILE_CHOOSER_RESULT_CODE = 40;
@@ -893,12 +885,12 @@ public class MainActivity extends Activity {
             }
 
             @Override
-            public void onShowCustomView(View view, CustomViewCallback callback) {
+            public void onShowCustomView(View view, IX5WebChromeClient.CustomViewCallback callback) {
                 super.onShowCustomView(view, callback);
             }
 
             @Override
-            public void onShowCustomView(View view, int requestedOrientation, CustomViewCallback callback) {
+            public void onShowCustomView(View view, int requestedOrientation, IX5WebChromeClient.CustomViewCallback callback) {
                 super.onShowCustomView(view, requestedOrientation, callback);
             }
 
@@ -1059,9 +1051,9 @@ public class MainActivity extends Activity {
             }
 
             @Override
-            public void onReceivedSslError(WebView webView, SslErrorHandler sslErrorHandler, SslError sslError) {
+            public void onReceivedSslError(WebView webView, SslErrorHandler sslErrorHandler, com.tencent.smtt.export.external.interfaces.SslError sslError) {
                 sslErrorHandler.proceed();
-//                super.onReceivedSslError(webView, sslErrorHandler, sslError);
+                super.onReceivedSslError(webView, sslErrorHandler, sslError);
             }
 
             @Override
@@ -1134,8 +1126,6 @@ public class MainActivity extends Activity {
                         "Image Chooser"), FILE_CHOOSER_RESULT_CODE);
             }
             }).show();
-//        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);// 启动系统相机
-//        startActivityForResult(intent, 444);
     }
 
     @Override
@@ -1160,12 +1150,6 @@ public class MainActivity extends Activity {
                 if (bundle == null) {
                     return;
                 }
-//                if (bundle.getInt(CodeUtils.RESULT_TYPE) == CodeUtils.RESULT_SUCCESS) {
-//                    String result = bundle.getString(CodeUtils.RESULT_STRING);
-//                    Toast.makeText(this, "解析结果:" + result, Toast.LENGTH_LONG).show();
-//                } else if (bundle.getInt(CodeUtils.RESULT_TYPE) == CodeUtils.RESULT_FAILED) {
-//                    Toast.makeText(MainActivity.this, "解析二维码失败", Toast.LENGTH_LONG).show();
-//                }
             }
         }
     }
