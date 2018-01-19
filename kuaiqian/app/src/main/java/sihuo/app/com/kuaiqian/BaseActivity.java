@@ -1,31 +1,21 @@
 package sihuo.app.com.kuaiqian;
 
 import android.app.AlertDialog;
-import android.content.ClipData;
-import android.content.ContentUris;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Color;
-import android.media.Image;
 import android.net.Uri;
 import android.net.http.SslError;
 import android.os.Build;
+import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
-import android.provider.DocumentsContract;
 import android.provider.MediaStore;
-import android.support.constraint.ConstraintLayout;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.util.Base64;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Gravity;
@@ -33,24 +23,7 @@ import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewStub;
 import android.view.WindowManager;
-import android.webkit.ClientCertRequest;
-import android.webkit.ConsoleMessage;
-import android.webkit.DownloadListener;
-import android.webkit.HttpAuthHandler;
-import android.webkit.JavascriptInterface;
-import android.webkit.JsPromptResult;
-import android.webkit.JsResult;
-import android.webkit.SslErrorHandler;
-import android.webkit.ValueCallback;
-import android.webkit.WebChromeClient;
-import android.webkit.WebResourceError;
-import android.webkit.WebResourceRequest;
-import android.webkit.WebResourceResponse;
-import android.webkit.WebStorage;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -59,23 +32,30 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
+import com.tencent.smtt.export.external.interfaces.ClientCertRequest;
+import com.tencent.smtt.export.external.interfaces.ConsoleMessage;
+import com.tencent.smtt.export.external.interfaces.HttpAuthHandler;
+import com.tencent.smtt.export.external.interfaces.IX5WebChromeClient;
+import com.tencent.smtt.export.external.interfaces.JsPromptResult;
+import com.tencent.smtt.export.external.interfaces.JsResult;
+import com.tencent.smtt.export.external.interfaces.SslErrorHandler;
+import com.tencent.smtt.export.external.interfaces.WebResourceError;
+import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
+import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
+import com.tencent.smtt.sdk.DownloadListener;
+import com.tencent.smtt.sdk.ValueCallback;
+import com.tencent.smtt.sdk.WebChromeClient;
+import com.tencent.smtt.sdk.WebStorage;
+import com.tencent.smtt.sdk.WebView;
+import com.tencent.smtt.sdk.WebViewClient;
+
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.InputStream;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import sihuo.app.com.kuaiqian.utils.ADFilterTool;
-import sihuo.app.com.kuaiqian.utils.NewWindowView;
 import sihuo.app.com.kuaiqian.utils.Share;
-import sihuo.app.com.kuaiqian.utils.WebViewJavaScriptFunction;
 import sihuo.app.com.kuaiqian.utils.X5WebView;
 
 import static sihuo.app.com.kuaiqian.utils.FileUtils.getRealPathByUri;
@@ -464,8 +444,6 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    String tempUrl;
-
     void setupWebview() {
         x5WebView.setDownloadListener(new DownloadListener() {
             @Override
@@ -558,18 +536,6 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
             }
 
             @Override
-            public boolean onConsoleMessage(ConsoleMessage consoleMessage) {
-//                Log.e("----MainActivity", "onConsoleMessage:" + consoleMessage.message());
-                return super.onConsoleMessage(consoleMessage);
-            }
-
-            @Override
-            public void onReceivedTouchIconUrl(WebView webView, String s, boolean b) {
-                super.onReceivedTouchIconUrl(webView, s, b);
-//                Log.e("----MainActivity", "onReceivedTouchIconUrl:" + s);
-            }
-
-            @Override
             public void onReachedMaxAppCacheSize(long l, long l1, WebStorage.QuotaUpdater quotaUpdater) {
                 super.onReachedMaxAppCacheSize(l, l1, quotaUpdater);
                 Log.e("----MainActivity", "onReachedMaxAppCacheSize:");
@@ -616,13 +582,13 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
             }
 
             @Override
-            public void onShowCustomView(View view, CustomViewCallback callback) {
+            public void onShowCustomView(View view, IX5WebChromeClient.CustomViewCallback callback) {
                 super.onShowCustomView(view, callback);
                 Log.e("----onShowCustomView", "----1111");
             }
 
             @Override
-            public void onShowCustomView(View view, int requestedOrientation, CustomViewCallback callback) {
+            public void onShowCustomView(View view, int requestedOrientation, IX5WebChromeClient.CustomViewCallback callback) {
                 super.onShowCustomView(view, requestedOrientation, callback);
                 Log.e("----onShowCustomView", "----2222");
             }
@@ -656,8 +622,9 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 uploadMessage = valueCallback;
                 if(Build.VERSION.SDK_INT>=21){
-                    Intent intent = fileChooserParams.createIntent();
-                    startActivityForResult(Intent.createChooser(intent, "选择图片"), FILE_CHOOSER_RESULT_CODE);
+                    openImageChooserActivity();
+//                    Intent intent = fileChooserParams.createIntent();
+//                    startActivityForResult(Intent.createChooser(intent, "选择图片"), FILE_CHOOSER_RESULT_CODE);
                 }
                 return true;
             }
@@ -683,24 +650,13 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
             }
 
         });
+
+
         x5WebView.setWebViewClient(new WebViewClient() {
 
             @Override
-            public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
-//                Log.d("----BaseActivity", "shouldOverrideUrlLoading:" +request.getRequestHeaders());
-                return super.shouldOverrideUrlLoading(view, request);
-            }
-
-            @Override
             public boolean shouldOverrideUrlLoading(final WebView view, final String url) {
-//                Uri uri = Uri.parse(url);
 
-//                Log.e("----should", "" + url);
-//                Intent intent = new Intent(Intent.ACTION_VIEW);
-//                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                intent.setData(Uri.parse(url));
-//                startActivity(intent);
-//                return true;
                 try {
                     if (url.toLowerCase().startsWith("intent://")) {
                         Intent intent = Intent.parseUri(url, Intent.URI_INTENT_SCHEME);
@@ -749,61 +705,6 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
             }
 
             @Override
-            public WebResourceResponse shouldInterceptRequest(WebView view, WebResourceRequest request) {
-                if(Build.VERSION.SDK_INT>=21){
-                }
-                return super.shouldInterceptRequest(view, request);
-            }
-
-
-            @Override
-            public void onReceivedLoginRequest(WebView webView, String s, String s1, String s2) {
-//                Log.e("----MainActivity", "onReceivedLoginRequest:" + s);
-                super.onReceivedLoginRequest(webView, s, s1, s2);
-            }
-
-            @Override
-            public void onFormResubmission(WebView webView, Message message, Message message1) {
-//                Log.e("----MainActivity", "onFormResubmission:" );
-                super.onFormResubmission(webView, message, message1);
-            }
-
-            @Override
-            public void onReceivedHttpAuthRequest(WebView webView, HttpAuthHandler httpAuthHandler, String s, String s1) {
-
-                super.onReceivedHttpAuthRequest(webView, httpAuthHandler, s, s1);
-//                Log.e("----MainActivity", "onReceivedHttpAuthRequest:");
-            }
-
-            @Override
-            public void onLoadResource(WebView webView, String s) {
-//                Log.e("----MainActivity", "onLoadResource:"+s );
-
-                super.onLoadResource(webView, s);
-
-            }
-
-            @Override
-            public void onReceivedClientCertRequest(WebView webView, ClientCertRequest clientCertRequest) {
-                super.onReceivedClientCertRequest(webView, clientCertRequest);
-//                Log.e("----MainActivity", "onReceivedClientCertRequest:" );
-            }
-
-            @Override
-            public void onScaleChanged(WebView webView, float v, float v1) {
-//                Log.e("----MainActivity", "onScaleChanged:" + v + "   v1:" + v1);
-                super.onScaleChanged(webView, v, v1);
-            }
-
-
-            @Override
-            public void onTooManyRedirects(WebView webView, Message message, Message message1) {
-                super.onTooManyRedirects(webView, message, message1);
-//                Log.e("----MainActivity", "onTooManyRedirects:");
-            }
-
-
-            @Override
             public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
                 super.onReceivedError(view, request, error);
 //                Log.e("----onReceivedError", "");
@@ -811,7 +712,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
 
 
             @Override
-            public void onReceivedSslError(WebView webView, SslErrorHandler sslErrorHandler, SslError sslError) {
+            public void onReceivedSslError(WebView webView, SslErrorHandler sslErrorHandler, com.tencent.smtt.export.external.interfaces.SslError sslError) {
                 sslErrorHandler.proceed();
                 super.onReceivedSslError(webView, sslErrorHandler, sslError);
             }
@@ -883,17 +784,14 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         if (requestCode == FILE_CHOOSER_RESULT_CODE) {
             Uri result = data == null || resultCode != RESULT_OK ? null : data.getData();
             if(result!=null){
-                String path = getRealPathByUri(BaseActivity.this,result);
-                Log.e("----onActivityResult", ""+path);
+
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                     if (uploadMessage != null) {
-//                        Uri []uri = path==null?null:new Uri[]{Uri.fromFile(new File(path))};
-                        Log.e("----onActivityResult", ""+path);
-                        uploadMessage.onReceiveValue(WebChromeClient.FileChooserParams
-                                .parseResult(resultCode, data));
+                        uploadMessage.onReceiveValue(new Uri[]{result});
                     }
                 }
                 if(singleUploadMessage!=null){
+                    String path = getRealPathByUri(BaseActivity.this,result);
                     singleUploadMessage.onReceiveValue(path==null?null:Uri.fromFile(new File(path)));
                 }
                 singleUploadMessage = null;
@@ -917,12 +815,6 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
                 if (bundle == null) {
                     return;
                 }
-//                if (bundle.getInt(CodeUtils.RESULT_TYPE) == CodeUtils.RESULT_SUCCESS) {
-//                    String result = bundle.getString(CodeUtils.RESULT_STRING);
-//                    Toast.makeText(this, "解析结果:" + result, Toast.LENGTH_LONG).show();
-//                } else if (bundle.getInt(CodeUtils.RESULT_TYPE) == CodeUtils.RESULT_FAILED) {
-//                    Toast.makeText(MainActivity.this, "解析二维码失败", Toast.LENGTH_LONG).show();
-//                }
             }
         }
         if (uploadMessage != null) {

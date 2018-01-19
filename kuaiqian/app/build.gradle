@@ -5,7 +5,7 @@ android {
     defaultConfig {
         applicationId 'sihuo.app.com.aimaoyingyin'
         minSdkVersion 15
-        targetSdkVersion 23
+        targetSdkVersion 21
         versionCode 1
         versionName '1.0'
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -27,7 +27,7 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
-    }
+    } 
     productFlavors {
 //        kuaiqianyule {
 //            applicationId = "sihuo.app.com.kuaiqianyule"
@@ -405,7 +405,7 @@ android {
 //        lianyin{
 //            applicationId = "com.sdfhsfd.lianyin"
 //        }
-        tiantianhongbao{
+        tiantianhongbao {
             applicationId = "com.dghjghj.tiantianhongbao"
         }
 //        qubocaipiao{ //100
