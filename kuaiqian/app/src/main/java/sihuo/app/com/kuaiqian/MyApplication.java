@@ -29,6 +29,7 @@ public class MyApplication extends Application {
      * 初始化TBS浏览服务X5内核
      */
     private void initTBS() {
+        QbSdk.preInit(getApplicationContext());
         QbSdk.PreInitCallback cb = new QbSdk.PreInitCallback() {
 
             @Override
@@ -36,7 +37,7 @@ public class MyApplication extends Application {
                 // TODO Auto-generated method stub
                 //x5內核初始化完成的回调，为true表示x5内核加载成功，否则表示x5内核加载失败，会自动切换到系统内核。
                 Log.e("----onViewInitFinished", ""+arg0);
-                Toast.makeText(MyApplication.this,"onViewInitFinished:"+arg0,Toast.LENGTH_LONG).show();
+//                Toast.makeText(MyApplication.this,"onViewInitFinished:"+arg0,Toast.LENGTH_LONG).show();
             }
 
             @Override

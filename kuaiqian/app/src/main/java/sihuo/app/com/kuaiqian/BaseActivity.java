@@ -43,8 +43,10 @@ import com.tencent.smtt.export.external.interfaces.WebResourceError;
 import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
 import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
 import com.tencent.smtt.sdk.DownloadListener;
+import com.tencent.smtt.sdk.TbsVideo;
 import com.tencent.smtt.sdk.ValueCallback;
 import com.tencent.smtt.sdk.WebChromeClient;
+import com.tencent.smtt.sdk.WebSettings;
 import com.tencent.smtt.sdk.WebStorage;
 import com.tencent.smtt.sdk.WebView;
 import com.tencent.smtt.sdk.WebViewClient;
@@ -124,6 +126,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
             finish();
             return;
         }
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE|WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
         setContentView(R.layout.activity_base);
 
         initConfig();
@@ -621,11 +624,12 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
                     uploadMessage.onReceiveValue(null);
                 }
                 uploadMessage = valueCallback;
-                if(Build.VERSION.SDK_INT>=21){
-                    openImageChooserActivity();
+                openImageChooserActivity();
+//                if(Build.VERSION.SDK_INT>=21){
+
 //                    Intent intent = fileChooserParams.createIntent();
 //                    startActivityForResult(Intent.createChooser(intent, "选择图片"), FILE_CHOOSER_RESULT_CODE);
-                }
+//                }
                 return true;
             }
 
@@ -633,7 +637,6 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
                 Log.e("----openFileChooser", "3");
                 if(singleUploadMessage!=null){
                     singleUploadMessage.onReceiveValue(null);
-                    return;
                 }
                 singleUploadMessage = uploadMsg;
                 openImageChooserActivity();
@@ -651,12 +654,17 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
 
         });
 
-
         x5WebView.setWebViewClient(new WebViewClient() {
 
             @Override
             public boolean shouldOverrideUrlLoading(final WebView view, final String url) {
-
+                Log.d("----BaseActivity", "shouldOverrideUrlLoading:" + url);
+                if(url.endsWith(".mp4")){
+//                    if(TbsVideo.canUseTbsPlayer(BaseActivity.this)){
+                        TbsVideo.openVideo(BaseActivity.this,url);
+//                    }
+                    return true;
+                }
                 try {
                     if (url.toLowerCase().startsWith("intent://")) {
                         Intent intent = Intent.parseUri(url, Intent.URI_INTENT_SCHEME);
@@ -679,7 +687,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
                     return super.shouldOverrideUrlLoading(view,url);
                 } catch (Exception e) {
 //                    Log.e("----should--error", ""+e.getMessage());
-                    Toast.makeText(BaseActivity.this, "无法打开指定应用，请先确认应用是否安装！", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(BaseActivity.this, "无法打开指定应用，请先确认应用是否安装！", Toast.LENGTH_SHORT).show();
                 }
                 return super.shouldOverrideUrlLoading(view, url);
 
@@ -722,6 +730,11 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
                 super.onReceivedError(view, errorCode, description, failingUrl);
 //                Log.e("----onReceivedError", "failingUrl:" + failingUrl);
                 errorNotice.setVisibility(View.VISIBLE);
+                if(failingUrl.endsWith("*.mp4")){
+                    if(TbsVideo.canUseTbsPlayer(BaseActivity.this)){
+                        TbsVideo.openVideo(BaseActivity.this,failingUrl);
+                    }
+                }
             }
 
             @Override
@@ -785,10 +798,8 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
             Uri result = data == null || resultCode != RESULT_OK ? null : data.getData();
             if(result!=null){
 
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    if (uploadMessage != null) {
-                        uploadMessage.onReceiveValue(new Uri[]{result});
-                    }
+                if (uploadMessage != null) {
+                    uploadMessage.onReceiveValue(new Uri[]{result});
                 }
                 if(singleUploadMessage!=null){
                     String path = getRealPathByUri(BaseActivity.this,result);
@@ -869,11 +880,11 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
-//            if ((getResources().getBoolean(R.bool.can_goback) && x5WebView.canGoBack()) || x5WebView.getUrl().equals(HOME)) {
+            if ((getResources().getBoolean(R.bool.can_goback) && x5WebView.canGoBack())) {
 //                Log.d("----BaseActivity", "onKeyDown:" + x5WebView.getUrl());
-//                x5WebView.goBack();
-//                return true;
-//            }
+                x5WebView.goBack();
+                return true;
+            }
             if (System.currentTimeMillis() - mills > 1000) {
                 Toast.makeText(this, getString(R.string.exit), Toast.LENGTH_SHORT).show();
                 mills = System.currentTimeMillis();

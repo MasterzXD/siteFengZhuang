@@ -26,14 +26,7 @@
         android:persistent="true"
         android:supportsRtl="true"
         android:theme="@android:style/Theme.Light.NoTitleBar">
-        <activity
-            android:name=".MainActivity"
-            >
 
-        </activity>
-        <activity
-            android:name=".Loading"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
         <activity
             android:name=".YinDaoActivity"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
@@ -48,6 +41,17 @@
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.tencent.smtt.sdk.VideoActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:alwaysRetainTaskState="true">
+            <intent-filter>
+                <action android:name="com.tencent.smtt.tbs.video.PLAY" />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
     </application>
