@@ -321,7 +321,8 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
                 x5WebView.goForward();
             }
         } else if (v == closeAp) {
-
+            finish();
+            System.exit(0);
         } else if (v == youhui) {
 
         } else if (v == kefu) {

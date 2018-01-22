@@ -456,26 +456,35 @@ android {
 //        }
 //        2018年1月19日09:34:11 --未结
 
-//        liuhaocai{--没做
+//        liuhaocai{ //没做
 //            applicationId = "com.rtya.liuhaocai"
 //        }
 //        dingfengyule{
 //            applicationId = "com.akh.dingfengyule"
 //        }
-        jinsha{
-            applicationId = "com.dytu.jinsha"
+//        jinsha{
+//            applicationId = "com.dytu.jinsha"
+ //       }
+ //       pujing{
+//            applicationId = "com.trdqw.pujing"
+ //       }
+ //       weinisiren{
+ //           applicationId = "com.ilea.weinisiren"
+ //       }
+ //       yinhe{
+ //           applicationId = "com.tyje.yinhe"
+ //       }
+//        yongliyule{
+//            applicationId = "com.ghfj.yongliyule"
+//        }
+        rio{
+            applicationId = "com.ghktyu.rio"
         }
-        pujing{
-            applicationId = "com.trdqw.pujing"
+        wjs{
+            applicationId = "com.srty.wjs"
         }
-        weinisiren{
-            applicationId = "com.ilea.weinisiren"
-        }
-        yinhe{
-            applicationId = "com.tyje.yinhe"
-        }
-        yongliyule{
-            applicationId = "com.ghfj.yongliyule"
+        xxotot{
+            applicationId = "com.rgtae.xxotot"
         }
     }
 
