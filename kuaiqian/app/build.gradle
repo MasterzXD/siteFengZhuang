@@ -486,6 +486,9 @@ android {
         xxotot{
             applicationId = "com.rgtae.xxotot"
         }
+        qingsongdai{
+            applicationId = "com.hfsa.qingsongdai"
+        }
     }
 
 }
