@@ -477,17 +477,26 @@ android {
 //        yongliyule{
 //            applicationId = "com.ghfj.yongliyule"
 //        }
-        rio{
-            applicationId = "com.ghktyu.rio"
-        }
-        wjs{
-            applicationId = "com.srty.wjs"
-        }
-        xxotot{
-            applicationId = "com.rgtae.xxotot"
-        }
-        qingsongdai{
-            applicationId = "com.hfsa.qingsongdai"
+//        rio{
+//            applicationId = "com.ghktyu.rio"
+//        }
+//        wjs{
+//            applicationId = "com.srty.wjs"
+//        }
+//        xxotot{
+//            applicationId = "com.rgtae.xxotot"
+//        }
+//        qingsongdai{
+//            applicationId = "com.hfsa.qingsongdai"
+//        }
+//        wanhaoguoji{
+//            applicationId = "com.ryut.wanhaoguoji"
+//        }
+//        xinpujinyulechang{
+//            applicationId = "com.gfkj.xinpujinyulechang"
+//        }
+        aomenbnb{ //50
+            applicationId = "com.ryhs.aomenbnb"
         }
     }
 
