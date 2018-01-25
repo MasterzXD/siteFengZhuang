@@ -454,7 +454,6 @@ android {
 //        kuaiqiantiyu { //100
 //            applicationId = "com.dyfd.kuaiqiantiyu"
 //        }
-//        2018年1月19日09:34:11 --未结
 
 //        liuhaocai{ //没做
 //            applicationId = "com.rtya.liuhaocai"
@@ -477,18 +476,19 @@ android {
 //        yongliyule{
 //            applicationId = "com.ghfj.yongliyule"
 //        }
-        rio{
-            applicationId = "com.ghktyu.rio"
-        }
-        wjs{
-            applicationId = "com.srty.wjs"
-        }
-        xxotot{
-            applicationId = "com.rgtae.xxotot"
-        }
-        qingsongdai{
-            applicationId = "com.hfsa.qingsongdai"
-        }
+//        rio{
+//            applicationId = "com.ghktyu.rio"
+//        }
+//        wjs{
+//            applicationId = "com.srty.wjs"
+//        }
+//        xxotot{
+//            applicationId = "com.rgtae.xxotot"
+//        }
+//        qingsongdai{
+//            applicationId = "com.hfsa.qingsongdai"
+//        }
+
     }
 
 }
