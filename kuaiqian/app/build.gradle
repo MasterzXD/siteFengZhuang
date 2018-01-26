@@ -1,5 +1,13 @@
 apply plugin: 'com.android.application'
 android {
+    signingConfigs {
+        release {
+            keyAlias 'key0'
+            keyPassword '123456'
+            storeFile file('D:/git/siteFengZhuang/zzzzzz.jks')
+            storePassword '123456'
+        }
+    }
     compileSdkVersion 26
     buildToolsVersion "26.0.2"
     defaultConfig {
@@ -14,21 +22,38 @@ android {
         ndk {
             abiFilters "armeabi", "armeabi-v7a", "x86", "mips"
         }
-    }
 
+        manifestPlaceholders = [ SCREEN_ORIENTATION:"portrait"]
+    }
     sourceSets {
         main {
             jniLibs.srcDirs = ['libs']
         }
     }
-
     buildTypes {
         release {
             minifyEnabled false
+            zipAlignEnabled true //Zipalign优化
+//            shrinkResources true // 移除无用的resource文件
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+            applicationVariants.all { variant ->
+
+                variant.outputs.all { output ->
+                    outputFileName = new File("../../../../../../release/${variant.productFlavors[0].name}.apk")
+                }
+            }
         }
-    } 
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
     productFlavors {
+        zhijiao {
+            applicationId = "com.adsk.zhijiao"
+        }
 //        kuaiqianyule {
 //            applicationId = "sihuo.app.com.kuaiqianyule"
 //        }
@@ -454,7 +479,7 @@ android {
 //        kuaiqiantiyu { //100
 //            applicationId = "com.dyfd.kuaiqiantiyu"
 //        }
-//        2018年1月19日09:34:11 --未结
+//        2018年1月19日09:34:11
 
 //        liuhaocai{ //没做
 //            applicationId = "com.rtya.liuhaocai"
@@ -464,16 +489,16 @@ android {
 //        }
 //        jinsha{
 //            applicationId = "com.dytu.jinsha"
- //       }
- //       pujing{
+        //       }
+        //       pujing{
 //            applicationId = "com.trdqw.pujing"
- //       }
- //       weinisiren{
- //           applicationId = "com.ilea.weinisiren"
- //       }
- //       yinhe{
- //           applicationId = "com.tyje.yinhe"
- //       }
+        //       }
+        //       weinisiren{
+        //           applicationId = "com.ilea.weinisiren"
+        //       }
+        //       yinhe{
+        //           applicationId = "com.tyje.yinhe"
+        //       }
 //        yongliyule{
 //            applicationId = "com.ghfj.yongliyule"
 //        }
@@ -489,17 +514,17 @@ android {
 //        qingsongdai{
 //            applicationId = "com.hfsa.qingsongdai"
 //        }
-//        wanhaoguoji{
+//        wanhaoguoji{//未结
 //            applicationId = "com.ryut.wanhaoguoji"
 //        }
 //        xinpujinyulechang{
 //            applicationId = "com.gfkj.xinpujinyulechang"
 //        }
-        aomenbnb{ //50
-            applicationId = "com.ryhs.aomenbnb"
-        }
+//        aomenbnb { //50
+//            applicationId = "com.ryhs.aomenbnb"
+//            manifestPlaceholders = [ SCREEN_ORIENTATION:"sensor"]
+//        }
     }
-
 }
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
