@@ -4,7 +4,7 @@ android {
         release {
             keyAlias 'key0'
             keyPassword '123456'
-            storeFile file('D:/git/siteFengZhuang/zzzzzz.jks')
+            storeFile file('E:/studio-projects/siteFengZhuang/zzzzzz.jks')
             storePassword '123456'
         }
     }
@@ -41,6 +41,7 @@ android {
 
                 variant.outputs.all { output ->
                     outputFileName = new File("../../../../../../release/${variant.productFlavors[0].name}.apk")
+//                    outputFileName = new File("${variant.productFlavors[0].name}.apk")
                 }
             }
         }
@@ -51,9 +52,9 @@ android {
     }
 
     productFlavors {
-        zhijiao {
-            applicationId = "com.adsk.zhijiao"
-        }
+//        zhijiao {
+//            applicationId = "com.adsk.zhijiao"
+//        }
 //        kuaiqianyule {
 //            applicationId = "sihuo.app.com.kuaiqianyule"
 //        }
@@ -514,7 +515,7 @@ android {
 //        qingsongdai{
 //            applicationId = "com.hfsa.qingsongdai"
 //        }
-//        wanhaoguoji{//未结
+//        wanhaoguoji{
 //            applicationId = "com.ryut.wanhaoguoji"
 //        }
 //        xinpujinyulechang{
@@ -524,6 +525,23 @@ android {
 //            applicationId = "com.ryhs.aomenbnb"
 //            manifestPlaceholders = [ SCREEN_ORIENTATION:"sensor"]
 //        }
+//        lekaiyule{ //未做
+//            applicationId = "com.sretg.lekaiyule"
+////            manifestPlaceholders = [ SCREEN_ORIENTATION:"sensor"]
+//        }
+//        jupai{
+//            applicationId = "com.shdtd.jupai"
+////            manifestPlaceholders = [ SCREEN_ORIENTATION:"sensor"]
+//        }
+//        mayihuile{
+//            applicationId = "com.trab.mayihuile"
+//            manifestPlaceholders = [ SCREEN_ORIENTATION:"sensor"]
+//        }
+        guibincaipiaowang{
+            applicationId = "com.fdhdf.guibincaipiaowang"
+//            manifestPlaceholders = [ SCREEN_ORIENTATION:"sensor"]
+        }
+        //未结
     }
 }
 dependencies {

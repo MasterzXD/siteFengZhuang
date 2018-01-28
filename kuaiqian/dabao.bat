@@ -11,9 +11,9 @@ for /d  %%i in (newapp\*) do (
 	echo %%i
 )
 
-xcopy newapp newapp1 /e
+::xcopy newapp newapp1 /e
 
-set cmd1=gradlew assembleRelease
+set cmd1=gradlew clean assembleRelease
 %cmd1%
 
 ::start explorer release

@@ -1,15 +1,14 @@
 <resources>
-    <string name="exit">再按一次退出</string>
     <!-- APP名字 -->
-    <string name="app_name">贵宾彩票网</string>
+    <string name="app_name">钜派</string>
     <!-- 启动地址 -->
-    <string name="start_url">http://www.vip600800.com/m</string>
+    <string name="start_url">http://www.mjupai.top</string>
     <!-- 主页地址 -->
-    <string name="home_url">http://www.vip600800.com/m</string>
-    <!-- 是否现在网页加载进度条 -->
+    <string name="home_url">http://www.mjupai.top</string>
+    <!-- 是否显示网页加载进度条,默认false -->
     <bool name="show_loadng">false</bool>
     <!-- 启动页面延迟时间，默认2000毫秒 -->
-    <integer name="loading_delay">2000</integer>
+    <integer name="loading_delay">3000</integer>
     <!-- 物理返回键带回退功能 -->
     <bool name="can_goback">true</bool>
     <!-- 保留头部导航栏 -->
@@ -26,10 +25,5 @@
     <bool name="need_cache">true</bool>
     <!-- 需要引导 -->
     <bool name="need_guide">false</bool>
-    <!-- 底部导航 -->
-    <bool name="bottom_navigation">false</bool>
-    <!-- 头部进度条 -->
-    <bool name="head_progressbar">false</bool>
-    <!-- 右侧滑菜单 -->
-    <bool name="slider_menu">false</bool>
+
 </resources>
