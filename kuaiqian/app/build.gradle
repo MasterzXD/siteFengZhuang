@@ -480,10 +480,6 @@ android {
 //        kuaiqiantiyu { //100
 //            applicationId = "com.dyfd.kuaiqiantiyu"
 //        }
-<<<<<<< HEAD
-=======
-//        2018年1月19日09:34:11
->>>>>>> tengxunx5
 
 //        liuhaocai{ //没做
 //            applicationId = "com.rtya.liuhaocai"
@@ -509,25 +505,16 @@ android {
 //        rio{
 //            applicationId = "com.ghktyu.rio"
 //        }
-<<<<<<< HEAD
 //        wjs{
 //            applicationId = "com.srty.wjs"
+//            manifestPlaceholders = [ SCREEN_ORIENTATION:"sensor"]
 //        }
-=======
-        wjs{
-            applicationId = "com.srty.wjs"
-            manifestPlaceholders = [ SCREEN_ORIENTATION:"sensor"]
-        }
->>>>>>> tengxunx5
 //        xxotot{
 //            applicationId = "com.rgtae.xxotot"
 //        }
 //        qingsongdai{
 //            applicationId = "com.hfsa.qingsongdai"
 //        }
-<<<<<<< HEAD
-
-=======
 //        wanhaoguoji{
 //            applicationId = "com.ryut.wanhaoguoji"
 //        }
@@ -555,11 +542,10 @@ android {
 ////            manifestPlaceholders = [ SCREEN_ORIENTATION:"sensor"]
 //        }
         //未结
-//        jiaoyibao{
-//            applicationId = "com.erha.jiaoyibao"
-////            manifestPlaceholders = [ SCREEN_ORIENTATION:"sensor"]
-//        }
->>>>>>> tengxunx5
+        jiaoyibao{
+            applicationId = "com.erha.jiaoyibao"
+//            manifestPlaceholders = [ SCREEN_ORIENTATION:"sensor"]
+        }
     }
 }
 dependencies {

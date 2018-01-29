@@ -93,14 +93,10 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
     private LinearLayout floatLayout;
     private RelativeLayout.LayoutParams floatParams;
     private ImageView floatHome, floatBack;
-    private int screenW, screenH;
-    private float density;
     private FrameLayout topNavi, bottomNavi;
-
     private ProgressBar progressBarH;
+
     private boolean refreshable, hasDaoHang, guestureNavigation, fullScreen, floatNavigation, bottomNavigation, rightSliderMenu,hasguide;
-    private int loadingTime, statusBarHeight;
-    private ImageView loadingImage;
 
     private Handler handler = new Handler() {
         @Override
@@ -127,19 +123,19 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
             finish();
             return;
         }
-        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE|WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+        initConfig();
+        if(fullScreen){
+            getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        }
         setContentView(R.layout.activity_base);
 
-        initConfig();
         x5WebView = findViewById(R.id.x5webview);
         errorNotice = findViewById(R.id.errorNotice);
-        loadingImage = findViewById(R.id.loadingImage);
         refeshLayout = findViewById(R.id.refesh_layout);
         rootView = findViewById(R.id.root_view);
         drawerLayout = findViewById(R.id.drawerLayout);
         sliderMenuParent = findViewById(R.id.slider_parent);
         progressBarH = findViewById(R.id.progressBar);
-        progressBarH.setMax(100);
 
         refeshLayout.setEnabled(refreshable);
         if (refreshable) {
@@ -150,68 +146,22 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
                 }
             });
         }
-        if (loadingTime == 0) {
-            initFloatNavigation();
-            if (!fullScreen) {
-                fullscreenNo();
-            }
-        } else {
-            loadingImage.setVisibility(View.VISIBLE);
-            handler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    initFloatNavigation();
-                    if (!fullScreen) {
-                        fullscreenNo();
-                    }
-                    if(hasguide && getSharedPreferences("config",MODE_PRIVATE).getBoolean("isfirst",true)){
-//                    if(hasguide){
-                        SharedPreferences.Editor editor = getSharedPreferences("config",MODE_PRIVATE).edit();
-                        editor.putBoolean("isfirst",false);
-                        editor.commit();
-                        startActivity(new Intent(BaseActivity.this,YinDaoActivity.class));
-                    }
-                    handler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            loadingImage.setVisibility(View.INVISIBLE);
-                        }
-                    },500);
-
-                }
-            }, loadingTime);
-        }
         Log.d("----BaseActivity", "onCreate:开始timmer" );
-
         loadHome();
         setupWebview();
         if (hasDaoHang) {
             topNavi = findViewById(R.id.topNavi);
             bottomNavi = findViewById(R.id.bottomNavi);
             View view = getLayoutInflater().inflate(R.layout.title_layout, null);
-            FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, (int) (44 * density));
+            FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
             if (bottomNavigation) {
+                bottomNavi.setVisibility(View.VISIBLE);
                 bottomNavi.addView(view, params);
-                if (!fullScreen) {
-                    RelativeLayout.LayoutParams params1 = (RelativeLayout.LayoutParams) refeshLayout.getLayoutParams();
-                    params1.topMargin = statusBarHeight;
-                    refeshLayout.setLayoutParams(params1);
-                }
             } else {
+                topNavi.setVisibility(View.VISIBLE);
                 topNavi.addView(view, params);
-                if (!fullScreen) {
-                    RelativeLayout.LayoutParams layout = (RelativeLayout.LayoutParams) topNavi.getLayoutParams();
-                    layout.topMargin = statusBarHeight;
-                    topNavi.setLayoutParams(layout);
-                }
             }
             loadTitle();
-        } else {
-            if (!fullScreen) {
-                RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) refeshLayout.getLayoutParams();
-                params.topMargin = statusBarHeight;
-                refeshLayout.setLayoutParams(params);
-            }
         }
         initSlider();
     }
@@ -341,73 +291,73 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
     int floatViewDownX, floatViewDownY, finalFloatViewDownX, finalFloatViewDownY;
 
     protected void initFloatNavigation() {
-        if (floatNavigation) {
-            floatLayout = (LinearLayout) getLayoutInflater().inflate(R.layout.float_layout, null);
-            final int floatViewW = (int) (40 * density);
-            final int floatViewH = (int) (100 * density);
-            floatParams = new RelativeLayout.LayoutParams(floatViewW, floatViewH);
-            floatParams.leftMargin = (int) (270 * density);
-            floatParams.topMargin = (int) (300 * density);
-            rootView.addView(floatLayout, floatParams);
-
-            floatBack = floatLayout.findViewById(R.id.float_back);
-            floatHome = floatLayout.findViewById(R.id.float_home);
-            floatLayout.setOnTouchListener(new View.OnTouchListener() {
-                @Override
-                public boolean onTouch(View v, MotionEvent event) {
-
-                    switch (event.getAction()) {
-                        case MotionEvent.ACTION_DOWN:
-                            floatViewDownX = (int) event.getRawX();
-                            floatViewDownY = (int) event.getRawY();
-                            finalFloatViewDownX = (int) event.getRawX();
-                            finalFloatViewDownY = (int) event.getRawY();
-                            break;
-                        case MotionEvent.ACTION_MOVE:
-
-                            int floatViewCurrentX = (int) event.getRawX();
-                            int floatViewCurrentY = (int) event.getRawY();
-                            if (Math.abs(floatViewCurrentX - finalFloatViewDownX) < 10
-                                    && Math.abs(floatViewCurrentY - finalFloatViewDownY) < 10) {
-                                return true;
-                            }
-                            floatParams.leftMargin += floatViewCurrentX - floatViewDownX;
-                            floatParams.topMargin += floatViewCurrentY - floatViewDownY;
-
-                            if (floatParams.leftMargin < 0) {
-                                floatParams.leftMargin = 0;
-                            }
-                            if (floatParams.topMargin < 0) {
-                                floatParams.topMargin = 0;
-                            }
-                            if (floatParams.leftMargin + floatViewW > screenW) {
-                                floatParams.leftMargin = screenW - floatViewW;
-                            }
-                            if (floatParams.topMargin + floatViewH + 22 > screenH) {
-                                floatParams.topMargin = screenH - floatViewH - 22;
-                            }
-                            floatViewDownX = floatViewCurrentX;
-                            floatViewDownY = floatViewCurrentY;
-                            rootView.updateViewLayout(floatLayout, floatParams);
-                            break;
-                        case MotionEvent.ACTION_UP:
-                            if (Math.abs(event.getRawY() - finalFloatViewDownY) < 10) {
-                                if (floatHome.getY() + floatHome.getHeight() >= event.getY()) {
-                                    HOME = getResources().getString(R.string.home_url);
-                                    x5WebView.loadUrl(HOME);
-                                } else {
-                                    if (x5WebView.canGoBack()) {
-                                        x5WebView.goBack();
-                                    }
-                                }
-                            }
-                            floatLayout.setLayoutParams(floatParams);
-                            break;
-                    }
-                    return true;
-                }
-            });
-        }
+//        if (floatNavigation) {
+//            floatLayout = (LinearLayout) getLayoutInflater().inflate(R.layout.float_layout, null);
+//            final int floatViewW = (int) (40 * density);
+//            final int floatViewH = (int) (100 * density);
+//            floatParams = new RelativeLayout.LayoutParams(floatViewW, floatViewH);
+//            floatParams.leftMargin = (int) (270 * density);
+//            floatParams.topMargin = (int) (300 * density);
+//            rootView.addView(floatLayout, floatParams);
+//
+//            floatBack = floatLayout.findViewById(R.id.float_back);
+//            floatHome = floatLayout.findViewById(R.id.float_home);
+//            floatLayout.setOnTouchListener(new View.OnTouchListener() {
+//                @Override
+//                public boolean onTouch(View v, MotionEvent event) {
+//
+//                    switch (event.getAction()) {
+//                        case MotionEvent.ACTION_DOWN:
+//                            floatViewDownX = (int) event.getRawX();
+//                            floatViewDownY = (int) event.getRawY();
+//                            finalFloatViewDownX = (int) event.getRawX();
+//                            finalFloatViewDownY = (int) event.getRawY();
+//                            break;
+//                        case MotionEvent.ACTION_MOVE:
+//
+//                            int floatViewCurrentX = (int) event.getRawX();
+//                            int floatViewCurrentY = (int) event.getRawY();
+//                            if (Math.abs(floatViewCurrentX - finalFloatViewDownX) < 10
+//                                    && Math.abs(floatViewCurrentY - finalFloatViewDownY) < 10) {
+//                                return true;
+//                            }
+//                            floatParams.leftMargin += floatViewCurrentX - floatViewDownX;
+//                            floatParams.topMargin += floatViewCurrentY - floatViewDownY;
+//
+//                            if (floatParams.leftMargin < 0) {
+//                                floatParams.leftMargin = 0;
+//                            }
+//                            if (floatParams.topMargin < 0) {
+//                                floatParams.topMargin = 0;
+//                            }
+//                            if (floatParams.leftMargin + floatViewW > screenW) {
+//                                floatParams.leftMargin = screenW - floatViewW;
+//                            }
+//                            if (floatParams.topMargin + floatViewH + 22 > screenH) {
+//                                floatParams.topMargin = screenH - floatViewH - 22;
+//                            }
+//                            floatViewDownX = floatViewCurrentX;
+//                            floatViewDownY = floatViewCurrentY;
+//                            rootView.updateViewLayout(floatLayout, floatParams);
+//                            break;
+//                        case MotionEvent.ACTION_UP:
+//                            if (Math.abs(event.getRawY() - finalFloatViewDownY) < 10) {
+//                                if (floatHome.getY() + floatHome.getHeight() >= event.getY()) {
+//                                    HOME = getResources().getString(R.string.home_url);
+//                                    x5WebView.loadUrl(HOME);
+//                                } else {
+//                                    if (x5WebView.canGoBack()) {
+//                                        x5WebView.goBack();
+//                                    }
+//                                }
+//                            }
+//                            floatLayout.setLayoutParams(floatParams);
+//                            break;
+//                    }
+//                    return true;
+//                }
+//            });
+//        }
     }
 
 
@@ -416,37 +366,15 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         refreshable = getResources().getBoolean(R.bool.pull_refresh_enable);
         hasDaoHang = getResources().getBoolean(R.bool.save_daohang);
         guestureNavigation = getResources().getBoolean(R.bool.gesture_navigation);
-        loadingTime = getResources().getInteger(R.integer.loading_delay);
         fullScreen = getResources().getBoolean(R.bool.full_screen);
         floatNavigation = getResources().getBoolean(R.bool.float_navigation);
         bottomNavigation = getResources().getBoolean(R.bool.bottom_navigation);
         rightSliderMenu =  getResources().getBoolean(R.bool.slider_menu);
         hasguide = getResources().getBoolean(R.bool.need_guide);
-
-        int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
-        if (resourceId > 0) {
-            statusBarHeight = getResources().getDimensionPixelSize(resourceId);
-        }
-        DisplayMetrics dm = getResources().getDisplayMetrics();
-        density = dm.density;
-        screenW = dm.widthPixels;
-        screenH = dm.heightPixels;
     }
 
     void loadHome() {
         x5WebView.loadUrl(HOME);
-    }
-
-    void fullscreenNo() {
-        View decorView = getWindow().getDecorView();
-        int option = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR;
-        decorView.setSystemUiVisibility(option);
-        getWindow().setFlags(
-                WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
-        if (Build.VERSION.SDK_INT >= 21) {
-//            getWindow().setStatusBarColor(Color.TRANSPARENT);
-        }
     }
 
     void setupWebview() {
@@ -541,36 +469,6 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
             }
 
             @Override
-            public void onReachedMaxAppCacheSize(long l, long l1, WebStorage.QuotaUpdater quotaUpdater) {
-                super.onReachedMaxAppCacheSize(l, l1, quotaUpdater);
-                Log.e("----MainActivity", "onReachedMaxAppCacheSize:");
-            }
-
-            @Override
-            public boolean onJsBeforeUnload(WebView webView, String s, String s1, JsResult jsResult) {
-                Log.e("----MainActivity", "onJsBeforeUnload:");
-                return super.onJsBeforeUnload(webView, s, s1, jsResult);
-            }
-
-            @Override
-            public boolean onJsPrompt(WebView webView, String s, String s1, String s2, JsPromptResult jsPromptResult) {
-                Log.e("----MainActivity", "onJsPrompt:");
-                return super.onJsPrompt(webView, s, s1, s2, jsPromptResult);
-            }
-
-            @Override
-            public boolean onJsConfirm(WebView webView, String s, String s1, JsResult jsResult) {
-                Log.e("----MainActivity", "onJsConfirm:");
-                return super.onJsConfirm(webView, s, s1, jsResult);
-            }
-
-            @Override
-            public boolean onJsTimeout() {
-                Log.e("----MainActivity", "onJsTimeout:");
-                return super.onJsTimeout();
-            }
-
-            @Override
             public boolean onCreateWindow(WebView webView, boolean b, boolean b1, Message message) {
                 Log.e("----onCreateWindow", "" + message);
 //                NewWindowView newview = (NewWindowView) getLayoutInflater().inflate(R.layout.new_window,null);
@@ -579,11 +477,6 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
 //                transport.setWebView(newview.x5WebView);
 //                message.sendToTarget();
                 return true;
-            }
-
-            @Override
-            public void onCloseWindow(WebView webView) {
-                super.onCloseWindow(webView);
             }
 
             @Override
@@ -602,12 +495,12 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
             public void onProgressChanged(WebView webView, int progress) {
                 super.onProgressChanged(webView, progress);
                 if (progressBarH != null) {
-//                    progressBarH.setProgress(progress);
-//                    if(progress==100){
-//                        progressBarH.setVisibility(View.INVISIBLE);
-//                    }else{
-//                        progressBarH.setVisibility(View.VISIBLE);
-//                    }
+                    progressBarH.setProgress(progress);
+                    if(progress==100){
+                        progressBarH.setVisibility(View.INVISIBLE);
+                    }else{
+                        progressBarH.setVisibility(View.VISIBLE);
+                    }
                 }
 
                 if (refreshable) {
@@ -627,11 +520,6 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 uploadMessage = valueCallback;
                 openImageChooserActivity();
-//                if(Build.VERSION.SDK_INT>=21){
-
-//                    Intent intent = fileChooserParams.createIntent();
-//                    startActivityForResult(Intent.createChooser(intent, "选择图片"), FILE_CHOOSER_RESULT_CODE);
-//                }
                 return true;
             }
 
@@ -662,9 +550,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
             public boolean shouldOverrideUrlLoading(final WebView view, final String url) {
                 Log.d("----BaseActivity", "shouldOverrideUrlLoading:" + url);
                 if(url.endsWith(".mp4")){
-//                    if(TbsVideo.canUseTbsPlayer(BaseActivity.this)){
                         TbsVideo.openVideo(BaseActivity.this,url);
-//                    }
                     return true;
                 }
                 try {
@@ -688,7 +574,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
                     }
                     return super.shouldOverrideUrlLoading(view,url);
                 } catch (Exception e) {
-//                    Log.e("----should--error", ""+e.getMessage());
+                    Log.e("----should--error", ""+e.getMessage());
 //                    Toast.makeText(BaseActivity.this, "无法打开指定应用，请先确认应用是否安装！", Toast.LENGTH_SHORT).show();
                 }
                 return super.shouldOverrideUrlLoading(view, url);
@@ -714,17 +600,19 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
                 }
             }
 
-            @Override
-            public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
-                super.onReceivedError(view, request, error);
-//                Log.e("----onReceivedError", "");
-            }
+
 
 
             @Override
             public void onReceivedSslError(WebView webView, SslErrorHandler sslErrorHandler, com.tencent.smtt.export.external.interfaces.SslError sslError) {
                 sslErrorHandler.proceed();
                 super.onReceivedSslError(webView, sslErrorHandler, sslError);
+            }
+
+            @Override
+            public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
+                super.onReceivedError(view, request, error);
+//                Log.e("----onReceivedError", "");
             }
 
             @Override
@@ -902,7 +790,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onResume() {
         super.onResume();
-        startService(new Intent(this.getApplicationContext(), TBSService.class));
+
     }
 
     @Override
@@ -914,6 +802,6 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onPause() {
         super.onPause();
-        clearWebViewCache();
+//        clearWebViewCache();
     }
 }

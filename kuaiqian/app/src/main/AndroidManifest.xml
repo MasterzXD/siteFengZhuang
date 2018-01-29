@@ -35,7 +35,7 @@
             android:hardwareAccelerated="true"
             android:launchMode="standard"
             android:screenOrientation="${SCREEN_ORIENTATION}"
-            android:theme="@style/AppTheme"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:windowSoftInputMode="stateHidden|adjustResize">
 
 
