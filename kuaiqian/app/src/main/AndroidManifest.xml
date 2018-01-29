@@ -34,7 +34,7 @@
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:hardwareAccelerated="true"
             android:launchMode="standard"
-            android:screenOrientation="portrait"
+            android:screenOrientation="${SCREEN_ORIENTATION}"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden|adjustResize">
 
