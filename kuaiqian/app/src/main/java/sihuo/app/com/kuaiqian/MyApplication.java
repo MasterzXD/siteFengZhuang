@@ -16,7 +16,6 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
-        startService(new Intent(this, TBSService.class));
     }
 
 }

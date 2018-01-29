@@ -4,7 +4,7 @@ android {
         release {
             keyAlias 'key0'
             keyPassword '123456'
-            storeFile file('E:/studio-projects/siteFengZhuang/zzzzzz.jks')
+            storeFile file('D:/git/siteFengZhuang/zzzzzz.jks')
             storePassword '123456'
         }
     }
@@ -506,9 +506,10 @@ android {
 //        rio{
 //            applicationId = "com.ghktyu.rio"
 //        }
-//        wjs{
-//            applicationId = "com.srty.wjs"
-//        }
+        wjs{
+            applicationId = "com.srty.wjs"
+            manifestPlaceholders = [ SCREEN_ORIENTATION:"sensor"]
+        }
 //        xxotot{
 //            applicationId = "com.rgtae.xxotot"
 //        }
@@ -537,11 +538,15 @@ android {
 //            applicationId = "com.trab.mayihuile"
 //            manifestPlaceholders = [ SCREEN_ORIENTATION:"sensor"]
 //        }
-        guibincaipiaowang{
-            applicationId = "com.fdhdf.guibincaipiaowang"
-//            manifestPlaceholders = [ SCREEN_ORIENTATION:"sensor"]
-        }
+//        guibincaipiaowang{
+//            applicationId = "com.fdhdf.guibincaipiaowang"
+////            manifestPlaceholders = [ SCREEN_ORIENTATION:"sensor"]
+//        }
         //未结
+//        jiaoyibao{
+//            applicationId = "com.erha.jiaoyibao"
+////            manifestPlaceholders = [ SCREEN_ORIENTATION:"sensor"]
+//        }
     }
 }
 dependencies {
