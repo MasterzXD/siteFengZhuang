@@ -551,9 +551,15 @@ android {
 //        huangguanyule2{
 //            applicationId = "com.dgrert.huangguanyule2"
 //        }
-        kaisayule{
-            applicationId = "com.ytuka.kaisayule"
-            manifestPlaceholders = [ SCREEN_ORIENTATION:"sensor"]
+//        kaisayule{
+//            applicationId = "com.ytuka.kaisayule"
+//            manifestPlaceholders = [ SCREEN_ORIENTATION:"sensor"]
+//        }
+//        xinpujing{
+//            applicationId = "com.ytuka.xinpujing"
+//        }
+        shengshihualian{//没要
+            applicationId = "com.yurifds.shengshihualian"
         }
     }
 }
