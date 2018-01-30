@@ -26,7 +26,7 @@ public class TBSService extends Service {
      * 初始化TBS浏览服务X5内核
      */
     private void initTBS() {
-//        QbSdk.preInit(getApplicationContext());
+        QbSdk.preInit(getApplicationContext());
         QbSdk.PreInitCallback cb = new QbSdk.PreInitCallback() {
 
             @Override

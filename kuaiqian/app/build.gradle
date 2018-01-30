@@ -542,9 +542,18 @@ android {
 ////            manifestPlaceholders = [ SCREEN_ORIENTATION:"sensor"]
 //        }
         //未结
-        jiaoyibao{
-            applicationId = "com.erha.jiaoyibao"
-//            manifestPlaceholders = [ SCREEN_ORIENTATION:"sensor"]
+//        jiaoyibao{
+//            applicationId = "com.erha.jiaoyibao"
+//        }
+//        weinisiyule{
+//            applicationId = "com.fhdssfh.weinisiyule"
+//        }
+//        huangguanyule2{
+//            applicationId = "com.dgrert.huangguanyule2"
+//        }
+        kaisayule{
+            applicationId = "com.ytuka.kaisayule"
+            manifestPlaceholders = [ SCREEN_ORIENTATION:"sensor"]
         }
     }
 }
