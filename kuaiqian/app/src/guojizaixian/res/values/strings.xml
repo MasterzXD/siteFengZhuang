@@ -1,7 +1,0 @@
-<resources>
-    <string name="app_name">易昌金服</string>
-    <string name="home_url">http://wap.uu8r.com</string>
-    <bool name="show_loadng">false</bool>
-    <integer name="loading_delay">6000</integer>
-    <bool name="can_goback">true</bool>
-</resources>
