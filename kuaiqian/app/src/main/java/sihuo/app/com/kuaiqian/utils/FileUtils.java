@@ -3,6 +3,7 @@ package sihuo.app.com.kuaiqian.utils;
 import android.annotation.TargetApi;
 import android.content.ContentUris;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
@@ -12,7 +13,13 @@ import android.provider.MediaStore;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.animation.GlideAnimation;
+import com.bumptech.glide.request.target.SimpleTarget;
+
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 
 import sihuo.app.com.kuaiqian.BaseActivity;
 
@@ -139,4 +146,50 @@ public class FileUtils {
     public static boolean isMediaDocument(Uri uri) {
         return "com.android.providers.media.documents".equals(uri.getAuthority());
     }
+
+
+    //Glide保存图片
+    public static void savePicture(final Context context,final String fileName, String url){
+        Glide.with(context).load(url).asBitmap().toBytes().into(new SimpleTarget<byte[]>() {
+            @Override
+            public void onResourceReady(byte[] bytes, GlideAnimation<? super byte[]> glideAnimation) {
+                try {
+                    savaFileToSD(context,fileName,bytes);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+    //往SD卡写入文件的方法
+    public static void savaFileToSD(Context context,String filename, byte[] bytes) throws Exception {
+//如果手机已插入sd卡,且app具有读写sd卡的权限
+        if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
+            String filePath = Environment.getExternalStorageDirectory().getCanonicalPath()+"/temp";
+            File dir1 = new File(filePath);
+            if (!dir1.exists()){
+                dir1.mkdirs();
+            }
+            String filename1 = filePath+ "/" + filename+".jpg";
+//这里就不要用openFileOutput了,那个是往手机内存中写数据的
+            FileOutputStream output = new FileOutputStream(filename1);
+            output.write(bytes);
+//将bytes写入到输出流中
+            output.close();
+//关闭输出流
+            Toast.makeText(context, "图片已成功保存到"+filePath, Toast.LENGTH_SHORT).show();
+// 其次把文件插入到系统图库
+// 其次把文件插入到系统图库
+            try {
+                MediaStore.Images.Media.insertImage(context.getContentResolver(),
+                        filename1, filename, null);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+// 最后通知图库更新
+            context.sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE,
+                    Uri.fromFile(new File(filename1))));
+        } else Toast.makeText(context, "SD卡不存在或者不可读写", Toast.LENGTH_SHORT).show();
+    }
+
 }

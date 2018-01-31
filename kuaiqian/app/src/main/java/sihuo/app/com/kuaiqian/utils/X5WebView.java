@@ -85,7 +85,7 @@ public class X5WebView extends WebView implements View.OnLongClickListener{
 	}
 
 	public void setmCallBack(LongClickCallBack mCallBack){
-//		this.mCallBack = mCallBack;
+		this.mCallBack = mCallBack;
 	}
 
 	@Override

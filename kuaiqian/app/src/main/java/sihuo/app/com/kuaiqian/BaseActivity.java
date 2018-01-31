@@ -16,6 +16,7 @@ import android.provider.MediaStore;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Base64;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Gravity;
@@ -58,6 +59,7 @@ import java.io.InputStream;
 
 import sihuo.app.com.kuaiqian.service.TBSService;
 import sihuo.app.com.kuaiqian.utils.ADFilterTool;
+import sihuo.app.com.kuaiqian.utils.FileUtils;
 import sihuo.app.com.kuaiqian.utils.Share;
 import sihuo.app.com.kuaiqian.utils.X5WebView;
 
@@ -393,27 +395,24 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
                 BaseActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-//                        new AlertDialog.Builder(BaseActivity.this).setTitle("").setNegativeButton("保存图片到相册", new DialogInterface.OnClickListener() {
-//                            @Override
-//                            public void onClick(DialogInterface dialog, int which) {
-//                                if(imgUrl.startsWith("data:image/png;base64,")){
-//                                    String tempimgUrl = imgUrl.replace("data:image/png;base64","");
-//                                    BaseActivity.this.mBitmap = Base64.decode(tempimgUrl,Base64.DEFAULT);
+                        new AlertDialog.Builder(BaseActivity.this).setTitle("").setNegativeButton("保存图片到相册", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                if(imgUrl.startsWith("data:image/png;base64,")){
+                                    String tempimgUrl = imgUrl.replace("data:image/png;base64","");
+//                                    BaseActivity.this.mBitmap = Base64.decode(tempimgUrl, Base64.DEFAULT);
 //                                    saveMyBitmap(BaseActivity.this.mBitmap,""+System.currentTimeMillis());
-////                            Bitmap bitmap = BitmapFactory.decodeByteArray(data,0,data.length);
-////                            Result result = DecodeImage.handleQRCodeFormBitmap(bitmap);
-////                            if(result!=null){
-////                                Log.e("----onLongClickCallBack", ""+result.getText());
-////                                webview.loadUrl(result.getText());
-////                            }
-//                                }else if(imgUrl.startsWith("http")){
-//                                    imageUrl=imgUrl;
-//                                    // 获取到图片地址后做相应的处理
-//                                    MainActivity.MyAsyncTask mTask = new MainActivity.MyAsyncTask();
-//                                    mTask.execute(imgUrl);
-//                                }
+//                            Bitmap bitmap = BitmapFactory.decodeByteArray(data,0,data.length);
+//                            Result result = DecodeImage.handleQRCodeFormBitmap(bitmap);
+//                            if(result!=null){
+//                                Log.e("----onLongClickCallBack", ""+result.getText());
+//                                webview.loadUrl(result.getText());
 //                            }
-//                        }).show();
+                                }else if(imgUrl.startsWith("http")){
+                                    FileUtils.savePicture(BaseActivity.this,""+System.currentTimeMillis(),imgUrl);
+                                }
+                            }
+                        }).show();
                     }
                 });
             }
