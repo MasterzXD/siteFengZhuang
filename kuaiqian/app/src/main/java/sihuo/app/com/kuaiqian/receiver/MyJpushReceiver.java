@@ -6,9 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.hzzh.wawaji.Constant;
 
 import cn.jpush.android.api.JPushInterface;
+import sihuo.app.com.kuaiqian.Constant;
 
 public class MyJpushReceiver extends BroadcastReceiver {
 

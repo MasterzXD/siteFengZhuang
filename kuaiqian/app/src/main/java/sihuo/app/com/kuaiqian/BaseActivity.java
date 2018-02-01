@@ -1,8 +1,11 @@
 package sihuo.app.com.kuaiqian;
 
 import android.app.AlertDialog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -57,6 +60,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 
+import cn.jpush.android.api.JPushInterface;
 import sihuo.app.com.kuaiqian.service.TBSService;
 import sihuo.app.com.kuaiqian.utils.ADFilterTool;
 import sihuo.app.com.kuaiqian.utils.FileUtils;
@@ -92,12 +96,9 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
 
     private TextView back, refresh, goForward, closeAp, home, shareBtn, moreBtn, youhui, kefu, loadview, xiazhu, zhibo;
     /*float navigation*/
-    private LinearLayout floatLayout;
-    private RelativeLayout.LayoutParams floatParams;
-    private ImageView floatHome, floatBack;
     private FrameLayout topNavi, bottomNavi;
     private ProgressBar progressBarH;
-
+    private JpushCustomReceiver jpushCustomReceiver;
     private boolean refreshable, hasDaoHang, guestureNavigation, fullScreen, floatNavigation, bottomNavigation, rightSliderMenu,hasguide;
 
     private Handler handler = new Handler() {
@@ -130,7 +131,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
             getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         }
         setContentView(R.layout.activity_base);
-
+        jpushCustomReceiver = new JpushCustomReceiver();
         x5WebView = findViewById(R.id.x5webview);
         errorNotice = findViewById(R.id.errorNotice);
         refeshLayout = findViewById(R.id.refesh_layout);
@@ -287,82 +288,6 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    /**
-     * 加载悬浮导航
-     */
-    int floatViewDownX, floatViewDownY, finalFloatViewDownX, finalFloatViewDownY;
-
-    protected void initFloatNavigation() {
-//        if (floatNavigation) {
-//            floatLayout = (LinearLayout) getLayoutInflater().inflate(R.layout.float_layout, null);
-//            final int floatViewW = (int) (40 * density);
-//            final int floatViewH = (int) (100 * density);
-//            floatParams = new RelativeLayout.LayoutParams(floatViewW, floatViewH);
-//            floatParams.leftMargin = (int) (270 * density);
-//            floatParams.topMargin = (int) (300 * density);
-//            rootView.addView(floatLayout, floatParams);
-//
-//            floatBack = floatLayout.findViewById(R.id.float_back);
-//            floatHome = floatLayout.findViewById(R.id.float_home);
-//            floatLayout.setOnTouchListener(new View.OnTouchListener() {
-//                @Override
-//                public boolean onTouch(View v, MotionEvent event) {
-//
-//                    switch (event.getAction()) {
-//                        case MotionEvent.ACTION_DOWN:
-//                            floatViewDownX = (int) event.getRawX();
-//                            floatViewDownY = (int) event.getRawY();
-//                            finalFloatViewDownX = (int) event.getRawX();
-//                            finalFloatViewDownY = (int) event.getRawY();
-//                            break;
-//                        case MotionEvent.ACTION_MOVE:
-//
-//                            int floatViewCurrentX = (int) event.getRawX();
-//                            int floatViewCurrentY = (int) event.getRawY();
-//                            if (Math.abs(floatViewCurrentX - finalFloatViewDownX) < 10
-//                                    && Math.abs(floatViewCurrentY - finalFloatViewDownY) < 10) {
-//                                return true;
-//                            }
-//                            floatParams.leftMargin += floatViewCurrentX - floatViewDownX;
-//                            floatParams.topMargin += floatViewCurrentY - floatViewDownY;
-//
-//                            if (floatParams.leftMargin < 0) {
-//                                floatParams.leftMargin = 0;
-//                            }
-//                            if (floatParams.topMargin < 0) {
-//                                floatParams.topMargin = 0;
-//                            }
-//                            if (floatParams.leftMargin + floatViewW > screenW) {
-//                                floatParams.leftMargin = screenW - floatViewW;
-//                            }
-//                            if (floatParams.topMargin + floatViewH + 22 > screenH) {
-//                                floatParams.topMargin = screenH - floatViewH - 22;
-//                            }
-//                            floatViewDownX = floatViewCurrentX;
-//                            floatViewDownY = floatViewCurrentY;
-//                            rootView.updateViewLayout(floatLayout, floatParams);
-//                            break;
-//                        case MotionEvent.ACTION_UP:
-//                            if (Math.abs(event.getRawY() - finalFloatViewDownY) < 10) {
-//                                if (floatHome.getY() + floatHome.getHeight() >= event.getY()) {
-//                                    HOME = getResources().getString(R.string.home_url);
-//                                    x5WebView.loadUrl(HOME);
-//                                } else {
-//                                    if (x5WebView.canGoBack()) {
-//                                        x5WebView.goBack();
-//                                    }
-//                                }
-//                            }
-//                            floatLayout.setLayoutParams(floatParams);
-//                            break;
-//                    }
-//                    return true;
-//                }
-//            });
-//        }
-    }
-
-
     void initConfig() {
         HOME = getResources().getString(R.string.start_url);
         refreshable = getResources().getBoolean(R.bool.pull_refresh_enable);
@@ -461,10 +386,16 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
 
         x5WebView.setWebChromeClient(new WebChromeClient() {
             @Override
-            public boolean onJsAlert(WebView webView, String s, String s1, JsResult jsResult) {
-                jsResult.confirm();
-                Log.e("----onJsAlert", "_" + s + "_" + s1);
-                return super.onJsAlert(webView, s, s1, jsResult);
+            public boolean onJsAlert(WebView webView, String url, String message,final JsResult jsResult) {
+
+                new AlertDialog.Builder(BaseActivity.this).setMessage(message)
+                        .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                jsResult.confirm();
+                            }
+                        }).show();
+                return true;
             }
 
             @Override
@@ -764,8 +695,6 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    long mills = 0;
-
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
@@ -774,13 +703,15 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
                 x5WebView.goBack();
                 return true;
             }
-            if (System.currentTimeMillis() - mills > 1000) {
-                Toast.makeText(this, getString(R.string.exit), Toast.LENGTH_SHORT).show();
-                mills = System.currentTimeMillis();
-            } else {
-                finish();
-                System.exit(0);
-            }
+            new AlertDialog.Builder(BaseActivity.this).setMessage("现在要退出系统吗？")
+                    .setNegativeButton("取消",null)
+                    .setPositiveButton("退出", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            finish();
+                            System.exit(0);
+                        }
+                    }).show();
             return true;
         }
         return super.onKeyDown(keyCode, event);
@@ -789,18 +720,52 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onResume() {
         super.onResume();
-
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(Constant.ACTION_JPUSH_CUSTOM);
+        filter.setPriority(50);
+        registerReceiver(jpushCustomReceiver,filter);
     }
 
-    @Override
-    protected void onDestroy() {
 
-        super.onDestroy();
-    }
+
 
     @Override
     protected void onPause() {
         super.onPause();
-//        clearWebViewCache();
+        unregisterReceiver(jpushCustomReceiver);
+    }
+
+    @Override
+    protected void onDestroy() {
+        releaseWebview();
+        super.onDestroy();
+    }
+
+    void releaseWebview(){
+        if(x5WebView!=null){
+            x5WebView.loadUrl("about:blank");
+            x5WebView.removeAllViews();
+            x5WebView.destroy();
+        }
+    }
+
+    public class JpushCustomReceiver extends BroadcastReceiver {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            abortBroadcast();
+            if(intent.getAction().equals(Constant.ACTION_JPUSH_CUSTOM)){
+                Log.e("----MyReceiver", "收到jpush自定义通知");
+                String content = intent.getExtras().getString(JPushInterface.EXTRA_MESSAGE);
+                if(content.startsWith("catch_success:")){
+                    content = content.substring(14);
+                    String []params = content.split("&&");
+                    String imageUrl = params.length>1?params[1]:null;
+                }else{
+                    new android.support.v7.app.AlertDialog.Builder(BaseActivity.this).setMessage(content)
+                            .setPositiveButton("确定",null).show();
+                }
+            }
+        }
     }
 }

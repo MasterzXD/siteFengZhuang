@@ -8,11 +8,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
-import com.hzzh.wawaji.Constant;
-import com.hzzh.wawaji.MainActivity;
-import com.hzzh.wawaji.R;
 
 import cn.jpush.android.api.JPushInterface;
+import sihuo.app.com.kuaiqian.BaseActivity;
+import sihuo.app.com.kuaiqian.Constant;
+import sihuo.app.com.kuaiqian.R;
 
 public class PendingReceiver extends BroadcastReceiver {
 
@@ -27,11 +27,11 @@ public class PendingReceiver extends BroadcastReceiver {
 
     private void sendNotification(Context context, String message){
         NotificationManager notifyMgr= (NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
-        Intent intent = new Intent(context, MainActivity.class);
+        Intent intent = new Intent(context, BaseActivity.class);
 
         PendingIntent pi = PendingIntent.getActivity(context, 0, intent, 0);
         Notification notification = new Notification.Builder(context)
-                .setSmallIcon(R.mipmap.icon)
+                .setSmallIcon(R.drawable.iconx)
                 .setTicker(message)
                 .setContentTitle(context.getString(R.string.app_name))
                 .setContentText(message)
