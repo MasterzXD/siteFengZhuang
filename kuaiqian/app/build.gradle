@@ -557,12 +557,15 @@ android {
 //            applicationId = "com.ytuka.kaisayule"
 //            manifestPlaceholders = [ SCREEN_ORIENTATION:"sensor"]
 //        }
-        xinpujing{
-            applicationId = "com.ytuka.xinpujing"
-        }
+//        xinpujing{
+//            applicationId = "com.ytuka.xinpujing"
+//        }
 //        shengshihualian{//没要
 //            applicationId = "com.yurifds.shengshihualian"
 //        }
+        demaxiya{
+            applicationId = "com.dfsg.demaxiya"
+        }
         //------------------
     }
 }
