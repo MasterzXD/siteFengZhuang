@@ -83,6 +83,9 @@ android {
         zhongbaojinfu{
             applicationId = "com.fgser.zhongbaojinfu"
         }
+        aomenyinhe {
+            applicationId = "com.xqlwab.aomenyinhe"
+        }
 //----
     }
 }
