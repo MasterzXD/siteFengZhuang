@@ -617,7 +617,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         if (requestCode == FILE_CHOOSER_RESULT_CODE) {
             Uri result = data == null || resultCode != RESULT_OK ? null : data.getData();
             if(result!=null){
-
+                String realpath = FileUtils.getRealPathByUri(this,result);
                 if (uploadMessage != null) {
                     uploadMessage.onReceiveValue(new Uri[]{result});
                 }
