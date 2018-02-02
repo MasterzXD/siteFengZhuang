@@ -80,11 +80,14 @@ android {
 //        youhongbao{
 //            applicationId = "com.jkrih.youhongbao"
 //        }
-        zhongbaojinfu{
-            applicationId = "com.fgser.zhongbaojinfu"
-        }
-        aomenyinhe {
-            applicationId = "com.xqlwab.aomenyinhe"
+//        zhongbaojinfu{
+//            applicationId = "com.fgser.zhongbaojinfu"
+//        }
+//        aomenyinhe {
+//            applicationId = "com.xqlwab.aomenyinhe"
+//        }
+        yundingguoji2 {
+            applicationId = "com.shtaw.yundingguoji2"
         }
 //----
     }
