@@ -33,94 +33,76 @@
     </system>
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="BaseActivity.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/sihuo/app/com/kuaiqian/BaseActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="193">
-              <caret line="773" column="0" lean-forward="false" selection-start-line="773" selection-start-column="0" selection-end-line="773" selection-end-column="0" />
-              <folding>
-                <element signature="e#3848#3985#0" expanded="true" />
-                <element signature="e#3984#3985#0" expanded="true" />
-                <element signature="e#5367#5551#0" expanded="true" />
-                <element signature="e#5550#5551#0" expanded="true" />
-                <element signature="e#6923#9404#0" expanded="true" />
-                <element signature="e#8767#9237#0" expanded="true" />
-                <element signature="e#9236#9237#0" expanded="true" />
-                <element signature="e#9403#9404#0" expanded="true" />
-                <element signature="e#16527#16528#0" expanded="true" />
-                <element signature="e#16566#16567#0" expanded="true" />
-                <element signature="e#16633#16989#0" expanded="true" />
-                <element signature="e#16988#16989#0" expanded="true" />
-                <element signature="e#17023#18728#0" expanded="true" />
-                <element signature="e#17197#18702#0" expanded="true" />
-                <element signature="e#17393#18653#0" expanded="true" />
-                <element signature="e#18652#18653#0" expanded="true" />
-                <element signature="e#18701#18702#0" expanded="true" />
-                <element signature="e#18727#18728#0" expanded="true" />
-                <element signature="e#18796#19231#0" expanded="true" />
-                <element signature="e#19230#19231#0" expanded="true" />
-                <element signature="e#19320#20426#0" expanded="true" />
-                <element signature="e#20425#20426#0" expanded="true" />
-                <element signature="e#28937#29794#0" expanded="true" />
-                <element signature="e#29793#29794#0" expanded="true" />
-                <element signature="e#29820#30267#0" expanded="true" />
-                <element signature="e#30266#30267#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="KeyEvent.java" pinned="false" current-in-tab="false">
-        <entry file="file://D:/Android/sdk/sources/android-26/android/view/KeyEvent.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="2420" column="0" lean-forward="false" selection-start-line="2420" selection-start-column="0" selection-end-line="2420" selection-end-column="0" />
-              <folding>
-                <element signature="e#102163#102164#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AndroidManifest.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/AndroidManifest.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-665">
-              <caret line="30" column="73" lean-forward="false" selection-start-line="30" selection-start-column="73" selection-end-line="30" selection-end-column="73" />
-              <folding />
-            </state>
-          </provider>
-          <provider editor-type-id="android-manifest">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="235">
-              <caret line="566" column="37" lean-forward="false" selection-start-line="566" selection-start-column="37" selection-end-line="566" selection-end-column="37" />
+            <state relative-caret-position="139">
+              <caret line="88" column="14" lean-forward="true" selection-start-line="88" selection-start-column="14" selection-end-line="88" selection-end-column="14" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="strings.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/demaxiya/res/values/strings.xml">
+        <entry file="file://$PROJECT_DIR$/src/zhongbaojinfu/res/values/strings.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
-              <caret line="18" column="49" lean-forward="false" selection-start-line="18" selection-start-column="49" selection-end-line="18" selection-end-column="49" />
+            <state relative-caret-position="38">
+              <caret line="2" column="41" lean-forward="false" selection-start-line="2" selection-start-column="41" selection-end-line="2" selection-end-column="41" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Activity.java" pinned="false" current-in-tab="false">
-        <entry file="file://D:/Android/sdk/sources/android-26/android/app/Activity.java">
+      <file leaf-file-name="strings.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/youhongbao/res/values/strings.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="2754" column="0" lean-forward="false" selection-start-line="2754" selection-start-column="0" selection-end-line="2754" selection-end-column="0" />
+            <state relative-caret-position="133">
+              <caret line="17" column="22" lean-forward="false" selection-start-line="17" selection-start-column="22" selection-end-line="17" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="history" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../history">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="9253">
+              <caret line="487" column="11" lean-forward="false" selection-start-line="487" selection-start-column="11" selection-end-line="487" selection-end-column="11" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="iconx.png" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/aomenweinisirentwo/res/drawable-xhdpi/iconx.png">
+          <provider selected="true" editor-type-id="images">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="loading.png" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/aomenweinisirentwo/res/drawable-xhdpi/loading.png">
+          <provider selected="true" editor-type-id="images">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="strings.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/res/values/strings.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="strings.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/weiqile/res/values/strings.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="361">
+              <caret line="19" column="17" lean-forward="false" selection-start-line="19" selection-start-column="17" selection-end-line="19" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -137,6 +119,9 @@
       <find>progressBarH</find>
       <find>saveMyBitmap</find>
       <find>xin</find>
+      <find>lcc</find>
+      <find>lefa</find>
+      <find>apply plugin\: \'com\.android\.application\'\nandroid \{\n    signingConfigs \{\n        release \{\n            keyAlias \'key0\'\n            keyPassword \'123456\'\n            storeFile file\(\'D\:\/git\/siteFengZhuang\/zzzzzz\.jks\'\)\n            storePassword \'123456\'\n\n            v1SigningEnabled true\n            v2SigningEnabled false\n        \}\n    \}\n    compileSdkVersion 26\n    buildToolsVersion \&quot;26\.0\.2\&quot;\n    defaultConfig \{\n        applicationId \'sihuo\.app\.com\.aimaoyingyin\'\n        minSdkVersion 15\n        targetSdkVersion 21\n        versionCode 1\n        versionName \'1\.0\'\n        testInstrumentationRunner \&quot;android\.support\.test\.runner\.AndroidJUnitRunner\&quot;\n\n        flavorDimensions \&quot;versionCode\&quot;\n        ndk \{\n            abiFilters \&quot;armeabi\&quot;\, \&quot;armeabi\-v7a\&quot;\, \&quot;x86\&quot;\, \&quot;mips\&quot;\n        \}\n\n        manifestPlaceholders \= \[ SCREEN_ORIENTATION\:\&quot;portrait\&quot;\]\n    \}\n    sourceSets \{\n        main \{\n            jniLibs\.srcDirs \= \[\'libs\'\]\n        \}\n    \}\n    buildTypes \{\n        release \{\n            minifyEnabled false\n            zipAlignEnabled true \/\/Zipalign优化\n\/\/            shrinkResources true \/\/ 移除无用的resource文件\n            proguardFiles getDefaultProguardFile\(\'proguard\-android\.txt\'\)\, \'proguard\-rules\.pro\'\n            signingConfig signingConfigs\.release\n            applicationVariants\.all \{ variant \-\&gt;\n\n                variant\.outputs\.all \{ output \-\&gt;\n                    outputFileName \= new File\(\&quot;\.\.\/\.\.\/\.\.\/\.\.\/\.\.\/\.\.\/release\/\$\{variant\.productFlavors\[0\]\.name\}\.apk\&quot;\)\n                \}\n            \}\n        \}\n    \}\n\n    lintOptions \{\n        abortOnError false\n    \}\n\n    productFlavors \{\n        \/\/未结\n\/\/        jiaoyibao\{\n\/\/            applicationId \= \&quot;com\.erha\.jiaoyibao\&quot;\n\/\/        \}\n\/\/        weinisiyule\{\n\/\/            applicationId \= \&quot;com\.fhdssfh\.weinisiyule\&quot;\n\/\/        \}\n\/\/        huangguanyule2\{\n\/\/            applicationId \= \&quot;com\.dgrert\.huangguanyule2\&quot;\n\/\/        \}\n\/\/        kaisayule\{\n\/\/            applicationId \= \&quot;com\.ytuka\.kaisayule\&quot;\n\/\/            manifestPlaceholders \= \[ SCREEN_ORIENTATION\:\&quot;sensor\&quot;\]\n\/\/        \}\n\/\/        xinpujing\{\n\/\/            applicationId \= \&quot;com\.ytuka\.xinpujing\&quot;\n\/\/        \}\n\/\/        demaxiya\{\n\/\/            applicationId \= \&quot;com\.dfsg\.demaxiya\&quot;\n\/\/        \}\n\/\/        weiqile\{\n\/\/            applicationId \= \&quot;com\.tyrja\.weiqile\&quot;\n\/\/        \}\n\/\/        youhongbao\{\n\/\/            applicationId \= \&quot;com\.jkrih\.youhongbao\&quot;\n\/\/        \}\n\/\/        zhongbaojinfu\{\n\/\/            applicationId \= \&quot;com\.fgser\.zhongbaojinfu\&quot;\n\/\/        \}\ntesty1 \{\n    com\.xvdfs\.testy1\n\}\n\/\/\-\-\-\-\n    \}\n\}\ndependencies \{\n    compile fileTree\(include\: \[\'\*\.jar\'\]\, dir\: \'libs\'\)\n    compile \'com\.android\.support\:appcompat\-v7\:26\.0\.0\-beta1\'\n    implementation \'com\.android\.support\:support\-v4\:26\.0\.0\-alpha1\'\n    \/\/        implementation \'com\.google\.zxing\:core\:3\.3\.0\'\n    implementation \'com\.android\.support\.constraint\:constraint\-layout\:1\.0\.2\'\n    implementation files\(\'libs\/tbs_sdk_thirdapp_v3\.2\.0\.1104_43200_sharewithdownload_withfilereader_withoutGame_obfs_20170609_115346\.jar\'\)\n    implementation \'com\.github\.bumptech\.glide\:glide\:3\.7\.0\'\n\}\n</find>
     </findStrings>
   </component>
   <component name="GenerateSignedApkSettings">
@@ -269,34 +254,34 @@
                 <option name="name" value="assembleDebug" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Assembles all Demaxiya builds." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="assembleDemaxiya" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="assembleDemaxiyaDebug" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="assembleDemaxiyaDebugAndroidTest" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="assembleDemaxiyaDebugUnitTest" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="assembleDemaxiyaRelease" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="assembleDemaxiyaReleaseUnitTest" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
                 <option name="description" value="Assembles all Release builds." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
                 <option name="name" value="assembleRelease" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Assembles all Zhongbaojinfu builds." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
+                <option name="name" value="assembleZhongbaojinfu" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
+                <option name="name" value="assembleZhongbaojinfuDebug" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
+                <option name="name" value="assembleZhongbaojinfuDebugAndroidTest" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
+                <option name="name" value="assembleZhongbaojinfuDebugUnitTest" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
+                <option name="name" value="assembleZhongbaojinfuRelease" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
+                <option name="name" value="assembleZhongbaojinfuReleaseUnitTest" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Assembles and tests this project." />
@@ -315,23 +300,23 @@
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="bundleAppClassesDemaxiyaDebug" />
+                <option name="name" value="bundleAppClassesZhongbaojinfuDebug" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="bundleAppClassesDemaxiyaDebugAndroidTest" />
+                <option name="name" value="bundleAppClassesZhongbaojinfuDebugAndroidTest" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="bundleAppClassesDemaxiyaDebugUnitTest" />
+                <option name="name" value="bundleAppClassesZhongbaojinfuDebugUnitTest" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="bundleAppClassesDemaxiyaRelease" />
+                <option name="name" value="bundleAppClassesZhongbaojinfuRelease" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="bundleAppClassesDemaxiyaReleaseUnitTest" />
+                <option name="name" value="bundleAppClassesZhongbaojinfuReleaseUnitTest" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Runs all checks." />
@@ -340,11 +325,11 @@
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="checkDemaxiyaDebugManifest" />
+                <option name="name" value="checkZhongbaojinfuDebugManifest" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="checkDemaxiyaReleaseManifest" />
+                <option name="name" value="checkZhongbaojinfuReleaseManifest" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Deletes the build cache directory." />
@@ -353,95 +338,95 @@
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="compileDemaxiyaDebugAidl" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="compileDemaxiyaDebugAndroidTestAidl" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="compileDemaxiyaDebugAndroidTestJavaWithJavac" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="compileDemaxiyaDebugAndroidTestNdk" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="compileDemaxiyaDebugAndroidTestRenderscript" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="compileDemaxiyaDebugAndroidTestShaders" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="compileDemaxiyaDebugAndroidTestSources" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="compileDemaxiyaDebugJavaWithJavac" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="compileDemaxiyaDebugNdk" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="compileDemaxiyaDebugRenderscript" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="compileDemaxiyaDebugShaders" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="compileDemaxiyaDebugSources" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="compileDemaxiyaDebugUnitTestJavaWithJavac" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="compileDemaxiyaDebugUnitTestSources" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="compileDemaxiyaReleaseAidl" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="compileDemaxiyaReleaseJavaWithJavac" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="compileDemaxiyaReleaseNdk" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="compileDemaxiyaReleaseRenderscript" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="compileDemaxiyaReleaseShaders" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="compileDemaxiyaReleaseSources" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="compileDemaxiyaReleaseUnitTestJavaWithJavac" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="compileDemaxiyaReleaseUnitTestSources" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
                 <option name="name" value="compileLint" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
+                <option name="name" value="compileZhongbaojinfuDebugAidl" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
+                <option name="name" value="compileZhongbaojinfuDebugAndroidTestAidl" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
+                <option name="name" value="compileZhongbaojinfuDebugAndroidTestJavaWithJavac" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
+                <option name="name" value="compileZhongbaojinfuDebugAndroidTestNdk" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
+                <option name="name" value="compileZhongbaojinfuDebugAndroidTestRenderscript" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
+                <option name="name" value="compileZhongbaojinfuDebugAndroidTestShaders" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
+                <option name="name" value="compileZhongbaojinfuDebugAndroidTestSources" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
+                <option name="name" value="compileZhongbaojinfuDebugJavaWithJavac" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
+                <option name="name" value="compileZhongbaojinfuDebugNdk" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
+                <option name="name" value="compileZhongbaojinfuDebugRenderscript" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
+                <option name="name" value="compileZhongbaojinfuDebugShaders" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
+                <option name="name" value="compileZhongbaojinfuDebugSources" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
+                <option name="name" value="compileZhongbaojinfuDebugUnitTestJavaWithJavac" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
+                <option name="name" value="compileZhongbaojinfuDebugUnitTestSources" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
+                <option name="name" value="compileZhongbaojinfuReleaseAidl" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
+                <option name="name" value="compileZhongbaojinfuReleaseJavaWithJavac" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
+                <option name="name" value="compileZhongbaojinfuReleaseNdk" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
+                <option name="name" value="compileZhongbaojinfuReleaseRenderscript" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
+                <option name="name" value="compileZhongbaojinfuReleaseShaders" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
+                <option name="name" value="compileZhongbaojinfuReleaseSources" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
+                <option name="name" value="compileZhongbaojinfuReleaseUnitTestJavaWithJavac" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
+                <option name="name" value="compileZhongbaojinfuReleaseUnitTestSources" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Installs and runs instrumentation tests for all flavors on connected devices." />
@@ -454,9 +439,9 @@
                 <option name="name" value="connectedCheck" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Installs and runs the tests for demaxiyaDebug on connected devices." />
+                <option name="description" value="Installs and runs the tests for zhongbaojinfuDebug on connected devices." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="connectedDemaxiyaDebugAndroidTest" />
+                <option name="name" value="connectedZhongbaojinfuDebugAndroidTest" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
@@ -464,11 +449,11 @@
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="createDemaxiyaDebugCompatibleScreenManifests" />
+                <option name="name" value="createZhongbaojinfuDebugCompatibleScreenManifests" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="createDemaxiyaReleaseCompatibleScreenManifests" />
+                <option name="name" value="createZhongbaojinfuReleaseCompatibleScreenManifests" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Installs and runs instrumentation tests using all Device Providers." />
@@ -486,98 +471,98 @@
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="generateDemaxiyaDebugAndroidTestAssets" />
+                <option name="name" value="generateZhongbaojinfuDebugAndroidTestAssets" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="generateDemaxiyaDebugAndroidTestBuildConfig" />
+                <option name="name" value="generateZhongbaojinfuDebugAndroidTestBuildConfig" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="generateDemaxiyaDebugAndroidTestResValues" />
+                <option name="name" value="generateZhongbaojinfuDebugAndroidTestResValues" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="generateDemaxiyaDebugAndroidTestResources" />
+                <option name="name" value="generateZhongbaojinfuDebugAndroidTestResources" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="generateDemaxiyaDebugAndroidTestSources" />
+                <option name="name" value="generateZhongbaojinfuDebugAndroidTestSources" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="generateDemaxiyaDebugAssets" />
+                <option name="name" value="generateZhongbaojinfuDebugAssets" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="generateDemaxiyaDebugBuildConfig" />
+                <option name="name" value="generateZhongbaojinfuDebugBuildConfig" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="generateDemaxiyaDebugResValues" />
+                <option name="name" value="generateZhongbaojinfuDebugResValues" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="generateDemaxiyaDebugResources" />
+                <option name="name" value="generateZhongbaojinfuDebugResources" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="generateDemaxiyaDebugSources" />
+                <option name="name" value="generateZhongbaojinfuDebugSources" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="generateDemaxiyaReleaseAssets" />
+                <option name="name" value="generateZhongbaojinfuReleaseAssets" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="generateDemaxiyaReleaseBuildConfig" />
+                <option name="name" value="generateZhongbaojinfuReleaseBuildConfig" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="generateDemaxiyaReleaseResValues" />
+                <option name="name" value="generateZhongbaojinfuReleaseResValues" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="generateDemaxiyaReleaseResources" />
+                <option name="name" value="generateZhongbaojinfuReleaseResources" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="generateDemaxiyaReleaseSources" />
+                <option name="name" value="generateZhongbaojinfuReleaseSources" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Installs the DebugDemaxiya build." />
+                <option name="description" value="Installs the DebugZhongbaojinfu build." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="installDemaxiyaDebug" />
+                <option name="name" value="installZhongbaojinfuDebug" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Installs the android (on device) tests for the DemaxiyaDebug build." />
+                <option name="description" value="Installs the android (on device) tests for the ZhongbaojinfuDebug build." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="installDemaxiyaDebugAndroidTest" />
+                <option name="name" value="installZhongbaojinfuDebugAndroidTest" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Installs the ReleaseDemaxiya build." />
+                <option name="description" value="Installs the ReleaseZhongbaojinfu build." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="installDemaxiyaRelease" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="javaPreCompileDemaxiyaDebug" />
+                <option name="name" value="installZhongbaojinfuRelease" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="javaPreCompileDemaxiyaDebugAndroidTest" />
+                <option name="name" value="javaPreCompileZhongbaojinfuDebug" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="javaPreCompileDemaxiyaDebugUnitTest" />
+                <option name="name" value="javaPreCompileZhongbaojinfuDebugAndroidTest" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="javaPreCompileDemaxiyaRelease" />
+                <option name="name" value="javaPreCompileZhongbaojinfuDebugUnitTest" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="javaPreCompileDemaxiyaReleaseUnitTest" />
+                <option name="name" value="javaPreCompileZhongbaojinfuRelease" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
+                <option name="name" value="javaPreCompileZhongbaojinfuReleaseUnitTest" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Runs lint on all variants." />
@@ -585,67 +570,67 @@
                 <option name="name" value="lint" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Runs lint on the DemaxiyaDebug build." />
+                <option name="description" value="Runs lint on just the fatal issues in the zhongbaojinfuRelease build." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="lintDemaxiyaDebug" />
+                <option name="name" value="lintVitalZhongbaojinfuRelease" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Runs lint on the DemaxiyaRelease build." />
+                <option name="description" value="Runs lint on the ZhongbaojinfuDebug build." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="lintDemaxiyaRelease" />
+                <option name="name" value="lintZhongbaojinfuDebug" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Runs lint on just the fatal issues in the demaxiyaRelease build." />
+                <option name="description" value="Runs lint on the ZhongbaojinfuRelease build." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="lintVitalDemaxiyaRelease" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="mergeDemaxiyaDebugAndroidTestAssets" />
+                <option name="name" value="lintZhongbaojinfuRelease" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="mergeDemaxiyaDebugAndroidTestJniLibFolders" />
+                <option name="name" value="mergeZhongbaojinfuDebugAndroidTestAssets" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="mergeDemaxiyaDebugAndroidTestResources" />
+                <option name="name" value="mergeZhongbaojinfuDebugAndroidTestJniLibFolders" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="mergeDemaxiyaDebugAndroidTestShaders" />
+                <option name="name" value="mergeZhongbaojinfuDebugAndroidTestResources" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="mergeDemaxiyaDebugAssets" />
+                <option name="name" value="mergeZhongbaojinfuDebugAndroidTestShaders" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="mergeDemaxiyaDebugJniLibFolders" />
+                <option name="name" value="mergeZhongbaojinfuDebugAssets" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="mergeDemaxiyaDebugResources" />
+                <option name="name" value="mergeZhongbaojinfuDebugJniLibFolders" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="mergeDemaxiyaDebugShaders" />
+                <option name="name" value="mergeZhongbaojinfuDebugResources" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="mergeDemaxiyaReleaseAssets" />
+                <option name="name" value="mergeZhongbaojinfuDebugShaders" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="mergeDemaxiyaReleaseJniLibFolders" />
+                <option name="name" value="mergeZhongbaojinfuReleaseAssets" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="mergeDemaxiyaReleaseResources" />
+                <option name="name" value="mergeZhongbaojinfuReleaseJniLibFolders" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="mergeDemaxiyaReleaseShaders" />
+                <option name="name" value="mergeZhongbaojinfuReleaseResources" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
+                <option name="name" value="mergeZhongbaojinfuReleaseShaders" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Creates a version of android.jar that's suitable for unit tests." />
@@ -654,15 +639,15 @@
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="packageDemaxiyaDebug" />
+                <option name="name" value="packageZhongbaojinfuDebug" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="packageDemaxiyaDebugAndroidTest" />
+                <option name="name" value="packageZhongbaojinfuDebugAndroidTest" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="packageDemaxiyaRelease" />
+                <option name="name" value="packageZhongbaojinfuRelease" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
@@ -674,23 +659,23 @@
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="preDemaxiyaDebugAndroidTestBuild" />
+                <option name="name" value="preZhongbaojinfuDebugAndroidTestBuild" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="preDemaxiyaDebugBuild" />
+                <option name="name" value="preZhongbaojinfuDebugBuild" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="preDemaxiyaDebugUnitTestBuild" />
+                <option name="name" value="preZhongbaojinfuDebugUnitTestBuild" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="preDemaxiyaReleaseBuild" />
+                <option name="name" value="preZhongbaojinfuReleaseBuild" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="preDemaxiyaReleaseUnitTestBuild" />
+                <option name="name" value="preZhongbaojinfuReleaseUnitTestBuild" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
@@ -698,47 +683,47 @@
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="processDemaxiyaDebugAndroidTestJavaRes" />
+                <option name="name" value="processZhongbaojinfuDebugAndroidTestJavaRes" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="processDemaxiyaDebugAndroidTestManifest" />
+                <option name="name" value="processZhongbaojinfuDebugAndroidTestManifest" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="processDemaxiyaDebugAndroidTestResources" />
+                <option name="name" value="processZhongbaojinfuDebugAndroidTestResources" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="processDemaxiyaDebugJavaRes" />
+                <option name="name" value="processZhongbaojinfuDebugJavaRes" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="processDemaxiyaDebugManifest" />
+                <option name="name" value="processZhongbaojinfuDebugManifest" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="processDemaxiyaDebugResources" />
+                <option name="name" value="processZhongbaojinfuDebugResources" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="processDemaxiyaDebugUnitTestJavaRes" />
+                <option name="name" value="processZhongbaojinfuDebugUnitTestJavaRes" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="processDemaxiyaReleaseJavaRes" />
+                <option name="name" value="processZhongbaojinfuReleaseJavaRes" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="processDemaxiyaReleaseManifest" />
+                <option name="name" value="processZhongbaojinfuReleaseManifest" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="processDemaxiyaReleaseResources" />
+                <option name="name" value="processZhongbaojinfuReleaseResources" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="processDemaxiyaReleaseUnitTestJavaRes" />
+                <option name="name" value="processZhongbaojinfuReleaseUnitTestJavaRes" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
@@ -756,15 +741,15 @@
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="splitsDiscoveryTaskDemaxiyaDebug" />
+                <option name="name" value="splitsDiscoveryTaskZhongbaojinfuDebug" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="splitsDiscoveryTaskDemaxiyaDebugAndroidTest" />
+                <option name="name" value="splitsDiscoveryTaskZhongbaojinfuDebugAndroidTest" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="splitsDiscoveryTaskDemaxiyaRelease" />
+                <option name="name" value="splitsDiscoveryTaskZhongbaojinfuRelease" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Run unit tests for all variants." />
@@ -772,86 +757,86 @@
                 <option name="name" value="test" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Run unit tests for the demaxiyaDebug build." />
+                <option name="description" value="Run unit tests for the zhongbaojinfuDebug build." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="testDemaxiyaDebugUnitTest" />
+                <option name="name" value="testZhongbaojinfuDebugUnitTest" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Run unit tests for the demaxiyaRelease build." />
+                <option name="description" value="Run unit tests for the zhongbaojinfuRelease build." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="testDemaxiyaReleaseUnitTest" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="transformClassesWithDexBuilderForDemaxiyaDebug" />
+                <option name="name" value="testZhongbaojinfuReleaseUnitTest" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="transformClassesWithDexBuilderForDemaxiyaDebugAndroidTest" />
+                <option name="name" value="transformClassesWithDexBuilderForZhongbaojinfuDebug" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="transformClassesWithPreDexForDemaxiyaRelease" />
+                <option name="name" value="transformClassesWithDexBuilderForZhongbaojinfuDebugAndroidTest" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="transformDexArchiveWithDexMergerForDemaxiyaDebug" />
+                <option name="name" value="transformClassesWithPreDexForZhongbaojinfuRelease" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="transformDexArchiveWithDexMergerForDemaxiyaDebugAndroidTest" />
+                <option name="name" value="transformDexArchiveWithDexMergerForZhongbaojinfuDebug" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="transformDexArchiveWithExternalLibsDexMergerForDemaxiyaDebug" />
+                <option name="name" value="transformDexArchiveWithDexMergerForZhongbaojinfuDebugAndroidTest" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="transformDexArchiveWithExternalLibsDexMergerForDemaxiyaDebugAndroidTest" />
+                <option name="name" value="transformDexArchiveWithExternalLibsDexMergerForZhongbaojinfuDebug" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="transformDexWithDexForDemaxiyaRelease" />
+                <option name="name" value="transformDexArchiveWithExternalLibsDexMergerForZhongbaojinfuDebugAndroidTest" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="transformNativeLibsWithMergeJniLibsForDemaxiyaDebug" />
+                <option name="name" value="transformDexWithDexForZhongbaojinfuRelease" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="transformNativeLibsWithMergeJniLibsForDemaxiyaDebugAndroidTest" />
+                <option name="name" value="transformNativeLibsWithMergeJniLibsForZhongbaojinfuDebug" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="transformNativeLibsWithMergeJniLibsForDemaxiyaRelease" />
+                <option name="name" value="transformNativeLibsWithMergeJniLibsForZhongbaojinfuDebugAndroidTest" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="transformNativeLibsWithStripDebugSymbolForDemaxiyaDebug" />
+                <option name="name" value="transformNativeLibsWithMergeJniLibsForZhongbaojinfuRelease" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="transformNativeLibsWithStripDebugSymbolForDemaxiyaRelease" />
+                <option name="name" value="transformNativeLibsWithStripDebugSymbolForZhongbaojinfuDebug" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="transformResourcesWithMergeJavaResForDemaxiyaDebug" />
+                <option name="name" value="transformNativeLibsWithStripDebugSymbolForZhongbaojinfuRelease" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="transformResourcesWithMergeJavaResForDemaxiyaDebugAndroidTest" />
+                <option name="name" value="transformResourcesWithMergeJavaResForZhongbaojinfuDebug" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="transformResourcesWithMergeJavaResForDemaxiyaDebugUnitTest" />
+                <option name="name" value="transformResourcesWithMergeJavaResForZhongbaojinfuDebugAndroidTest" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="transformResourcesWithMergeJavaResForDemaxiyaRelease" />
+                <option name="name" value="transformResourcesWithMergeJavaResForZhongbaojinfuDebugUnitTest" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="transformResourcesWithMergeJavaResForDemaxiyaReleaseUnitTest" />
+                <option name="name" value="transformResourcesWithMergeJavaResForZhongbaojinfuRelease" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
+                <option name="name" value="transformResourcesWithMergeJavaResForZhongbaojinfuReleaseUnitTest" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Uninstall all applications." />
@@ -859,39 +844,39 @@
                 <option name="name" value="uninstallAll" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Uninstalls the DebugDemaxiya build." />
+                <option name="description" value="Uninstalls the DebugZhongbaojinfu build." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="uninstallDemaxiyaDebug" />
+                <option name="name" value="uninstallZhongbaojinfuDebug" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Uninstalls the android (on device) tests for the DemaxiyaDebug build." />
+                <option name="description" value="Uninstalls the android (on device) tests for the ZhongbaojinfuDebug build." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="uninstallDemaxiyaDebugAndroidTest" />
+                <option name="name" value="uninstallZhongbaojinfuDebugAndroidTest" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Uninstalls the ReleaseDemaxiya build." />
+                <option name="description" value="Uninstalls the ReleaseZhongbaojinfu build." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="uninstallDemaxiyaRelease" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="validateSigningDemaxiyaDebug" />
+                <option name="name" value="uninstallZhongbaojinfuRelease" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="validateSigningDemaxiyaDebugAndroidTest" />
+                <option name="name" value="validateSigningZhongbaojinfuDebug" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="validateSigningDemaxiyaRelease" />
+                <option name="name" value="validateSigningZhongbaojinfuDebugAndroidTest" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="writeDemaxiyaDebugApplicationId" />
+                <option name="name" value="validateSigningZhongbaojinfuRelease" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
-                <option name="name" value="writeDemaxiyaReleaseApplicationId" />
+                <option name="name" value="writeZhongbaojinfuDebugApplicationId" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/.." />
+                <option name="name" value="writeZhongbaojinfuReleaseApplicationId" />
               </ExternalTaskPojo>
             </list>
           </value>
@@ -900,13 +885,12 @@
           <value>
             <list>
               <ExternalTaskPojo>
-                <option name="description" value="Uninstalls the DebugDemaxiya build." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="uninstallDemaxiyaDebug" />
+                <option name="name" value="generateZhongbaojinfuDebugAndroidTestSources" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="validateSigningDemaxiyaDebug" />
+                <option name="name" value="preZhongbaojinfuReleaseBuild" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Displays the sub-projects of project ':app'." />
@@ -915,43 +899,73 @@
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="checkDemaxiyaDebugManifest" />
+                <option name="name" value="compileZhongbaojinfuReleaseShaders" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="bundleAppClassesDemaxiyaDebug" />
+                <option name="name" value="splitsDiscoveryTaskZhongbaojinfuDebugAndroidTest" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="transformNativeLibsWithMergeJniLibsForDemaxiyaDebug" />
+                <option name="name" value="compileZhongbaojinfuDebugAidl" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="compileDemaxiyaReleaseAidl" />
+                <option name="name" value="createZhongbaojinfuDebugCompatibleScreenManifests" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="transformResourcesWithMergeJavaResForDemaxiyaReleaseUnitTest" />
+                <option name="name" value="javaPreCompileZhongbaojinfuRelease" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="processDemaxiyaDebugAndroidTestJavaRes" />
+                <option name="name" value="mergeZhongbaojinfuDebugJniLibFolders" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Uninstalls the DebugZhongbaojinfu build." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="uninstallZhongbaojinfuDebug" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="splitsDiscoveryTaskDemaxiyaRelease" />
+                <option name="name" value="generateZhongbaojinfuReleaseSources" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="assembleDemaxiyaDebugUnitTest" />
+                <option name="name" value="compileZhongbaojinfuDebugUnitTestSources" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Installs the DebugZhongbaojinfu build." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="installZhongbaojinfuDebug" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="generateDemaxiyaReleaseResValues" />
+                <option name="name" value="generateZhongbaojinfuDebugResValues" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="generateDemaxiyaDebugAssets" />
+                <option name="name" value="javaPreCompileZhongbaojinfuReleaseUnitTest" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="transformDexArchiveWithDexMergerForZhongbaojinfuDebugAndroidTest" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="bundleAppClassesZhongbaojinfuDebugAndroidTest" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="compileZhongbaojinfuReleaseJavaWithJavac" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="javaPreCompileZhongbaojinfuDebugAndroidTest" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="bundleAppClassesZhongbaojinfuDebug" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Creates a version of android.jar that's suitable for unit tests." />
@@ -965,16 +979,12 @@
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="bundleAppClassesDemaxiyaRelease" />
+                <option name="name" value="transformClassesWithPreDexForZhongbaojinfuRelease" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Run unit tests for the demaxiyaDebug build." />
+                <option name="description" value="Uninstalls the android (on device) tests for the ZhongbaojinfuDebug build." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="testDemaxiyaDebugUnitTest" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="generateDemaxiyaDebugResources" />
+                <option name="name" value="uninstallZhongbaojinfuDebugAndroidTest" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Displays the tasks runnable from project ':app'." />
@@ -983,35 +993,23 @@
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="mergeDemaxiyaDebugShaders" />
+                <option name="name" value="mergeZhongbaojinfuDebugAndroidTestAssets" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="processDemaxiyaDebugManifest" />
+                <option name="name" value="writeZhongbaojinfuDebugApplicationId" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="compileDemaxiyaDebugAndroidTestSources" />
+                <option name="name" value="mergeZhongbaojinfuDebugResources" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="mergeDemaxiyaDebugAndroidTestShaders" />
+                <option name="name" value="compileZhongbaojinfuReleaseUnitTestJavaWithJavac" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="transformResourcesWithMergeJavaResForDemaxiyaDebug" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="mergeDemaxiyaDebugJniLibFolders" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="processDemaxiyaDebugUnitTestJavaRes" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="transformDexArchiveWithDexMergerForDemaxiyaDebugAndroidTest" />
+                <option name="name" value="generateZhongbaojinfuReleaseBuildConfig" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Runs all device checks using Device Providers and Test Servers." />
@@ -1019,14 +1017,22 @@
                 <option name="name" value="deviceCheck" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
+                <option name="description" value="Runs lint on the ZhongbaojinfuDebug build." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="lintZhongbaojinfuDebug" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="mergeZhongbaojinfuReleaseJniLibFolders" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
                 <option name="description" value="Displays all dependencies declared in project ':app'." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="dependencies" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Runs lint on just the fatal issues in the demaxiyaRelease build." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="lintVitalDemaxiyaRelease" />
+                <option name="name" value="transformDexArchiveWithExternalLibsDexMergerForZhongbaojinfuDebug" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Runs lint on all variants." />
@@ -1035,11 +1041,20 @@
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="transformNativeLibsWithStripDebugSymbolForDemaxiyaDebug" />
+                <option name="name" value="processZhongbaojinfuReleaseResources" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Uninstalls the ReleaseZhongbaojinfu build." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="uninstallZhongbaojinfuRelease" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="generateDemaxiyaDebugAndroidTestResValues" />
+                <option name="name" value="assembleZhongbaojinfuDebugAndroidTest" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="javaPreCompileZhongbaojinfuDebugUnitTest" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Assembles and tests this project and all projects it depends on." />
@@ -1048,7 +1063,11 @@
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="preDemaxiyaReleaseBuild" />
+                <option name="name" value="compileZhongbaojinfuReleaseAidl" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="createZhongbaojinfuReleaseCompatibleScreenManifests" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Deletes the build cache directory." />
@@ -1057,19 +1076,24 @@
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="transformClassesWithDexBuilderForDemaxiyaDebugAndroidTest" />
+                <option name="name" value="transformResourcesWithMergeJavaResForZhongbaojinfuDebugAndroidTest" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="compileDemaxiyaDebugRenderscript" />
+                <option name="name" value="bundleAppClassesZhongbaojinfuDebugUnitTest" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="generateDemaxiyaDebugBuildConfig" />
+                <option name="name" value="mergeZhongbaojinfuReleaseShaders" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="compileDemaxiyaDebugAndroidTestAidl" />
+                <option name="name" value="transformResourcesWithMergeJavaResForZhongbaojinfuRelease" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Run unit tests for the zhongbaojinfuDebug build." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="testZhongbaojinfuDebugUnitTest" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Displays the components produced by project ':app'. [incubating]" />
@@ -1078,7 +1102,7 @@
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="mergeDemaxiyaDebugResources" />
+                <option name="name" value="generateZhongbaojinfuReleaseAssets" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Assembles all Debug builds." />
@@ -1086,54 +1110,78 @@
                 <option name="name" value="assembleDebug" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Installs the DebugDemaxiya build." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="installDemaxiyaDebug" />
+                <option name="name" value="generateZhongbaojinfuDebugAndroidTestResValues" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="javaPreCompileDemaxiyaDebugAndroidTest" />
+                <option name="name" value="transformDexArchiveWithDexMergerForZhongbaojinfuDebug" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="generateDemaxiyaDebugAndroidTestAssets" />
+                <option name="name" value="compileZhongbaojinfuDebugAndroidTestSources" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="transformClassesWithPreDexForDemaxiyaRelease" />
+                <option name="name" value="compileZhongbaojinfuDebugRenderscript" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="mergeDemaxiyaReleaseShaders" />
+                <option name="name" value="generateZhongbaojinfuDebugAndroidTestResources" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Installs the android (on device) tests for the ZhongbaojinfuDebug build." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="installZhongbaojinfuDebugAndroidTest" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="transformDexArchiveWithDexMergerForDemaxiyaDebug" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Uninstalls the android (on device) tests for the DemaxiyaDebug build." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="uninstallDemaxiyaDebugAndroidTest" />
+                <option name="name" value="compileZhongbaojinfuDebugShaders" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="javaPreCompileDemaxiyaReleaseUnitTest" />
+                <option name="name" value="compileZhongbaojinfuDebugUnitTestJavaWithJavac" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="processDemaxiyaDebugJavaRes" />
+                <option name="name" value="transformDexWithDexForZhongbaojinfuRelease" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="writeDemaxiyaDebugApplicationId" />
+                <option name="name" value="transformResourcesWithMergeJavaResForZhongbaojinfuDebug" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="mergeDemaxiyaDebugAndroidTestAssets" />
+                <option name="name" value="generateZhongbaojinfuDebugAssets" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="transformClassesWithDexBuilderForZhongbaojinfuDebug" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Installs the ReleaseZhongbaojinfu build." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="installZhongbaojinfuRelease" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="packageZhongbaojinfuDebugAndroidTest" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="prepareLintJar" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="mergeZhongbaojinfuDebugAndroidTestShaders" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="processZhongbaojinfuDebugAndroidTestResources" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="processZhongbaojinfuReleaseUnitTestJavaRes" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Installs and runs instrumentation tests using all Device Providers." />
@@ -1142,7 +1190,12 @@
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="transformDexArchiveWithExternalLibsDexMergerForDemaxiyaDebug" />
+                <option name="name" value="transformResourcesWithMergeJavaResForZhongbaojinfuDebugUnitTest" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Installs and runs the tests for zhongbaojinfuDebug on connected devices." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="connectedZhongbaojinfuDebugAndroidTest" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Displays the insight into a specific dependency in project ':app'." />
@@ -1150,34 +1203,13 @@
                 <option name="name" value="dependencyInsight" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="processZhongbaojinfuReleaseManifest" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
                 <option name="description" value="Assembles all variants of all applications and secondary packages." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="assemble" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="compileDemaxiyaReleaseUnitTestSources" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="mergeDemaxiyaReleaseJniLibFolders" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="compileDemaxiyaDebugAndroidTestNdk" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="packageDemaxiyaDebugAndroidTest" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="generateDemaxiyaReleaseAssets" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Runs lint on the DemaxiyaRelease build." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="lintDemaxiyaRelease" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Displays a help message." />
@@ -1186,23 +1218,31 @@
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="compileDemaxiyaDebugSources" />
+                <option name="name" value="transformNativeLibsWithMergeJniLibsForZhongbaojinfuRelease" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="compileDemaxiyaReleaseUnitTestJavaWithJavac" />
+                <option name="name" value="validateSigningZhongbaojinfuDebug" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="transformNativeLibsWithMergeJniLibsForDemaxiyaRelease" />
+                <option name="name" value="generateZhongbaojinfuDebugSources" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="javaPreCompileDemaxiyaDebugUnitTest" />
+                <option name="name" value="generateZhongbaojinfuDebugAndroidTestAssets" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="packageDemaxiyaRelease" />
+                <option name="name" value="assembleZhongbaojinfuReleaseUnitTest" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="processZhongbaojinfuDebugManifest" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="transformNativeLibsWithStripDebugSymbolForZhongbaojinfuRelease" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Runs all device checks on currently connected devices." />
@@ -1211,12 +1251,16 @@
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="compileDemaxiyaReleaseShaders" />
+                <option name="name" value="transformResourcesWithMergeJavaResForZhongbaojinfuReleaseUnitTest" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Uninstall all applications." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="uninstallAll" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="javaPreCompileZhongbaojinfuDebug" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Assembles all the Test applications." />
@@ -1225,20 +1269,11 @@
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="compileDemaxiyaDebugNdk" />
+                <option name="name" value="processZhongbaojinfuReleaseJavaRes" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="bundleAppClassesDemaxiyaDebugUnitTest" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="transformResourcesWithMergeJavaResForDemaxiyaDebugUnitTest" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Assembles all Demaxiya builds." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="assembleDemaxiya" />
+                <option name="name" value="compileZhongbaojinfuReleaseSources" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
@@ -1246,15 +1281,24 @@
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="preDemaxiyaDebugAndroidTestBuild" />
+                <option name="name" value="compileZhongbaojinfuReleaseRenderscript" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="mergeDemaxiyaDebugAndroidTestResources" />
+                <option name="name" value="processZhongbaojinfuDebugAndroidTestManifest" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="generateDemaxiyaReleaseSources" />
+                <option name="name" value="processZhongbaojinfuDebugJavaRes" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="packageZhongbaojinfuRelease" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Assembles all Zhongbaojinfu builds." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="assembleZhongbaojinfu" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Displays the Android dependencies of the project." />
@@ -1263,19 +1307,23 @@
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="assembleDemaxiyaReleaseUnitTest" />
+                <option name="name" value="generateZhongbaojinfuDebugAndroidTestBuildConfig" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="writeDemaxiyaReleaseApplicationId" />
+                <option name="name" value="checkZhongbaojinfuDebugManifest" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="compileDemaxiyaReleaseJavaWithJavac" />
+                <option name="name" value="assembleZhongbaojinfuDebug" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="generateDemaxiyaDebugResValues" />
+                <option name="name" value="transformClassesWithDexBuilderForZhongbaojinfuDebugAndroidTest" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="compileZhongbaojinfuReleaseNdk" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
@@ -1283,11 +1331,7 @@
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="processDemaxiyaDebugAndroidTestResources" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="preDemaxiyaDebugBuild" />
+                <option name="name" value="bundleAppClassesZhongbaojinfuRelease" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
@@ -1295,23 +1339,15 @@
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="generateDemaxiyaDebugAndroidTestBuildConfig" />
+                <option name="name" value="generateZhongbaojinfuDebugResources" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="packageDemaxiyaDebug" />
+                <option name="name" value="transformDexArchiveWithExternalLibsDexMergerForZhongbaojinfuDebugAndroidTest" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="transformDexArchiveWithExternalLibsDexMergerForDemaxiyaDebugAndroidTest" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="compileDemaxiyaDebugAndroidTestRenderscript" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="javaPreCompileDemaxiyaRelease" />
+                <option name="name" value="writeZhongbaojinfuReleaseApplicationId" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Run unit tests for all variants." />
@@ -1320,15 +1356,11 @@
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="processDemaxiyaDebugResources" />
+                <option name="name" value="mergeZhongbaojinfuDebugAssets" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="processDemaxiyaReleaseManifest" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="checkDemaxiyaReleaseManifest" />
+                <option name="name" value="compileZhongbaojinfuDebugAndroidTestAidl" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Runs all checks." />
@@ -1337,15 +1369,19 @@
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="generateDemaxiyaReleaseResources" />
+                <option name="name" value="preZhongbaojinfuDebugBuild" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="compileDemaxiyaReleaseRenderscript" />
+                <option name="name" value="compileZhongbaojinfuDebugNdk" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="generateDemaxiyaDebugSources" />
+                <option name="name" value="mergeZhongbaojinfuDebugShaders" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="checkZhongbaojinfuReleaseManifest" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Installs and runs instrumentation tests for all flavors on connected devices." />
@@ -1354,33 +1390,16 @@
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="mergeDemaxiyaReleaseResources" />
+                <option name="name" value="transformNativeLibsWithMergeJniLibsForZhongbaojinfuDebug" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="validateSigningDemaxiyaDebugAndroidTest" />
+                <option name="name" value="mergeZhongbaojinfuDebugAndroidTestJniLibFolders" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
+                <option name="description" value="Runs lint on just the fatal issues in the zhongbaojinfuRelease build." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="compileDemaxiyaDebugAndroidTestJavaWithJavac" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Runs lint on the DemaxiyaDebug build." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="lintDemaxiyaDebug" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Installs and runs the tests for demaxiyaDebug on connected devices." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="connectedDemaxiyaDebugAndroidTest" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="javaPreCompileDemaxiyaDebug" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="splitsDiscoveryTaskDemaxiyaDebugAndroidTest" />
+                <option name="name" value="lintVitalZhongbaojinfuRelease" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
@@ -1388,31 +1407,23 @@
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="transformDexWithDexForDemaxiyaRelease" />
+                <option name="name" value="assembleZhongbaojinfuDebugUnitTest" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="preDemaxiyaReleaseUnitTestBuild" />
+                <option name="name" value="preZhongbaojinfuReleaseUnitTestBuild" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="generateDemaxiyaDebugAndroidTestResources" />
+                <option name="name" value="assembleZhongbaojinfuRelease" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="preDemaxiyaDebugUnitTestBuild" />
+                <option name="name" value="preZhongbaojinfuDebugAndroidTestBuild" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="processDemaxiyaReleaseUnitTestJavaRes" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="mergeDemaxiyaDebugAndroidTestJniLibFolders" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="validateSigningDemaxiyaRelease" />
+                <option name="name" value="packageZhongbaojinfuDebug" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Assembles and tests this project and all projects that depend on it." />
@@ -1420,40 +1431,22 @@
                 <option name="name" value="buildDependents" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Uninstalls the ReleaseDemaxiya build." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="uninstallDemaxiyaRelease" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="generateDemaxiyaDebugAndroidTestSources" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Run unit tests for the demaxiyaRelease build." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="testDemaxiyaReleaseUnitTest" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="assembleDemaxiyaRelease" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="mergeDemaxiyaReleaseAssets" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
                 <option name="description" value="Displays the dependent components of components in project ':app'. [incubating]" />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="dependentComponents" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="generateDemaxiyaReleaseBuildConfig" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
                 <option name="description" value="Displays all buildscript dependencies declared in project ':app'." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="buildEnvironment" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="compileZhongbaojinfuDebugJavaWithJavac" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="compileZhongbaojinfuDebugAndroidTestShaders" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Prints out all the source sets defined in this project." />
@@ -1462,59 +1455,27 @@
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="bundleAppClassesDemaxiyaDebugAndroidTest" />
+                <option name="name" value="validateSigningZhongbaojinfuDebugAndroidTest" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="transformResourcesWithMergeJavaResForDemaxiyaDebugAndroidTest" />
+                <option name="name" value="compileZhongbaojinfuReleaseUnitTestSources" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="createDemaxiyaReleaseCompatibleScreenManifests" />
+                <option name="name" value="splitsDiscoveryTaskZhongbaojinfuDebug" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="transformClassesWithDexBuilderForDemaxiyaDebug" />
+                <option name="name" value="validateSigningZhongbaojinfuRelease" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="processDemaxiyaReleaseJavaRes" />
+                <option name="name" value="processZhongbaojinfuDebugUnitTestJavaRes" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="compileDemaxiyaDebugJavaWithJavac" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="compileDemaxiyaReleaseSources" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="processDemaxiyaReleaseResources" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="compileDemaxiyaDebugShaders" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="compileDemaxiyaReleaseNdk" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="mergeDemaxiyaDebugAssets" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="processDemaxiyaDebugAndroidTestManifest" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="splitsDiscoveryTaskDemaxiyaDebug" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="compileDemaxiyaDebugAndroidTestShaders" />
+                <option name="name" value="compileZhongbaojinfuDebugAndroidTestNdk" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
@@ -1522,7 +1483,7 @@
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="bundleAppClassesDemaxiyaReleaseUnitTest" />
+                <option name="name" value="generateZhongbaojinfuReleaseResValues" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Displays the signing info for each variant." />
@@ -1531,7 +1492,11 @@
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="assembleDemaxiyaDebugAndroidTest" />
+                <option name="name" value="transformNativeLibsWithMergeJniLibsForZhongbaojinfuDebugAndroidTest" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="generateZhongbaojinfuDebugBuildConfig" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Deletes the build directory." />
@@ -1539,43 +1504,45 @@
                 <option name="name" value="clean" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Installs the android (on device) tests for the DemaxiyaDebug build." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="installDemaxiyaDebugAndroidTest" />
+                <option name="name" value="mergeZhongbaojinfuReleaseResources" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="transformResourcesWithMergeJavaResForDemaxiyaRelease" />
+                <option name="name" value="splitsDiscoveryTaskZhongbaojinfuRelease" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="createDemaxiyaDebugCompatibleScreenManifests" />
+                <option name="name" value="bundleAppClassesZhongbaojinfuReleaseUnitTest" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="transformNativeLibsWithMergeJniLibsForDemaxiyaDebugAndroidTest" />
+                <option name="name" value="mergeZhongbaojinfuDebugAndroidTestResources" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="compileDemaxiyaDebugUnitTestJavaWithJavac" />
+                <option name="name" value="processZhongbaojinfuDebugAndroidTestJavaRes" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="compileDemaxiyaDebugUnitTestSources" />
+                <option name="name" value="transformNativeLibsWithStripDebugSymbolForZhongbaojinfuDebug" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="transformNativeLibsWithStripDebugSymbolForDemaxiyaRelease" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Installs the ReleaseDemaxiya build." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="installDemaxiyaRelease" />
+                <option name="name" value="compileZhongbaojinfuDebugAndroidTestJavaWithJavac" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Assembles and tests this project." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="build" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="compileZhongbaojinfuDebugSources" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="preZhongbaojinfuDebugUnitTestBuild" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Assembles all Release builds." />
@@ -1587,17 +1554,35 @@
                 <option name="name" value="resolveConfigAttr" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
+                <option name="description" value="Runs lint on the ZhongbaojinfuRelease build." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="compileDemaxiyaDebugAidl" />
+                <option name="name" value="lintZhongbaojinfuRelease" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="assembleDemaxiyaDebug" />
+                <option name="name" value="processZhongbaojinfuDebugResources" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="mergeZhongbaojinfuReleaseAssets" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Run unit tests for the zhongbaojinfuRelease build." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="testZhongbaojinfuReleaseUnitTest" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Displays the properties of project ':app'." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="properties" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="compileZhongbaojinfuDebugAndroidTestRenderscript" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="generateZhongbaojinfuReleaseResources" />
               </ExternalTaskPojo>
             </list>
           </value>
@@ -1984,18 +1969,22 @@
         <option value="$PROJECT_DIR$/src/kaisayule/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/src/shengshihualian/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/src/main/java/sihuo/app/com/kuaiqian/utils/X5WebView.java" />
-        <option value="$PROJECT_DIR$/src/main/java/sihuo/app/com/kuaiqian/BaseActivity.java" />
         <option value="$PROJECT_DIR$/src/main/java/sihuo/app/com/kuaiqian/utils/FileUtils.java" />
         <option value="$PROJECT_DIR$/src/zhijiao/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/src/xinpujing/res/values/strings.xml" />
-        <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/src/demaxiya/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/sihuo/app/com/kuaiqian/BaseActivity.java" />
+        <option value="$PROJECT_DIR$/src/weiqile/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/../history" />
+        <option value="$PROJECT_DIR$/src/youhongbao/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/src/zhongbaojinfu/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/build.gradle" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="158" />
-    <option name="y" value="47" />
+    <option name="x" value="86" />
+    <option name="y" value="41" />
     <option name="width" value="1794" />
     <option name="height" value="1004" />
   </component>
@@ -2014,10 +2003,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="AndroidView" />
       <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -2090,7 +2076,55 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="demaxiya" />
+              <option name="myItemId" value="weiqile" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kuaiqian" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kuaiqian" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kuaiqian" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kuaiqian" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -2120,7 +2154,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="demaxiya" />
+              <option name="myItemId" value="main" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -2130,6 +2164,9 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -2149,17 +2186,17 @@
     <property name="android.profiler.active" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\git\siteFengZhuang\kuaiqian\app\src\demaxiya\res\drawable-xhdpi" />
-      <recent name="D:\git\siteFengZhuang\kuaiqian\app\src\shengshihualian\res\drawable-xhdpi" />
-      <recent name="D:\git\siteFengZhuang\kuaiqian\app\src\xinpujing\res\drawable-xhdpi" />
-      <recent name="D:\git\siteFengZhuang\kuaiqian\app\src\kaisayule\res\drawable-xhdpi" />
-      <recent name="D:\git\siteFengZhuang\kuaiqian\app\src\huangguanyule2\res\drawable-xhdpi" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\git\siteFengZhuang\kuaiqian\app\src\" />
       <recent name="D:\git\siteFengZhuang\kuaiqian\app\src\jiaoyibao\res\drawable-xhdpi" />
       <recent name="D:\git\siteFengZhuang\kuaiqian\app\src\main\res\drawable-xhdpi" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\git\siteFengZhuang\kuaiqian\app\src\zhongbaojinfu\res\drawable-xhdpi" />
+      <recent name="D:\git\siteFengZhuang\kuaiqian\app\src\youhongbao\res\drawable-xhdpi" />
+      <recent name="D:\git\siteFengZhuang\kuaiqian\app\src\weiqile\res\drawable-xhdpi" />
+      <recent name="D:\git\siteFengZhuang\kuaiqian\app\src\demaxiya\res\drawable-xhdpi" />
+      <recent name="D:\git\siteFengZhuang\kuaiqian\app\src\shengshihualian\res\drawable-xhdpi" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -2245,7 +2282,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1517464505990" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1517556815737" />
       </method>
     </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests">
@@ -2293,7 +2330,7 @@
       </Profilers>
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1517464505990" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1517556815737" />
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -2325,6 +2362,27 @@
         </option>
         <option name="vmOptions" />
       </ExternalSystemSettings>
+      <method />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
       <method />
     </configuration>
     <configuration default="true" type="JarApplication" factoryName="JAR Application">
@@ -2455,7 +2513,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1517464505990" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1517556815738" />
       </method>
     </configuration>
     <list size="1">
@@ -2497,32 +2555,33 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="158" y="47" width="1794" height="1004" extended-state="0" />
+    <frame x="86" y="41" width="1794" height="1004" extended-state="0" />
+    <editor active="true" />
     <layout>
+      <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297362" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297362" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3694875" sideWeight="0.4867052" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3694875" sideWeight="0.48439306" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22658959" sideWeight="0.24385633" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22658959" sideWeight="0.23201439" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3694875" sideWeight="0.5132948" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2433526" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32853717" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32853717" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32896304" sideWeight="0.7231214" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32896304" sideWeight="0.7231214" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33730632" sideWeight="0.5115607" order="12" side_tool="true" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22658959" sideWeight="0.7679856" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3694875" sideWeight="0.51560694" order="12" side_tool="true" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22658959" sideWeight="0.7561437" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.44784582" sideWeight="0.4978701" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32960597" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15968063" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33730632" sideWeight="0.4884393" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -2530,9 +2589,8 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.44784582" sideWeight="0.4978701" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2433526" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -2553,153 +2611,22 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jpush-3.1.1.aar/a10b47a8c344f1749be628ddd5dd614a/jars/libs/jpush-android-3.1.1.jar!/cn/jpush/android/api/BasicPushNotificationBuilder.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
-          <caret line="17" column="15" lean-forward="false" selection-start-line="17" selection-start-column="15" selection-end-line="17" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/zhijiao/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="26" column="40" lean-forward="true" selection-start-line="1" selection-start-column="4" selection-end-line="26" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/values/ad_url_string.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/drawable/float_background.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/drawable/update_dialog.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/drawable/ver_line.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/drawable/page_loading_bg.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="20" column="25" lean-forward="false" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="10" column="30" lean-forward="false" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/sihuo/app/com/kuaiqian/MyApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="31" column="56" lean-forward="false" selection-start-line="31" selection-start-column="56" selection-end-line="31" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/sihuo/app/com/kuaiqian/receiver/PendingReceiver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="343">
-          <caret line="40" column="26" lean-forward="false" selection-start-line="40" selection-start-column="26" selection-end-line="40" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/sihuo/app/com/kuaiqian/Constant.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="7" column="31" lean-forward="false" selection-start-line="7" selection-start-column="31" selection-end-line="7" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/sihuo/app/com/kuaiqian/receiver/MyJpushReceiver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="29" column="60" lean-forward="false" selection-start-line="29" selection-start-column="60" selection-end-line="29" selection-end-column="60" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/AndroidManifest.xml">
+      <provider editor-type-id="android-manifest">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-665">
           <caret line="30" column="73" lean-forward="false" selection-start-line="30" selection-start-column="73" selection-end-line="30" selection-end-column="73" />
           <folding />
         </state>
       </provider>
-      <provider editor-type-id="android-manifest">
-        <state />
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/sihuo/app/com/kuaiqian/BaseActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="209">
           <caret line="290" column="0" lean-forward="false" selection-start-line="290" selection-start-column="0" selection-end-line="290" selection-end-column="0" />
-          <folding>
-            <element signature="e#3848#3985#0" expanded="true" />
-            <element signature="e#3984#3985#0" expanded="true" />
-            <element signature="e#5367#5551#0" expanded="true" />
-            <element signature="e#5550#5551#0" expanded="true" />
-            <element signature="e#6923#9404#0" expanded="true" />
-            <element signature="e#8767#9237#0" expanded="true" />
-            <element signature="e#9236#9237#0" expanded="true" />
-            <element signature="e#9403#9404#0" expanded="true" />
-            <element signature="e#16527#16528#0" expanded="true" />
-            <element signature="e#16566#16567#0" expanded="true" />
-            <element signature="e#16633#16989#0" expanded="true" />
-            <element signature="e#16988#16989#0" expanded="true" />
-            <element signature="e#17023#18728#0" expanded="true" />
-            <element signature="e#17197#18702#0" expanded="true" />
-            <element signature="e#17393#18653#0" expanded="true" />
-            <element signature="e#18652#18653#0" expanded="true" />
-            <element signature="e#18701#18702#0" expanded="true" />
-            <element signature="e#18727#18728#0" expanded="true" />
-            <element signature="e#18796#19231#0" expanded="true" />
-            <element signature="e#19230#19231#0" expanded="true" />
-            <element signature="e#19320#20426#0" expanded="true" />
-            <element signature="e#20425#20426#0" expanded="true" />
-            <element signature="e#28937#29794#0" expanded="true" />
-            <element signature="e#29793#29794#0" expanded="true" />
-            <element signature="e#29820#30267#0" expanded="true" />
-            <element signature="e#30266#30267#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2747,21 +2674,20 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/AndroidManifest.xml">
+      <provider editor-type-id="android-manifest">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-665">
+        <state relative-caret-position="570">
           <caret line="30" column="73" lean-forward="false" selection-start-line="30" selection-start-column="73" selection-end-line="30" selection-end-column="73" />
           <folding />
         </state>
-      </provider>
-      <provider editor-type-id="android-manifest">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/sihuo/app/com/kuaiqian/MyApplication.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="247">
           <caret line="18" column="5" lean-forward="false" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2867,8 +2793,8 @@
         <state relative-caret-position="2263">
           <caret line="174" column="70" lean-forward="false" selection-start-line="174" selection-start-column="70" selection-end-line="174" selection-end-column="70" />
           <folding>
-            <element signature="e#6022#6378#0" expanded="true" />
-            <element signature="e#6377#6378#0" expanded="true" />
+            <element signature="e#6022#6378#0" expanded="false" />
+            <element signature="e#6377#6378#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2915,72 +2841,360 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
-          <caret line="566" column="37" lean-forward="false" selection-start-line="566" selection-start-column="37" selection-end-line="566" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/demaxiya/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="18" column="49" lean-forward="false" selection-start-line="18" selection-start-column="49" selection-end-line="18" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://D:/Android/sdk/sources/android-26/android/view/KeyEvent.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
+        <state relative-caret-position="44517">
           <caret line="2420" column="0" lean-forward="false" selection-start-line="2420" selection-start-column="0" selection-end-line="2420" selection-end-column="0" />
           <folding>
-            <element signature="e#102163#102164#0" expanded="true" />
+            <element signature="e#0#123062#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#57541#57542#0" expanded="false" />
+            <element signature="e#57576#57577#0" expanded="false" />
+            <element signature="e#71800#71801#0" expanded="false" />
+            <element signature="e#71835#71836#0" expanded="false" />
+            <element signature="e#75572#75573#0" expanded="false" />
+            <element signature="e#75623#75624#0" expanded="false" />
+            <element signature="e#76054#76055#0" expanded="false" />
+            <element signature="e#76099#76100#0" expanded="false" />
+            <element signature="e#76225#76226#0" expanded="false" />
+            <element signature="e#76269#76270#0" expanded="false" />
+            <element signature="e#76326#76327#0" expanded="false" />
+            <element signature="e#76368#76369#0" expanded="false" />
+            <element signature="e#82014#82015#0" expanded="false" />
+            <element signature="e#82046#82047#0" expanded="false" />
+            <element signature="e#82121#82122#0" expanded="false" />
+            <element signature="e#82151#82152#0" expanded="false" />
+            <element signature="e#82237#82238#0" expanded="false" />
+            <element signature="e#82269#82270#0" expanded="false" />
+            <element signature="e#83279#83280#0" expanded="false" />
+            <element signature="e#83312#83313#0" expanded="false" />
+            <element signature="e#84146#84147#0" expanded="false" />
+            <element signature="e#84220#84221#0" expanded="false" />
+            <element signature="e#84351#84352#0" expanded="false" />
+            <element signature="e#84380#84381#0" expanded="false" />
+            <element signature="e#86632#86633#0" expanded="false" />
+            <element signature="e#86673#86674#0" expanded="false" />
+            <element signature="e#95519#95520#0" expanded="false" />
+            <element signature="e#95577#95578#0" expanded="false" />
+            <element signature="e#97568#97569#0" expanded="false" />
+            <element signature="e#97622#97623#0" expanded="false" />
+            <element signature="e#97917#97918#0" expanded="false" />
+            <element signature="e#97973#97974#0" expanded="false" />
+            <element signature="e#98220#98221#0" expanded="false" />
+            <element signature="e#98274#98275#0" expanded="false" />
+            <element signature="e#98563#98564#0" expanded="false" />
+            <element signature="e#98618#98619#0" expanded="false" />
+            <element signature="e#98907#98908#0" expanded="false" />
+            <element signature="e#98962#98963#0" expanded="false" />
+            <element signature="e#99234#99235#0" expanded="false" />
+            <element signature="e#99293#99294#0" expanded="false" />
+            <element signature="e#99558#99559#0" expanded="false" />
+            <element signature="e#99618#99619#0" expanded="false" />
+            <element signature="e#99878#99879#0" expanded="false" />
+            <element signature="e#99937#99938#0" expanded="false" />
+            <element signature="e#100212#100213#0" expanded="false" />
+            <element signature="e#100274#100275#0" expanded="false" />
+            <element signature="e#100549#100550#0" expanded="false" />
+            <element signature="e#100579#100580#0" expanded="false" />
+            <element signature="e#100755#100756#0" expanded="false" />
+            <element signature="e#100805#100806#0" expanded="false" />
+            <element signature="e#100947#100948#0" expanded="false" />
+            <element signature="e#100986#100987#0" expanded="false" />
+            <element signature="e#101383#101384#0" expanded="false" />
+            <element signature="e#101428#101429#0" expanded="false" />
+            <element signature="e#101644#101645#0" expanded="false" />
+            <element signature="e#101694#101695#0" expanded="false" />
+            <element signature="e#101875#101876#0" expanded="false" />
+            <element signature="e#101927#101928#0" expanded="false" />
+            <element signature="e#102565#102566#0" expanded="false" />
+            <element signature="e#102599#102600#0" expanded="false" />
+            <element signature="e#102851#102852#0" expanded="false" />
+            <element signature="e#102883#102884#0" expanded="false" />
+            <element signature="e#103303#103304#0" expanded="false" />
+            <element signature="e#103338#103339#0" expanded="false" />
+            <element signature="e#103910#103911#0" expanded="false" />
+            <element signature="e#103942#103943#0" expanded="false" />
+            <element signature="e#104256#104257#0" expanded="false" />
+            <element signature="e#104289#104290#0" expanded="false" />
+            <element signature="e#104859#104860#0" expanded="false" />
+            <element signature="e#104903#104904#0" expanded="false" />
+            <element signature="e#105094#105095#0" expanded="false" />
+            <element signature="e#105126#105127#0" expanded="false" />
+            <element signature="e#105577#105578#0" expanded="false" />
+            <element signature="e#105631#105632#0" expanded="false" />
+            <element signature="e#105892#105893#0" expanded="false" />
+            <element signature="e#105961#105962#0" expanded="false" />
+            <element signature="e#106808#106809#0" expanded="false" />
+            <element signature="e#106857#106858#0" expanded="false" />
+            <element signature="e#108851#108852#0" expanded="false" />
+            <element signature="e#108892#108893#0" expanded="false" />
+            <element signature="e#110538#110539#0" expanded="false" />
+            <element signature="e#110601#110602#0" expanded="false" />
+            <element signature="e#110762#110763#0" expanded="false" />
+            <element signature="e#110829#110830#0" expanded="false" />
+            <element signature="e#111002#111003#0" expanded="false" />
+            <element signature="e#111055#111056#0" expanded="false" />
+            <element signature="e#115923#115924#0" expanded="false" />
+            <element signature="e#115988#115989#0" expanded="false" />
+            <element signature="e#122052#122053#0" expanded="false" />
+            <element signature="e#122101#122102#0" expanded="false" />
+            <element signature="e#122187#122188#0" expanded="false" />
+            <element signature="e#122226#122227#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://D:/Android/sdk/sources/android-26/android/app/Activity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
+        <state relative-caret-position="49001">
           <caret line="2754" column="0" lean-forward="false" selection-start-line="2754" selection-start-column="0" selection-end-line="2754" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#0#321500#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#40825#40826#0" expanded="false" />
+            <element signature="e#40855#40856#0" expanded="false" />
+            <element signature="e#41242#41243#0" expanded="false" />
+            <element signature="e#41277#41278#0" expanded="false" />
+            <element signature="e#41385#41386#0" expanded="false" />
+            <element signature="e#41420#41421#0" expanded="false" />
+            <element signature="e#41523#41524#0" expanded="false" />
+            <element signature="e#41561#41562#0" expanded="false" />
+            <element signature="e#41675#41676#0" expanded="false" />
+            <element signature="e#41705#41706#0" expanded="false" />
+            <element signature="e#41819#41820#0" expanded="false" />
+            <element signature="e#41856#41857#0" expanded="false" />
+            <element signature="e#42204#42205#0" expanded="false" />
+            <element signature="e#42234#42235#0" expanded="false" />
+            <element signature="e#42371#42372#0" expanded="false" />
+            <element signature="e#42423#42424#0" expanded="false" />
+            <element signature="e#42765#42766#0" expanded="false" />
+            <element signature="e#42838#42839#0" expanded="false" />
+            <element signature="e#52863#52864#0" expanded="false" />
+            <element signature="e#52915#52916#0" expanded="false" />
+            <element signature="e#56504#56505#0" expanded="false" />
+            <element signature="e#56534#56535#0" expanded="false" />
+            <element signature="e#60148#60149#0" expanded="false" />
+            <element signature="e#60195#60196#0" expanded="false" />
+            <element signature="e#61047#61048#0" expanded="false" />
+            <element signature="e#61086#61087#0" expanded="false" />
+            <element signature="e#75100#75101#0" expanded="false" />
+            <element signature="e#75128#75129#0" expanded="false" />
+            <element signature="e#75908#75909#0" expanded="false" />
+            <element signature="e#75935#75936#0" expanded="false" />
+            <element signature="e#96315#96316#0" expanded="false" />
+            <element signature="e#96356#96357#0" expanded="false" />
+            <element signature="e#100671#100672#0" expanded="false" />
+            <element signature="e#100698#100699#0" expanded="false" />
+            <element signature="e#102396#102397#0" expanded="false" />
+            <element signature="e#102423#102424#0" expanded="false" />
+            <element signature="e#104261#104262#0" expanded="false" />
+            <element signature="e#104315#104316#0" expanded="false" />
+            <element signature="e#111731#111732#0" expanded="false" />
+            <element signature="e#111782#111783#0" expanded="false" />
+            <element signature="e#118632#118633#0" expanded="false" />
+            <element signature="e#118684#118685#0" expanded="false" />
+            <element signature="e#118854#118855#0" expanded="false" />
+            <element signature="e#118908#118909#0" expanded="false" />
+            <element signature="e#126835#126836#0" expanded="false" />
+            <element signature="e#126863#126864#0" expanded="false" />
+            <element signature="e#128238#128239#0" expanded="false" />
+            <element signature="e#128266#128267#0" expanded="false" />
+            <element signature="e#131056#131057#0" expanded="false" />
+            <element signature="e#131084#131085#0" expanded="false" />
+            <element signature="e#132314#132315#0" expanded="false" />
+            <element signature="e#132342#132343#0" expanded="false" />
+            <element signature="e#142559#142560#0" expanded="false" />
+            <element signature="e#142586#142587#0" expanded="false" />
+            <element signature="e#154521#154522#0" expanded="false" />
+            <element signature="e#154558#154559#0" expanded="false" />
+            <element signature="e#158869#158870#0" expanded="false" />
+            <element signature="e#158926#158927#0" expanded="false" />
+            <element signature="e#159262#159263#0" expanded="false" />
+            <element signature="e#159319#159320#0" expanded="false" />
+            <element signature="e#159621#159622#0" expanded="false" />
+            <element signature="e#159659#159660#0" expanded="false" />
+            <element signature="e#161532#161533#0" expanded="false" />
+            <element signature="e#161559#161560#0" expanded="false" />
+            <element signature="e#163261#163262#0" expanded="false" />
+            <element signature="e#163302#163303#0" expanded="false" />
+            <element signature="e#163496#163497#0" expanded="false" />
+            <element signature="e#163541#163542#0" expanded="false" />
+            <element signature="e#165251#165252#0" expanded="false" />
+            <element signature="e#165287#165288#0" expanded="false" />
+            <element signature="e#172336#172337#0" expanded="false" />
+            <element signature="e#172371#172372#0" expanded="false" />
+            <element signature="e#175694#175695#0" expanded="false" />
+            <element signature="e#175740#175741#0" expanded="false" />
+            <element signature="e#177495#177496#0" expanded="false" />
+            <element signature="e#177549#177550#0" expanded="false" />
+            <element signature="e#202739#202740#0" expanded="false" />
+            <element signature="e#202787#202788#0" expanded="false" />
+            <element signature="e#204580#204581#0" expanded="false" />
+            <element signature="e#204626#204627#0" expanded="false" />
+            <element signature="e#220459#220460#0" expanded="false" />
+            <element signature="e#220486#220487#0" expanded="false" />
+            <element signature="e#227543#227544#0" expanded="false" />
+            <element signature="e#227570#227571#0" expanded="false" />
+            <element signature="e#231249#231250#0" expanded="false" />
+            <element signature="e#231281#231282#0" expanded="false" />
+            <element signature="e#231460#231461#0" expanded="false" />
+            <element signature="e#231493#231494#0" expanded="false" />
+            <element signature="e#232057#232058#0" expanded="false" />
+            <element signature="e#232103#232104#0" expanded="false" />
+            <element signature="e#234044#234045#0" expanded="false" />
+            <element signature="e#234098#234099#0" expanded="false" />
+            <element signature="e#235812#235813#0" expanded="false" />
+            <element signature="e#235836#235837#0" expanded="false" />
+            <element signature="e#238012#238013#0" expanded="false" />
+            <element signature="e#238066#238067#0" expanded="false" />
+            <element signature="e#247972#247973#0" expanded="false" />
+            <element signature="e#248005#248006#0" expanded="false" />
+            <element signature="e#250282#250283#0" expanded="false" />
+            <element signature="e#250324#250325#0" expanded="false" />
+            <element signature="e#250916#250917#0" expanded="false" />
+            <element signature="e#250945#250946#0" expanded="false" />
+            <element signature="e#250985#250986#0" expanded="false" />
+            <element signature="e#251019#251020#0" expanded="false" />
+            <element signature="e#257859#257860#0" expanded="false" />
+            <element signature="e#257918#257919#0" expanded="false" />
+            <element signature="e#259327#259328#0" expanded="false" />
+            <element signature="e#259382#259383#0" expanded="false" />
+            <element signature="e#260539#260540#0" expanded="false" />
+            <element signature="e#260566#260567#0" expanded="false" />
+            <element signature="e#271571#271572#0" expanded="false" />
+            <element signature="e#271599#271600#0" expanded="false" />
+            <element signature="e#272591#272592#0" expanded="false" />
+            <element signature="e#272621#272622#0" expanded="false" />
+            <element signature="e#290603#290604#0" expanded="false" />
+            <element signature="e#290669#290670#0" expanded="false" />
+            <element signature="e#291919#291920#0" expanded="false" />
+            <element signature="e#291951#291952#0" expanded="false" />
+            <element signature="e#303814#303815#0" expanded="false" />
+            <element signature="e#303845#303846#0" expanded="false" />
+            <element signature="e#312724#312725#0" expanded="false" />
+            <element signature="e#312767#312768#0" expanded="false" />
+            <element signature="e#316290#316291#0" expanded="false" />
+            <element signature="e#316322#316323#0" expanded="false" />
+            <element signature="e#317813#317814#0" expanded="false" />
+            <element signature="e#317870#317871#0" expanded="false" />
+            <element signature="e#318144#318145#0" expanded="false" />
+            <element signature="e#318189#318190#0" expanded="false" />
+            <element signature="e#318842#318843#0" expanded="false" />
+            <element signature="e#318886#318887#0" expanded="false" />
+            <element signature="e#318953#318954#0" expanded="false" />
+            <element signature="e#319014#319015#0" expanded="false" />
+            <element signature="e#320784#320785#0" expanded="false" />
+            <element signature="e#320834#320835#0" expanded="false" />
+            <element signature="e#321260#321261#0" expanded="false" />
+            <element signature="e#321321#321322#0" expanded="false" />
+          </folding>
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/lcc/res/drawable-xhdpi/iconx.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/sihuo/app/com/kuaiqian/BaseActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
+        <state relative-caret-position="19">
           <caret line="773" column="0" lean-forward="false" selection-start-line="773" selection-start-column="0" selection-end-line="773" selection-end-column="0" />
-          <folding>
-            <element signature="e#3848#3985#0" expanded="true" />
-            <element signature="e#3984#3985#0" expanded="true" />
-            <element signature="e#5367#5551#0" expanded="true" />
-            <element signature="e#5550#5551#0" expanded="true" />
-            <element signature="e#6923#9404#0" expanded="true" />
-            <element signature="e#8767#9237#0" expanded="true" />
-            <element signature="e#9236#9237#0" expanded="true" />
-            <element signature="e#9403#9404#0" expanded="true" />
-            <element signature="e#16527#16528#0" expanded="true" />
-            <element signature="e#16566#16567#0" expanded="true" />
-            <element signature="e#16633#16989#0" expanded="true" />
-            <element signature="e#16988#16989#0" expanded="true" />
-            <element signature="e#17023#18728#0" expanded="true" />
-            <element signature="e#17197#18702#0" expanded="true" />
-            <element signature="e#17393#18653#0" expanded="true" />
-            <element signature="e#18652#18653#0" expanded="true" />
-            <element signature="e#18701#18702#0" expanded="true" />
-            <element signature="e#18727#18728#0" expanded="true" />
-            <element signature="e#18796#19231#0" expanded="true" />
-            <element signature="e#19230#19231#0" expanded="true" />
-            <element signature="e#19320#20426#0" expanded="true" />
-            <element signature="e#20425#20426#0" expanded="true" />
-            <element signature="e#28937#29794#0" expanded="true" />
-            <element signature="e#29793#29794#0" expanded="true" />
-            <element signature="e#29820#30267#0" expanded="true" />
-            <element signature="e#30266#30267#0" expanded="true" />
-          </folding>
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/lcc/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="71">
+          <caret line="4" column="29" lean-forward="false" selection-start-line="4" selection-start-column="29" selection-end-line="4" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/demaxiya/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="18" column="49" lean-forward="false" selection-start-line="18" selection-start-column="49" selection-end-line="18" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/weiqile/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="19" column="17" lean-forward="false" selection-start-line="19" selection-start-column="17" selection-end-line="19" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/weiqile/res/drawable-xhdpi/iconx.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/weiqile/res/drawable-xhdpi/loading.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/aomenweinisirentwo/res/drawable-xhdpi/iconx.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/aomenweinisirentwo/res/drawable-xhdpi/iconx.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/aomenweinisirentwo/res/drawable-xhdpi/loading.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/aomenweinisirentwo/res/drawable-xhdpi/loading.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../history">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="9253">
+          <caret line="487" column="11" lean-forward="false" selection-start-line="487" selection-start-column="11" selection-end-line="487" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/youhongbao/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="17" column="22" lean-forward="false" selection-start-line="17" selection-start-column="22" selection-end-line="17" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/zhongbaojinfu/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="2" column="41" lean-forward="false" selection-start-line="2" selection-start-column="41" selection-end-line="2" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="139">
+          <caret line="88" column="14" lean-forward="true" selection-start-line="88" selection-start-column="14" selection-end-line="88" selection-end-column="14" />
+          <folding />
         </state>
       </provider>
     </entry>
