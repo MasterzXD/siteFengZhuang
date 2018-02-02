@@ -89,6 +89,9 @@ android {
         yundingguoji2 {
             applicationId = "com.shtaw.yundingguoji2"
         }
+        jingangtong0 {
+            applicationId = "com.uiccb.jingangtong0"
+        }
 //----
     }
 }
