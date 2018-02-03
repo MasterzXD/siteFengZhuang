@@ -4,9 +4,8 @@ android {
         release {
             keyAlias 'key0'
             keyPassword '123456'
-            storeFile file('D:/git/siteFengZhuang/zzzzzz.jks')
+            storeFile file('E:/studio-projects/siteFengZhuang/zzzzzz.jks')
             storePassword '123456'
-
             v1SigningEnabled true
             v2SigningEnabled false
         }
@@ -56,7 +55,8 @@ android {
     productFlavors {
         //未结
 //        jiaoyibao{
-//            applicationId = "com.erha.jiaoyibao"
+//            appl
+// icationId = "com.erha.jiaoyibao"
 //        }
 //        weinisiyule{
 //            applicationId = "com.fhdssfh.weinisiyule"
@@ -91,6 +91,16 @@ android {
         }
         jingangtong0 {
             applicationId = "com.uiccb.jingangtong0"
+        }
+
+        yongfengvip0 {
+            applicationId = "com.kbwjq.yongfengvip0"
+        }
+        zhizunyule {
+            applicationId = "com.wvfckh.zhizunyule"
+        }
+        twoeightcai {
+            applicationId = "com.gtgiop.twoeightcai"
         }
 //----
     }

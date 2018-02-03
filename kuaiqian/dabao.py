@@ -6,8 +6,9 @@ import shutil
 import random
 import string
 
-rootpath = "D:\git\siteFengZhuang\kuaiqian\\"
+# rootpath = "D:\git\siteFengZhuang\kuaiqian\\"
 
+rootpath = "E:\studio-projects\siteFengZhuang\kuaiqian\\"
 
 new_app = "newapp"
 base = "base\\"
