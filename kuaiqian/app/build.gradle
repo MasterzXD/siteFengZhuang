@@ -53,54 +53,7 @@ android {
     }
 
     productFlavors {
-        //未结
-//        jiaoyibao{
-//            applicationId = "com.erha.jiaoyibao"
-//        }
-//        weinisiyule{
-//            applicationId = "com.fhdssfh.weinisiyule"
-//        }
-//        huangguanyule2{
-//            applicationId = "com.dgrert.huangguanyule2"
-//        }
-//        kaisayule{
-//            applicationId = "com.ytuka.kaisayule"
-//            manifestPlaceholders = [ SCREEN_ORIENTATION:"sensor"]
-//        }
-//        xinpujing{
-//            applicationId = "com.ytuka.xinpujing"
-//        }
-//        demaxiya{
-//            applicationId = "com.dfsg.demaxiya"
-//        }
-//        weiqile{
-//            applicationId = "com.tyrja.weiqile"
-//        }
-//        youhongbao{
-//            applicationId = "com.jkrih.youhongbao"
-//        }
-//        zhongbaojinfu{
-//            applicationId = "com.fgser.zhongbaojinfu"
-//        }
-//        aomenyinhe {
-//            applicationId = "com.xqlwab.aomenyinhe"
-//        }
-        yundingguoji2 {
-            applicationId = "com.shtaw.yundingguoji2"
-        }
-        jingangtong0 {
-            applicationId = "com.uiccb.jingangtong0"
-        }
 
-        yongfengvip0 {
-            applicationId = "com.kbwjq.yongfengvip0"
-        }
-        zhizunyule {
-            applicationId = "com.wvfckh.zhizunyule"
-        }
-        twoeightcai {
-            applicationId = "com.gtgiop.twoeightcai"
-        }
 //----
     }
 }
