@@ -55,8 +55,7 @@ android {
     productFlavors {
         //未结
 //        jiaoyibao{
-//            appl
-// icationId = "com.erha.jiaoyibao"
+//            applicationId = "com.erha.jiaoyibao"
 //        }
 //        weinisiyule{
 //            applicationId = "com.fhdssfh.weinisiyule"
