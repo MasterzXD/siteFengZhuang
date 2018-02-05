@@ -74,6 +74,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
     final boolean DEBUG = true;
     final int FILE_CHOOSER_RESULT_CODE = 40;
     final int FILE_CHOOSER_CAMERA = 22;
+    final int FILE_CHOOSER_CUT = 30;
     final int QUCODE_REQUEST = 11;
 
     /*手势导航参数*/
@@ -100,7 +101,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
     private ProgressBar progressBarH;
     private JpushCustomReceiver jpushCustomReceiver;
     private boolean refreshable, hasDaoHang, guestureNavigation, fullScreen, floatNavigation, bottomNavigation, rightSliderMenu,hasguide;
-
+    private boolean isUserCenter;
     private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -580,6 +581,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void openImageChooserActivity() {
+        isUserCenter = "http://www.cns-union.com/gx_center.asp".equals(x5WebView.getUrl());
         new AlertDialog.Builder(BaseActivity.this).setMessage("请选择方式")
                 .setNegativeButton("相机", new DialogInterface.OnClickListener() {
                     @Override
@@ -614,10 +616,15 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
         if (requestCode == FILE_CHOOSER_RESULT_CODE) {
             Uri result = data == null || resultCode != RESULT_OK ? null : data.getData();
             if(result!=null){
-                String realpath = FileUtils.getRealPathByUri(this,result);
+                if(isUserCenter){
+                    isUserCenter = false;
+                    invokeSystemCrop(result);
+                    return;
+                }
                 if (uploadMessage != null) {
                     uploadMessage.onReceiveValue(new Uri[]{result});
                 }
@@ -631,6 +638,11 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
 
         } else if (requestCode == FILE_CHOOSER_CAMERA) {
             File photoFile = getCameraTmpFile();
+            if(isUserCenter){
+                isUserCenter = false;
+                invokeSystemCrop(Uri.fromFile(photoFile));
+                return;
+            }
             if (uploadMessage != null) {
                 Uri []uri = new Uri[]{Uri.fromFile(photoFile)};
                 uploadMessage.onReceiveValue(uri);
@@ -640,7 +652,25 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
             }
             singleUploadMessage = null;
             uploadMessage = null;
-        } else if (requestCode == QUCODE_REQUEST) {
+        } else if (requestCode == FILE_CHOOSER_CUT) {
+            Uri result = data == null || resultCode != RESULT_OK ? null : data.getData();
+            if(result!=null){
+                if(isUserCenter){
+                    isUserCenter = false;
+                    invokeSystemCrop(result);
+                }
+                if (uploadMessage != null) {
+                    uploadMessage.onReceiveValue(new Uri[]{result});
+                }
+                if(singleUploadMessage!=null){
+                    String path = getRealPathByUri(BaseActivity.this,result);
+                    singleUploadMessage.onReceiveValue(path==null?null:Uri.fromFile(new File(path)));
+                }
+                singleUploadMessage = null;
+                uploadMessage = null;
+            }
+        }
+        else if (requestCode == QUCODE_REQUEST) {
             if (null != data) {
                 Bundle bundle = data.getExtras();
                 if (bundle == null) {
@@ -648,14 +678,33 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
                 }
             }
         }
-        if (uploadMessage != null) {
-            uploadMessage.onReceiveValue(null);
-            uploadMessage = null;
-        }
-        if(singleUploadMessage!=null){
-            singleUploadMessage.onReceiveValue(null);
-            singleUploadMessage = null;
-        }
+    }
+
+    /**
+     * 调用系统照片的裁剪功能
+     */
+    public void invokeSystemCrop(Uri uri) {
+        Intent intent = new Intent("com.android.camera.action.CROP");
+        intent.setDataAndType(uri, "image/*");
+        // crop为true是设置在开启的intent中设置显示的view可以剪裁
+        intent.putExtra("crop", "true");
+
+        intent.putExtra("scale", true);
+
+        // aspectX aspectY 是宽高的比例
+        intent.putExtra("aspectX", 1);
+        intent.putExtra("aspectY", 1);
+
+        // outputX,outputY 是剪裁图片的宽高
+        intent.putExtra("outputX", 100);
+        intent.putExtra("outputY", 100);
+        intent.putExtra("return-data", false);
+        intent.putExtra("noFaceDetection", true);
+        String temppath = Environment.getExternalStorageDirectory()  + "/" + "temp.jpg";
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(new File(temppath)));
+        intent.putExtra("outputFormat", Bitmap.CompressFormat.JPEG.toString());
+        startActivityForResult(intent,FILE_CHOOSER_CUT);
+//        return intent;
     }
 
     public void copyFile(String oldPath, String newPath) {
