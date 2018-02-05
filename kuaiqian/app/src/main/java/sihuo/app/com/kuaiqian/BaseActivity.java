@@ -57,7 +57,9 @@ import com.tencent.smtt.sdk.WebViewClient;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 
 import cn.jpush.android.api.JPushInterface;
@@ -263,8 +265,9 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
                 x5WebView.goBack();
             }
         } else if (v == home) {
-            HOME = getResources().getString(R.string.home_url);
-            x5WebView.loadUrl(HOME);
+//            HOME = getResources().getString(R.string.home_url);
+//            x5WebView.loadUrl(HOME);
+            openImageChooserActivity();
         } else if (v == refresh) {
             x5WebView.reload();
         } else if (v == shareBtn) {
@@ -581,7 +584,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void openImageChooserActivity() {
-        isUserCenter = "http://www.cns-union.com/gx_center.asp".equals(x5WebView.getUrl());
+        isUserCenter = "http://www.cns-union.com/uploadmoviewxtx.asp?T=1".equals(x5WebView.getUrl());
         new AlertDialog.Builder(BaseActivity.this).setMessage("请选择方式")
                 .setNegativeButton("相机", new DialogInterface.OnClickListener() {
                     @Override
@@ -625,6 +628,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
                     invokeSystemCrop(result);
                     return;
                 }
+                result = yasuoNormal(result);
                 if (uploadMessage != null) {
                     uploadMessage.onReceiveValue(new Uri[]{result});
                 }
@@ -643,22 +647,19 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
                 invokeSystemCrop(Uri.fromFile(photoFile));
                 return;
             }
+            Uri result = yasuoNormal(photoFile.getAbsolutePath());
             if (uploadMessage != null) {
-                Uri []uri = new Uri[]{Uri.fromFile(photoFile)};
+                Uri []uri = new Uri[]{result};
                 uploadMessage.onReceiveValue(uri);
             }
             if(singleUploadMessage!=null){
-                singleUploadMessage.onReceiveValue(Uri.fromFile(photoFile));
+                singleUploadMessage.onReceiveValue(result);
             }
             singleUploadMessage = null;
             uploadMessage = null;
         } else if (requestCode == FILE_CHOOSER_CUT) {
             Uri result = data == null || resultCode != RESULT_OK ? null : data.getData();
             if(result!=null){
-                if(isUserCenter){
-                    isUserCenter = false;
-                    invokeSystemCrop(result);
-                }
                 if (uploadMessage != null) {
                     uploadMessage.onReceiveValue(new Uri[]{result});
                 }
@@ -685,7 +686,8 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
      */
     public void invokeSystemCrop(Uri uri) {
         Intent intent = new Intent("com.android.camera.action.CROP");
-        intent.setDataAndType(uri, "image/*");
+        String realpath= FileUtils.getRealPathByUri(this,uri);
+        intent.setDataAndType(Uri.fromFile(new File(realpath)), "image/*");
         // crop为true是设置在开启的intent中设置显示的view可以剪裁
         intent.putExtra("crop", "true");
 
@@ -705,6 +707,28 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         intent.putExtra("outputFormat", Bitmap.CompressFormat.JPEG.toString());
         startActivityForResult(intent,FILE_CHOOSER_CUT);
 //        return intent;
+    }
+
+    private Uri yasuoNormal(Uri uri){
+        String realpath= FileUtils.getRealPathByUri(this,uri);
+        return yasuoNormal(realpath);
+    }
+    private Uri yasuoNormal(String filepath){
+        Bitmap bitmap = FileUtils.getScaledimage(filepath);
+        String temppath = Environment.getExternalStorageDirectory()  + "/" + "ttt.jpg";
+        FileOutputStream fos = null;
+        try {
+            fos = new FileOutputStream(new File(temppath));
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos);
+            fos.flush();
+            fos.close();
+            return Uri.fromFile(new File(temppath));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     public void copyFile(String oldPath, String newPath) {
