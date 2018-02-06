@@ -205,10 +205,10 @@ public class FileUtils {
         newOpts.inJustDecodeBounds = false;
         int w = newOpts.outWidth;
         int h = newOpts.outHeight;
-        int newW = 400;
+        int newW = 600;
         int newH = (int)(newW * h*1.0f/w);
 
-        float ww = 400f;// 这里设置宽度为480f
+        float ww = 600f;// 这里设置宽度为480f
         int be = 1;// be=1表示不缩放
         if (w > ww) {// 如果宽度大的话根据宽度固定大小缩放
             be = (int) (newOpts.outWidth / ww);

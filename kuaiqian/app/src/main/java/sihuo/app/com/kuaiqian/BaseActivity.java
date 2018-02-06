@@ -8,6 +8,8 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.media.ExifInterface;
 import android.net.Uri;
 import android.net.http.SslError;
 import android.os.Build;
@@ -149,6 +151,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
             refeshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
                 @Override
                 public void onRefresh() {
+                    x5WebView.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
                     x5WebView.reload();
                 }
             });
@@ -268,7 +271,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         } else if (v == home) {
 //            HOME = getResources().getString(R.string.home_url);
 //            x5WebView.loadUrl(HOME);
-            isUserCenter = true;
+//            isUserCenter = true;
             openImageChooserActivity();
         } else if (v == refresh) {
             x5WebView.reload();
@@ -307,7 +310,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     void loadHome() {
-        x5WebView.loadUrl(HOME);
+        x5WebView.loadUrl(HOME+"?lx=1");
     }
 
     void setupWebview() {
@@ -587,7 +590,21 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
 
     private void openImageChooserActivity() {
         isUserCenter = "http://www.cns-union.com/uploadmoviewxtx.asp?T=1".equals(x5WebView.getUrl());
+//        isUserCenter = true;
         new AlertDialog.Builder(BaseActivity.this).setMessage("请选择方式")
+                .setNeutralButton("取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        if (uploadMessage != null) {
+                            uploadMessage.onReceiveValue(null);
+                            uploadMessage = null;
+                        }
+                        if(singleUploadMessage!=null){
+                            singleUploadMessage.onReceiveValue(null);
+                            singleUploadMessage = null;
+                        }
+                    }
+                })
                 .setNegativeButton("相机", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -612,7 +629,8 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
                 startActivityForResult(Intent.createChooser(i,
                         "Image Chooser"), FILE_CHOOSER_RESULT_CODE);
             }
-        }).show();
+        }).setCancelable(false)
+                .show();
     }
 
     private File getCameraTmpFile() {
@@ -660,21 +678,24 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
             singleUploadMessage = null;
             uploadMessage = null;
         } else if (requestCode == FILE_CHOOSER_CUT) {
-            Uri result = data == null || resultCode != RESULT_OK ? null : data.getData();
-            Log.e("----onActivityResult", ""+result.getPath());
-            if(result!=null){
+
+            String path = data == null || resultCode != RESULT_OK ? null : getTempFile();
+
+            if(path!=null){
+                Uri result = Uri.fromFile(new File(path));
                 if(Build.VERSION.SDK_INT>19){
-                    result = FileProvider.getUriForFile(this, getApplicationContext().getPackageName() + ".provider", new File(result.getPath()));
+                    result = FileProvider.getUriForFile(this, getApplicationContext().getPackageName() + ".provider", new File(path));
                 }
                 if (uploadMessage != null) {
                     uploadMessage.onReceiveValue(new Uri[]{result});
                 }
                 if(singleUploadMessage!=null){
-                    String path = getRealPathByUri(BaseActivity.this,result);
                     singleUploadMessage.onReceiveValue(path==null?null:Uri.fromFile(new File(path)));
                 }
                 singleUploadMessage = null;
                 uploadMessage = null;
+            }else{
+                Log.e("----getAction", ""+data.getAction());
             }
         }
         else if (requestCode == QUCODE_REQUEST) {
@@ -684,6 +705,14 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
                     return;
                 }
             }
+        }
+        if (uploadMessage != null) {
+            uploadMessage.onReceiveValue(null);
+            uploadMessage = null;
+        }
+        if(singleUploadMessage!=null){
+            singleUploadMessage.onReceiveValue(null);
+            singleUploadMessage = null;
         }
     }
 
@@ -704,15 +733,18 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         intent.putExtra("aspectY", 1);
 
         // outputX,outputY 是剪裁图片的宽高
-        intent.putExtra("outputX", 100);
-        intent.putExtra("outputY", 100);
+        intent.putExtra("outputX", 150);
+        intent.putExtra("outputY", 150);
         intent.putExtra("return-data", false);
         intent.putExtra("noFaceDetection", true);
-        String temppath = Environment.getExternalStorageDirectory()  + "/" + "temp.jpg";
-        intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(new File(temppath)));
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(new File(getTempFile())));
         intent.putExtra("outputFormat", Bitmap.CompressFormat.JPEG.toString());
         startActivityForResult(intent,FILE_CHOOSER_CUT);
 //        return intent;
+    }
+
+    private String getTempFile(){
+        return Environment.getExternalStorageDirectory()  + "/" + "temp.jpg";
     }
 
     private Uri yasuoNormal(Uri uri){
@@ -720,6 +752,18 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         return yasuoNormal(realpath);
     }
     private Uri yasuoNormal(String filepath){
+        BitmapFactory.Options newOpts = new BitmapFactory.Options();
+        // 开始读入图片，此时把options.inJustDecodeBounds 设回true了
+        newOpts.inJustDecodeBounds = true;
+        BitmapFactory.decodeFile(filepath, newOpts);// 此时返回bm为空
+
+        int w = newOpts.outWidth;
+        int h = newOpts.outHeight;
+        if(h/w>=1){
+            new AlertDialog.Builder(this).setTitle("请上传横拍的照片！")
+                    .setPositiveButton("知道了",null).show();
+            return null;
+        }
         Bitmap bitmap = FileUtils.getScaledimage(filepath);
         String temppath = Environment.getExternalStorageDirectory()  + "/" + "ttt.jpg";
         FileOutputStream fos = null;
