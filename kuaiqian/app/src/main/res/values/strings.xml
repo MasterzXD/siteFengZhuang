@@ -13,7 +13,7 @@
     <!-- 物理返回键带回退功能 -->
     <bool name="can_goback">true</bool>
     <!-- 保留头部导航栏 -->
-    <bool name="save_daohang">true</bool>
+    <bool name="save_daohang">false</bool>
     <!-- 是否主页全屏 -->
     <bool name="full_screen">false</bool>
     <!-- 支付否支持下拉刷新 -->

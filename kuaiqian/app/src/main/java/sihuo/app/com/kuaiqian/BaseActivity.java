@@ -16,6 +16,7 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.provider.MediaStore;
+import android.support.v4.content.FileProvider;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -267,6 +268,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         } else if (v == home) {
 //            HOME = getResources().getString(R.string.home_url);
 //            x5WebView.loadUrl(HOME);
+            isUserCenter = true;
             openImageChooserActivity();
         } else if (v == refresh) {
             x5WebView.reload();
@@ -659,7 +661,11 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
             uploadMessage = null;
         } else if (requestCode == FILE_CHOOSER_CUT) {
             Uri result = data == null || resultCode != RESULT_OK ? null : data.getData();
+            Log.e("----onActivityResult", ""+result.getPath());
             if(result!=null){
+                if(Build.VERSION.SDK_INT>19){
+                    result = FileProvider.getUriForFile(this, getApplicationContext().getPackageName() + ".provider", new File(result.getPath()));
+                }
                 if (uploadMessage != null) {
                     uploadMessage.onReceiveValue(new Uri[]{result});
                 }
@@ -722,6 +728,9 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
             bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos);
             fos.flush();
             fos.close();
+            if(Build.VERSION.SDK_INT>19){
+                return FileProvider.getUriForFile(this, getApplicationContext().getPackageName() + ".provider", new File(temppath));
+            }
             return Uri.fromFile(new File(temppath));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
