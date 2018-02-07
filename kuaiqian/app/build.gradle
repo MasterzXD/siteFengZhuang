@@ -57,6 +57,9 @@ android {
         juyouapp {
             applicationId = "com.mrplo.juyouapp"
         }
+        lcc{
+            applicationId = "com.hgjf.lcc"
+        }
 //----
     }
 }
