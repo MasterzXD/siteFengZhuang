@@ -63,6 +63,9 @@ android {
         lihao0 {
             applicationId = "com.xtzsm.lihao0"
         }
+        cts {
+            applicationId = "com.kprfhb.cts"
+        }
 //----
     }
 }
