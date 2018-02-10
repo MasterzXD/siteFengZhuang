@@ -313,6 +313,9 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         x5WebView.loadUrl(HOME+"?lx=1");
     }
 
+
+    class js
+
     void setupWebview() {
         x5WebView.setDownloadListener(new DownloadListener() {
             @Override
@@ -322,6 +325,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
             }
         });
+        x5WebView.addJavascriptInterface();
         x5WebView.setmCallBack(new X5WebView.LongClickCallBack() {
             @Override
             public void onLongClickCallBack(final String imgUrl) {
