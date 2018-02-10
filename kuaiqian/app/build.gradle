@@ -66,6 +66,12 @@ android {
         cts {
             applicationId = "com.kprfhb.cts"
         }
+        taiyangchengjituan {
+            applicationId = "com.duxxe.taiyangchengjituan"
+        }
+        pujingguoji {
+            applicationId = "com.rhdpi.pujingguoji"
+        }
 //----
     }
 }
