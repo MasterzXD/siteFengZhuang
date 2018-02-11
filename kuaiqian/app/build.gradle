@@ -72,6 +72,9 @@ android {
         pujingguoji {
             applicationId = "com.rhdpi.pujingguoji"
         }
+        yiyicao {
+            applicationId = "com.mrwdz.yiyicao"
+        }
 //----
     }
 }
