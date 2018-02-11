@@ -22,6 +22,7 @@ import android.support.v4.content.FileProvider;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.util.Base64;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -31,6 +32,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.webkit.JavascriptInterface;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -64,6 +66,8 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.HashSet;
+import java.util.Set;
 
 import cn.jpush.android.api.JPushInterface;
 import sihuo.app.com.kuaiqian.service.TBSService;
@@ -243,7 +247,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         refresh = findViewById(R.id.refresh);
         if (refresh != null) refresh.setOnClickListener(this);
         shareBtn = findViewById(R.id.share);
-        if (shareBtn != null) shareBtn.setOnClickListener(this);
+//        if (shareBtn != null) shareBtn.setOnClickListener(this);
         moreBtn = findViewById(R.id.more);
         if (moreBtn != null) moreBtn.setOnClickListener(this);
         goForward = findViewById(R.id.go_forward);
@@ -314,9 +318,21 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
-    class js
+    class JsJiaoHu {
+
+        @JavascriptInterface
+        public void setJpushTag(String tag){
+            Log.e("----setJpushTag", ""+tag);
+            if(!TextUtils.isEmpty(tag)){
+                Set set =new HashSet();
+                set.add(tag);
+                JPushInterface.setTags(BaseActivity.this,2,set);
+            }
+        }
+    }
 
     void setupWebview() {
+        x5WebView.addJavascriptInterface(new JsJiaoHu(),"AndroidJS");
         x5WebView.setDownloadListener(new DownloadListener() {
             @Override
             public void onDownloadStart(String url, String userAgent, String contentDisposition, String mimetype, long contentLength) {
@@ -325,7 +341,6 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
             }
         });
-        x5WebView.addJavascriptInterface();
         x5WebView.setmCallBack(new X5WebView.LongClickCallBack() {
             @Override
             public void onLongClickCallBack(final String imgUrl) {
@@ -432,6 +447,12 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
             public void onShowCustomView(View view, int requestedOrientation, IX5WebChromeClient.CustomViewCallback callback) {
                 super.onShowCustomView(view, requestedOrientation, callback);
                 Log.e("----onShowCustomView", "----2222");
+            }
+
+            @Override
+            public void onReceivedTitle(WebView webView, String s) {
+                super.onReceivedTitle(webView, s);
+
             }
 
             @Override

@@ -26,6 +26,7 @@
         android:scaleType="center"
         android:text=""
         android:textSize="18sp"
+        android:visibility="invisible"
         android:gravity="center"
         android:textColor="#555555"
         android:paddingRight="10dp"
@@ -33,12 +34,12 @@
         />
 
     <TextView
-        android:id="@+id/home"
+        android:id="@+id/share"
         android:layout_width="50dp"
         android:layout_height="match_parent"
         android:scaleType="center"
         android:visibility="visible"
         android:paddingLeft="15dp"
         android:layout_alignParentRight="true"
-        android:drawableLeft="@drawable/home_hb"/>
+        android:drawableLeft="@drawable/ty_share"/>
 </RelativeLayout>
