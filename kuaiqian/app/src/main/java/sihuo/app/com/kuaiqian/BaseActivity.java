@@ -104,7 +104,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
     private ValueCallback<Uri[]> uploadMessage;
     private ValueCallback<Uri> singleUploadMessage;
 
-    private TextView back, refresh, goForward, closeAp, home, shareBtn, moreBtn, youhui, kefu, loadview, xiazhu, zhibo;
+    private TextView back, refresh, goForward, closeAp, home, shareBtn, moreBtn, youhui, kefu, loadview, xiazhu, zhibo,titleView;
     /*float navigation*/
     private FrameLayout topNavi, bottomNavi;
     private ProgressBar progressBarH;
@@ -264,6 +264,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         if (zhibo != null) zhibo.setOnClickListener(this);
         loadview = findViewById(R.id.loadview);
         if (loadview != null) loadview.setOnClickListener(this);
+        titleView = findViewById(R.id.title);
     }
 
     @Override
@@ -452,7 +453,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onReceivedTitle(WebView webView, String s) {
                 super.onReceivedTitle(webView, s);
-
+                titleView.setText(s);
             }
 
             @Override
@@ -614,7 +615,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void openImageChooserActivity() {
-        isUserCenter = "http://www.cns-union.com/uploadmoviewxtx.asp?T=1".equals(x5WebView.getUrl());
+        isUserCenter = "http://www.cns-union.com/uploadmoviewxtx.asp?T=1".equals(x5WebView.getUrl())||(x5WebView.getUrl().contains("wxstzlxg.asp"));
 //        isUserCenter = true;
         new AlertDialog.Builder(BaseActivity.this).setMessage("请选择方式")
                 .setNeutralButton("取消", new DialogInterface.OnClickListener() {
