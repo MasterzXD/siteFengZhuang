@@ -81,6 +81,9 @@ android {
         hengyinghuanqiu0 {
             applicationId = "com.ufezc.hengyinghuanqiu0"
         }
+        hengyinghuanqiu1 {
+            applicationId = "com.hywro.hengyinghuanqiu1"
+        }
 //----
     }
 }
