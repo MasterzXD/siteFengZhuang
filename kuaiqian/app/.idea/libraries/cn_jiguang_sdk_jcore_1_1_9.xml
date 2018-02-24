@@ -1,9 +1,9 @@
 <component name="libraryTable">
   <library name="cn.jiguang.sdk:jcore-1.1.9">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jcore-1.1.9.aar/06e479c03827817be7444af9c3ca8171/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jcore-1.1.9.aar/06e479c03827817be7444af9c3ca8171/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jcore-1.1.9.aar/06e479c03827817be7444af9c3ca8171/jars/libs/jcore-android-1.1.9.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jcore-1.1.9.aar/bc4d0ca0c269d33c94e047497d09128b/jars/libs/jcore-android-1.1.9.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jcore-1.1.9.aar/bc4d0ca0c269d33c94e047497d09128b/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jcore-1.1.9.aar/bc4d0ca0c269d33c94e047497d09128b/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

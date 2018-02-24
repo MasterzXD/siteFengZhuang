@@ -66,16 +66,31 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.HashSet;
 import java.util.Set;
 
+import cn.jiguang.common.ClientConfig;
+import cn.jiguang.common.ServiceHelper;
+import cn.jiguang.common.connection.NettyHttpClient;
+import cn.jiguang.common.resp.APIConnectionException;
+import cn.jiguang.common.resp.APIRequestException;
+import cn.jiguang.common.resp.ResponseWrapper;
 import cn.jpush.android.api.JPushInterface;
+import cn.jpush.api.JPushClient;
+import cn.jpush.api.push.PushResult;
+import cn.jpush.api.push.model.Platform;
+import cn.jpush.api.push.model.PushPayload;
+import cn.jpush.api.push.model.audience.Audience;
+import cn.jpush.api.push.model.notification.Notification;
 import sihuo.app.com.kuaiqian.service.TBSService;
 import sihuo.app.com.kuaiqian.utils.ADFilterTool;
 import sihuo.app.com.kuaiqian.utils.FileUtils;
 import sihuo.app.com.kuaiqian.utils.Share;
 import sihuo.app.com.kuaiqian.utils.X5WebView;
 
+import static cn.jpush.api.push.model.notification.PlatformNotification.ALERT;
 import static sihuo.app.com.kuaiqian.utils.FileUtils.getRealPathByUri;
 
 public class BaseActivity extends AppCompatActivity implements View.OnClickListener {
@@ -330,6 +345,51 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
                 JPushInterface.setTags(BaseActivity.this,2,set);
             }
         }
+        @JavascriptInterface
+        public void sendPush(String tags,String title,String content,String targetUrl){
+            Log.e("----sendPush", ""+tags);
+
+        }
+    }
+
+    public static void testSendPushWithCallback() {
+        ClientConfig clientConfig = ClientConfig.getInstance();
+        final JPushClient jpushClient = new JPushClient("3f927f3a609531b7ebce40d2", "8ec1e9dcffbdbd1521389cd5", null, clientConfig);
+        // Here you can use NativeHttpClient or NettyHttpClient or ApacheHttpClient.
+        // Call setHttpClient to set httpClient,
+        // If you don't invoke this method, default httpClient will use NativeHttpClient.
+//        ApacheHttpClient httpClient = new ApacheHttpClient(authCode, null, clientConfig);
+//        jpushClient.getPushClient().setHttpClient(httpClient);
+        final PushPayload payload = buildPushObject_all_alias_alert();
+//        // For push, all you need do is to build PushPayload object.
+//        PushPayload payload = buildPushObject_all_alias_alert();
+        try {
+            PushResult result = jpushClient.sendPush(payload);
+//            LOG.info("Got result - " + result);
+            System.out.println(result);
+            // 如果使用 NettyHttpClient，需要手动调用 close 方法退出进程
+            // If uses NettyHttpClient, call close when finished sending request, otherwise process will not exit.
+            // jpushClient.close();
+        } catch (APIConnectionException e) {
+            Log.e("aaaaaaa","Connection error. Should retry later. "+ e);
+            Log.e("aaaaaaa","Sendno: " + payload.getSendno());
+
+        } catch (APIRequestException e) {
+            Log.e("aaaaaaa","Error response from JPush server. Should review and fix it. ", e);
+            Log.e("aaaaaaa","HTTP Status: " + e.getStatus());
+            Log.e("aaaaaaa","Error Code: " + e.getErrorCode());
+            Log.e("aaaaaaa","Error Message: " + e.getErrorMessage());
+            Log.e("aaaaaaa","Msg ID: " + e.getMsgId());
+            Log.e("aaaaaaa","Sendno: " + payload.getSendno());
+        }
+    }
+
+    public static PushPayload buildPushObject_all_alias_alert() {
+        return PushPayload.newBuilder()
+                .setPlatform(Platform.all())
+                .setAudience(Audience.all())
+                .setNotification(Notification.alert(ALERT))
+                .build();
     }
 
     void setupWebview() {
