@@ -75,17 +75,20 @@ android {
 //        yiyicao {
 //            applicationId = "com.mrwdz.yiyicao"
 //        }
-        fuhaoyule {
-            applicationId = "com.sdfgw.fuhaoyule"
-        }
-        hengyinghuanqiu0 {
-            applicationId = "com.ufezc.hengyinghuanqiu0"
-        }
-        hengyinghuanqiu1 {
-            applicationId = "com.hywro.hengyinghuanqiu1"
-        }
-        cangtubajie {
-            applicationId = "com.ytrq.cangtubajie"
+//        fuhaoyule {
+//            applicationId = "com.sdfgw.fuhaoyule"
+//        }
+//        hengyinghuanqiu0 {
+//            applicationId = "com.ufezc.hengyinghuanqiu0"
+//        }
+//        hengyinghuanqiu1 {
+//            applicationId = "com.hywro.hengyinghuanqiu1"
+//        }
+//        cangtubajie {
+//            applicationId = "com.ytrq.cangtubajie"
+//        }
+        xianlaihuyu {
+            applicationId = "com.cjpfnw.xianlaihuyu"
         }
 //----
     }
