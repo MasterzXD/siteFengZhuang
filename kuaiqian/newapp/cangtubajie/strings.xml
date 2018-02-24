@@ -1,10 +1,10 @@
 <resources>
     <!-- APP名字 -->
-    <string name="app_name">华夏娱乐城</string>
+    <string name="app_name">八戒期宝</string>
     <!-- 启动地址 -->
-    <string name="start_url">http://147852.top/m/</string>
+    <string name="start_url">http://bj.bjqb88.com/Public/mobile/login.html</string>
     <!-- 主页地址 -->
-    <string name="home_url">http://147852.top/m/</string>
+    <string name="home_url">http://bj.bjqb88.com/Public/mobile/login.html</string>
     <!-- 是否显示网页加载进度条,默认false -->
     <bool name="show_loadng">false</bool>
     <!-- 启动页面延迟时间，默认2000毫秒 -->
@@ -12,7 +12,7 @@
     <!-- 物理返回键带回退功能 -->
     <bool name="can_goback">true</bool>
     <!-- 保留头部导航栏 -->
-    <bool name="save_daohang">true</bool>
+    <bool name="save_daohang">false</bool>
     <!-- 是否主页全屏 -->
     <bool name="full_screen">false</bool>
     <!-- 支付否支持下拉刷新 -->

@@ -84,6 +84,9 @@ android {
         hengyinghuanqiu1 {
             applicationId = "com.hywro.hengyinghuanqiu1"
         }
+        cangtubajie {
+            applicationId = "com.ytrq.cangtubajie"
+        }
 //----
     }
 }
