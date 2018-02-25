@@ -1,5 +1,5 @@
 @echo off
 
-python D:\git\siteFengZhuang\kuaiqian\dabao.py
+python E:\studio-projects\siteFengZhuang\kuaiqian\dabao.py
 
 pause

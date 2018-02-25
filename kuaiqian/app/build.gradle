@@ -4,7 +4,7 @@ android {
         release {
             keyAlias 'key0'
             keyPassword '123456'
-            storeFile file('D:/git/siteFengZhuang/zzzzzz.jks')
+            storeFile file('E:/studio-projects/siteFengZhuang/zzzzzz.jks')
             storePassword '123456'
             v1SigningEnabled true
             v2SigningEnabled false
@@ -89,6 +89,10 @@ android {
 //        }
         xianlaihuyu {
             applicationId = "com.cjpfnw.xianlaihuyu"
+        }
+
+        yongliyulecheng {
+            applicationId = "com.lqwi.yongliyulecheng"
         }
 //----
     }
