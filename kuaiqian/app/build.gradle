@@ -54,43 +54,6 @@ android {
 
     productFlavors {
 
-//        juyouapp {
-//            applicationId = "com.mrplo.juyouapp"
-//        }
-//        weinisiyule0 {
-//            applicationId = "com.wqgseb.weinisiyule0"
-//        }
-//        lihao0 {
-//            applicationId = "com.xtzsm.lihao0"
-//        }
-//        cts {
-//            applicationId = "com.kprfhb.cts"
-//        }
-//        taiyangchengjituan {
-//            applicationId = "com.duxxe.taiyangchengjituan"
-//        }
-//        pujingguoji {
-//            applicationId = "com.rhdpi.pujingguoji"
-//        }
-//        yiyicao {
-//            applicationId = "com.mrwdz.yiyicao"
-//        }
-//        fuhaoyule {
-//            applicationId = "com.sdfgw.fuhaoyule"
-//        }
-//        hengyinghuanqiu0 {
-//            applicationId = "com.ufezc.hengyinghuanqiu0"
-//        }
-//        hengyinghuanqiu1 {
-//            applicationId = "com.hywro.hengyinghuanqiu1"
-//        }
-//        cangtubajie {
-//            applicationId = "com.ytrq.cangtubajie"
-//        }
-        xianlaihuyu {
-            applicationId = "com.cjpfnw.xianlaihuyu"
-        }
-
         yongliyulecheng {
             applicationId = "com.lqwi.yongliyulecheng"
         }

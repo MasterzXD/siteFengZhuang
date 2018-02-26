@@ -1,5 +1,7 @@
 @echo off
-
-python E:\studio-projects\siteFengZhuang\kuaiqian\dabao.py
+::home
+::python E:\studio-projects\siteFengZhuang\kuaiqian\dabao.py
+::company
+python D:\git\siteFengZhuang\kuaiqian\dabao.py
 
 pause
