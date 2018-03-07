@@ -54,18 +54,14 @@ android {
 
     productFlavors {
 
-//        yongliyulecheng {
-//            applicationId = "com.lqwi.yongliyulecheng"
-//        }
         cangshengyule {
             applicationId = "com.ypek.cangshengyule"
         }
-
-//        kuaiqiantiyu {
-//            applicationId = "com.dyfd.kuaiqiantiyu"
-//        }
         jinghengqiquan {
             applicationId = "com.hdjxm.jinghengqiquan"
+        }
+        yongliyulecheng {
+            applicationId = "com.lqwi.yongliyulecheng"
         }
 //----
     }
