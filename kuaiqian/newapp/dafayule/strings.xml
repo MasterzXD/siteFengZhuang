@@ -1,10 +1,10 @@
 <resources>
     <!-- APP名字 -->
-    <string name="app_name">CASINO娱乐</string>
+    <string name="app_name">大发娱乐</string>
     <!-- 启动地址 -->
-    <string name="start_url">http://www.tophhh.comm </string>
+    <string name="start_url">http://www.dafa188.net/m</string>
     <!-- 主页地址 -->
-    <string name="home_url">http://www.tophhh.comm </string>
+    <string name="home_url">http://www.dafa188.net/m</string>
     <!-- 是否显示网页加载进度条,默认false -->
     <bool name="show_loadng">false</bool>
     <!-- 启动页面延迟时间，默认2000毫秒 -->
