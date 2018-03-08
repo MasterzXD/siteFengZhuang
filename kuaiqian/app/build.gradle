@@ -70,4 +70,6 @@ dependencies {
     implementation 'cn.jiguang.sdk:jcore:1.1.9'
     implementation files('libs/jiguang-common-1.0.8.jar')
     implementation files('libs/jpush-client-3.3.3.jar')
+    implementation files('libs/gson-2.8.0.jar')
+    implementation files('libs/slf4j-api-1.7.25.jar')
 }

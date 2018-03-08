@@ -175,7 +175,6 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
                 }
             });
         }
-        Log.d("----BaseActivity", "onCreate:开始timmer" );
         loadHome();
         setupWebview();
         if (hasDaoHang) {
@@ -262,7 +261,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         refresh = findViewById(R.id.refresh);
         if (refresh != null) refresh.setOnClickListener(this);
         shareBtn = findViewById(R.id.share);
-//        if (shareBtn != null) shareBtn.setOnClickListener(this);
+        if (shareBtn != null) shareBtn.setOnClickListener(this);
         moreBtn = findViewById(R.id.more);
         if (moreBtn != null) moreBtn.setOnClickListener(this);
         goForward = findViewById(R.id.go_forward);
@@ -296,7 +295,8 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         } else if (v == refresh) {
             x5WebView.reload();
         } else if (v == shareBtn) {
-            Share.shareWebLink(BaseActivity.this, x5WebView.getUrl());
+            testSendPushWithCallback("测试标题","测试内容",null);
+//            Share.shareWebLink(BaseActivity.this, x5WebView.getUrl());
         } else if (v == moreBtn) {
             drawerLayout.openDrawer(Gravity.END);
         } else if (v == goForward) {
@@ -348,47 +348,44 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         @JavascriptInterface
         public void sendPush(String tags,String title,String content,String targetUrl){
             Log.e("----sendPush", ""+tags);
-
+            if(TextUtils.isEmpty(tags)){
+                tags = null;
+            }
+            if(tags.endsWith(",")){
+                tags = tags.substring(0,tags.length()-1);
+            }
+            testSendPushWithCallback(title,content,tags.split(","));
         }
     }
 
-    public static void testSendPushWithCallback() {
-        ClientConfig clientConfig = ClientConfig.getInstance();
-        final JPushClient jpushClient = new JPushClient("3f927f3a609531b7ebce40d2", "8ec1e9dcffbdbd1521389cd5", null, clientConfig);
-        // Here you can use NativeHttpClient or NettyHttpClient or ApacheHttpClient.
-        // Call setHttpClient to set httpClient,
-        // If you don't invoke this method, default httpClient will use NativeHttpClient.
-//        ApacheHttpClient httpClient = new ApacheHttpClient(authCode, null, clientConfig);
-//        jpushClient.getPushClient().setHttpClient(httpClient);
-        final PushPayload payload = buildPushObject_all_alias_alert();
-//        // For push, all you need do is to build PushPayload object.
-//        PushPayload payload = buildPushObject_all_alias_alert();
-        try {
-            PushResult result = jpushClient.sendPush(payload);
-//            LOG.info("Got result - " + result);
-            System.out.println(result);
-            // 如果使用 NettyHttpClient，需要手动调用 close 方法退出进程
-            // If uses NettyHttpClient, call close when finished sending request, otherwise process will not exit.
-            // jpushClient.close();
-        } catch (APIConnectionException e) {
-            Log.e("aaaaaaa","Connection error. Should retry later. "+ e);
-            Log.e("aaaaaaa","Sendno: " + payload.getSendno());
+    public static void testSendPushWithCallback(final String title,final String msg,final String[] tags) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                ClientConfig clientConfig = ClientConfig.getInstance();
+                final JPushClient jpushClient = new JPushClient("3f927f3a609531b7ebce40d2", "8ec1e9dcffbdbd1521389cd5", null, clientConfig);
+                final PushPayload payload = buildPushObject_all_alias_alert(title,msg,tags);
+                try {
+                    PushResult result = jpushClient.sendPush(payload);
+                    System.out.println(result);
+                } catch (APIConnectionException e) {
 
-        } catch (APIRequestException e) {
-            Log.e("aaaaaaa","Error response from JPush server. Should review and fix it. ", e);
-            Log.e("aaaaaaa","HTTP Status: " + e.getStatus());
-            Log.e("aaaaaaa","Error Code: " + e.getErrorCode());
-            Log.e("aaaaaaa","Error Message: " + e.getErrorMessage());
-            Log.e("aaaaaaa","Msg ID: " + e.getMsgId());
-            Log.e("aaaaaaa","Sendno: " + payload.getSendno());
-        }
+                } catch (APIRequestException e) {
+                }
+            }
+        }).start();
+
     }
 
-    public static PushPayload buildPushObject_all_alias_alert() {
+    public static PushPayload buildPushObject_all_alias_alert(final String title,final String msg,final String[] tags) {
+        Audience audience = Audience.all();
+        if(tags!=null && tags.length>0){
+            audience = Audience.tag(tags);
+        }
         return PushPayload.newBuilder()
                 .setPlatform(Platform.all())
-                .setAudience(Audience.all())
-                .setNotification(Notification.alert(ALERT))
+                .setAudience(audience)
+                .setMessage(cn.jpush.api.push.model.Message.newBuilder().setTitle(title).setMsgContent(msg).build())
                 .build();
     }
 
@@ -435,7 +432,6 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
             x5WebView.setScrollChange(new X5WebView.ScrollChange() {
                 @Override
                 public void onScrollChanged(int l, int t, int oldl, int oldt) {
-                    Log.e("----MainActivity", "onScrollChanged:" + t);
                     if (t == 0) {
                         refeshLayout.setEnabled(true);
                     } else {
@@ -573,7 +569,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
 
             @Override
             public boolean shouldOverrideUrlLoading(final WebView view, final String url) {
-                Log.d("----BaseActivity", "shouldOverrideUrlLoading:" + url);
+//                Log.d("----BaseActivity", "shouldOverrideUrlLoading:" + url);
                 if(url.endsWith(".mp4")){
                         TbsVideo.openVideo(BaseActivity.this,url);
                     return true;
@@ -661,6 +657,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
+                x5WebView.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT);
             }
         });
     }

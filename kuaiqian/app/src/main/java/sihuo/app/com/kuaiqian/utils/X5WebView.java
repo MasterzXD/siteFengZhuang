@@ -91,7 +91,6 @@ public class X5WebView extends WebView implements View.OnLongClickListener{
 	@Override
 	protected void onScrollChanged(int l, int t, int oldl, int oldt) {
 		super.onScrollChanged(l, t, oldl, oldt);
-		Log.d("----X5WebView", "onScrollChanged:" + t);
 		if(scrollChange!=null){
 			scrollChange.onScrollChanged(l,t,oldl,oldt);
 		}
