@@ -6,6 +6,7 @@ import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.util.Log;
 
 
@@ -20,16 +21,23 @@ public class PendingReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         Log.e("----MyReceiver", "PendingReceiver");
         String content = intent.getExtras().getString(JPushInterface.EXTRA_MESSAGE);
-        if(!content.startsWith("catch_success:")){
-            sendNotification(context,content);
-        }
+        sendNotification(context,content);
     }
 
     private void sendNotification(Context context, String message){
         NotificationManager notifyMgr= (NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
         Intent intent = new Intent(context, BaseActivity.class);
-
+        SharedPreferences sp = context.getSharedPreferences("targeturl",Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+        if(message.contains("&&")){
+            editor.putString("targeturl",message.split("&&")[1]);
+            message = message.split("&&")[0];
+        }else{
+            editor.clear();
+        }
+        editor.commit();
         PendingIntent pi = PendingIntent.getActivity(context, 0, intent, 0);
+
         Notification notification = new Notification.Builder(context)
                 .setSmallIcon(R.drawable.iconx)
                 .setTicker(message)

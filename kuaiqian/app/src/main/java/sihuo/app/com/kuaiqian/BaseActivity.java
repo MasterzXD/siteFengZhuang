@@ -9,9 +9,7 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.media.ExifInterface;
 import android.net.Uri;
-import android.net.http.SslError;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
@@ -23,8 +21,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
-import android.util.Base64;
-import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
@@ -34,18 +30,13 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.webkit.JavascriptInterface;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.tencent.smtt.export.external.interfaces.ClientCertRequest;
-import com.tencent.smtt.export.external.interfaces.ConsoleMessage;
-import com.tencent.smtt.export.external.interfaces.HttpAuthHandler;
 import com.tencent.smtt.export.external.interfaces.IX5WebChromeClient;
-import com.tencent.smtt.export.external.interfaces.JsPromptResult;
 import com.tencent.smtt.export.external.interfaces.JsResult;
 import com.tencent.smtt.export.external.interfaces.SslErrorHandler;
 import com.tencent.smtt.export.external.interfaces.WebResourceError;
@@ -56,7 +47,6 @@ import com.tencent.smtt.sdk.TbsVideo;
 import com.tencent.smtt.sdk.ValueCallback;
 import com.tencent.smtt.sdk.WebChromeClient;
 import com.tencent.smtt.sdk.WebSettings;
-import com.tencent.smtt.sdk.WebStorage;
 import com.tencent.smtt.sdk.WebView;
 import com.tencent.smtt.sdk.WebViewClient;
 
@@ -66,31 +56,23 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.HashSet;
 import java.util.Set;
 
 import cn.jiguang.common.ClientConfig;
-import cn.jiguang.common.ServiceHelper;
-import cn.jiguang.common.connection.NettyHttpClient;
 import cn.jiguang.common.resp.APIConnectionException;
 import cn.jiguang.common.resp.APIRequestException;
-import cn.jiguang.common.resp.ResponseWrapper;
 import cn.jpush.android.api.JPushInterface;
 import cn.jpush.api.JPushClient;
 import cn.jpush.api.push.PushResult;
 import cn.jpush.api.push.model.Platform;
 import cn.jpush.api.push.model.PushPayload;
 import cn.jpush.api.push.model.audience.Audience;
-import cn.jpush.api.push.model.notification.Notification;
-import sihuo.app.com.kuaiqian.service.TBSService;
 import sihuo.app.com.kuaiqian.utils.ADFilterTool;
 import sihuo.app.com.kuaiqian.utils.FileUtils;
 import sihuo.app.com.kuaiqian.utils.Share;
 import sihuo.app.com.kuaiqian.utils.X5WebView;
 
-import static cn.jpush.api.push.model.notification.PlatformNotification.ALERT;
 import static sihuo.app.com.kuaiqian.utils.FileUtils.getRealPathByUri;
 
 public class BaseActivity extends AppCompatActivity implements View.OnClickListener {
@@ -186,7 +168,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
                 bottomNavi.setVisibility(View.VISIBLE);
                 bottomNavi.addView(view, params);
             } else {
-                topNavi.setVisibility(View.VISIBLE);
+//                topNavi.setVisibility(View.VISIBLE);
                 topNavi.addView(view, params);
             }
             loadTitle();
@@ -295,8 +277,8 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         } else if (v == refresh) {
             x5WebView.reload();
         } else if (v == shareBtn) {
-            testSendPushWithCallback("测试标题","测试内容",null);
-//            Share.shareWebLink(BaseActivity.this, x5WebView.getUrl());
+//            testSendPushWithCallback("测试标题","测试内容",null);
+            Share.shareWebLink(BaseActivity.this, x5WebView.getUrl());
         } else if (v == moreBtn) {
             drawerLayout.openDrawer(Gravity.END);
         } else if (v == goForward) {
@@ -354,6 +336,9 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
             if(tags.endsWith(",")){
                 tags = tags.substring(0,tags.length()-1);
             }
+            if(!TextUtils.isEmpty(targetUrl)){
+                content = content + "&&" +targetUrl;
+            }
             testSendPushWithCallback(title,content,tags.split(","));
         }
     }
@@ -378,10 +363,11 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public static PushPayload buildPushObject_all_alias_alert(final String title,final String msg,final String[] tags) {
-        Audience audience = Audience.all();
-        if(tags!=null && tags.length>0){
-            audience = Audience.tag(tags);
-        }
+        Audience audience = Audience.tag("11985");
+//        Audience audience = Audience.all();
+//        if(tags!=null && tags.length>0){
+//            audience = Audience.tag(tags);
+//        }
         return PushPayload.newBuilder()
                 .setPlatform(Platform.all())
                 .setAudience(audience)
@@ -519,6 +505,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
                     progressBarH.setProgress(progress);
                     if(progress==100){
                         progressBarH.setVisibility(View.INVISIBLE);
+                        x5WebView.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT);
                     }else{
                         progressBarH.setVisibility(View.VISIBLE);
                     }
@@ -569,7 +556,8 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
 
             @Override
             public boolean shouldOverrideUrlLoading(final WebView view, final String url) {
-//                Log.d("----BaseActivity", "shouldOverrideUrlLoading:" + url);
+                Log.d("----BaseActivity", "shouldOverrideUrlLoading:" + url);
+
                 if(url.endsWith(".mp4")){
                         TbsVideo.openVideo(BaseActivity.this,url);
                     return true;
@@ -651,13 +639,17 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onPageStarted(WebView webView, String s, Bitmap bitmap) {
                 super.onPageStarted(webView, s, bitmap);
+                if(topNavi!=null){
+                    topNavi.setVisibility(s.contains(HOME)?View.GONE:View.VISIBLE);
+                }
                 errorNotice.setVisibility(View.INVISIBLE);
             }
+
 
             @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
-                x5WebView.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT);
+
             }
         });
     }
@@ -929,6 +921,21 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onResume() {
         super.onResume();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                String url = getSharedPreferences("targeturl",Context.MODE_PRIVATE).getString("targeturl",null);
+                if(url!=null){
+                    if(x5WebView!=null){
+                        x5WebView.loadUrl(url);
+                    }
+                    SharedPreferences.Editor editor = getSharedPreferences("targeturl",Context.MODE_PRIVATE).edit();
+                    editor.clear();
+                    editor.commit();
+                }
+            }
+        },3000);
+
         IntentFilter filter = new IntentFilter();
         filter.addAction(Constant.ACTION_JPUSH_CUSTOM);
         filter.setPriority(50);
@@ -964,16 +971,29 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         public void onReceive(Context context, Intent intent) {
             abortBroadcast();
             if(intent.getAction().equals(Constant.ACTION_JPUSH_CUSTOM)){
-                Log.e("----MyReceiver", "收到jpush自定义通知");
+//                Log.e("----MyReceiver", "收到jpush自定义通知");
                 String content = intent.getExtras().getString(JPushInterface.EXTRA_MESSAGE);
-                if(content.startsWith("catch_success:")){
-                    content = content.substring(14);
-                    String []params = content.split("&&");
-                    String imageUrl = params.length>1?params[1]:null;
-                }else{
-                    new android.support.v7.app.AlertDialog.Builder(BaseActivity.this).setMessage(content)
-                            .setPositiveButton("确定",null).show();
+                String title = intent.getExtras().getString(JPushInterface.EXTRA_TITLE);
+                final String url ;
+                if(content.contains("&&")){
+                    url = content.split("&&")[1];
+                    content = content.split("&&")[0];
+                }else {
+                    url = null;
                 }
+                if(TextUtils.isEmpty(url)){
+                    new android.support.v7.app.AlertDialog.Builder(BaseActivity.this).setTitle(title).setMessage(content)
+                            .setPositiveButton("知道了",null).show();
+                }else{
+                    new android.support.v7.app.AlertDialog.Builder(BaseActivity.this).setTitle(title).setMessage(content)
+                            .setNegativeButton("稍后",null).setPositiveButton("查看详情", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    x5WebView.loadUrl(url);
+                                }
+                            }).show();
+                }
+
             }
         }
     }

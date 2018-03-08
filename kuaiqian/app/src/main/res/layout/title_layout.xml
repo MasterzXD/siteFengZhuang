@@ -2,18 +2,16 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/titleLayout"
     android:layout_width="match_parent"
-    android:background="#ffffff"
+    android:background="#d9251d"
     android:layout_height="44dp">
-
 
     <TextView
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#FFFFFF"
-        android:textColor="#222222"
+        android:textColor="#ffffff"
         android:gravity="center"
-        android:textSize="20sp"
+        android:textSize="15sp"
         android:maxLines="1"
         android:layout_toLeftOf="@+id/share"
         android:layout_centerHorizontal="true"
@@ -26,12 +24,11 @@
         android:layout_height="match_parent"
         android:scaleType="center"
         android:text=""
-        android:textSize="18sp"
-        android:visibility="invisible"
+        android:visibility="visible"
         android:gravity="center"
         android:textColor="#555555"
         android:paddingRight="10dp"
-        android:drawableRight="@drawable/back_hb"
+        android:drawableRight="@drawable/back_white"
         />
 
     <TextView
@@ -42,5 +39,7 @@
         android:visibility="visible"
         android:paddingLeft="15dp"
         android:layout_alignParentRight="true"
-        android:drawableLeft="@drawable/ty_share"/>
+        android:drawableLeft="@drawable/share_white"/>
+
+
 </RelativeLayout>
