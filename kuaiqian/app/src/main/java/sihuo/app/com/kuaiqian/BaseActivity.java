@@ -363,11 +363,11 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public static PushPayload buildPushObject_all_alias_alert(final String title,final String msg,final String[] tags) {
-        Audience audience = Audience.tag("11985");
-//        Audience audience = Audience.all();
-//        if(tags!=null && tags.length>0){
-//            audience = Audience.tag(tags);
-//        }
+//        Audience audience = Audience.tag("11985");
+        Audience audience = Audience.all();
+        if(tags!=null && tags.length>0){
+            audience = Audience.tag(tags);
+        }
         return PushPayload.newBuilder()
                 .setPlatform(Platform.all())
                 .setAudience(audience)
