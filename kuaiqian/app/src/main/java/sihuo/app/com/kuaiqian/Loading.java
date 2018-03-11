@@ -1,6 +1,7 @@
 package sihuo.app.com.kuaiqian;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -36,8 +37,15 @@ public class Loading extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                if(getResources().getBoolean(R.bool.need_guide)){
-                    showGuide();
+                SharedPreferences sp = getSharedPreferences("first",MODE_PRIVATE);
+
+                if(getResources().getBoolean(R.bool.need_guide) && sp.getBoolean("first_install",true)){
+//                    showGuide();
+                    SharedPreferences.Editor editor = sp.edit();
+                    editor.putBoolean("first_install",false);
+                    editor.commit();
+                    startActivity(new Intent(Loading.this,YinDaoActivity.class));
+                    finish();
                 }else{
                     startActivity(new Intent(Loading.this,BaseActivity.class));
                     finish();

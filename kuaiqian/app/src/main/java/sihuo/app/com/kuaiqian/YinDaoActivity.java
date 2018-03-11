@@ -22,7 +22,7 @@ public class YinDaoActivity extends Activity implements View.OnTouchListener {
     //    int density = dm.density;
         screenW = dm.widthPixels;
         screenH = dm.heightPixels;
-//        final int arrat[] = {R.drawable.a,R.drawable.b};
+//        final int arrat[] = {R.drawable.a,R.drawable.b,R.drawable.c};
         final int arrat[] = getResources().getIntArray(R.array.guide_list);
 
         for (int i = 0; i < arrat.length; i++) {
@@ -39,7 +39,7 @@ public class YinDaoActivity extends Activity implements View.OnTouchListener {
                     if(index<arrat.length-1){
                         rootView.scrollBy(screenW,0);
                     }else if(index==arrat.length-1){
-//                        startActivity(new Intent(YinDaoActivity.this,MainActivity.class));
+                        startActivity(new Intent(YinDaoActivity.this,BaseActivity.class));
                         finish();
                     }
                 }
