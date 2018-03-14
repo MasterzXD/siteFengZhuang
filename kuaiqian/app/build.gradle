@@ -64,6 +64,10 @@ android {
         zhizunyule {
             applicationId = "com.wvfckh.zhizunyule"
         }
+
+        huangguanyule2{
+            applicationId = "com.dgrert.huangguanyule2"
+        }
 //----
     }
 }
