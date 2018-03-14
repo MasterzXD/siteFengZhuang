@@ -60,6 +60,10 @@ android {
         kuaiqiandai89 {
             applicationId = "com.hmski.kuaiqiandai89"
         }
+
+        zhizunyule {
+            applicationId = "com.wvfckh.zhizunyule"
+        }
 //----
     }
 }
