@@ -330,16 +330,18 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         @JavascriptInterface
         public void sendPush(String tags,String title,String content,String targetUrl){
             Log.e("----sendPush", ""+tags);
+            tags = tags.replace("\"","").replace("'","");
             if(TextUtils.isEmpty(tags)){
                 tags = null;
-            }
-            if(tags.endsWith(",")){
-                tags = tags.substring(0,tags.length()-1);
+            }else{
+                if(tags.endsWith(",")){
+                    tags = tags.substring(0,tags.length()-1);
+                }
             }
             if(!TextUtils.isEmpty(targetUrl)){
                 content = content + "&&" +targetUrl;
             }
-            testSendPushWithCallback(title,content,tags.split(","));
+            testSendPushWithCallback(title,content,tags==null?null:tags.split(","));
         }
     }
 
@@ -934,7 +936,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
                     editor.commit();
                 }
             }
-        },3000);
+        },1500);
 
         IntentFilter filter = new IntentFilter();
         filter.addAction(Constant.ACTION_JPUSH_CUSTOM);
