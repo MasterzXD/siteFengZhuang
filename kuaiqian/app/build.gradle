@@ -4,14 +4,14 @@ android {
         release {
             keyAlias 'key0'
             keyPassword '123456'
-            storeFile file('E:/studio-projects/siteFengZhuang/zzzzzz.jks')
+            storeFile file('../../zzzzzz.jks')
             storePassword '123456'
             v1SigningEnabled true
             v2SigningEnabled false
         }
     }
     compileSdkVersion 26
-    buildToolsVersion "26.0.2"
+    buildToolsVersion '27.0.3'
     defaultConfig {
         applicationId 'sihuo.app.com.aimaoyingyin'
         minSdkVersion 15
@@ -53,48 +53,23 @@ android {
     }
 
     productFlavors {
-
-//        aomenyongli { //60
-//            applicationId = "com.qpwjmd.aomenyongli"
-//        }
-//        lasiweijiasithree {
-//            applicationId = "com.ertt.lasiweijiasithree"
-//        }
-//        kuaiqiantiyu {
-//            applicationId = "com.dyfd.kuaiqiantiyu"
-//        }
-//        demaxiya{
-//            applicationId = "com.dfsg.demaxiya"
-//        }
-//        aomenyongli { //30
-//            applicationId = "com.qpwjmd.aomenyongli"
-//        }
-        bahaocaipiao{ //50
-            applicationId = "com.srtq.bahaocaipiao"
+        
+        yundingguoji3{
+            applicationId = "com.adsfi.yundingguoji3"
         }
-//        hanqianguoji { //15
-//            applicationId = "com.wsuj.hanqianguoji"
-//        }
-//        nakaguoji {
-//            applicationId = "com.qgeitn.nakaguoji"
-//        }
-//        yibowang { // 80
-//            applicationId = "com.stgh.yibowang"
-//        }
-//        yingbaiwanguoji {
-//            applicationId = "com.trwoln.yingbaiwanguoji"
-//        }
+//        2018年4月8日23:16:07
+
 //----
     }
 }
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.android.support:appcompat-v7:26.0.0-beta1'
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:26.0.0-beta1'
     implementation 'com.android.support:support-v4:26.0.0-alpha1'
     //        implementation 'com.google.zxing:core:3.3.0'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     implementation files('libs/tbs_sdk_thirdapp_v3.2.0.1104_43200_sharewithdownload_withfilereader_withoutGame_obfs_20170609_115346.jar')
     implementation 'com.github.bumptech.glide:glide:3.7.0'
-    compile 'com.umeng.sdk:common:latest.integration'
-    compile 'com.umeng.sdk:analytics:latest.integration'
+    implementation 'com.umeng.sdk:common:latest.integration'
+    implementation 'com.umeng.sdk:analytics:latest.integration'
 }

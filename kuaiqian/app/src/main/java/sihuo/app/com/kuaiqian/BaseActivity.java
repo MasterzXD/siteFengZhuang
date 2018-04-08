@@ -194,6 +194,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
                                 break;
 //
                             case 2:
+<<<<<<< HEAD
                                 x5WebView.loadUrl("https://eboapp.ebooo.mobi/rechangelist.html");
                                 break;
                             case 3:
@@ -201,6 +202,12 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
                                 break;
                             case 4:
                                 x5WebView.loadUrl("https://eboapp.ebooo.mobi/mobile_user_account_invest_tz.html");
+=======
+                                x5WebView.loadUrl("http://yd89866.com/index.php?s=/Home/Recharge/withdraw.html");
+                                break;
+                            case 4:
+                                x5WebView.loadUrl("http://yd89866.com/index.php?s=/Home/Recharge/balance.html");
+>>>>>>> 24317ce5c26e324101ddb3c1d1fde8424f9ecc4c
                                 break;
                             case 5:
                                 x5WebView.loadUrl("https://eboapp.ebooo.mobi/Kefu.html");

@@ -599,3 +599,46 @@
             applicationId = "com.dfsga.wangpaicaipiao"
         }
 
+        aomenyongli { //60
+            applicationId = "com.qpwjmd.aomenyongli"
+        }
+        lasiweijiasithree {
+            applicationId = "com.ertt.lasiweijiasithree"
+        }
+        kuaiqiantiyu {
+            applicationId = "com.dyfd.kuaiqiantiyu"
+        }
+        aomenyongli { //30
+            applicationId = "com.qpwjmd.aomenyongli"
+        }
+        bahaocaipiao{ //50
+            applicationId = "com.srtq.bahaocaipiao"
+        }
+        hanqianguoji { //15
+            applicationId = "com.wsuj.hanqianguoji"
+        }
+        nakaguoji {
+            applicationId = "com.qgeitn.nakaguoji"
+        }
+        yibowang { // 80
+            applicationId = "com.stgh.yibowang"
+        }
+        yingbaiwanguoji {
+            applicationId = "com.trwoln.yingbaiwanguoji"
+        }
+        bogouyulecheng{
+            applicationId = "com.khkhu.bogouyulecheng"
+            manifestPlaceholders = [ SCREEN_ORIENTATION:"sensor"]
+        }
+        bangbangsudai{
+            applicationId = "com.rhtyh.bangbangsudai"
+        }
+        xinjiangbaoyou{
+            applicationId = "com.fywe.xinjiangbaoyou"
+        }
+        fucaikuaisan{
+            applicationId = "com.gsdf.fucaikuaisan"
+        }
+        fuyingcaipiao{
+            applicationId = "com.yjdt.fuyingcaipiao"
+        }
