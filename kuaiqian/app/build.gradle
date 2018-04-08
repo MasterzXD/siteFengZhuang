@@ -4,14 +4,15 @@ android {
         release {
             keyAlias 'key0'
             keyPassword '123456'
-            storeFile file('E:/studio-projects/siteFengZhuang/zzzzzz.jks')
+//            storeFile file('E:/studio-projects/siteFengZhuang/zzzzzz.jks')
+            storeFile file('/Users/linj/Documents/GitHub/siteFengZhuang/zzzzzz.jks')
             storePassword '123456'
             v1SigningEnabled true
             v2SigningEnabled false
         }
     }
     compileSdkVersion 26
-    buildToolsVersion "26.0.2"
+    buildToolsVersion '27.0.3'
     defaultConfig {
         applicationId 'sihuo.app.com.aimaoyingyin'
         minSdkVersion 15
@@ -57,23 +58,42 @@ android {
         kuaiqiandai69 {
             applicationId = "com.opdjp.kuaiqiandai69"
         }
-        kuaiqiandai89 {
-            applicationId = "com.hmski.kuaiqiandai89"
-        }
+//        kuaiqiandai89 {
+//            applicationId = "com.hmski.kuaiqiandai89"
+//        }
+//
+//        zhizunyule {
+//            applicationId = "com.wvfckh.zhizunyule"
+//        }
+//
+//        huangguanyule2{
+//            applicationId = "com.dgrert.huangguanyule2"
+//        }
+//        2018年04月06日13:53:53
+//        bogouyulecheng{
+//            applicationId = "com.khkhu.bogouyulecheng"
+//            manifestPlaceholders = [ SCREEN_ORIENTATION:"sensor"]
+//        }
+//
+//        bangbangsudai{
+//            applicationId = "com.rhtyh.bangbangsudai"
+//        }
 
-        zhizunyule {
-            applicationId = "com.wvfckh.zhizunyule"
-        }
-
-        huangguanyule2{
-            applicationId = "com.dgrert.huangguanyule2"
-        }
+//        xinjiangbaoyou{
+//            applicationId = "com.fywe.xinjiangbaoyou"
+//        }
+//        fucaikuaisan{
+//            applicationId = "com.gsdf.fucaikuaisan"
+//        }
+//        fuyingcaipiao{
+//            applicationId = "com.yjdt.fuyingcaipiao"
+//        }
 //----
     }
 }
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.android.support:appcompat-v7:26.0.0-beta1'
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:26.0.0-beta1'
     implementation 'com.android.support:support-v4:26.0.0-alpha1'
     //        implementation 'com.google.zxing:core:3.3.0'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
