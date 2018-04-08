@@ -421,13 +421,7 @@
         yongfengvip{
             applicationId = "com.ftryua.yongfengvip"
         }
-        kuaiqiantiyu { 100
-            applicationId = "com.dyfd.kuaiqiantiyu"
-        }
 
-        liuhaocai{
-            applicationId = "com.rtya.liuhaocai"
-        }
         dingfengyule{
             applicationId = "com.akh.dingfengyule"
         }
@@ -590,3 +584,18 @@
         tianxiachuangtou {
             applicationId = "com.ohaft.tianxiachuangtou"
         }
+        kuaiqiandai69 {
+            applicationId = "com.opdjp.kuaiqiandai69"
+        }
+        kuaiqiandai89 {
+            applicationId = "com.hmski.kuaiqiandai89"
+        }
+
+        yongfengvip0{
+            applicationId = "com.ftryua.yongfengvip"
+        }
+
+        wangpaicaipiao{ // 150
+            applicationId = "com.dfsga.wangpaicaipiao"
+        }
+

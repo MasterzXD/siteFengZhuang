@@ -2,4 +2,5 @@
 <resources>
     <item name="xiazhu" type="id"/>
     <item name="zhibo" type="id"/>
+    <item name="clear" type="id"/>
 </resources>

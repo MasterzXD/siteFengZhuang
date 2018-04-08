@@ -3,11 +3,8 @@ package sihuo.app.com.kuaiqian;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.net.Uri;
-import android.net.http.SslError;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
@@ -16,8 +13,6 @@ import android.provider.MediaStore;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Base64;
-import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
@@ -33,11 +28,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.tencent.smtt.export.external.interfaces.ClientCertRequest;
-import com.tencent.smtt.export.external.interfaces.ConsoleMessage;
-import com.tencent.smtt.export.external.interfaces.HttpAuthHandler;
 import com.tencent.smtt.export.external.interfaces.IX5WebChromeClient;
-import com.tencent.smtt.export.external.interfaces.JsPromptResult;
 import com.tencent.smtt.export.external.interfaces.JsResult;
 import com.tencent.smtt.export.external.interfaces.SslErrorHandler;
 import com.tencent.smtt.export.external.interfaces.WebResourceError;
@@ -47,17 +38,16 @@ import com.tencent.smtt.sdk.DownloadListener;
 import com.tencent.smtt.sdk.TbsVideo;
 import com.tencent.smtt.sdk.ValueCallback;
 import com.tencent.smtt.sdk.WebChromeClient;
-import com.tencent.smtt.sdk.WebSettings;
-import com.tencent.smtt.sdk.WebStorage;
 import com.tencent.smtt.sdk.WebView;
 import com.tencent.smtt.sdk.WebViewClient;
+import com.umeng.analytics.MobclickAgent;
+import com.umeng.commonsdk.UMConfigure;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 
-import sihuo.app.com.kuaiqian.service.TBSService;
 import sihuo.app.com.kuaiqian.utils.ADFilterTool;
 import sihuo.app.com.kuaiqian.utils.FileUtils;
 import sihuo.app.com.kuaiqian.utils.Share;
@@ -90,7 +80,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
     private ValueCallback<Uri[]> uploadMessage;
     private ValueCallback<Uri> singleUploadMessage;
 
-    private TextView back, refresh, goForward, closeAp, home, shareBtn, moreBtn, youhui, kefu, loadview, xiazhu, zhibo;
+    private TextView back, refresh, goForward,showMenu,clearCache, closeAp, home, shareBtn, moreBtn, youhui, kefu, loadview, xiazhu, zhibo;
     /*float navigation*/
     private LinearLayout floatLayout;
     private RelativeLayout.LayoutParams floatParams;
@@ -130,6 +120,10 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
             getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         }
         setContentView(R.layout.activity_base);
+
+        UMConfigure.setLogEnabled(true);
+        UMConfigure.init(getApplicationContext(), UMConfigure.DEVICE_TYPE_PHONE,"");
+        MobclickAgent.setScenarioType(getApplicationContext(), MobclickAgent.EScenarioType.E_UM_NORMAL);
 
         x5WebView = findViewById(R.id.x5webview);
         errorNotice = findViewById(R.id.errorNotice);
@@ -187,28 +181,42 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
                             case 0:
                                 x5WebView.loadUrl(getString(R.string.home_url));
                                 break;
+                            case 1:
+                                new AlertDialog.Builder(BaseActivity.this).setMessage("确认需要清理缓存？")
+                                        .setNegativeButton("取消",null)
+                                        .setPositiveButton("清理", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                clearWebViewCache();
+                                                Toast.makeText(BaseActivity.this,"已成功清理缓存",Toast.LENGTH_SHORT).show();
+                                            }
+                                        }).show();
+                                break;
+//
                             case 2:
-                                x5WebView.loadUrl("http://yd898.com/index.php?s=/Home/Recharge/withdraw.html");
+                                x5WebView.loadUrl("https://eboapp.ebooo.mobi/rechangelist.html");
+                                break;
+                            case 3:
+                                x5WebView.loadUrl("https://eboapp.ebooo.mobi/bank/Add/0.html");
                                 break;
                             case 4:
-                                x5WebView.loadUrl("http://yd898.com/index.php?s=/Home/Recharge/balance.html");
+                                x5WebView.loadUrl("https://eboapp.ebooo.mobi/mobile_user_account_invest_tz.html");
+                                break;
+                            case 5:
+                                x5WebView.loadUrl("https://eboapp.ebooo.mobi/Kefu.html");
                                 break;
                             case 6:
-                                x5WebView.loadUrl("https://chat6.livechatvalue.com/chat/chatClient/v5mobile/ufMobile.html");
+                                finish();
+                                System.exit(0);
+//                                x5WebView.loadUrl("https://eboapp.ebooo.mobi/");
                                 break;
-//                            case 8:
-//                                x5WebView.loadUrl("http://6666.KQ888888888.com:5555/kf");
-//                                break;
-                            case 10:
-                                x5WebView.loadUrl("http://6666.KQ888888888.com:5555/gg");
-                                break;
-                            case 12:
-                                x5WebView.loadUrl("http://6666.KQ888888888.com:5555/hb");
+                            case 13:
+                                x5WebView.loadUrl("http://6666.1466.me:5555/hb");
                                 break;
                             case 14:
-                                Share.shareWebLink(BaseActivity.this, "https://kq2666.com");
+                                Share.shareWebLink(BaseActivity.this, "http://1266.me/");
                                 break;
-                            case 8:
+                            case 16:
                                 new AlertDialog.Builder(BaseActivity.this).setMessage("确认需要清理缓存？")
                                         .setNegativeButton("取消",null)
                                         .setPositiveButton("清理", new DialogInterface.OnClickListener() {
@@ -252,6 +260,11 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         if (zhibo != null) zhibo.setOnClickListener(this);
         loadview = findViewById(R.id.loadview);
         if (loadview != null) loadview.setOnClickListener(this);
+        clearCache = findViewById(R.id.clear);
+        if (clearCache != null) clearCache.setOnClickListener(this);
+//        showMenu = findViewById(R.id.show_menu);
+//        if (showMenu != null) showMenu.setOnClickListener(this);
+
     }
 
     @Override
@@ -284,7 +297,66 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
             x5WebView.loadUrl("https://www.hs551.com/ssc/wufen");
         } else if (v == zhibo) {
             x5WebView.loadUrl("http://zb.gzyscs.cn/room/m/?rid=1");
+        } else if (v == showMenu) {
+            togoMenu();
+        } else if (v == clearCache) {
+            new AlertDialog.Builder(BaseActivity.this).setMessage("确认需要清理缓存？")
+                    .setNegativeButton("取消",null)
+                    .setPositiveButton("清理", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            clearWebViewCache();
+                            Toast.makeText(BaseActivity.this,"已成功清理缓存",Toast.LENGTH_SHORT).show();
+                        }
+                    }).show();
         }
+    }
+
+    LinearLayout togoView;
+
+    private void togoMenu(){
+        if(togoView==null){
+            togoView = (LinearLayout) getLayoutInflater().inflate(R.layout.pop_layout,null);
+            for (int i=0;i<togoView.getChildCount();i++){
+                View child = togoView.getChildAt(i);
+                child.setTag(i);
+                child.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Integer index = (Integer) v.getTag();
+                        if(index==0){
+                            Share.shareWebLink(BaseActivity.this, "https://www.002211.com");
+                        }else if (index==1){
+
+                        }else if (index==2){
+                            new AlertDialog.Builder(BaseActivity.this).setMessage("确认需要清理缓存？")
+                                    .setNegativeButton("取消",null)
+                                    .setPositiveButton("清理", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            clearWebViewCache();
+                                            Toast.makeText(BaseActivity.this,"已成功清理缓存",Toast.LENGTH_SHORT).show();
+                                        }
+                                    }).show();
+                        }else if (index==3){
+                            x5WebView.loadUrl("http://wpa.qq.com/msgrd?v=3&uin=80056738&site=qq&menu=yes");
+                        }
+                        rootView.removeView(togoView);
+                        togoView=null;
+                    }
+                });
+            }
+            RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT,RelativeLayout.LayoutParams.WRAP_CONTENT);
+            params.addRule(RelativeLayout.ABOVE,R.id.bottomNavi);
+            params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT,RelativeLayout.TRUE);
+            params.bottomMargin = 20;
+            params.rightMargin = 10;
+            rootView.addView(togoView,params);
+        }else{
+            rootView.removeView(togoView);
+            togoView=null;
+        }
+
     }
 
     /**
@@ -548,6 +620,13 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public boolean shouldOverrideUrlLoading(final WebView view, final String url) {
                 Log.d("----BaseActivity", "shouldOverrideUrlLoading:" + url);
+                /*直接跳系统浏览器 */
+//                Intent intent = new Intent(Intent.ACTION_VIEW);
+//                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                intent.setData(Uri.parse(url));
+//                startActivity(intent);
+//                return true;
+                /*---------*/
                 if(url.endsWith(".mp4")){
                         TbsVideo.openVideo(BaseActivity.this,url);
                     return true;
@@ -789,7 +868,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onResume() {
         super.onResume();
-
+        MobclickAgent.onResume(this);
     }
 
     @Override
@@ -801,6 +880,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onPause() {
         super.onPause();
+        MobclickAgent.onPause(this);
 //        clearWebViewCache();
     }
 }

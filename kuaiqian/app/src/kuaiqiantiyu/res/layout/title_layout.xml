@@ -10,7 +10,7 @@
         android:id="@+id/refresh"
         android:layout_width="44dp"
         android:layout_height="match_parent"
-        android:drawableRight="@drawable/refresh_gray"
+        android:drawableRight="@drawable/refresh"
         android:gravity="center"
         android:textSize="20sp"
         android:visibility="visible"
@@ -27,7 +27,7 @@
         android:textColor="#555555"
         android:paddingRight="10dp"
         android:layout_centerInParent="true"
-        android:drawableRight="@drawable/back_gray"
+        android:drawableRight="@drawable/back"
         />
 
     <TextView
@@ -36,5 +36,5 @@
         android:layout_height="match_parent"
         android:visibility="visible"
         android:layout_alignParentRight="true"
-        android:drawableLeft="@drawable/more_gray"/>
+        android:drawableLeft="@drawable/more_btn"/>
 </RelativeLayout>
