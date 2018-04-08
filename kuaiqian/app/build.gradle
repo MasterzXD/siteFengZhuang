@@ -4,8 +4,7 @@ android {
         release {
             keyAlias 'key0'
             keyPassword '123456'
-//            storeFile file('E:/studio-projects/siteFengZhuang/zzzzzz.jks')
-            storeFile file('/Users/linj/Documents/GitHub/siteFengZhuang/zzzzzz.jks')
+            storeFile file('../../zzzzzz.jks')
             storePassword '123456'
             v1SigningEnabled true
             v2SigningEnabled false
@@ -55,9 +54,11 @@ android {
 
     productFlavors {
 
-        kuaiqiandai69 {
-            applicationId = "com.opdjp.kuaiqiandai69"
-        }
+
+//        kuaiqiandai69 {
+//            applicationId = "com.opdjp.kuaiqiandai69"
+//        }
+
 //        kuaiqiandai89 {
 //            applicationId = "com.hmski.kuaiqiandai89"
 //        }
@@ -69,6 +70,7 @@ android {
 //        huangguanyule2{
 //            applicationId = "com.dgrert.huangguanyule2"
 //        }
+
 //        2018年04月06日13:53:53
 //        bogouyulecheng{
 //            applicationId = "com.khkhu.bogouyulecheng"
@@ -88,6 +90,13 @@ android {
 //        fuyingcaipiao{
 //            applicationId = "com.yjdt.fuyingcaipiao"
 //        }
+
+
+        yundingguoji3{
+            applicationId = "com.adsfi.yundingguoji3"
+        }
+
+
 //----
     }
 }
