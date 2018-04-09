@@ -8,12 +8,14 @@ import string
 
 # rootpath = "D:\git\siteFengZhuang\kuaiqian\\"
 
-rootpath = "E:\studio-projects\siteFengZhuang\kuaiqian\\"
+# rootpath = "E:\studio-projects\siteFengZhuang\kuaiqian\\"
+
+print ('aaaa')
 
 new_app = "newapp"
 base = "base\\"
 
-os.chdir(rootpath)
+# os.chdir(rootpath)
 
 def file_extension(path):
 	return os.path.splitext(path)[1] 
@@ -54,10 +56,10 @@ def randomStr(start,end):
 
 def update_gradle_file(new_name):
 
-	file = open("app\\build.gradle",'r',0)
+	file = open("app/build.gradle",'r',0)
 	lines = file.read()
 	lines = lines.replace("//----","        "+new_name+" {\n            applicationId = \"com."+randomStr(4,6).lower()+"."+new_name+"\"\n        }\n//----")
-	file = open("app\\build.gradle",'w',0)
+	file = open("app/build.gradle",'w',0)
 	file.write(lines)
 	file.flush()
 	file.close()
@@ -67,7 +69,7 @@ def update_gradle_file(new_name):
 build_string = "gradlew clean"
 
 for dir_name in os.listdir(new_app) :
-	print dir_name
+	print (dir_name)
 	new_name = dir_name
 	if not os.path.isdir(new_app+"\\"+dir_name) :
 		continue
@@ -82,7 +84,7 @@ for dir_name in os.listdir(new_app) :
 	pass
 	build_string = build_string + " assemble"+new_name.capitalize()+"Release"
 	# input("config the strings,any key to continue....")
-	print "new_name:"+new_name
+	print ("new_name:"+new_name)
 	copyRes(new_app+"\\"+dir_name,"app\src\\"+new_name)
 	update_gradle_file(new_name)
 pass
@@ -96,6 +98,6 @@ pass
 # 	print "NO"
 # pass
 
-print "build_string:"+build_string
+print ("build_string:"+build_string)
 
 os.system(build_string)
