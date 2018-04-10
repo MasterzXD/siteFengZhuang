@@ -80,7 +80,8 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
     private ValueCallback<Uri[]> uploadMessage;
     private ValueCallback<Uri> singleUploadMessage;
 
-    private TextView back, refresh, goForward,showMenu,clearCache, closeAp, home, shareBtn, moreBtn, youhui, kefu, loadview, xiazhu, zhibo;
+    private TextView back, refresh, goForward,showMenu,clearCache, closeAp, home,
+            shareBtn, moreBtn, youhui, kefu, loadview, xiazhu, zhibo, liaotianshi, zaixiantouzhu;
     /*float navigation*/
     private LinearLayout floatLayout;
     private RelativeLayout.LayoutParams floatParams;
@@ -194,7 +195,6 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
                                 break;
 //
                             case 2:
-<<<<<<< HEAD
                                 x5WebView.loadUrl("https://eboapp.ebooo.mobi/rechangelist.html");
                                 break;
                             case 3:
@@ -202,12 +202,6 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
                                 break;
                             case 4:
                                 x5WebView.loadUrl("https://eboapp.ebooo.mobi/mobile_user_account_invest_tz.html");
-=======
-                                x5WebView.loadUrl("http://yd89866.com/index.php?s=/Home/Recharge/withdraw.html");
-                                break;
-                            case 4:
-                                x5WebView.loadUrl("http://yd89866.com/index.php?s=/Home/Recharge/balance.html");
->>>>>>> 24317ce5c26e324101ddb3c1d1fde8424f9ecc4c
                                 break;
                             case 5:
                                 x5WebView.loadUrl("https://eboapp.ebooo.mobi/Kefu.html");
@@ -269,6 +263,10 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         if (loadview != null) loadview.setOnClickListener(this);
         clearCache = findViewById(R.id.clear);
         if (clearCache != null) clearCache.setOnClickListener(this);
+        liaotianshi = findViewById(R.id.liaotianshi);
+        if (liaotianshi != null) liaotianshi.setOnClickListener(this);
+        zaixiantouzhu = findViewById(R.id.zaixiantouzhu);
+        if (zaixiantouzhu != null) zaixiantouzhu.setOnClickListener(this);
 //        showMenu = findViewById(R.id.show_menu);
 //        if (showMenu != null) showMenu.setOnClickListener(this);
 
@@ -306,7 +304,13 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
             x5WebView.loadUrl("http://zb.gzyscs.cn/room/m/?rid=1");
         } else if (v == showMenu) {
             togoMenu();
-        } else if (v == clearCache) {
+        }
+        else if (v == liaotianshi) {
+            x5WebView.loadUrl("http://lcc108.com");
+        }
+        else if (v == zaixiantouzhu) {
+            x5WebView.loadUrl("http://lcc13.com");
+        }else if (v == clearCache) {
             new AlertDialog.Builder(BaseActivity.this).setMessage("确认需要清理缓存？")
                     .setNegativeButton("取消",null)
                     .setPositiveButton("清理", new DialogInterface.OnClickListener() {

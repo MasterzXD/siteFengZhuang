@@ -54,11 +54,12 @@ android {
 
     productFlavors {
         
-        yundingguoji3{
-            applicationId = "com.adsfi.yundingguoji3"
+//        weinisiren{ //50
+//            applicationId = "com.dfgh.weinisiren"
+//        }
+        jihualiaotianshi{ //50
+            applicationId = "com.dsfa.jihualiaotianshi"
         }
-//        2018年4月8日23:16:07
-
 //----
     }
 }
