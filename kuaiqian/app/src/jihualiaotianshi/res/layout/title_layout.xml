@@ -23,14 +23,13 @@
             android:text="聊天室"
             />
         <TextView
-            android:id="@id/zaixiantouzhu"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
             android:textSize="17sp"
             android:layout_weight="0.25"
             android:drawablePadding="-5dp"
-            android:text="在线投注"
+            android:text="乐彩城"
             android:textColor="#ffffff"
             />
 
