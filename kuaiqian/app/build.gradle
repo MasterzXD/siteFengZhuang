@@ -57,8 +57,11 @@ android {
 //        weinisiren{ //50
 //            applicationId = "com.dfgh.weinisiren"
 //        }
-        jihualiaotianshi{ //50
-            applicationId = "com.dsfa.jihualiaotianshi"
+//        jihualiaotianshi{ //50
+//            applicationId = "com.dsfa.jihualiaotianshi"
+//        }
+        lecaicheng{
+            applicationId = "com.sfs.lecaicheng"
         }
 //----
     }
