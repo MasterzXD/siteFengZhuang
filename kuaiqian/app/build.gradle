@@ -13,7 +13,7 @@ android {
     compileSdkVersion 26
     buildToolsVersion '27.0.3'
     defaultConfig {
-        applicationId 'sihuo.app.com.aimaoyingyin'
+        applicationId 'com.cva.yingxionglianmeng'
         minSdkVersion 15
         targetSdkVersion 21
         versionCode 1
@@ -25,7 +25,12 @@ android {
             abiFilters "armeabi", "armeabi-v7a", "x86", "mips"
         }
 
-        manifestPlaceholders = [ SCREEN_ORIENTATION:"portrait"]
+        manifestPlaceholders = [
+                SCREEN_ORIENTATION:"sensor",
+                JPUSH_PKGNAME : applicationId,
+                JPUSH_APPKEY : "75f414032c55ee00100d0b8a", //JPush上注册的包名对应的appkey.
+                JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
+        ]
     }
     sourceSets {
         main {
@@ -60,8 +65,11 @@ android {
 //        jihualiaotianshi{ //50
 //            applicationId = "com.dsfa.jihualiaotianshi"
 //        }
-        lecaicheng{
-            applicationId = "com.sfs.lecaicheng"
+//        lecaicheng{
+//            applicationId = "com.sfs.lecaicheng"
+//        }
+        yingxionglianmeng{ //70
+            applicationId = "com.cva.yingxionglianmeng"
         }
 //----
     }
@@ -76,4 +84,6 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:3.7.0'
     implementation 'com.umeng.sdk:common:latest.integration'
     implementation 'com.umeng.sdk:analytics:latest.integration'
+    implementation 'cn.jiguang.sdk:jpush:3.1.1'
+    implementation 'cn.jiguang.sdk:jcore:1.1.9'
 }
