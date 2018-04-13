@@ -13,7 +13,7 @@ android {
     compileSdkVersion 26
     buildToolsVersion '27.0.3'
     defaultConfig {
-        applicationId 'com.cva.yingxionglianmeng'
+        applicationId 'com.adsfw.meiqilin'
         minSdkVersion 15
         targetSdkVersion 21
         versionCode 1
@@ -26,7 +26,7 @@ android {
         }
 
         manifestPlaceholders = [
-                SCREEN_ORIENTATION:"sensor",
+                SCREEN_ORIENTATION:"portrait",
                 JPUSH_PKGNAME : applicationId,
                 JPUSH_APPKEY : "75f414032c55ee00100d0b8a", //JPush上注册的包名对应的appkey.
                 JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
@@ -68,8 +68,14 @@ android {
 //        lecaicheng{
 //            applicationId = "com.sfs.lecaicheng"
 //        }
-        yingxionglianmeng{ //70
-            applicationId = "com.cva.yingxionglianmeng"
+//        yingxionglianmeng{ //70
+//            applicationId = "com.cva.yingxionglianmeng"
+//        }
+//        zhongyuancaipiao{
+//            applicationId = "com.ghfdj.zhongyuancaipiao"
+//        }
+        meiqilin{ //50
+            applicationId = "com.adsfw.meiqilin"
         }
 //----
     }
