@@ -74,8 +74,11 @@ android {
 //        zhongyuancaipiao{
 //            applicationId = "com.ghfdj.zhongyuancaipiao"
 //        }
-        meiqilin{ //50
-            applicationId = "com.adsfw.meiqilin"
+//        meiqilin{ //50
+//            applicationId = "com.adsfw.meiqilin"
+//        }
+        huarenyule2{
+            applicationId = "com.djgh.huarenyule2"
         }
 //----
     }
