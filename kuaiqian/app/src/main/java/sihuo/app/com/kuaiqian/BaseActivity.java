@@ -13,6 +13,7 @@ import android.provider.MediaStore;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
@@ -161,6 +162,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
             loadTitle();
         }
         initSlider();
+        initFloatNavigation();
     }
 
 
@@ -376,73 +378,79 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
     int floatViewDownX, floatViewDownY, finalFloatViewDownX, finalFloatViewDownY;
 
     protected void initFloatNavigation() {
-//        if (floatNavigation) {
-//            floatLayout = (LinearLayout) getLayoutInflater().inflate(R.layout.float_layout, null);
-//            final int floatViewW = (int) (40 * density);
-//            final int floatViewH = (int) (100 * density);
-//            floatParams = new RelativeLayout.LayoutParams(floatViewW, floatViewH);
-//            floatParams.leftMargin = (int) (270 * density);
-//            floatParams.topMargin = (int) (300 * density);
-//            rootView.addView(floatLayout, floatParams);
-//
-//            floatBack = floatLayout.findViewById(R.id.float_back);
-//            floatHome = floatLayout.findViewById(R.id.float_home);
-//            floatLayout.setOnTouchListener(new View.OnTouchListener() {
-//                @Override
-//                public boolean onTouch(View v, MotionEvent event) {
-//
-//                    switch (event.getAction()) {
-//                        case MotionEvent.ACTION_DOWN:
-//                            floatViewDownX = (int) event.getRawX();
-//                            floatViewDownY = (int) event.getRawY();
-//                            finalFloatViewDownX = (int) event.getRawX();
-//                            finalFloatViewDownY = (int) event.getRawY();
-//                            break;
-//                        case MotionEvent.ACTION_MOVE:
-//
-//                            int floatViewCurrentX = (int) event.getRawX();
-//                            int floatViewCurrentY = (int) event.getRawY();
-//                            if (Math.abs(floatViewCurrentX - finalFloatViewDownX) < 10
-//                                    && Math.abs(floatViewCurrentY - finalFloatViewDownY) < 10) {
-//                                return true;
-//                            }
-//                            floatParams.leftMargin += floatViewCurrentX - floatViewDownX;
-//                            floatParams.topMargin += floatViewCurrentY - floatViewDownY;
-//
-//                            if (floatParams.leftMargin < 0) {
-//                                floatParams.leftMargin = 0;
-//                            }
-//                            if (floatParams.topMargin < 0) {
-//                                floatParams.topMargin = 0;
-//                            }
-//                            if (floatParams.leftMargin + floatViewW > screenW) {
-//                                floatParams.leftMargin = screenW - floatViewW;
-//                            }
-//                            if (floatParams.topMargin + floatViewH + 22 > screenH) {
-//                                floatParams.topMargin = screenH - floatViewH - 22;
-//                            }
-//                            floatViewDownX = floatViewCurrentX;
-//                            floatViewDownY = floatViewCurrentY;
-//                            rootView.updateViewLayout(floatLayout, floatParams);
-//                            break;
-//                        case MotionEvent.ACTION_UP:
-//                            if (Math.abs(event.getRawY() - finalFloatViewDownY) < 10) {
-//                                if (floatHome.getY() + floatHome.getHeight() >= event.getY()) {
-//                                    HOME = getResources().getString(R.string.home_url);
-//                                    x5WebView.loadUrl(HOME);
-//                                } else {
-//                                    if (x5WebView.canGoBack()) {
-//                                        x5WebView.goBack();
-//                                    }
-//                                }
-//                            }
-//                            floatLayout.setLayoutParams(floatParams);
-//                            break;
-//                    }
-//                    return true;
-//                }
-//            });
-//        }
+        if (floatNavigation) {
+            DisplayMetrics metric = new DisplayMetrics();
+            getWindowManager().getDefaultDisplay().getMetrics(metric);
+            final int screenW = metric.widthPixels;  // 屏幕宽度（像素）
+            final int screenH = metric.heightPixels;  // 屏幕高度（像素）
+            float density = metric.density;  // 屏幕密度（0.75 / 1.0 / 1.5）
+            int densityDpi = metric.densityDpi;  // 屏幕密度DPI（120 / 160 / 240）
+            floatLayout = (LinearLayout) getLayoutInflater().inflate(R.layout.float_layout, null);
+            final int floatViewW = (int) (40 * density);
+            final int floatViewH = (int) (100 * density);
+            floatParams = new RelativeLayout.LayoutParams(floatViewW, floatViewH);
+            floatParams.leftMargin = (int) (270 * density);
+            floatParams.topMargin = (int) (300 * density);
+            rootView.addView(floatLayout, floatParams);
+
+            floatBack = floatLayout.findViewById(R.id.float_back);
+            floatHome = floatLayout.findViewById(R.id.float_home);
+            floatLayout.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+
+                    switch (event.getAction()) {
+                        case MotionEvent.ACTION_DOWN:
+                            floatViewDownX = (int) event.getRawX();
+                            floatViewDownY = (int) event.getRawY();
+                            finalFloatViewDownX = (int) event.getRawX();
+                            finalFloatViewDownY = (int) event.getRawY();
+                            break;
+                        case MotionEvent.ACTION_MOVE:
+
+                            int floatViewCurrentX = (int) event.getRawX();
+                            int floatViewCurrentY = (int) event.getRawY();
+                            if (Math.abs(floatViewCurrentX - finalFloatViewDownX) < 10
+                                    && Math.abs(floatViewCurrentY - finalFloatViewDownY) < 10) {
+                                return true;
+                            }
+                            floatParams.leftMargin += floatViewCurrentX - floatViewDownX;
+                            floatParams.topMargin += floatViewCurrentY - floatViewDownY;
+
+                            if (floatParams.leftMargin < 0) {
+                                floatParams.leftMargin = 0;
+                            }
+                            if (floatParams.topMargin < 0) {
+                                floatParams.topMargin = 0;
+                            }
+                            if (floatParams.leftMargin + floatViewW > screenW) {
+                                floatParams.leftMargin = screenW - floatViewW;
+                            }
+                            if (floatParams.topMargin + floatViewH + 22 > screenH) {
+                                floatParams.topMargin = screenH - floatViewH - 22;
+                            }
+                            floatViewDownX = floatViewCurrentX;
+                            floatViewDownY = floatViewCurrentY;
+                            rootView.updateViewLayout(floatLayout, floatParams);
+                            break;
+                        case MotionEvent.ACTION_UP:
+                            if (Math.abs(event.getRawY() - finalFloatViewDownY) < 10) {
+                                if (floatHome.getY() + floatHome.getHeight() >= event.getY()) {
+                                    HOME = getResources().getString(R.string.home_url);
+                                    x5WebView.loadUrl(HOME);
+                                } else {
+                                    if (x5WebView.canGoBack()) {
+                                        x5WebView.goBack();
+                                    }
+                                }
+                            }
+                            floatLayout.setLayoutParams(floatParams);
+                            break;
+                    }
+                    return true;
+                }
+            });
+        }
     }
 
 
