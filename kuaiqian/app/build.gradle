@@ -13,7 +13,7 @@ android {
     compileSdkVersion 26
     buildToolsVersion '27.0.3'
     defaultConfig {
-        applicationId 'com.adsfw.meiqilin'
+        applicationId 'com.sfg.xinfuzhijia'
         minSdkVersion 15
         targetSdkVersion 21
         versionCode 1
@@ -77,14 +77,17 @@ android {
 //        meiqilin{ //50
 //            applicationId = "com.adsfw.meiqilin"
 //        }
-        huarenyule2{
-            applicationId = "com.djgh.huarenyule2"
-            manifestPlaceholders = [
-                    SCREEN_ORIENTATION:"sensor",
-                    JPUSH_PKGNAME : applicationId,
-                    JPUSH_APPKEY : "75f414032c55ee00100d0b8a", //JPush上注册的包名对应的appkey.
-                    JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
-            ]
+//        huarenyule2{
+//            applicationId = "com.djgh.huarenyule2"
+//            manifestPlaceholders = [
+//                    SCREEN_ORIENTATION:"sensor",
+//                    JPUSH_PKGNAME : applicationId,
+//                    JPUSH_APPKEY : "75f414032c55ee00100d0b8a", //JPush上注册的包名对应的appkey.
+//                    JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
+//            ]
+//        }
+        xinfuzhijia{
+            applicationId = "com.sfg.xinfuzhijia"
         }
 //----
     }

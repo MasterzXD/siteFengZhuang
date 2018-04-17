@@ -286,7 +286,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         } else if (v == refresh) {
             x5WebView.reload();
         } else if (v == shareBtn) {
-            Share.shareWebLink(BaseActivity.this, "http://szs163.com/Login/xiazai.html");
+            Share.shareWebLink(BaseActivity.this, "https://w-5.net/7bWla");
         } else if (v == moreBtn) {
             drawerLayout.openDrawer(Gravity.END);
         } else if (v == goForward) {
