@@ -13,7 +13,7 @@ android {
     compileSdkVersion 26
     buildToolsVersion '27.0.3'
     defaultConfig {
-        applicationId 'com.sfg.xinfuzhijia'
+        applicationId 'com.fsdhdf.shengjiyulecheng'
         minSdkVersion 15
         targetSdkVersion 21
         versionCode 1
@@ -86,8 +86,12 @@ android {
 //                    JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
 //            ]
 //        }
-        xinfuzhijia{
-            applicationId = "com.sfg.xinfuzhijia"
+//        xinfuzhijia{
+//            applicationId = "com.sfg.xinfuzhijia"
+//        }
+
+        shengjiyulecheng{
+            applicationId = "com.fsdhdf.shengjiyulecheng"
         }
 //----
     }

@@ -5,4 +5,5 @@
     <item name="clear" type="id"/>
     <item name="liaotianshi" type="id"/>
     <item name="zaixiantouzhu" type="id"/>
+    <item name="setting" type="id"/>
 </resources>

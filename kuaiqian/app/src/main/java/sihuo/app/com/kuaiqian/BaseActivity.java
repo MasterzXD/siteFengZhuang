@@ -1,9 +1,11 @@
 package sihuo.app.com.kuaiqian;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -20,12 +22,15 @@ import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -82,7 +87,8 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
     private ValueCallback<Uri> singleUploadMessage;
 
     private TextView back, refresh, goForward,showMenu,clearCache, closeAp, home,
-            shareBtn, moreBtn, youhui, kefu, loadview, xiazhu, zhibo, liaotianshi, zaixiantouzhu;
+            shareBtn, moreBtn, youhui, kefu, loadview, xiazhu, zhibo, liaotianshi, zaixiantouzhu,
+            setting;
     /*float navigation*/
     private LinearLayout floatLayout;
     private RelativeLayout.LayoutParams floatParams;
@@ -269,6 +275,8 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         if (liaotianshi != null) liaotianshi.setOnClickListener(this);
         zaixiantouzhu = findViewById(R.id.zaixiantouzhu);
         if (zaixiantouzhu != null) zaixiantouzhu.setOnClickListener(this);
+        setting = findViewById(R.id.setting);
+        if (setting != null) setting.setOnClickListener(this);
 //        showMenu = findViewById(R.id.show_menu);
 //        if (showMenu != null) showMenu.setOnClickListener(this);
 
@@ -322,6 +330,47 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
                             Toast.makeText(BaseActivity.this,"已成功清理缓存",Toast.LENGTH_SHORT).show();
                         }
                     }).show();
+        }else if (v == setting) {
+//            final String items[] = {"清空缓存", "刷新", "主页", "取消"};
+//            ArrayAdapter<String>  adapter= new ArrayAdapter<String>(BaseActivity.this,android.R.layout.simple_list_item_1,items);
+            final View view = getLayoutInflater().inflate(R.layout.dialog_sheet_item,null);
+            rootView.addView(view,new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT,RelativeLayout.LayoutParams.MATCH_PARENT));
+            view.findViewById(R.id.clear).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    rootView.removeView(view);
+                    new AlertDialog.Builder(BaseActivity.this).setMessage("确认需要清理缓存？")
+                            .setNegativeButton("取消",null)
+                            .setPositiveButton("清理", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    clearWebViewCache();
+                                    Toast.makeText(BaseActivity.this,"已成功清理缓存",Toast.LENGTH_SHORT).show();
+                                }
+                            }).show();
+                }
+            });
+            view.findViewById(R.id.home).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    rootView.removeView(view);
+                    loadHome();
+                }
+            });
+            view.findViewById(R.id.refresh).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    rootView.removeView(view);
+                    x5WebView.reload();
+                }
+            });
+
+            view.findViewById(R.id.cancel).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    rootView.removeView(view);
+                }
+            });
         }
     }
 
