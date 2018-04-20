@@ -11,12 +11,15 @@
         android:orientation="horizontal"
         >
 
-        <TextView
+
+        <android.support.v7.widget.AppCompatTextView
             android:id="@+id/back"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:textColor="#ffffff"
             android:layout_weight="0.25"
+            android:drawablePadding="10dp"
+            android:drawableTint="#fff000"
             android:gravity="left|center_vertical"
             android:paddingLeft="24dp"
             android:textSize="16sp"
