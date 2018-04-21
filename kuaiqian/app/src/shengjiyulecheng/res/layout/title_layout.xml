@@ -10,16 +10,13 @@
         android:layout_height="match_parent"
         android:orientation="horizontal"
         >
-
-
-        <android.support.v7.widget.AppCompatTextView
+        <TextView
             android:id="@+id/back"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:textColor="#ffffff"
             android:layout_weight="0.25"
             android:drawablePadding="10dp"
-            android:drawableTint="#fff000"
             android:gravity="left|center_vertical"
             android:paddingLeft="24dp"
             android:textSize="16sp"
@@ -31,7 +28,6 @@
             android:gravity="center"
             android:textSize="18sp"
             android:layout_weight="0.25"
-            android:drawablePadding="-5dp"
             android:text="@string/app_name"
             android:textColor="#000000"
             />

@@ -1,14 +1,10 @@
 <resources>
     <!-- APP名字 -->
-    <string name="app_name">胜记娱乐城</string>
+    <string name="app_name">葡京娱乐</string>
     <!-- 启动地址 -->
-    <!--<string name="start_url">http://gzliuxue.org/login.php</string>-->
-    <!--<string name="start_url">http://syxf.org/login.php</string>-->
-    <string name="start_url">http://whqh.org/login.php</string>
+    <string name="start_url">http://m.pk12999.com/user/login</string>
     <!-- 主页地址 -->
-    <!--<string name="home_url">http://gzliuxue.org/login.php</string>-->
-    <!--<string name="home_url">http://syxf.org/login.php</string>-->
-    <string name="home_url">http://whqh.org/login.php</string>
+    <string name="home_url">http://m.pk12999.com/user/login</string>
     <!-- 是否显示网页加载进度条,默认false -->
     <bool name="show_loadng">false</bool>
     <!-- 启动页面延迟时间，默认2000毫秒 -->
