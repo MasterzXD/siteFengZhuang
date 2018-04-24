@@ -13,7 +13,7 @@ android {
     compileSdkVersion 26
     buildToolsVersion '27.0.3'
     defaultConfig {
-        applicationId 'com.dfsg.xinpujinyulechang2'
+        applicationId 'com.sgdf.aomenjinshaduchang'
         minSdkVersion 15
         targetSdkVersion 21
         versionCode 1
@@ -93,8 +93,14 @@ android {
 //        shengjiyulecheng{ //30*3=90
 //            applicationId = "com.fsdhdf.shengjiyulecheng4"
 //        }
-        xinpujinyulechang2{
-            applicationId = "com.dfsg.xinpujinyulechang2"
+//        xinpujinyulechang2{
+//            applicationId = "com.dfsg.xinpujinyulechang2"
+//        }
+//        zhiying365{
+//            applicationId = "com.asd.zhiying365"
+//        }
+        aomenjinshaduchang{
+            applicationId = "com.sgdf.aomenjinshaduchang"
         }
 //----
     }
