@@ -9,8 +9,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingTop="2dp"
-        android:paddingBottom="2dp"
         android:orientation="horizontal">
 
         <TextView
@@ -19,9 +17,8 @@
             android:layout_height="match_parent"
             android:layout_weight="0.25"
             android:gravity="center"
-            android:text="主页"
             android:textColor="#555555"
-            android:textSize="12sp"
+            android:paddingTop="13dp"
             android:drawableTop="@drawable/ty_home"
             android:visibility="visible" />
 
@@ -31,10 +28,9 @@
             android:layout_height="match_parent"
             android:layout_weight="0.25"
             android:gravity="center"
-            android:text="刷新"
             android:textColor="#555555"
             android:drawableTop="@drawable/refresh_gray"
-            android:textSize="12sp"
+            android:paddingTop="13dp"
             android:visibility="visible" />
 
         <TextView
@@ -43,21 +39,19 @@
             android:layout_height="match_parent"
             android:layout_weight="0.25"
             android:gravity="center"
-            android:text="后退"
+            android:paddingTop="13dp"
             android:textColor="#555555"
-            android:drawableTop="@drawable/back_hb"
-            android:textSize="12sp" />
+            android:drawableTop="@drawable/back_hb" />
 
         <TextView
             android:id="@+id/go_forward"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="0.25"
+            android:paddingTop="13dp"
             android:gravity="center"
-            android:text="前进"
             android:drawableTop="@drawable/forward"
-            android:textColor="#555555"
-            android:textSize="12sp" />
+            android:textColor="#555555" />
 
         <TextView
             android:id="@id/clear"
@@ -65,10 +59,8 @@
             android:layout_height="match_parent"
             android:layout_weight="0.25"
             android:gravity="center"
-            android:text="清理缓存"
-            android:textColor="#555555"
-            android:drawableTop="@drawable/ty_del"
-            android:textSize="12sp" />
+            android:paddingTop="13dp"
+            android:drawableTop="@drawable/ty_del"/>
     </LinearLayout>
 
     <View
