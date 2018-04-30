@@ -1,17 +1,19 @@
 package sihuo.app.com.kuaiqian;
 
+import android.Manifest;
 import android.app.AlertDialog;
-import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -22,15 +24,12 @@ import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.view.WindowManager;
-import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
-import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -54,6 +53,12 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 
+import permissions.dispatcher.NeedsPermission;
+import permissions.dispatcher.OnNeverAskAgain;
+import permissions.dispatcher.OnPermissionDenied;
+import permissions.dispatcher.OnShowRationale;
+import permissions.dispatcher.PermissionRequest;
+import permissions.dispatcher.RuntimePermissions;
 import sihuo.app.com.kuaiqian.utils.ADFilterTool;
 import sihuo.app.com.kuaiqian.utils.FileUtils;
 import sihuo.app.com.kuaiqian.utils.Share;
@@ -61,6 +66,7 @@ import sihuo.app.com.kuaiqian.utils.X5WebView;
 
 import static sihuo.app.com.kuaiqian.utils.FileUtils.getRealPathByUri;
 
+@RuntimePermissions
 public class BaseActivity extends AppCompatActivity implements View.OnClickListener {
     final boolean DEBUG_ALL = true;
     final boolean DEBUG = true;
@@ -106,6 +112,8 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         }
     };
 
+
+
     @Override
     protected final void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -129,7 +137,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         }
         setContentView(R.layout.activity_base);
 
-        UMConfigure.setLogEnabled(true);
+        UMConfigure.setLogEnabled(BuildConfig.DEBUG);
         UMConfigure.init(getApplicationContext(), UMConfigure.DEVICE_TYPE_PHONE,"");
         MobclickAgent.setScenarioType(getApplicationContext(), MobclickAgent.EScenarioType.E_UM_NORMAL);
 
@@ -169,8 +177,66 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         }
         initSlider();
         initFloatNavigation();
+        BaseActivityPermissionsDispatcher.getPermissionWithPermissionCheck(this);
     }
 
+    @NeedsPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+    void getPermission(){}
+
+    @OnShowRationale(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+    void showRationaleForCamera(final PermissionRequest request) {
+        new AlertDialog.Builder(this)
+                .setMessage("请允许使用存储权限，部分功能才能生效！")
+                .setPositiveButton("允许", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        request.proceed();
+                    }
+                })
+                .setNegativeButton("拒绝",new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) { request.cancel();
+                    }
+                })
+                .show();
+    }
+
+    @OnPermissionDenied(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+    void onDenied(){
+//        Toast.makeText(this, "OnPermissionDenied", Toast.LENGTH_SHORT).show();
+    }
+
+    @OnNeverAskAgain(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+    void onNever(){
+        new AlertDialog.Builder(this).setMessage("请手动前往设置开启<权限>，以保证部分功能正常运行。")
+                .setNegativeButton("暂不",null)
+                .setPositiveButton("前往", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        getAppDetailSettingIntent(BaseActivity.this);
+                    }
+                }).show();
+    }
+
+    private void getAppDetailSettingIntent(Context context) {
+        Intent localIntent = new Intent();
+        localIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        if (Build.VERSION.SDK_INT >= 9) {
+            localIntent.setAction("android.settings.APPLICATION_DETAILS_SETTINGS");
+            localIntent.setData(Uri.fromParts("package", getPackageName(), null));
+        } else if (Build.VERSION.SDK_INT <= 8) {
+            localIntent.setAction(Intent.ACTION_VIEW);
+            localIntent.setClassName("com.android.settings","com.android.settings.InstalledAppDetails");
+            localIntent.putExtra("com.android.settings.ApplicationPkgName", getPackageName());
+        }
+        startActivity(localIntent);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        BaseActivityPermissionsDispatcher.onRequestPermissionsResult(this,requestCode,grantResults);
+    }
 
     private void initSlider(){
         if(!rightSliderMenu){
@@ -187,10 +253,28 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
                     public void onClick(View v) {
                         Integer tag = (Integer) v.getTag();
                         switch (tag){
-                            case 0:
-                                x5WebView.loadUrl(getString(R.string.home_url));
-                                break;
                             case 1:
+                                x5WebView.loadUrl("http://aa.4144.me:3609/cz");
+                                break;
+                            case 3:
+                                x5WebView.loadUrl("http://aa.4144.me:3609/jc");
+                                break;
+                            case 5:
+                                x5WebView.loadUrl("http://aa.4144.me:3609/zs");
+                                break;
+                            case 7:
+                                x5WebView.loadUrl("http://aa.4144.me:3609/kf");
+                                break;
+                            case 9:
+                                x5WebView.loadUrl("http://aa.4144.me:3609/gg");
+                                break;
+                            case 11:
+                                x5WebView.loadUrl("http://aa.4144.me:3609/hb");
+                                break;
+                            case 13:
+                                Share.shareWebLink(BaseActivity.this, "http://4155.me");
+                                break;
+                            case 15:
                                 new AlertDialog.Builder(BaseActivity.this).setMessage("确认需要清理缓存？")
                                         .setNegativeButton("取消",null)
                                         .setPositiveButton("清理", new DialogInterface.OnClickListener() {
@@ -200,30 +284,6 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
                                                 Toast.makeText(BaseActivity.this,"已成功清理缓存",Toast.LENGTH_SHORT).show();
                                             }
                                         }).show();
-                                break;
-//
-                            case 2:
-                                x5WebView.loadUrl("https://eboapp.ebooo.mobi/rechangelist.html");
-                                break;
-                            case 3:
-                                x5WebView.loadUrl("https://eboapp.ebooo.mobi/bank/Add/0.html");
-                                break;
-                            case 4:
-                                x5WebView.loadUrl("https://eboapp.ebooo.mobi/mobile_user_account_invest_tz.html");
-                                break;
-                            case 5:
-                                x5WebView.loadUrl("https://eboapp.ebooo.mobi/Kefu.html");
-                                break;
-                            case 6:
-                                finish();
-                                System.exit(0);
-//                                x5WebView.loadUrl("https://eboapp.ebooo.mobi/");
-                                break;
-                            case 13:
-                                x5WebView.loadUrl("http://6666.1466.me:5555/hb");
-                                break;
-                            case 14:
-                                Share.shareWebLink(BaseActivity.this, "http://1266.me/");
                                 break;
                             case 16:
                                 new AlertDialog.Builder(BaseActivity.this).setMessage("确认需要清理缓存？")
@@ -296,7 +356,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         } else if (v == shareBtn) {
             Share.shareWebLink(BaseActivity.this, "https://w-5.net/7bWla");
         } else if (v == moreBtn) {
-            drawerLayout.openDrawer(Gravity.END);
+            drawerLayout.openDrawer(Gravity.START);
         } else if (v == goForward) {
             if (x5WebView.canGoForward()) {
                 x5WebView.goForward();
@@ -519,6 +579,28 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         x5WebView.loadUrl(HOME);
     }
 
+    @NeedsPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+    void savePic(final String imgUrl){
+        new AlertDialog.Builder(BaseActivity.this).setTitle("").setNegativeButton("保存图片到相册", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                if(imgUrl.startsWith("data:image/png;base64,")){
+                    String tempimgUrl = imgUrl.replace("data:image/png;base64","");
+//                                    BaseActivity.this.mBitmap = Base64.decode(tempimgUrl, Base64.DEFAULT);
+//                                    saveMyBitmap(BaseActivity.this.mBitmap,""+System.currentTimeMillis());
+//                            Bitmap bitmap = BitmapFactory.decodeByteArray(data,0,data.length);
+//                            Result result = DecodeImage.handleQRCodeFormBitmap(bitmap);
+//                            if(result!=null){
+//                                Log.e("----onLongClickCallBack", ""+result.getText());
+//                                webview.loadUrl(result.getText());
+//                            }
+                }else if(imgUrl.startsWith("http")){
+                    FileUtils.savePicture(BaseActivity.this,""+System.currentTimeMillis(),imgUrl);
+                }
+            }
+        }).show();
+    }
+
     void setupWebview() {
         x5WebView.setDownloadListener(new DownloadListener() {
             @Override
@@ -535,24 +617,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
                 BaseActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        new AlertDialog.Builder(BaseActivity.this).setTitle("").setNegativeButton("保存图片到相册", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                if(imgUrl.startsWith("data:image/png;base64,")){
-                                    String tempimgUrl = imgUrl.replace("data:image/png;base64","");
-//                                    BaseActivity.this.mBitmap = Base64.decode(tempimgUrl, Base64.DEFAULT);
-//                                    saveMyBitmap(BaseActivity.this.mBitmap,""+System.currentTimeMillis());
-//                            Bitmap bitmap = BitmapFactory.decodeByteArray(data,0,data.length);
-//                            Result result = DecodeImage.handleQRCodeFormBitmap(bitmap);
-//                            if(result!=null){
-//                                Log.e("----onLongClickCallBack", ""+result.getText());
-//                                webview.loadUrl(result.getText());
-//                            }
-                                }else if(imgUrl.startsWith("http")){
-                                    FileUtils.savePicture(BaseActivity.this,""+System.currentTimeMillis(),imgUrl);
-                                }
-                            }
-                        }).show();
+                        BaseActivityPermissionsDispatcher.savePicWithPermissionCheck(BaseActivity.this,imgUrl);
                     }
                 });
             }

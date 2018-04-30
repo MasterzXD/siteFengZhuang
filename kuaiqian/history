@@ -642,3 +642,45 @@
         fuyingcaipiao{
             applicationId = "com.yjdt.fuyingcaipiao"
         }
+        weinisiren{ //50
+            applicationId = "com.dfgh.weinisiren"
+        }
+        jihualiaotianshi{ //50
+            applicationId = "com.dsfa.jihualiaotianshi"
+        }
+        lecaicheng{
+            applicationId = "com.sfs.lecaicheng"
+        }
+        yingxionglianmeng{ //70
+            applicationId = "com.cva.yingxionglianmeng"
+        }
+        zhongyuancaipiao{
+            applicationId = "com.ghfdj.zhongyuancaipiao"
+        }
+        meiqilin{ //50
+            applicationId = "com.adsfw.meiqilin"
+        }
+        huarenyule2{
+            applicationId = "com.djgh.huarenyule2"
+            manifestPlaceholders = [
+                    SCREEN_ORIENTATION:"sensor",
+                    JPUSH_PKGNAME : applicationId,
+                    JPUSH_APPKEY : "75f414032c55ee00100d0b8a", //JPush上注册的包名对应的appkey.
+                    JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
+            ]
+        }
+        xinfuzhijia{
+            applicationId = "com.sfg.xinfuzhijia"
+        }
+        shengjiyulecheng{ //30*3=90
+            applicationId = "com.fsdhdf.shengjiyulecheng4"
+        }
+        xinpujinyulechang2{
+            applicationId = "com.dfsg.xinpujinyulechang2"
+        }
+        zhiying365{
+            applicationId = "com.asd.zhiying365"
+        }
+        aomenjinshaduchang{
+            applicationId = "com.sgdf.aomenjinshaduchang"
+        }

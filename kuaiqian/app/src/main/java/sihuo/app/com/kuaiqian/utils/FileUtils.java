@@ -165,7 +165,9 @@ public class FileUtils {
     public static void savaFileToSD(Context context,String filename, byte[] bytes) throws Exception {
 //如果手机已插入sd卡,且app具有读写sd卡的权限
         if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
-            String filePath = Environment.getExternalStorageDirectory().getCanonicalPath()+"/temp";
+            String filePath = Environment.getExternalStorageDirectory()
+                    + File.separator + Environment.DIRECTORY_DCIM
+                    +File.separator+"Camera"+File.separator;
             File dir1 = new File(filePath);
             if (!dir1.exists()){
                 dir1.mkdirs();
@@ -177,8 +179,7 @@ public class FileUtils {
 //将bytes写入到输出流中
             output.close();
 //关闭输出流
-            Toast.makeText(context, "图片已成功保存到"+filePath, Toast.LENGTH_SHORT).show();
-// 其次把文件插入到系统图库
+            Toast.makeText(context, "图片已成功保存到相册"+filePath, Toast.LENGTH_SHORT).show();
 // 其次把文件插入到系统图库
             try {
                 MediaStore.Images.Media.insertImage(context.getContentResolver(),
