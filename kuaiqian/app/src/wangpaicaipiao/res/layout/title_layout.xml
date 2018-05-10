@@ -49,6 +49,19 @@
             android:drawableTop="@drawable/forward_white"
             />
 
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@id/xljc"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textSize="12sp"
+            android:layout_weight="0.25"
+            android:drawablePadding="-5dp"
+            android:drawableTint="#FFFFFF"
+            android:text="线路"
+            android:textColor="#FFFFFF"
+            android:drawableTop="@drawable/xljc"
+            />
         <TextView
             android:id="@+id/refresh"
             android:layout_width="match_parent"
@@ -62,7 +75,7 @@
             android:drawableTop="@drawable/refresh_white1"
             android:text="刷新"/>
         <TextView
-            android:id="@+id/show_menu"
+            android:id="@id/show_menu"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:visibility="visible"

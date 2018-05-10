@@ -284,6 +284,9 @@
         huarenyule {
             applicationId = "com.dgsdargre.huarenyule"
         }
+        huarenyule {
+                    applicationId = "com.dgsdargre.huarenyule"
+                }
         2017年12月26日16:53:18
         aomenweinisirenyulecheng {
             applicationId = "com.dfghtsd.aomenweinisirenyulecheng"

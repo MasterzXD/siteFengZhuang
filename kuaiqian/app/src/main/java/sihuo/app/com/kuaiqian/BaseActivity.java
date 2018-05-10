@@ -52,6 +52,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.util.Random;
 
 import permissions.dispatcher.NeedsPermission;
 import permissions.dispatcher.OnNeverAskAgain;
@@ -94,7 +95,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
 
     private TextView back, refresh, goForward,showMenu,clearCache, closeAp, home,
             shareBtn, moreBtn, youhui, kefu, loadview, xiazhu, zhibo, liaotianshi, zaixiantouzhu,
-            setting;
+            setting,xianlujiance;
     /*float navigation*/
     private LinearLayout floatLayout;
     private RelativeLayout.LayoutParams floatParams;
@@ -337,8 +338,10 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         if (zaixiantouzhu != null) zaixiantouzhu.setOnClickListener(this);
         setting = findViewById(R.id.setting);
         if (setting != null) setting.setOnClickListener(this);
-//        showMenu = findViewById(R.id.show_menu);
-//        if (showMenu != null) showMenu.setOnClickListener(this);
+        xianlujiance = findViewById(R.id.xljc);
+        if (xianlujiance != null) xianlujiance.setOnClickListener(this);
+        showMenu = findViewById(R.id.show_menu);
+        if (showMenu != null) showMenu.setOnClickListener(this);
 
     }
 
@@ -424,6 +427,32 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
                     x5WebView.reload();
                 }
             });
+
+            view.findViewById(R.id.cancel).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    rootView.removeView(view);
+                }
+            });
+        }else if (v == xianlujiance) {
+            final ViewGroup view = (ViewGroup) getLayoutInflater().inflate(R.layout.dialog_sheet_item1,null);
+            rootView.addView(view,new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT,RelativeLayout.LayoutParams.MATCH_PARENT));
+            ViewGroup child = (ViewGroup) view.getChildAt(0);
+            for (int i = 2; i <child.getChildCount() ; i+=2) {
+                TextView textView = (TextView) child.getChildAt(i);
+                textView.setText("线路"+(i/2)+": "+new Random().nextInt(500)+"ms");
+                child.getChildAt(i).setTag(i);
+                child.getChildAt(i).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Integer tag = (Integer) v.getTag();
+                        String []target = {"http://m.wp2828.com","http://m.wpcp5.com","http://m.wp6868.com","http://m.wpcp2.com"};
+                        x5WebView.loadUrl(target[tag/2-1]);
+                        rootView.removeView(view);
+                    }
+                });
+
+            }
 
             view.findViewById(R.id.cancel).setOnClickListener(new View.OnClickListener() {
                 @Override

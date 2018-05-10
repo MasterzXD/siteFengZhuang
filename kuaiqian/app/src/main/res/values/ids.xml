@@ -6,4 +6,7 @@
     <item name="liaotianshi" type="id"/>
     <item name="zaixiantouzhu" type="id"/>
     <item name="setting" type="id"/>
+    <item name="xljc" type="id"/>
+    <item name="show_menu" type="id"/>
+
 </resources>
