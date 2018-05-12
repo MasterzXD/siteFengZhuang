@@ -8,7 +8,7 @@ import android.util.Log;
 
 public class LogUtil {
     public static final boolean DEBUG = false;
-    public static void le(String tag,String content){
+    public static void e(String tag,String content){
         if(DEBUG){
             Log.e(tag,content);
         }

@@ -13,7 +13,7 @@ android {
     compileSdkVersion 27
     buildToolsVersion '27.0.3'
     defaultConfig {
-        applicationId 'com.gds.shengmingshu'
+        applicationId 'com.sdf.caibao'
         minSdkVersion 15
         targetSdkVersion 23
         versionCode 1
@@ -65,8 +65,11 @@ android {
 //        aomenbnb { //
 //            applicationId = "com.tehr.aomenbnb"
 //        }
-        shengmingshu { //70
-            applicationId = "com.dfgas.shengmingshu"
+//        shengmingshu { //70
+//            applicationId = "com.dfgas.shengmingshu"
+//        }
+        caibao { //150
+            applicationId = "com.sdf.caibao"
         }
 //----
     }

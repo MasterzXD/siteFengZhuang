@@ -66,6 +66,7 @@ public class X5WebView extends WebView implements View.OnLongClickListener{
 		}
 		// this.getSettingsExtension().setPageCacheCapacity(IX5WebSettings.DEFAULT_CACHE_CAPACITY);//extension
 		// settings 的设计
+		webSetting.setUserAgentString(webSetting.getUserAgentString()+" androidapp");
 	}
 
 	@Override

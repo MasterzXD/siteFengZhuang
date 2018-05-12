@@ -25,6 +25,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.webkit.JavascriptInterface;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -62,6 +63,7 @@ import permissions.dispatcher.PermissionRequest;
 import permissions.dispatcher.RuntimePermissions;
 import sihuo.app.com.kuaiqian.utils.ADFilterTool;
 import sihuo.app.com.kuaiqian.utils.FileUtils;
+import sihuo.app.com.kuaiqian.utils.LogUtil;
 import sihuo.app.com.kuaiqian.utils.Share;
 import sihuo.app.com.kuaiqian.utils.X5WebView;
 
@@ -878,6 +880,8 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
                 super.onPageFinished(view, url);
             }
         });
+
+        x5WebView.addJavascriptInterface(new AndroidJs(),"AndroidJs");
     }
 
     private void interceptVideo(final String url) {
@@ -1044,5 +1048,18 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         super.onPause();
         MobclickAgent.onPause(this);
 //        clearWebViewCache();
+    }
+
+    public class AndroidJs {
+        @JavascriptInterface
+        public void share(){
+            BaseActivity.this.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    Share.shareWebLinkWithIcon(BaseActivity.this,x5WebView.getTitle()+"\n"+x5WebView.getUrl());
+                    LogUtil.e("--AndroidJs", "run:share");
+                }
+            });
+        }
     }
 }
