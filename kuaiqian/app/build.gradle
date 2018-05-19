@@ -13,7 +13,7 @@ android {
     compileSdkVersion 27
     buildToolsVersion '27.0.3'
     defaultConfig {
-        applicationId 'com.uykt.aomenjinshaduchang'
+        applicationId 'com.asdas.shisanyicaipiao'
         minSdkVersion 15
         targetSdkVersion 23
         versionCode 1
@@ -58,19 +58,10 @@ android {
     }
 
     productFlavors {
-
-        aomenjinshaduchang { //15
-            applicationId = "com.uykt.aomenjinshaduchang"
+        shisanyicaipiao{
+            applicationId 'com.asdas.shisanyicaipiao'
         }
-//        aomenbnb { //
-//            applicationId = "com.tehr.aomenbnb"
-//        }
-//        shengmingshu { //70
-//            applicationId = "com.dfgas.shengmingshu"
-//        }
-//        caibao { //150
-//            applicationId = "com.sdf.caibao"
-//        }
+
 //----
     }
 }

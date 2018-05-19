@@ -29,7 +29,6 @@
         android:gravity="center"
         android:textColor="#555555"
         android:paddingRight="10dp"
-        android:drawableRight="@drawable/back_hb"
         />
 
     <TextView

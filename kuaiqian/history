@@ -687,3 +687,21 @@
         aomenjinshaduchang{
             applicationId = "com.sgdf.aomenjinshaduchang"
         }
+        aomenjinshaduchang { //15
+                    applicationId = "com.uykt.aomenjinshaduchang"
+                }
+                aomenbnb { //
+                    applicationId = "com.tehr.aomenbnb"
+                }
+                shengmingshu { //70
+                    applicationId = "com.dfgas.shengmingshu"
+                }
+                bojue2 { //
+                    applicationId = "com.djga.bojue2"
+                }
+                yunduanyule { //
+                    applicationId = "com.fgdhd.yunduanyule"
+                }
+                caibao { //150
+                    applicationId = "com.sdf.caibao"
+                }
