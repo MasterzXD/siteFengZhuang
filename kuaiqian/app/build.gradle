@@ -58,8 +58,11 @@ android {
     }
 
     productFlavors {
-        shisanyicaipiao{
-            applicationId 'com.asdas.shisanyicaipiao'
+//        shisanyicaipiao{
+//            applicationId 'com.asdas.shisanyicaipiao'
+//        }
+        zhiying365{
+            applicationId = "com.asd.zhiying365"
         }
 
 //----
