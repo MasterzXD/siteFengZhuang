@@ -13,7 +13,7 @@ android {
     compileSdkVersion 27
     buildToolsVersion '27.0.3'
     defaultConfig {
-        applicationId 'com.asd.zhiying365'
+        applicationId 'com.gfj.fenghuangcaipiao'
         minSdkVersion 15
         targetSdkVersion 23
         versionCode 1
@@ -27,7 +27,7 @@ android {
 
         manifestPlaceholders = [
                 SCREEN_ORIENTATION:"portrait",
-                JPUSH_PKGNAME : applicationId,
+                JPUSH_PKGNAME : "applicationId",
                 JPUSH_APPKEY : "75f414032c55ee00100d0b8a", //JPush上注册的包名对应的appkey.
                 JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
         ]
@@ -61,10 +61,16 @@ android {
 //        shisanyicaipiao{
 //            applicationId 'com.asdas.shisanyicaipiao'
 //        }
-        zhiying365{
-            applicationId = "com.asd.zhiying365"
-        }
+//        zhiying365{
+//            applicationId = "com.asd.zhiying365"
+//        }
 
+//        tiantianlecaipiao{ //50
+//            applicationId = "com.dfsg.tiantianlecaipiao"
+//        }
+        fenghuangcaipiao{
+            applicationId = "com.gfj.fenghuangcaipiao"
+        }
 //----
     }
 }

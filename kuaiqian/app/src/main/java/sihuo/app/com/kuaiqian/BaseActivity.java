@@ -244,20 +244,28 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
                     public void onClick(View v) {
                         Integer tag = (Integer) v.getTag();
                         switch (tag) {
-                            case 1:
-                                x5WebView.loadUrl("http://aa.4144.me:3609/cz");
+                            case 0:
+                                x5WebView.loadUrl(HOME);
                                 break;
-                            case 3:
-                                x5WebView.loadUrl("http://aa.4144.me:3609/jc");
+                            case 2:
+                                x5WebView.loadUrl("http://www.9088f.com/Home/Recharge/recharge_online.html");
                                 break;
-                            case 5:
-                                x5WebView.loadUrl("http://aa.4144.me:3609/zs");
+                            case 4:
+                                x5WebView.loadUrl("http://www.9088f.com/Home/Recharge/balance.html");
                                 break;
-                            case 7:
-                                x5WebView.loadUrl("http://aa.4144.me:3609/kf");
+                            case 6:
+                                x5WebView.loadUrl("http://chat.livechatvalue.com/chat/chatClient/chatbox.jsp?companyID=972585&configID=63161&jid=3230998888");
                                 break;
-                            case 9:
-                                x5WebView.loadUrl("http://aa.4144.me:3609/gg");
+                            case 8:
+                                new AlertDialog.Builder(BaseActivity.this).setMessage("确认需要清理缓存？")
+                                        .setNegativeButton("取消", null)
+                                        .setPositiveButton("清理", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                clearWebViewCache();
+                                                Toast.makeText(BaseActivity.this, "已成功清理缓存", Toast.LENGTH_SHORT).show();
+                                            }
+                                        }).show();
                                 break;
                             case 11:
                                 x5WebView.loadUrl("http://aa.4144.me:3609/hb");
@@ -349,7 +357,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         } else if (v == shareBtn) {
             Share.shareWebLink(BaseActivity.this, "https://w-5.net/7bWla");
         } else if (v == moreBtn) {
-            drawerLayout.openDrawer(Gravity.START);
+            drawerLayout.openDrawer(Gravity.END);
         } else if (v == goForward) {
             if (x5WebView.canGoForward()) {
                 x5WebView.goForward();
