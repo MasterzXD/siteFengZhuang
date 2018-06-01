@@ -13,7 +13,7 @@ android {
     compileSdkVersion 27
     buildToolsVersion '27.0.3'
     defaultConfig {
-        applicationId 'com.gfj.fenghuangcaipiao'
+        applicationId 'com.yutk.aomenweinisiren2'
         minSdkVersion 15
         targetSdkVersion 23
         versionCode 1
@@ -27,9 +27,9 @@ android {
 
         manifestPlaceholders = [
                 SCREEN_ORIENTATION:"portrait",
-                JPUSH_PKGNAME : "applicationId",
-                JPUSH_APPKEY : "75f414032c55ee00100d0b8a", //JPush上注册的包名对应的appkey.
-                JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
+//                JPUSH_PKGNAME : applicationId,
+//                JPUSH_APPKEY : "75f414032c55ee00100d0b8a", //JPush上注册的包名对应的appkey.
+//                JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
         ]
     }
     sourceSets {
@@ -68,8 +68,11 @@ android {
 //        tiantianlecaipiao{ //50
 //            applicationId = "com.dfsg.tiantianlecaipiao"
 //        }
-        fenghuangcaipiao{
-            applicationId = "com.gfj.fenghuangcaipiao"
+//        fenghuangcaipiao{
+//            applicationId = "com.gfj.fenghuangcaipiao"
+//        }
+        aomenweinisiren2{//50
+            applicationId = "com.yutk.aomenweinisiren2"
         }
 //----
     }
@@ -83,8 +86,8 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:3.7.0'
     implementation 'com.umeng.sdk:common:latest.integration'
     implementation 'com.umeng.sdk:analytics:latest.integration'
-    implementation 'cn.jiguang.sdk:jpush:3.1.1'
-    implementation 'cn.jiguang.sdk:jcore:1.1.9'
+//    implementation 'cn.jiguang.sdk:jpush:3.1.1'
+//    implementation 'cn.jiguang.sdk:jcore:1.1.9'
     implementation 'com.github.hotchemi:permissionsdispatcher:3.2.0'
     annotationProcessor "com.github.hotchemi:permissionsdispatcher-processor:3.2.0"
 }

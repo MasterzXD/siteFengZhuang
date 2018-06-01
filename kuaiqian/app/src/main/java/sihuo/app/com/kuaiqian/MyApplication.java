@@ -1,13 +1,6 @@
 package sihuo.app.com.kuaiqian;
 
 import android.app.Application;
-import android.app.Notification;
-
-import com.umeng.analytics.MobclickAgent;
-import com.umeng.commonsdk.UMConfigure;
-
-import cn.jpush.android.api.BasicPushNotificationBuilder;
-import cn.jpush.android.api.JPushInterface;
 
 
 /**
