@@ -39,5 +39,5 @@
         android:visibility="visible"
         android:paddingLeft="15dp"
         android:layout_alignParentRight="true"
-        android:drawableLeft="@drawable/home_hb"/>
+        android:drawableLeft="@drawable/home"/>
 </RelativeLayout>

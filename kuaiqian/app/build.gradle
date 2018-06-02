@@ -71,8 +71,11 @@ android {
 //        fenghuangcaipiao{
 //            applicationId = "com.gfj.fenghuangcaipiao"
 //        }
-        aomenweinisiren2{//50
-            applicationId = "com.yutk.aomenweinisiren2"
+//        aomenweinisiren2{//50
+//            applicationId = "com.yutk.aomenweinisiren2"
+//        }
+        licaiwu{
+            applicationId = "com.wtr.licaiwu"
         }
 //----
     }
