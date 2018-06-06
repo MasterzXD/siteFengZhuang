@@ -138,6 +138,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         sliderMenuParent = findViewById(R.id.slider_parent);
         progressBarH = findViewById(R.id.progressBar);
 
+        x5WebView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
         refeshLayout.setEnabled(refreshable);
         if (refreshable) {
             refeshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {

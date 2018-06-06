@@ -77,12 +77,12 @@ android {
 //        licaiwu{
 //            applicationId = "com.wtr.licaiwu"
 //        }
-//        caibao { //改图
-//            applicationId = "com.sdf.caibao"
-//        }
-        yidianzixun{
-            applicationId = "com.gfa.yidianzixun"
+        caibao { //改图
+            applicationId = "com.sdf.caibao"
         }
+//        yidianzixun{
+//            applicationId = "com.gfa.yidianzixun"
+//        }
 //----
     }
 }
