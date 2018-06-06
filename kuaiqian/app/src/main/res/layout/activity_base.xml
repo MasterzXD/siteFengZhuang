@@ -32,6 +32,7 @@
             <sihuo.app.com.kuaiqian.utils.X5WebView
                 android:id="@+id/x5webview"
                 android:layout_width="match_parent"
+                android:scrollbars="none"
                 android:layout_height="match_parent" />
 
         </android.support.v4.widget.SwipeRefreshLayout>

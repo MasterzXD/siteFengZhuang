@@ -77,8 +77,11 @@ android {
 //        licaiwu{
 //            applicationId = "com.wtr.licaiwu"
 //        }
-        caibao { //改图
-            applicationId = "com.sdf.caibao"
+//        caibao { //改图
+//            applicationId = "com.sdf.caibao"
+//        }
+        dongfangjingcai { //改图
+            applicationId = "com.axiba.chijiaa"//东方竞彩
         }
 //        yidianzixun{
 //            applicationId = "com.gfa.yidianzixun"
