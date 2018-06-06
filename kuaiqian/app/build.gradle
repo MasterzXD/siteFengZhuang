@@ -74,8 +74,14 @@ android {
 //        aomenweinisiren2{//50
 //            applicationId = "com.yutk.aomenweinisiren2"
 //        }
-        licaiwu{
-            applicationId = "com.wtr.licaiwu"
+//        licaiwu{
+//            applicationId = "com.wtr.licaiwu"
+//        }
+//        caibao { //改图
+//            applicationId = "com.sdf.caibao"
+//        }
+        yidianzixun{
+            applicationId = "com.gfa.yidianzixun"
         }
 //----
     }

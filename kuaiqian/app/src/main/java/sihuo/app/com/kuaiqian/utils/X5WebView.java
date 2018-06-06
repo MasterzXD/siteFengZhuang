@@ -51,7 +51,7 @@ public class X5WebView extends WebView implements View.OnLongClickListener{
 		webSetting.setJavaScriptCanOpenWindowsAutomatically(true);
 		webSetting.setLoadWithOverviewMode(true);
 		webSetting.setAppCacheEnabled(getResources().getBoolean(R.bool.need_cache));
-		// webSetting.setDatabaseEnabled(true);
+		 webSetting.setDatabaseEnabled(true);
 		webSetting.setDomStorageEnabled(true);
 		webSetting.setGeolocationEnabled(true);
 		webSetting.setAppCacheMaxSize(Long.MAX_VALUE);
