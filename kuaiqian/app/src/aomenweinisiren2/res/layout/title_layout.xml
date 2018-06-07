@@ -33,7 +33,7 @@
             android:gravity="center"
             android:paddingTop="10dp"
             android:textColor="#555555"
-            android:drawableTop="@drawable/refresh_gray"
+            android:drawableTop="@drawable/refresh_am"
             android:textSize="12sp"
             android:visibility="visible" />
 
@@ -45,7 +45,7 @@
             android:gravity="center"
             android:textColor="#555555"
             android:paddingTop="10dp"
-            android:drawableTop="@drawable/back_hb"
+            android:drawableTop="@drawable/back_am"
             android:textSize="12sp" />
 
         <TextView
@@ -55,7 +55,7 @@
             android:layout_weight="0.25"
             android:gravity="center"
             android:paddingTop="10dp"
-            android:drawableTop="@drawable/forward"
+            android:drawableTop="@drawable/forward_am"
             android:textColor="#555555"
             android:textSize="12sp" />
 
