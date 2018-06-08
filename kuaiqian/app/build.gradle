@@ -86,8 +86,11 @@ android {
 //        yidianzixun{
 //            applicationId = "com.gfa.yidianzixun"
 //        }
-        botiantang{//
-            applicationId = "com.fgjh.botiantang"
+//        botiantang{//
+//            applicationId = "com.fgjh.botiantang"
+//        }
+        wealth{
+            applicationId = "com.hujfg.wealth"
         }
 //----
     }

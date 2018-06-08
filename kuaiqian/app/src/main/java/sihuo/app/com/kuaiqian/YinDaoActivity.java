@@ -22,7 +22,7 @@ public class YinDaoActivity extends Activity implements View.OnTouchListener {
     //    int density = dm.density;
         screenW = dm.widthPixels;
         screenH = dm.heightPixels;
-        final int arrat[] = {R.drawable.a,R.drawable.b,R.drawable.c};
+        final int arrat[] = {R.drawable.a,R.drawable.b,R.drawable.c,R.drawable.d};
 //        final int arrat[] = getResources().getIntArray(R.array.guide_list);
 
         for (int i = 0; i < arrat.length; i++) {
