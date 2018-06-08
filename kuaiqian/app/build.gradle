@@ -71,9 +71,9 @@ android {
 //        fenghuangcaipiao{
 //            applicationId = "com.gfj.fenghuangcaipiao"
 //        }
-        aomenweinisiren2{//50
-            applicationId = "com.yutk.aomenweinisiren2"
-        }
+//        aomenweinisiren2{//50
+//            applicationId = "com.yutk.aomenweinisiren2"
+//        }
 //        licaiwu{
 //            applicationId = "com.palm.app.autopackapp.gyzh11643"
 //        }
@@ -86,6 +86,9 @@ android {
 //        yidianzixun{
 //            applicationId = "com.gfa.yidianzixun"
 //        }
+        botiantang{//
+            applicationId = "com.fgjh.botiantang"
+        }
 //----
     }
 }
