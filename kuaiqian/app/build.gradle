@@ -90,8 +90,21 @@ android {
 //        botiantang{//
 //            applicationId = "com.fgjh.botiantang"
 //        }
-        wealth{
-            applicationId = "com.hujfg.wealth"
+//        wealth{
+//            applicationId = "com.hujfg.wealth"
+//        }
+//        ---------------------------------------------
+//        wanfulai{
+//            applicationId = "com.gfa.wanfulai"
+//        }
+//        caibao { //改图 15
+//            applicationId = "com.sdf.caibao"
+//        }
+//        caibao { //改图 15
+//            applicationId = "com.sdf.caibao"
+//        }
+        xinyuncaipiao {
+            applicationId = "com.gfd.xinyuncaipiao"
         }
 //----
     }
