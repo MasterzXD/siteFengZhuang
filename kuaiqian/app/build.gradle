@@ -96,8 +96,14 @@ android {
 //        wanfulai{
 //            applicationId = "com.gfa.wanfulai"
 //        }
-        caibao { //改图 15
-            applicationId = "com.sdf.caibao"
+//        caibao { //改图 15
+//            applicationId = "com.sdf.caibao"
+//        }
+//        caibao { //改图 15
+//            applicationId = "com.sdf.caibao"
+//        }
+        xinyuncaipiao {
+            applicationId = "com.gfd.xinyuncaipiao"
         }
 //----
     }
