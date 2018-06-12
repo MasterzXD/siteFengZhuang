@@ -21,7 +21,7 @@ public class YinDaoActivity extends Activity implements View.OnTouchListener {
         DisplayMetrics dm = getResources().getDisplayMetrics();
         screenW = dm.widthPixels;
         screenH = dm.heightPixels;
-        final int arrat[] = {R.drawable.a,R.drawable.b,R.drawable.c,R.drawable.d};
+        final int arrat[] = {R.drawable.a,R.drawable.b,R.drawable.c};
         for (int i = 0; i < arrat.length; i++) {
             ImageView image = new ImageView(this);
             image.setLayoutParams(new ViewGroup.LayoutParams(screenW,screenH));

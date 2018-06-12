@@ -74,9 +74,11 @@ android {
 //        aomenweinisiren2{//50
 //            applicationId = "com.yutk.aomenweinisiren2"
 //        }
-//        licaiwu{
-//            applicationId = "com.palm.app.autopackapp.gyzh11643"
-//        }
+        licaiwu{
+            applicationId = "com.palm.app.autopackapp.gyzh11643"
+            versionCode 2
+            versionName '1.2'
+        }
 //        caibao { //改图
 //            applicationId = "com.sdf.caibao"
 //        }
@@ -102,9 +104,9 @@ android {
 //        caibao { //改图 15
 //            applicationId = "com.sdf.caibao"
 //        }
-        xinyuncaipiao {
-            applicationId = "com.gfd.xinyuncaipiao"
-        }
+//        xinyuncaipiao {
+//            applicationId = "com.gfd.xinyuncaipiao"
+//        }
 //----
     }
 }
