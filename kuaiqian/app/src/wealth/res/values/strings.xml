@@ -25,5 +25,4 @@
     <bool name="need_cache">true</bool>
     <!-- 需要引导 -->
     <bool name="need_guide">true</bool>
-
 </resources>

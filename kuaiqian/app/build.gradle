@@ -26,6 +26,7 @@ android {
         }
 
         manifestPlaceholders = [
+//                SCREEN_ORIENTATION:"sensor",
                 SCREEN_ORIENTATION:"portrait",
 //                JPUSH_PKGNAME : applicationId,
 //                JPUSH_APPKEY : "75f414032c55ee00100d0b8a", //JPush上注册的包名对应的appkey.

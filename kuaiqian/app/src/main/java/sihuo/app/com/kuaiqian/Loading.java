@@ -22,7 +22,6 @@ import sihuo.app.com.kuaiqian.service.TBSService;
  */
 
 public class Loading extends AppCompatActivity {
-    private ViewPager viewPager;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +30,6 @@ public class Loading extends AppCompatActivity {
             return;
         }
         setContentView(R.layout.activity_loading);
-        viewPager = findViewById(R.id.viewpager);
     }
 
     @Override
@@ -42,8 +40,8 @@ public class Loading extends AppCompatActivity {
             @Override
             public void run() {
                 SharedPreferences sp = getSharedPreferences("first",MODE_PRIVATE);
-
-                if(getResources().getBoolean(R.bool.need_guide) && sp.getBoolean("first_install",true)){
+                if(getResources().getBoolean(R.bool.need_guide)){
+//                if(getResources().getBoolean(R.bool.need_guide) && sp.getBoolean("first_install",true)){
 //                    showGuide();
                     SharedPreferences.Editor editor = sp.edit();
                     editor.putBoolean("first_install",false);
@@ -56,30 +54,6 @@ public class Loading extends AppCompatActivity {
                 }
             }
         },getResources().getInteger(R.integer.loading_delay));
-    }
-
-    void showGuide(){
-        viewPager.setAdapter(new PagerAdapter() {
-            @Override
-            public int getCount() {
-                return 0;
-            }
-
-            @Override
-            public boolean isViewFromObject(View view, Object object) {
-                return false;
-            }
-
-            @Override
-            public Object instantiateItem(ViewGroup container, int position) {
-                return super.instantiateItem(container, position);
-            }
-
-            @Override
-            public void destroyItem(ViewGroup container, int position, Object object) {
-                super.destroyItem(container, position, object);
-            }
-        });
     }
 
     @Override
