@@ -26,7 +26,7 @@
                 android:textSize="18sp"
                 android:gravity="center"
                 android:textColor="#555555"
-                android:background="@drawable/back_a"/>
+                android:background="@drawable/back"/>
 
             <TextView
                 android:id="@+id/title"
@@ -49,7 +49,7 @@
                 android:gravity="center"
                 android:textColor="#555555"
                 android:paddingRight="10dp"
-                android:drawableRight="@drawable/back_a"
+                android:drawableRight="@drawable/back"
                 />
 
             <TextView
@@ -62,7 +62,7 @@
                 android:gravity="center"
                 android:textColor="#555555"
                 android:paddingRight="10dp"
-                android:drawableRight="@drawable/back_a"
+                android:drawableRight="@drawable/back"
                 />
             <TextView
                 android:id="@+id/zhibo"
@@ -74,7 +74,7 @@
                 android:gravity="center"
                 android:textColor="#555555"
                 android:paddingRight="10dp"
-                android:drawableRight="@drawable/back_a"
+                android:drawableRight="@drawable/back"
                 />
             <TextView
                 android:id="@+id/youhui"

@@ -37,29 +37,6 @@ public class YinDaoActivity extends Activity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_yin_dao);
         rootView = findViewById(R.id.root_layout);
-<<<<<<< HEAD
-        DisplayMetrics dm = getResources().getDisplayMetrics();
-        screenW = dm.widthPixels;
-        screenH = dm.heightPixels;
-        final int arrat[] = {R.drawable.a,R.drawable.b,R.drawable.c};
-        for (int i = 0; i < arrat.length; i++) {
-            ImageView image = new ImageView(this);
-            image.setLayoutParams(new ViewGroup.LayoutParams(screenW,screenH));
-            image.setScaleType(ImageView.ScaleType.CENTER_CROP);
-            image.setImageResource(arrat[i]);
-            image.setTag(i);
-            image.setOnTouchListener(this);
-            image.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    int index = (Integer) v.getTag();
-                    if(index<arrat.length-1){
-                        rootView.scrollBy(screenW,0);
-                    }else if(index==arrat.length-1){
-                        startActivity(new Intent(YinDaoActivity.this,BaseActivity.class));
-                        finish();
-                    }
-=======
         viewpager = findViewById(R.id.viewpager);
 
         try {
@@ -118,7 +95,6 @@ public class YinDaoActivity extends Activity{
                     isOpen = true;
                     startActivity(new Intent(YinDaoActivity.this, BaseActivity.class));
                     finish();
->>>>>>> 7529d92df67405e575d89a0d6064d443290f4909
                 }
             }
 

@@ -11,13 +11,13 @@
         android:id="@+id/float_home"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/float_home"/>
+        android:src="@drawable/home"/>
 
     <ImageView
         android:id="@+id/float_back"
         android:layout_marginTop="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/float_back"/>
+        android:src="@drawable/back"/>
 
 </LinearLayout>
