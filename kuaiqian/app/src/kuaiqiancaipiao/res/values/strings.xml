@@ -1,7 +1,0 @@
-<resources>
-    <string name="app_name">快钱彩票</string>
-    <string name="home_url">http://ycjf.lookfs.com</string>
-    <bool name="show_loadng">true</bool>
-    <integer name="loading_delay">3000</integer>
-    <bool name="can_goback">true</bool>
-</resources>

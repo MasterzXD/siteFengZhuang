@@ -1,12 +1,11 @@
 <resources>
-    <string name="exit">再按一次退出</string>
     <!-- APP名字 -->
-    <string name="app_name">博天堂</string>
+    <string name="app_name">ESTC</string>
     <!-- 启动地址 -->
-    <string name="start_url">https://www.thbjmw.cn</string>
+    <string name="start_url">http://www.estccoin.com</string>
     <!-- 主页地址 -->
-    <string name="home_url">https://www.thbjmw.cn</string>
-    <!-- 是否现在网页加载进度条 -->
+    <string name="home_url">http://www.estccoin.com</string>
+    <!-- 是否显示网页加载进度条,默认false -->
     <bool name="show_loadng">false</bool>
     <!-- 启动页面延迟时间，默认2000毫秒 -->
     <integer name="loading_delay">3000</integer>
@@ -21,9 +20,7 @@
     <!-- 手势导航 -->
     <bool name="gesture_navigation">false</bool>
     <!-- 悬浮窗导航 -->
-    <bool name="float_navigation">false</bool>
-    <!-- 需要缓存 -->
-    <bool name="need_cache">true</bool>
+    <bool name="float_navigation">true</bool>
     <!-- 需要引导 -->
     <bool name="need_guide">false</bool>
     <!-- 底部导航 -->
@@ -32,10 +29,4 @@
     <bool name="head_progressbar">false</bool>
     <!-- 右侧滑菜单 -->
     <bool name="slider_menu">false</bool>
-    <!-- 所有连接跳转到外部浏览器 -->
-    <bool name="outer_web">true</bool>
-    <!-- 需要返回按钮-->
-    <bool name="need_back">true</bool>
-    <!-- 导航右上角功能 -->
-    <integer name="right_action">1</integer>
 </resources>
