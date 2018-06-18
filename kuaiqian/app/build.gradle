@@ -69,9 +69,12 @@ android {
 //        tiantianlecaipiao{ //50
 //            applicationId = "com.dfsg.tiantianlecaipiao"
 //        }
-//        fenghuangcaipiao{
-//            applicationId = "com.gfj.fenghuangcaipiao"
-//        }
+        fenghuangcaipiao{
+            applicationId = "com.gfj.fenghuangcaipiao"
+            versionCode 2
+            versionName '3.9'
+
+        }
 //        aomenweinisiren2{//50
 //            applicationId = "com.yutk.aomenweinisiren2"
 //        }
@@ -112,9 +115,9 @@ android {
 //            applicationId = "com.gfj.dongying"
 //        }
         //换链接+30
-        estc {//没做
-            applicationId = "com.rt.estc"
-        }
+//        estc {//没做
+//            applicationId = "com.rt.estc"
+//        }
 //----
     }
 }

@@ -29,7 +29,7 @@
         android:textColor="#555555"
         android:paddingRight="10dp"
         android:drawableTint="#444444"
-        android:drawableRight="@drawable/back_a"
+        android:drawableRight="@drawable/back"
         />
 
     <android.support.v7.widget.AppCompatTextView
