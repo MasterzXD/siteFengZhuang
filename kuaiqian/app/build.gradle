@@ -69,12 +69,12 @@ android {
 //        tiantianlecaipiao{ //50
 //            applicationId = "com.dfsg.tiantianlecaipiao"
 //        }
-        fenghuangcaipiao{
-            applicationId = "com.gfj.fenghuangcaipiao"
-            versionCode 2
-            versionName '3.9'
-
-        }
+//        fenghuangcaipiao{
+//            applicationId = "com.gfj.fenghuangcaipiao"
+//            versionCode 2
+//            versionName '3.9'
+//
+//        }
 //        aomenweinisiren2{//50
 //            applicationId = "com.yutk.aomenweinisiren2"
 //        }
@@ -118,6 +118,9 @@ android {
 //        estc {//没做
 //            applicationId = "com.rt.estc"
 //        }
+        wo {//没做
+            applicationId = "com.afsdg.wo"
+        }
 //----
     }
 }

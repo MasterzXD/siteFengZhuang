@@ -7,17 +7,19 @@
     android:background="@drawable/float_background"
     android:layout_width="50dp"
     android:layout_height="200dp">
-    <ImageView
+    <android.support.v7.widget.AppCompatImageView
         android:id="@+id/float_home"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:tint="#ffffff"
         android:src="@drawable/home"/>
 
-    <ImageView
+    <android.support.v7.widget.AppCompatImageView
         android:id="@+id/float_back"
         android:layout_marginTop="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:tint="#ffffff"
         android:src="@drawable/back"/>
 
 </LinearLayout>
