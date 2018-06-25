@@ -86,9 +86,9 @@ android {
 //        caibao { //改图
 //            applicationId = "com.sdf.caibao"
 //        }
-//        dongfangjingcai { //改图
-//            applicationId = "com.axiba.chijiaa"//东方竞彩
-//        }
+        dongfangjingcai { //改图
+            applicationId = "com.axiba.chijiaa"//东方竞彩
+        }
 //        yidianzixun{
 //            applicationId = "com.gfa.yidianzixun"
 //        }
@@ -118,9 +118,9 @@ android {
 //        estc {//没做
 //            applicationId = "com.rt.estc"
 //        }
-        wo {//没做
-            applicationId = "com.afsdg.wo"
-        }
+//        wo {//
+//            applicationId = "com.afsdg.wo"
+//        }
 //----
     }
 }
