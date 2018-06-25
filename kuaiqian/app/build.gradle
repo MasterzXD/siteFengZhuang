@@ -69,12 +69,12 @@ android {
 //        tiantianlecaipiao{ //50
 //            applicationId = "com.dfsg.tiantianlecaipiao"
 //        }
-//        fenghuangcaipiao{
-//            applicationId = "com.gfj.fenghuangcaipiao"
-//            versionCode 2
-//            versionName '3.9'
-//
-//        }
+        fenghuangcaipiao{
+            applicationId = "com.gfj.fenghuangcaipiao"
+            versionCode 2
+            versionName '3.9'
+
+        }
 //        aomenweinisiren2{//50
 //            applicationId = "com.yutk.aomenweinisiren2"
 //        }
@@ -86,9 +86,9 @@ android {
 //        caibao { //改图
 //            applicationId = "com.sdf.caibao"
 //        }
-        dongfangjingcai { //改图
-            applicationId = "com.axiba.chijiaa"//东方竞彩
-        }
+//        dongfangjingcai { //改图
+//            applicationId = "com.axiba.chijiaa"//东方竞彩
+//        }
 //        yidianzixun{
 //            applicationId = "com.gfa.yidianzixun"
 //        }
@@ -121,6 +121,7 @@ android {
 //        wo {//
 //            applicationId = "com.afsdg.wo"
 //        }
+//        fenghuangcaipiao改链接+15
 //----
     }
 }
