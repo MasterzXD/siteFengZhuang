@@ -39,7 +39,7 @@
         <FrameLayout
             android:id="@+id/bottomNavi"
             android:layout_width="match_parent"
-            android:layout_height="49dp"
+            android:layout_height="44dp"
             android:visibility="gone"
             android:layout_alignParentBottom="true"
             />
