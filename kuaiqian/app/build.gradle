@@ -13,7 +13,7 @@ android {
     compileSdkVersion 27
     buildToolsVersion '27.0.3'
     defaultConfig {
-        applicationId 'com.a168caiid168a.app'
+        applicationId 'com.dfsga.wangpaicaipiao'
         minSdkVersion 15
         targetSdkVersion 23
         versionCode 1
@@ -29,7 +29,7 @@ android {
 //                SCREEN_ORIENTATION:"sensor",
                 SCREEN_ORIENTATION:"portrait",
                 JPUSH_PKGNAME : applicationId,
-                JPUSH_APPKEY : "394bf8b67301ace78ce6ae9b", //JPush上注册的包名对应的appkey.
+                JPUSH_APPKEY : "debda5635d7d878228694551", //JPush上注册的包名对应的appkey.
                 JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
         ]
     }
@@ -37,6 +37,9 @@ android {
         main {
             jniLibs.srcDirs = ['libs']
         }
+//        c27 {
+//            jniLibs.srcDirs = ['libs']
+//        }
     }
     buildTypes {
         release {
@@ -98,6 +101,10 @@ android {
 //        wealth{
 //            applicationId = "com.hujfg.wealth"
 //        }
+
+        wangpaicaipiao{ //
+            applicationId = "com.dfsga.wangpaicaipiao"
+        }
 //        ---------------------------------------------
 //        wanfulai{
 //            applicationId = "com.gfa.wanfulai"
@@ -132,25 +139,35 @@ android {
 
 
 //        ---蜂鸟签名
-//        xinweinisiren {//40
+//        xinweinisiren {
 //            applicationId = "com.gfhdf.xinweinisiren"
 //        }
-        yinheyulecheng {//100
-            applicationId = "com.a168caiid168a.app"
-            manifestPlaceholders = [
-                 SCREEN_ORIENTATION:"portrait",
-                  JPUSH_PKGNAME : applicationId,
-                  JPUSH_APPKEY : "394bf8b67301ace78ce6ae9b", //JPush上注册的包名对应的appkey.
-                  JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
-            ]
-        }
-//        nine928 {//100
+//        yinheyulecheng {//100
+//            applicationId = "com.a168caiid168a.app"
+//            manifestPlaceholders = [
+//                 SCREEN_ORIENTATION:"portrait",
+//                  JPUSH_PKGNAME : applicationId,
+//                  JPUSH_APPKEY : "394bf8b67301ace78ce6ae9b", //JPush上注册的包名对应的appkey.
+//                  JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
+//            ]
+//        }
+//        nine928 {
 //            applicationId = "com.fdgv.nine928"
 //            manifestPlaceholders = [
 //                SCREEN_ORIENTATION:"portrait",
 //                JPUSH_PKGNAME : applicationId,
 //                JPUSH_APPKEY : "bf73f805c1b7aeb7e90a394e", //JPush上注册的包名对应的appkey.
 //                JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
+//            ]
+//        }
+
+//        c27 {//100
+//            applicationId = "com.myc.c27"
+//            manifestPlaceholders = [
+//                    SCREEN_ORIENTATION:"portrait",
+//                    JPUSH_PKGNAME : applicationId,
+//                    JPUSH_APPKEY : "debda5635d7d878228694551", //JPush上注册的包名对应的appkey.
+//                    JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
 //            ]
 //        }
     }

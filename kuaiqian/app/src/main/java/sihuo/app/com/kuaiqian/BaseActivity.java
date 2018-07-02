@@ -144,7 +144,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
             getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         }
         setContentView(R.layout.activity_base);
-
+        JPushInterface.init(this.getApplicationContext());
         UMConfigure.setLogEnabled(BuildConfig.DEBUG);
         UMConfigure.init(getApplicationContext(), UMConfigure.DEVICE_TYPE_PHONE, "");
         MobclickAgent.setScenarioType(getApplicationContext(), MobclickAgent.EScenarioType.E_UM_NORMAL);
@@ -479,7 +479,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
                     @Override
                     public void onClick(View v) {
                         Integer tag = (Integer) v.getTag();
-                        String[] target = {"http://m.wp2828.com", "http://m.wpcp5.com", "http://m.wp6868.com", "http://m.wpcp2.com"};
+                        String[] target = {"http://m.wp2828.com", "http://m.wpcp5.com", "http://m.wp6868.com", "http://47.75.175.70:8083/mobile/member/login"};
                         x5WebView.loadUrl(target[tag / 2 - 1]);
                         rootView.removeView(view);
                     }
