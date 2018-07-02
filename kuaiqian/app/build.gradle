@@ -13,7 +13,7 @@ android {
     compileSdkVersion 27
     buildToolsVersion '27.0.3'
     defaultConfig {
-        applicationId 'com.yutk.aomenweinisiren2'
+        applicationId 'com.a168caiid168a.app'
         minSdkVersion 15
         targetSdkVersion 23
         versionCode 1
@@ -28,9 +28,9 @@ android {
         manifestPlaceholders = [
 //                SCREEN_ORIENTATION:"sensor",
                 SCREEN_ORIENTATION:"portrait",
-//                JPUSH_PKGNAME : applicationId,
-//                JPUSH_APPKEY : "75f414032c55ee00100d0b8a", //JPush上注册的包名对应的appkey.
-//                JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
+                JPUSH_PKGNAME : applicationId,
+                JPUSH_APPKEY : "394bf8b67301ace78ce6ae9b", //JPush上注册的包名对应的appkey.
+                JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
         ]
     }
     sourceSets {
@@ -123,9 +123,36 @@ android {
 //        }
 //        fenghuangcaipiao改链接+15
 //----
-        hengfacaipiao {//
-            applicationId = "com.khhj.hengfacaipiao"
+//        hengfacaipiao {//
+//            applicationId = "com.khhj.hengfacaipiao"
+//        }
+//        sijiyule {//
+//            applicationId = "com.tfhd.sijiyule"
+//        }
+
+
+//        ---蜂鸟签名
+//        xinweinisiren {//40
+//            applicationId = "com.gfhdf.xinweinisiren"
+//        }
+        yinheyulecheng {//100
+            applicationId = "com.a168caiid168a.app"
+            manifestPlaceholders = [
+                 SCREEN_ORIENTATION:"portrait",
+                  JPUSH_PKGNAME : applicationId,
+                  JPUSH_APPKEY : "394bf8b67301ace78ce6ae9b", //JPush上注册的包名对应的appkey.
+                  JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
+            ]
         }
+//        nine928 {//100
+//            applicationId = "com.fdgv.nine928"
+//            manifestPlaceholders = [
+//                SCREEN_ORIENTATION:"portrait",
+//                JPUSH_PKGNAME : applicationId,
+//                JPUSH_APPKEY : "bf73f805c1b7aeb7e90a394e", //JPush上注册的包名对应的appkey.
+//                JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
+//            ]
+//        }
     }
 }
 dependencies {
@@ -137,8 +164,8 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:3.7.0'
     implementation 'com.umeng.sdk:common:latest.integration'
     implementation 'com.umeng.sdk:analytics:latest.integration'
-//    implementation 'cn.jiguang.sdk:jpush:3.1.1'
-//    implementation 'cn.jiguang.sdk:jcore:1.1.9'
+    implementation 'cn.jiguang.sdk:jpush:3.1.1'
+    implementation 'cn.jiguang.sdk:jcore:1.1.9'
     implementation 'com.github.hotchemi:permissionsdispatcher:3.2.0'
     annotationProcessor "com.github.hotchemi:permissionsdispatcher-processor:3.2.0"
 }

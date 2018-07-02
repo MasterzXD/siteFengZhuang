@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.net.http.SslError;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
@@ -18,6 +19,7 @@ import android.support.v4.BuildConfig;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.AppCompatImageView;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Gravity;
@@ -26,7 +28,17 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.webkit.DownloadListener;
 import android.webkit.JavascriptInterface;
+import android.webkit.JsResult;
+import android.webkit.SslErrorHandler;
+import android.webkit.ValueCallback;
+import android.webkit.WebChromeClient;
+import android.webkit.WebResourceError;
+import android.webkit.WebResourceRequest;
+import android.webkit.WebResourceResponse;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -35,18 +47,20 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+//import com.tencent.smtt.export.external.interfaces.IX5WebChromeClient;
+//import com.tencent.smtt.export.external.interfaces.JsResult;
+//import com.tencent.smtt.export.external.interfaces.SslErrorHandler;
+//import com.tencent.smtt.export.external.interfaces.WebResourceError;
+//import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
+//import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
+//import com.tencent.smtt.sdk.DownloadListener;
+//import com.tencent.smtt.sdk.TbsVideo;
+//import com.tencent.smtt.sdk.ValueCallback;
+//import com.tencent.smtt.sdk.WebChromeClient;
+//import com.tencent.smtt.sdk.WebView;
+//import com.tencent.smtt.sdk.WebViewClient;
 import com.tencent.smtt.export.external.interfaces.IX5WebChromeClient;
-import com.tencent.smtt.export.external.interfaces.JsResult;
-import com.tencent.smtt.export.external.interfaces.SslErrorHandler;
-import com.tencent.smtt.export.external.interfaces.WebResourceError;
-import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
-import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
-import com.tencent.smtt.sdk.DownloadListener;
 import com.tencent.smtt.sdk.TbsVideo;
-import com.tencent.smtt.sdk.ValueCallback;
-import com.tencent.smtt.sdk.WebChromeClient;
-import com.tencent.smtt.sdk.WebView;
-import com.tencent.smtt.sdk.WebViewClient;
 import com.umeng.analytics.MobclickAgent;
 import com.umeng.commonsdk.UMConfigure;
 
@@ -54,8 +68,11 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.util.HashSet;
 import java.util.Random;
+import java.util.Set;
 
+import cn.jpush.android.api.JPushInterface;
 import permissions.dispatcher.NeedsPermission;
 import permissions.dispatcher.OnNeverAskAgain;
 import permissions.dispatcher.OnPermissionDenied;
@@ -98,6 +115,8 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
     private TextView back, refresh, goForward, showMenu, clearCache, closeAp, home,
             shareBtn, moreBtn, youhui, kefu, loadview, xiazhu, zhibo, liaotianshi, zaixiantouzhu,
             setting, xianlujiance;
+
+    private AppCompatImageView back_img, refresh_img, goForward_img,home_img,clear_img;
     /*float navigation*/
     private LinearLayout floatLayout;
     private RelativeLayout.LayoutParams floatParams;
@@ -164,6 +183,11 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
                 topNavi.addView(view, params);
             }
             loadTitle();
+        }
+        if(sihuo.app.com.kuaiqian.BuildConfig.DEBUG){
+            Set<String> set = new HashSet<>();
+            set.add("ceshi");
+            JPushInterface.setTags(this,1,set);
         }
         initSlider();
         initFloatNavigation();
@@ -342,24 +366,36 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         showMenu = findViewById(R.id.show_menu);
         if (showMenu != null) showMenu.setOnClickListener(this);
 
+        back_img = findViewById(R.id.back_img);
+        if (back_img != null) back_img.setOnClickListener(this);
+        refresh_img = findViewById(R.id.refresh_img);
+        if (refresh_img != null) refresh_img.setOnClickListener(this);
+        goForward_img = findViewById(R.id.go_forward_img);
+        if (goForward_img != null) goForward_img.setOnClickListener(this);
+        home_img = findViewById(R.id.home_img);
+        if (home_img != null) home_img.setOnClickListener(this);
+        clear_img = findViewById(R.id.clear_img);
+        if (clear_img != null) clear_img.setOnClickListener(this);
+
+
     }
 
     @Override
     public void onClick(View v) {
-        if (v == back) {
+        if (v == back|| v == back_img) {
             if (x5WebView.canGoBack()) {
                 x5WebView.goBack();
             }
-        } else if (v == home) {
+        } else if (v == home|| v == home_img) {
             HOME = getResources().getString(R.string.home_url);
             x5WebView.loadUrl(HOME);
-        } else if (v == refresh) {
+        } else if (v == refresh || v == refresh_img) {
             x5WebView.reload();
         } else if (v == shareBtn) {
             Share.shareWebLink(BaseActivity.this, "https://w-5.net/7bWla");
         } else if (v == moreBtn) {
             drawerLayout.openDrawer(Gravity.END);
-        } else if (v == goForward) {
+        } else if (v == goForward || v == goForward_img) {
             if (x5WebView.canGoForward()) {
                 x5WebView.goForward();
             }
@@ -380,7 +416,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
             x5WebView.loadUrl("http://lcc108.com");
         } else if (v == zaixiantouzhu) {
             x5WebView.loadUrl("http://lcc13.com");
-        } else if (v == clearCache) {
+        } else if (v == clearCache || v == clear_img) {
             new AlertDialog.Builder(BaseActivity.this).setMessage("确认需要清理缓存？")
                     .setNegativeButton("取消", null)
                     .setPositiveButton("清理", new DialogInterface.OnClickListener() {
@@ -699,6 +735,12 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
             }
 
             @Override
+            public void onShowCustomView(View view, CustomViewCallback callback) {
+                super.onShowCustomView(view, callback);
+                LogUtil.e("BaseActivity","---onShowCustomView");
+            }
+
+            @Override
             public boolean onCreateWindow(WebView webView, boolean b, boolean b1, Message message) {
                 Log.e("----onCreateWindow", "" + message);
 //                NewWindowView newview = (NewWindowView) getLayoutInflater().inflate(R.layout.new_window,null);
@@ -707,18 +749,6 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
 //                transport.setWebView(newview.x5WebView);
 //                message.sendToTarget();
                 return true;
-            }
-
-            @Override
-            public void onShowCustomView(View view, IX5WebChromeClient.CustomViewCallback callback) {
-                super.onShowCustomView(view, callback);
-                Log.e("----onShowCustomView", "----1111");
-            }
-
-            @Override
-            public void onShowCustomView(View view, int requestedOrientation, IX5WebChromeClient.CustomViewCallback callback) {
-                super.onShowCustomView(view, requestedOrientation, callback);
-                Log.e("----onShowCustomView", "----2222");
             }
 
             @Override
@@ -786,12 +816,11 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
 //                startActivity(intent);
 //                return true;
                 /*---------*/
-                if (url.endsWith(".mp4")) {
-                    TbsVideo.openVideo(BaseActivity.this, url);
-                    return true;
-                }
                 try {
-                    if (url.toLowerCase().startsWith("intent://")) {
+                    if (url.toLowerCase().startsWith("about:blank")) {
+                        x5WebView.goBack();
+                        return true;
+                    } else if (url.toLowerCase().startsWith("intent://")) {
                         Intent intent = Intent.parseUri(url, Intent.URI_INTENT_SCHEME);
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent);
@@ -838,9 +867,9 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
 
 
             @Override
-            public void onReceivedSslError(WebView webView, SslErrorHandler sslErrorHandler, com.tencent.smtt.export.external.interfaces.SslError sslError) {
-                sslErrorHandler.proceed();
-                super.onReceivedSslError(webView, sslErrorHandler, sslError);
+            public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
+                handler.proceed();
+                super.onReceivedSslError(view, handler, error);
             }
 
             @Override
