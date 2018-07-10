@@ -87,7 +87,7 @@
                 <action android:name="cn.jpush.android.intent.CONNECTION" />
                 <action android:name="android.intent.action.BOOT_COMPLETED"/><!--开机广播-->
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/><!--网络状态改变广播-->
-                <category android:name="com.a168caiid168a.app" />
+                <category android:name="com.myc.pingmingyingyuan" />
             </intent-filter>
         </receiver>
 
