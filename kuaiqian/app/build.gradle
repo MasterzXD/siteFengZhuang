@@ -13,7 +13,7 @@ android {
     compileSdkVersion 27
     buildToolsVersion '27.0.3'
     defaultConfig {
-        applicationId 'com.a168caiid168a.app'
+        applicationId 'com.fgha.cai61'
         minSdkVersion 15
         targetSdkVersion 23
         versionCode 1
@@ -129,21 +129,24 @@ android {
 //        sijiyule {//
 //            applicationId = "com.tfhd.sijiyule"
 //        }
+        cai61 {//
+            applicationId = "com.fgha.cai61"
+        }
 
 
 //        ---蜂鸟签名
 //        xinweinisiren {//40
 //            applicationId = "com.gfhdf.xinweinisiren"
 //        }
-        yinheyulecheng {//100
-            applicationId = "com.a168caiid168a.app"
-            manifestPlaceholders = [
-                 SCREEN_ORIENTATION:"portrait",
-                  JPUSH_PKGNAME : applicationId,
-                  JPUSH_APPKEY : "394bf8b67301ace78ce6ae9b", //JPush上注册的包名对应的appkey.
-                  JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
-            ]
-        }
+//        yinheyulecheng {//100
+//            applicationId = "com.a168caiid168a.app"
+//            manifestPlaceholders = [
+//                 SCREEN_ORIENTATION:"portrait",
+//                  JPUSH_PKGNAME : applicationId,
+//                  JPUSH_APPKEY : "394bf8b67301ace78ce6ae9b", //JPush上注册的包名对应的appkey.
+//                  JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
+//            ]
+//        }
 //        nine928 {//100
 //            applicationId = "com.fdgv.nine928"
 //            manifestPlaceholders = [
