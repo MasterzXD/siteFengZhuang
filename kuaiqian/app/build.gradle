@@ -102,9 +102,9 @@ android {
 //            applicationId = "com.hujfg.wealth"
 //        }
 
-        wangpaicaipiao{ //
-            applicationId = "com.dfsga.wangpaicaipiao"
-        }
+//        wangpaicaipiao{ //
+//            applicationId = "com.dfsga.wangpaicaipiao"
+//        }
 //        ---------------------------------------------
 //        wanfulai{
 //            applicationId = "com.gfa.wanfulai"
@@ -170,6 +170,16 @@ android {
 //                    JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
 //            ]
 //        }
+//        -------------
+        pingmingyingyuan {//100
+            applicationId = "com.myc.pingmingyingyuan"
+            manifestPlaceholders = [
+                    SCREEN_ORIENTATION:"portrait",
+                    JPUSH_PKGNAME : applicationId,
+                    JPUSH_APPKEY : "b59307d2b94d0e5b53ec2bd0", //JPush上注册的包名对应的appkey.
+                    JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
+            ]
+        }
     }
 }
 dependencies {
