@@ -13,11 +13,8 @@ android {
     compileSdkVersion 27
     buildToolsVersion '27.0.3'
     defaultConfig {
-<<<<<<< HEAD
-        applicationId 'com.fgha.cai61'
-=======
-        applicationId 'com.dfsga.wangpaicaipiao'
->>>>>>> cee2b26514f441d488ce5dd28893f3c4fdee1b0e
+
+        applicationId 'com.abc.pingmingyingyuan'
         minSdkVersion 15
         targetSdkVersion 23
         versionCode 1
@@ -33,7 +30,7 @@ android {
 //                SCREEN_ORIENTATION:"sensor",
                 SCREEN_ORIENTATION:"portrait",
                 JPUSH_PKGNAME : applicationId,
-                JPUSH_APPKEY : "debda5635d7d878228694551", //JPush上注册的包名对应的appkey.
+                JPUSH_APPKEY : "7245449c80fff684e2187961", //JPush上注册的包名对应的appkey.
                 JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
         ]
     }
@@ -140,9 +137,9 @@ android {
 //        sijiyule {//
 //            applicationId = "com.tfhd.sijiyule"
 //        }
-        cai61 {//
-            applicationId = "com.fgha.cai61"
-        }
+//        cai61 {//
+//            applicationId = "com.fgha.cai61"
+//        }
 
 
 //        ---蜂鸟签名
@@ -158,11 +155,7 @@ android {
 //                  JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
 //            ]
 //        }
-<<<<<<< HEAD
-//        nine928 {//100
-=======
 //        nine928 {
->>>>>>> cee2b26514f441d488ce5dd28893f3c4fdee1b0e
 //            applicationId = "com.fdgv.nine928"
 //            manifestPlaceholders = [
 //                SCREEN_ORIENTATION:"portrait",
@@ -183,11 +176,11 @@ android {
 //        }
 //        -------------
         pingmingyingyuan {//100
-            applicationId = "com.myc.pingmingyingyuan"
+            applicationId = "com.abc.pingmingyingyuan"
             manifestPlaceholders = [
                     SCREEN_ORIENTATION:"portrait",
                     JPUSH_PKGNAME : applicationId,
-                    JPUSH_APPKEY : "b59307d2b94d0e5b53ec2bd0", //JPush上注册的包名对应的appkey.
+                    JPUSH_APPKEY : "7245449c80fff684e2187961", //JPush上注册的包名对应的appkey.
                     JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
             ]
         }
