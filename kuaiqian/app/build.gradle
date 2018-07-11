@@ -141,6 +141,10 @@ android {
 //            applicationId = "com.fgha.cai61"
 //        }
 
+        zhinengliangzilian{
+            applicationId = "com.fgha.zhinengliangzilian"
+        }
+
 
 //        ---蜂鸟签名
 //        xinweinisiren {
@@ -175,15 +179,15 @@ android {
 //            ]
 //        }
 //        -------------
-        pingmingyingyuan {//100
-            applicationId = "com.abc.pingmingyingyuan"
-            manifestPlaceholders = [
-                    SCREEN_ORIENTATION:"portrait",
-                    JPUSH_PKGNAME : applicationId,
-                    JPUSH_APPKEY : "7245449c80fff684e2187961", //JPush上注册的包名对应的appkey.
-                    JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
-            ]
-        }
+//        pingmingyingyuan {//100
+//            applicationId = "com.abc.pingmingyingyuan"
+//            manifestPlaceholders = [
+//                    SCREEN_ORIENTATION:"portrait",
+//                    JPUSH_PKGNAME : applicationId,
+//                    JPUSH_APPKEY : "7245449c80fff684e2187961", //JPush上注册的包名对应的appkey.
+//                    JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
+//            ]
+//        }
     }
 }
 dependencies {
