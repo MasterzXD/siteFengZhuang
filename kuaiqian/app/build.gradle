@@ -14,7 +14,7 @@ android {
     buildToolsVersion '27.0.3'
     defaultConfig {
 
-        applicationId 'com.fgha.zhinengliangzilian'
+        applicationId 'com.yujs.fucai365'
         minSdkVersion 15
         targetSdkVersion 23
         versionCode 1
@@ -141,8 +141,11 @@ android {
 //            applicationId = "com.fgha.cai61"
 //        }
 
-        zhinengliangzilian{
-            applicationId = "com.fgha.zhinengliangzilian"
+//        zhinengliangzilian{
+//            applicationId = "com.fgha.zhinengliangzilian"
+//        }
+        fucai365{
+            applicationId = "com.yujs.fucai365"
         }
 
 
