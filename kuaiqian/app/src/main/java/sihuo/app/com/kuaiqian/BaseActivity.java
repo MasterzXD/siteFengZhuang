@@ -2,6 +2,7 @@ package sihuo.app.com.kuaiqian;
 
 import android.Manifest;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -123,6 +124,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
     private ImageView floatHome, floatBack;
     private FrameLayout topNavi, bottomNavi;
     private ProgressBar progressBarH;
+    private LinearLayout alertProgress;
 
     private boolean refreshable, hasDaoHang, guestureNavigation, fullScreen, floatNavigation, bottomNavigation, rightSliderMenu, hasguide;
 
@@ -156,6 +158,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         drawerLayout = findViewById(R.id.drawerLayout);
         sliderMenuParent = findViewById(R.id.slider_parent);
         progressBarH = findViewById(R.id.progressBar);
+        alertProgress =findViewById(R.id.alertProgress);
 
         x5WebView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
         refeshLayout.setEnabled(refreshable);
@@ -755,11 +758,18 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
             public void onProgressChanged(WebView webView, int progress) {
                 super.onProgressChanged(webView, progress);
                 if (progressBarH != null) {
-                    progressBarH.setProgress(progress);
+//                    progressBarH.setProgress(progress);
+//                    if (progress == 100) {
+//                        progressBarH.setVisibility(View.INVISIBLE);
+//                    } else {
+//                        progressBarH.setVisibility(View.VISIBLE);
+//                    }
+                }
+                if (alertProgress != null) {
                     if (progress == 100) {
-                        progressBarH.setVisibility(View.INVISIBLE);
+                        alertProgress.setVisibility(View.INVISIBLE);
                     } else {
-                        progressBarH.setVisibility(View.VISIBLE);
+                        alertProgress.setVisibility(View.VISIBLE);
                     }
                 }
 

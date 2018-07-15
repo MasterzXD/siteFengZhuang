@@ -63,97 +63,20 @@ android {
     }
 
     productFlavors {
-//        shisanyicaipiao{
-//            applicationId 'com.asdas.shisanyicaipiao'
-//        }
-//        zhiying365{
-//            applicationId = "com.asd.zhiying365"
-//        }
-
-//        tiantianlecaipiao{ //50
-//            applicationId = "com.dfsg.tiantianlecaipiao"
-//        }
-//        fenghuangcaipiao{
-//            applicationId = "com.gfj.fenghuangcaipiao"
-//            versionCode 2
-//            versionName '3.9'
-//
-//        }
-//        aomenweinisiren2{//50
-//            applicationId = "com.yutk.aomenweinisiren2"
-//        }
-//        licaiwu{
-//            applicationId = "com.palm.app.autopackapp.gyzh11643"
-//            versionCode 2
-//            versionName '1.2'
-//        }
-        caibao { //改图
-            applicationId = "com.sdf.caibao"
-        }
-//        dongfangjingcai { //改图
-//            applicationId = "com.axiba.chijiaa"//东方竞彩
-//        }
-//        yidianzixun{
-//            applicationId = "com.gfa.yidianzixun"
-//        }
-//        botiantang{//
-//            applicationId = "com.fgjh.botiantang"
-//        }
-//        wealth{
-//            applicationId = "com.hujfg.wealth"
-//        }
-
-//        wangpaicaipiao{ //
-//            applicationId = "com.dfsga.wangpaicaipiao"
-//        }
-//        ---------------------------------------------
-//        wanfulai{
-//            applicationId = "com.gfa.wanfulai"
-//        }
-//        caibao { //改图 15
-//            applicationId = "com.sdf.caibao"
-//        }
-//        caibao { //改图 15
-//            applicationId = "com.sdf.caibao"
-//        }
-//        xinyuncaipiao {
-//            applicationId = "com.gfd.xinyuncaipiao"
-//        }
-//        dongying {
-//            applicationId = "com.gfj.dongying"
-//        }
-        //换链接+30
-//        estc {//没做
-//            applicationId = "com.rt.estc"
-//        }
-//        wo {//
-//            applicationId = "com.afsdg.wo"
-//        }
-//        fenghuangcaipiao改链接+15
-//----
-//        hengfacaipiao {//
-//            applicationId = "com.khhj.hengfacaipiao"
-//        }
-//        sijiyule {//
-//            applicationId = "com.tfhd.sijiyule"
-//        }
-//        cai61 {//
-//            applicationId = "com.fgha.cai61"
-//        }
+//   --张洪
 
 
 //        ---蜂鸟签名
 
-//        -------------
-//        pingmingyingyuan {//100
-//            applicationId = "com.abc.pingmingyingyuan"
-//            manifestPlaceholders = [
-//                    SCREEN_ORIENTATION:"portrait",
-//                    JPUSH_PKGNAME : applicationId,
-//                    JPUSH_APPKEY : "7245449c80fff684e2187961", //JPush上注册的包名对应的appkey.
-//                    JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
-//            ]
-//        }
+        pingmingyingyuan {//100
+            applicationId = "com.abc.pingmingyingyuan"
+            manifestPlaceholders = [
+                    SCREEN_ORIENTATION:"portrait",
+                    JPUSH_PKGNAME : applicationId,
+                    JPUSH_APPKEY : "7245449c80fff684e2187961", //JPush上注册的包名对应的appkey.
+                    JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
+            ]
+        }
     }
 }
 dependencies {
