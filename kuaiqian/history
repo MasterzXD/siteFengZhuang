@@ -705,3 +705,35 @@
                 caibao { //150
                     applicationId = "com.sdf.caibao"
                 }
+
+        xinweinisiren {
+            applicationId = "com.gfhdf.xinweinisiren"
+        }
+        yinheyulecheng {//100
+            applicationId = "com.a168caiid168a.app"
+            manifestPlaceholders = [
+                 SCREEN_ORIENTATION:"portrait",
+                  JPUSH_PKGNAME : applicationId,
+                  JPUSH_APPKEY : "394bf8b67301ace78ce6ae9b", //JPush上注册的包名对应的appkey.
+                  JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
+            ]
+        }
+        nine928 {
+            applicationId = "com.fdgv.nine928"
+            manifestPlaceholders = [
+                SCREEN_ORIENTATION:"portrait",
+                JPUSH_PKGNAME : applicationId,
+                JPUSH_APPKEY : "bf73f805c1b7aeb7e90a394e", //JPush上注册的包名对应的appkey.
+                JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
+            ]
+        }
+
+        c27 {//100
+            applicationId = "com.myc.c27"
+            manifestPlaceholders = [
+                    SCREEN_ORIENTATION:"portrait",
+                    JPUSH_PKGNAME : applicationId,
+                    JPUSH_APPKEY : "debda5635d7d878228694551", //JPush上注册的包名对应的appkey.
+                    JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
+            ]
+        }

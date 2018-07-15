@@ -14,7 +14,7 @@ android {
     buildToolsVersion '27.0.3'
     defaultConfig {
 
-        applicationId 'com.abc.pingmingyingyuan'
+        applicationId 'com.sdf.caibao'
         minSdkVersion 15
         targetSdkVersion 23
         versionCode 1
@@ -87,9 +87,9 @@ android {
 //            versionCode 2
 //            versionName '1.2'
 //        }
-//        caibao { //改图
-//            applicationId = "com.sdf.caibao"
-//        }
+        caibao { //改图
+            applicationId = "com.sdf.caibao"
+        }
 //        dongfangjingcai { //改图
 //            applicationId = "com.axiba.chijiaa"//东方竞彩
 //        }
@@ -143,47 +143,17 @@ android {
 
 
 //        ---蜂鸟签名
-//        xinweinisiren {
-//            applicationId = "com.gfhdf.xinweinisiren"
-//        }
-//        yinheyulecheng {//100
-//            applicationId = "com.a168caiid168a.app"
-//            manifestPlaceholders = [
-//                 SCREEN_ORIENTATION:"portrait",
-//                  JPUSH_PKGNAME : applicationId,
-//                  JPUSH_APPKEY : "394bf8b67301ace78ce6ae9b", //JPush上注册的包名对应的appkey.
-//                  JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
-//            ]
-//        }
-//        nine928 {
-//            applicationId = "com.fdgv.nine928"
-//            manifestPlaceholders = [
-//                SCREEN_ORIENTATION:"portrait",
-//                JPUSH_PKGNAME : applicationId,
-//                JPUSH_APPKEY : "bf73f805c1b7aeb7e90a394e", //JPush上注册的包名对应的appkey.
-//                JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
-//            ]
-//        }
 
-//        c27 {//100
-//            applicationId = "com.myc.c27"
+//        -------------
+//        pingmingyingyuan {//100
+//            applicationId = "com.abc.pingmingyingyuan"
 //            manifestPlaceholders = [
 //                    SCREEN_ORIENTATION:"portrait",
 //                    JPUSH_PKGNAME : applicationId,
-//                    JPUSH_APPKEY : "debda5635d7d878228694551", //JPush上注册的包名对应的appkey.
+//                    JPUSH_APPKEY : "7245449c80fff684e2187961", //JPush上注册的包名对应的appkey.
 //                    JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
 //            ]
 //        }
-//        -------------
-        pingmingyingyuan {//100
-            applicationId = "com.abc.pingmingyingyuan"
-            manifestPlaceholders = [
-                    SCREEN_ORIENTATION:"portrait",
-                    JPUSH_PKGNAME : applicationId,
-                    JPUSH_APPKEY : "7245449c80fff684e2187961", //JPush上注册的包名对应的appkey.
-                    JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
-            ]
-        }
     }
 }
 dependencies {

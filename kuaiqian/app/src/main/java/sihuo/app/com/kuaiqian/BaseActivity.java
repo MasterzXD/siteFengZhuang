@@ -809,14 +809,31 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public boolean shouldOverrideUrlLoading(final WebView view, final String url) {
                 Log.d("----BaseActivity", "shouldOverrideUrlLoading:" + url);
-                /*直接跳系统浏览器 */
-//                Intent intent = new Intent(Intent.ACTION_VIEW);
-//                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                intent.setData(Uri.parse(url));
-//                startActivity(intent);
-//                return true;
+                boolean outer = false;
+                if(getPackageName().equals("com.fgjh.botiantang") //博天堂
+                        ||getPackageName().equals("com.axiba.chijiaa")//东方竞彩
+                        ||getPackageName().equals("com.sdf.caibao")){//918金红
+                    final String []outerFlag = {"/huayue/gatepay","/xinpai/unionpay","/shanzhu/unionpay",
+                                                "/shanzhu/unionwap","/shanzhu/unionquick","/huayue/tenpay",
+                                                "/shanzhu/tenpay","/shanzhu/tenwap","/huayue/aliwap","/kehui/aliwap"};
+                    for (int i = 0; i < outerFlag.length; i++) {
+                        if(url.contains(outerFlag[i])){
+                            outer = true;
+                            break;
+                        }
+                    }
+                }
+
+                if(outer){
+                    Intent intent = new Intent(Intent.ACTION_VIEW);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    intent.setData(Uri.parse(url));
+                    startActivity(intent);
+                    return true;
+                }
                 /*---------*/
                 try {
+
                     if (url.toLowerCase().startsWith("about:blank")) {
                         x5WebView.goBack();
                         return true;
