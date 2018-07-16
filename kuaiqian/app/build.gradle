@@ -14,7 +14,7 @@ android {
     buildToolsVersion '27.0.3'
     defaultConfig {
 
-        applicationId 'com.sdf.caibao'
+        applicationId 'com.agc.fudunguoji'
         minSdkVersion 15
         targetSdkVersion 23
         versionCode 1
@@ -67,18 +67,20 @@ android {
 //           facaishentuandui{                              //2号打包机
 //               applicationId = "com.ydlo.guuqpmno"
 //           }
-
+           fudunguoji{
+               applicationId = "com.agc.fudunguoji"
+           }
 //        ---蜂鸟签名
 
-        pingmingyingyuan {//100
-            applicationId = "com.abc.pingmingyingyuan"
-            manifestPlaceholders = [
-                    SCREEN_ORIENTATION:"portrait",
-                    JPUSH_PKGNAME : applicationId,
-                    JPUSH_APPKEY : "7245449c80fff684e2187961", //JPush上注册的包名对应的appkey.
-                    JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
-            ]
-        }
+//        pingmingyingyuan {//100
+//            applicationId = "com.abc.pingmingyingyuan"
+//            manifestPlaceholders = [
+//                    SCREEN_ORIENTATION:"portrait",
+//                    JPUSH_PKGNAME : applicationId,
+//                    JPUSH_APPKEY : "7245449c80fff684e2187961", //JPush上注册的包名对应的appkey.
+//                    JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
+//            ]
+//        }
     }
 }
 dependencies {
