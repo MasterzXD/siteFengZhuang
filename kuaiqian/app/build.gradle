@@ -64,7 +64,9 @@ android {
 
     productFlavors {
 //   --张洪
-
+//           facaishentuandui{                              //2号打包机
+//               applicationId = "com.ydlo.guuqpmno"
+//           }
 
 //        ---蜂鸟签名
 
