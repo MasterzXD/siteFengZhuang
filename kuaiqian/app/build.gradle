@@ -14,7 +14,7 @@ android {
     buildToolsVersion '27.0.3'
     defaultConfig {
 
-        applicationId 'com.agc.fudunguoji'
+        applicationId 'com.hujfg.wealth'
         minSdkVersion 15
         targetSdkVersion 23
         versionCode 1
@@ -70,6 +70,7 @@ android {
            fudunguoji{
                applicationId = "com.agc.fudunguoji"
            }
+
 //        ---蜂鸟签名
 
 //        pingmingyingyuan {//100
