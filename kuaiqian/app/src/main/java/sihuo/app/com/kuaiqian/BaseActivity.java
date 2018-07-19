@@ -192,6 +192,10 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
             set.add("ceshi");
             JPushInterface.setTags(this,1,set);
         }
+        if("zhinengliangzilian".equals(sihuo.app.com.kuaiqian.BuildConfig.FLAVOR)
+                ||"iqc".equals(sihuo.app.com.kuaiqian.BuildConfig.FLAVOR)){
+            clearWebViewCache();
+        }
         initSlider();
         initFloatNavigation();
         BaseActivityPermissionsDispatcher.getPermissionWithPermissionCheck(this);
@@ -1095,7 +1099,10 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     protected void onDestroy() {
-
+        if("zhinengliangzilian".equals(sihuo.app.com.kuaiqian.BuildConfig.FLAVOR)
+                ||"iqc".equals(sihuo.app.com.kuaiqian.BuildConfig.FLAVOR)){
+            clearWebViewCache();
+        }
         super.onDestroy();
     }
 
