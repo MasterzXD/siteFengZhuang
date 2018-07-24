@@ -14,7 +14,7 @@ android {
     buildToolsVersion '27.0.3'
     defaultConfig {
 
-        applicationId 'com.fgha.iqc'
+        applicationId 'com.fgha.huangzheyule'
         minSdkVersion 15
         targetSdkVersion 23
         versionCode 1
@@ -38,9 +38,6 @@ android {
         main {
             jniLibs.srcDirs = ['libs']
         }
-//        c27 {
-//            jniLibs.srcDirs = ['libs']
-//        }
     }
     buildTypes {
         release {
@@ -75,9 +72,13 @@ android {
 //            applicationId = "com.fgha.zhinengliangzilian"
 //        }
 
-        iqc{//30
-            applicationId = "com.fgha.iqc"
+//        iqc{//30
+//            applicationId = "com.fgha.iqc"
+//        }
+        huangzheyule{//
+            applicationId = "com.fgha.huangzheyule"
         }
+
 //        ---蜂鸟签名
 
 //        pingmingyingyuan {//100
