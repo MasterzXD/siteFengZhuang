@@ -280,10 +280,10 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
                                 x5WebView.loadUrl(HOME);
                                 break;
                             case 2:
-                                x5WebView.loadUrl("http://oo009988.com/index.php?s=/Home/Recharge/recharge_online.html");
+                                x5WebView.loadUrl("http://oo550055.com/index.php?s=/Home/Recharge/recharge_online.html");
                                 break;
                             case 4:
-                                x5WebView.loadUrl("http://oo009988.com/index.php?s=/Home/Recharge/balance.html");
+                                x5WebView.loadUrl("http://oo550055.com/index.php?s=/Home/Recharge/balance.html");
                                 break;
                             case 6:
                                 x5WebView.loadUrl("https://chat.livechatvalue.com/chat/chatClient/chatbox.jsp?companyID=861443&configID=51366&jid=7431661411&s=1");

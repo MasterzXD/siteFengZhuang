@@ -14,7 +14,7 @@ android {
     buildToolsVersion '27.0.3'
     defaultConfig {
 
-        applicationId 'com.fgha.huangzheyule'
+        applicationId 'com.asdf.yundingguoji2'
         minSdkVersion 15
         targetSdkVersion 23
         versionCode 1
@@ -75,9 +75,13 @@ android {
 //        iqc{//30
 //            applicationId = "com.fgha.iqc"
 //        }
-        huangzheyule{//
-            applicationId = "com.fgha.huangzheyule"
+//        huangzheyule{//
+//            applicationId = "com.fgha.huangzheyule"
+//        }
+        yundingguoji2{//
+            applicationId = "com.asdf.yundingguoji2"
         }
+
 
 //        ---蜂鸟签名
 
