@@ -82,6 +82,9 @@ android {
 //            applicationId = "com.asdf.yundingguoji2"
 //        }
 
+        baliguoji{//0
+            applicationId = "com.kash.baliguoji"
+        }
 
 //        ---蜂鸟签名
 
@@ -94,15 +97,15 @@ android {
 //                    JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
 //            ]
 //        }
-        aomenweinisiren {//100
-            applicationId = "com.vkh.aomenweinisiren"
-            manifestPlaceholders = [
-                    SCREEN_ORIENTATION:"portrait",
-                    JPUSH_PKGNAME : applicationId,
-                    JPUSH_APPKEY : "e3c0a8afbc571c8154a92cd3", //JPush上注册的包名对应的appkey.
-                    JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
-            ]
-        }
+//        aomenweinisiren {//100
+//            applicationId = "com.vkh.aomenweinisiren"
+//            manifestPlaceholders = [
+//                    SCREEN_ORIENTATION:"portrait",
+//                    JPUSH_PKGNAME : applicationId,
+//                    JPUSH_APPKEY : "e3c0a8afbc571c8154a92cd3", //JPush上注册的包名对应的appkey.
+//                    JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
+//            ]
+//        }
     }
 }
 dependencies {
