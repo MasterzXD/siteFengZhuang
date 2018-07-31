@@ -817,3 +817,27 @@
         fucai365{
             applicationId = "com.yujs.fucai365"
         }
+        //           facaishentuandui{                              //2号打包机
+        //               applicationId = "com.ydlo.guuqpmno"
+        //           }
+        //           fudunguoji{
+        //               applicationId = "com.agc.fudunguoji"
+        //           }
+
+        //        zhinengliangzilian{//15
+        //            applicationId = "com.fgha.zhinengliangzilian"
+        //        }
+
+        //        iqc{//30
+        //            applicationId = "com.fgha.iqc"
+        //        }
+        //        huangzheyule{//
+        //            applicationId = "com.fgha.huangzheyule"
+        //        }
+        //        yundingguoji2{//
+        //            applicationId = "com.asdf.yundingguoji2"
+        //        }
+
+        //        baliguoji{//0
+        //            applicationId = "com.kash.baliguoji"
+        //        }

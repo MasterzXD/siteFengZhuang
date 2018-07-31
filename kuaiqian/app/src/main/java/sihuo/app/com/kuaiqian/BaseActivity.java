@@ -818,20 +818,20 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
             public void onProgressChanged(WebView webView, int progress) {
                 super.onProgressChanged(webView, progress);
                 if (progressBarH != null) {
-//                    progressBarH.setProgress(progress);
-//                    if (progress == 100) {
-//                        progressBarH.setVisibility(View.INVISIBLE);
-//                    } else {
-//                        progressBarH.setVisibility(View.VISIBLE);
-//                    }
-                }
-                if (alertProgress != null) {
+                    progressBarH.setProgress(progress);
                     if (progress == 100) {
-                        alertProgress.setVisibility(View.INVISIBLE);
+                        progressBarH.setVisibility(View.INVISIBLE);
                     } else {
-                        alertProgress.setVisibility(View.VISIBLE);
+                        progressBarH.setVisibility(View.VISIBLE);
                     }
                 }
+//                if (alertProgress != null) {
+//                    if (progress == 100) {
+//                        alertProgress.setVisibility(View.INVISIBLE);
+//                    } else {
+//                        alertProgress.setVisibility(View.VISIBLE);
+//                    }
+//                }
 
                 if (refreshable) {
                     if (progress == 100) {

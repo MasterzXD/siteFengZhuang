@@ -61,30 +61,7 @@ android {
 
     productFlavors {
 //   --张洪
-//           facaishentuandui{                              //2号打包机
-//               applicationId = "com.ydlo.guuqpmno"
-//           }
-//           fudunguoji{
-//               applicationId = "com.agc.fudunguoji"
-//           }
 
-//        zhinengliangzilian{//15
-//            applicationId = "com.fgha.zhinengliangzilian"
-//        }
-
-//        iqc{//30
-//            applicationId = "com.fgha.iqc"
-//        }
-//        huangzheyule{//
-//            applicationId = "com.fgha.huangzheyule"
-//        }
-//        yundingguoji2{//
-//            applicationId = "com.asdf.yundingguoji2"
-//        }
-
-        baliguoji{//0
-            applicationId = "com.kash.baliguoji"
-        }
 
 //        ---蜂鸟签名
 
@@ -106,6 +83,15 @@ android {
 //                    JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
 //            ]
 //        }
+        yinheyule {//100
+            applicationId = "com.cvf.yinheyule"
+            manifestPlaceholders = [
+                    SCREEN_ORIENTATION:"sensor",
+                    JPUSH_PKGNAME : applicationId,
+                    JPUSH_APPKEY : "79db8f14365086a14c805a02", //JPush上注册的包名对应的appkey.
+                    JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
+            ]
+        }
     }
 }
 dependencies {

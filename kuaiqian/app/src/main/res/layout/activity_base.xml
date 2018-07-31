@@ -71,6 +71,7 @@
             android:layout_width="match_parent"
             android:orientation="horizontal"
             android:gravity="center"
+            android:visibility="invisible"
             android:onClick="onClick"
             android:background="#01000000"
             android:layout_height="match_parent">
