@@ -14,7 +14,7 @@ android {
     buildToolsVersion '27.0.3'
     defaultConfig {
 
-        applicationId 'com.asdf.yundingguoji2'
+        applicationId 'com.dfsg.tiantianlecaipiao'
         minSdkVersion 15
         targetSdkVersion 23
         versionCode 1
@@ -61,7 +61,9 @@ android {
 
     productFlavors {
 //   --张洪
-
+        tiantianlecaipiao{ //换链接
+            applicationId = "com.dfsg.tiantianlecaipiao"
+        }
 
 //        ---蜂鸟签名
 
@@ -83,15 +85,15 @@ android {
 //                    JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
 //            ]
 //        }
-        yinheyule {//100已付
-            applicationId = "com.cvf.yinheyule"
-            manifestPlaceholders = [
-                    SCREEN_ORIENTATION:"sensor",
-                    JPUSH_PKGNAME : applicationId,
-                    JPUSH_APPKEY : "79db8f14365086a14c805a02", //JPush上注册的包名对应的appkey.
-                    JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
-            ]
-        }
+//        yinheyule {//100已付
+//            applicationId = "com.cvf.yinheyule"
+//            manifestPlaceholders = [
+//                    SCREEN_ORIENTATION:"sensor",
+//                    JPUSH_PKGNAME : applicationId,
+//                    JPUSH_APPKEY : "79db8f14365086a14c805a02", //JPush上注册的包名对应的appkey.
+//                    JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
+//            ]
+//        }
     }
 }
 dependencies {
