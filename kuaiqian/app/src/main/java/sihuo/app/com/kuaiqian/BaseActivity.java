@@ -542,7 +542,10 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
                     @Override
                     public void onClick(View v) {
                         Integer tag = (Integer) v.getTag();
-                        String[] target = {"http://m.wp2828.com", "http://m.wpcp5.com", "http://m.wp6868.com", "http://47.75.175.70:8083/mobile/member/login"};
+                        String[] target = {"http://wp2828.com"
+                                , "http://wpcp5.com"
+                                , "http://wpcp7.com"
+                                , "http://m.wp5858.com:8083/mobile/member/login"};
                         x5WebView.loadUrl(target[tag / 2 - 1]);
                         rootView.removeView(view);
                     }
