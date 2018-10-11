@@ -293,13 +293,13 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
                                 x5WebView.loadUrl(HOME);
                                 break;
                             case 2:
-                                x5WebView.loadUrl("http://9088j.com/Home/Recharge/recharge.html");
+                                x5WebView.loadUrl("http://yd.gc3333.com/Home/Recharge/recharge.html");
                                 break;
                             case 4:
-                                x5WebView.loadUrl("http://9088j.com/Home/Recharge/balance.html");
+                                x5WebView.loadUrl("http://yd.gc3333.com/Home/Recharge/balance.html");
                                 break;
                             case 6:
-                                x5WebView.loadUrl("http://chat.livechatvalue.com/chat/chatClient/chatbox.jsp?companyID=972585&configID=63161&jid=3230998888");
+                                x5WebView.loadUrl("https://f18.livechatvalue.com/chat/chatClient/chatbox.jsp?companyID=677786&configID=61320&jid=3223891139&s=1");
                                 break;
                             case 8:
                                 new AlertDialog.Builder(BaseActivity.this).setMessage("确认需要清理缓存？")
