@@ -4,6 +4,7 @@
     <style name="AppTheme" parent="@style/Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowFullscreen">true</item>
+        <item name="android:windowDisablePreview">true</item>
     </style>
 
     <style name="LoadingDialog" parent="updateDialog">
@@ -17,5 +18,14 @@
         <item name="android:backgroundDimEnabled">true</item> <!--背景是否模糊显示-->
     </style>
 
-
+    <style name="dialog_sheet" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <!--边框-->
+        <item name="android:windowBackground">@null</item>
+        <!--背景透明-->
+        <item name="android:backgroundDimEnabled">false</item>
+        <!--模糊-->
+        <item name="android:background">#00ffffff</item>
+        <!-- 设置自定义布局的背景透明 -->
+    </style>
 </resources>

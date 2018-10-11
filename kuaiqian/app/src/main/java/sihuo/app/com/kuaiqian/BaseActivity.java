@@ -1,31 +1,29 @@
 package sihuo.app.com.kuaiqian;
 
+import android.Manifest;
+import android.annotation.TargetApi;
 import android.app.AlertDialog;
-import android.content.ClipData;
-import android.content.ContentUris;
+import android.app.AppOpsManager;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.database.Cursor;
+import android.content.pm.ApplicationInfo;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Color;
-import android.media.Image;
 import android.net.Uri;
 import android.net.http.SslError;
 import android.os.Build;
+import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
-import android.provider.DocumentsContract;
 import android.provider.MediaStore;
-import android.support.constraint.ConstraintLayout;
+import android.support.annotation.NonNull;
+import android.support.v4.BuildConfig;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.util.Base64;
+import android.support.v7.widget.AppCompatImageView;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Gravity;
@@ -33,14 +31,9 @@ import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewStub;
 import android.view.WindowManager;
-import android.webkit.ClientCertRequest;
-import android.webkit.ConsoleMessage;
 import android.webkit.DownloadListener;
-import android.webkit.HttpAuthHandler;
 import android.webkit.JavascriptInterface;
-import android.webkit.JsPromptResult;
 import android.webkit.JsResult;
 import android.webkit.SslErrorHandler;
 import android.webkit.ValueCallback;
@@ -48,7 +41,6 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebResourceError;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebResourceResponse;
-import android.webkit.WebStorage;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.FrameLayout;
@@ -59,27 +51,49 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
+//import com.tencent.smtt.export.external.interfaces.IX5WebChromeClient;
+//import com.tencent.smtt.export.external.interfaces.JsResult;
+//import com.tencent.smtt.export.external.interfaces.SslErrorHandler;
+//import com.tencent.smtt.export.external.interfaces.WebResourceError;
+//import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
+//import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
+//import com.tencent.smtt.sdk.DownloadListener;
+//import com.tencent.smtt.sdk.TbsVideo;
+//import com.tencent.smtt.sdk.ValueCallback;
+//import com.tencent.smtt.sdk.WebChromeClient;
+//import com.tencent.smtt.sdk.WebView;
+//import com.tencent.smtt.sdk.WebViewClient;
+import com.tencent.smtt.export.external.interfaces.IX5WebChromeClient;
+import com.tencent.smtt.sdk.TbsVideo;
+import com.umeng.analytics.MobclickAgent;
+import com.umeng.commonsdk.UMConfigure;
+
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.InputStream;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.util.HashSet;
+import java.util.Random;
+import java.util.Set;
 
+import cn.jpush.android.api.JPushInterface;
+import permissions.dispatcher.NeedsPermission;
+import permissions.dispatcher.OnNeverAskAgain;
+import permissions.dispatcher.OnPermissionDenied;
+import permissions.dispatcher.OnShowRationale;
+import permissions.dispatcher.PermissionRequest;
+import permissions.dispatcher.RuntimePermissions;
 import sihuo.app.com.kuaiqian.utils.ADFilterTool;
-import sihuo.app.com.kuaiqian.utils.NewWindowView;
+import sihuo.app.com.kuaiqian.utils.FileUtils;
+import sihuo.app.com.kuaiqian.utils.LogUtil;
 import sihuo.app.com.kuaiqian.utils.Share;
-import sihuo.app.com.kuaiqian.utils.WebViewJavaScriptFunction;
 import sihuo.app.com.kuaiqian.utils.X5WebView;
 
 import static sihuo.app.com.kuaiqian.utils.FileUtils.getRealPathByUri;
 
+@RuntimePermissions
 public class BaseActivity extends AppCompatActivity implements View.OnClickListener {
     final boolean DEBUG_ALL = true;
     final boolean DEBUG = true;
@@ -101,23 +115,23 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
     private FrameLayout sliderMenuParent;
 
 
-
     private ValueCallback<Uri[]> uploadMessage;
     private ValueCallback<Uri> singleUploadMessage;
 
-    private TextView back, refresh, goForward, closeAp, home, shareBtn, moreBtn, youhui, kefu, loadview, xiazhu, zhibo;
+    private TextView back, refresh, goForward, showMenu, clearCache, closeAp, home,
+            shareBtn, moreBtn, youhui, kefu, loadview, xiazhu, zhibo, liaotianshi, zaixiantouzhu,
+            setting, xianlujiance;
+
+    private AppCompatImageView back_img, refresh_img, goForward_img,home_img,clear_img;
     /*float navigation*/
     private LinearLayout floatLayout;
     private RelativeLayout.LayoutParams floatParams;
     private ImageView floatHome, floatBack;
-    private int screenW, screenH;
-    private float density;
     private FrameLayout topNavi, bottomNavi;
-
     private ProgressBar progressBarH;
-    private boolean refreshable, hasDaoHang, guestureNavigation, fullScreen, floatNavigation, bottomNavigation, rightSliderMenu,hasguide;
-    private int loadingTime, statusBarHeight;
-    private ImageView loadingImage;
+    private LinearLayout alertProgress;
+
+    private boolean refreshable, hasDaoHang, guestureNavigation, fullScreen, floatNavigation, bottomNavigation, rightSliderMenu, hasguide;
 
     private Handler handler = new Handler() {
         @Override
@@ -127,36 +141,31 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         }
     };
 
+
     @Override
     protected final void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (!this.isTaskRoot()) { // 判断当前activity是不是所在任务栈的根
-            Intent intent = getIntent();
-            if (intent != null) {
-                String action = intent.getAction();
-                if (intent.hasCategory(Intent.CATEGORY_LAUNCHER) && Intent.ACTION_MAIN.equals(action)) {
-                    finish();
-                    return;
-                }
-            }
-        }
-        if ((getIntent().getFlags() & Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT) != 0) {
-            finish();
-            return;
-        }
-        setContentView(R.layout.activity_base);
 
         initConfig();
+        if (fullScreen) {
+            getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        }
+        setContentView(R.layout.activity_base);
+        JPushInterface.init(this.getApplicationContext());
+        UMConfigure.setLogEnabled(BuildConfig.DEBUG);
+        UMConfigure.init(getApplicationContext(), UMConfigure.DEVICE_TYPE_PHONE, "");
+        MobclickAgent.setScenarioType(getApplicationContext(), MobclickAgent.EScenarioType.E_UM_NORMAL);
+
         x5WebView = findViewById(R.id.x5webview);
         errorNotice = findViewById(R.id.errorNotice);
-        loadingImage = findViewById(R.id.loadingImage);
         refeshLayout = findViewById(R.id.refesh_layout);
         rootView = findViewById(R.id.root_view);
         drawerLayout = findViewById(R.id.drawerLayout);
         sliderMenuParent = findViewById(R.id.slider_parent);
         progressBarH = findViewById(R.id.progressBar);
-        progressBarH.setMax(100);
+        alertProgress =findViewById(R.id.alertProgress);
 
+        x5WebView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
         refeshLayout.setEnabled(refreshable);
         if (refreshable) {
             refeshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -166,79 +175,111 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
                 }
             });
         }
-        if (loadingTime == 0) {
-            initFloatNavigation();
-            if (!fullScreen) {
-                fullscreenNo();
-            }
-        } else {
-            loadingImage.setVisibility(View.VISIBLE);
-            handler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    initFloatNavigation();
-                    if (!fullScreen) {
-                        fullscreenNo();
-                    }
-                    if(hasguide && getSharedPreferences("config",MODE_PRIVATE).getBoolean("isfirst",true)){
-//                    if(hasguide){
-                        SharedPreferences.Editor editor = getSharedPreferences("config",MODE_PRIVATE).edit();
-                        editor.putBoolean("isfirst",false);
-                        editor.commit();
-                        startActivity(new Intent(BaseActivity.this,YinDaoActivity.class));
-                    }
-                    handler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            loadingImage.setVisibility(View.INVISIBLE);
-                        }
-                    },500);
-
-                }
-            }, loadingTime);
-        }
-        Log.d("----BaseActivity", "onCreate:开始timmer" );
-
+        Log.d("----BaseActivity", "onCreate:开始timmer");
         loadHome();
         setupWebview();
         if (hasDaoHang) {
             topNavi = findViewById(R.id.topNavi);
             bottomNavi = findViewById(R.id.bottomNavi);
             View view = getLayoutInflater().inflate(R.layout.title_layout, null);
-            FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, (int) (44 * density));
+            FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
             if (bottomNavigation) {
+                bottomNavi.setVisibility(View.VISIBLE);
                 bottomNavi.addView(view, params);
-                if (!fullScreen) {
-                    RelativeLayout.LayoutParams params1 = (RelativeLayout.LayoutParams) refeshLayout.getLayoutParams();
-                    params1.topMargin = statusBarHeight;
-                    refeshLayout.setLayoutParams(params1);
-                }
             } else {
+                topNavi.setVisibility(View.VISIBLE);
                 topNavi.addView(view, params);
-                if (!fullScreen) {
-                    RelativeLayout.LayoutParams layout = (RelativeLayout.LayoutParams) topNavi.getLayoutParams();
-                    layout.topMargin = statusBarHeight;
-                    topNavi.setLayoutParams(layout);
-                }
             }
             loadTitle();
-        } else {
-            if (!fullScreen) {
-                RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) refeshLayout.getLayoutParams();
-                params.topMargin = statusBarHeight;
-                refeshLayout.setLayoutParams(params);
-            }
+        }
+        if(sihuo.app.com.kuaiqian.BuildConfig.DEBUG){
+            Set<String> set = new HashSet<>();
+            set.add("ceshi");
+            JPushInterface.setTags(this,1,set);
+        }
+        if("zhinengliangzilian".equals(sihuo.app.com.kuaiqian.BuildConfig.FLAVOR)
+                ||"iqc".equals(sihuo.app.com.kuaiqian.BuildConfig.FLAVOR)){
+            clearWebViewCache();
         }
         initSlider();
+        initFloatNavigation();
+        if(!isNotificationEnabled(this)){
+            new AlertDialog.Builder(this).setMessage("打开通知，可以获取最新消息").setNegativeButton("暂不",null).setPositiveButton("去开启", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    toSetting();
+                }
+            }).show();
+        }
+        BaseActivityPermissionsDispatcher.getPermissionWithPermissionCheck(this);
     }
 
+    @NeedsPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+    void getPermission() {
+    }
 
-    private void initSlider(){
-        if(!rightSliderMenu){
+    @OnShowRationale(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+    void showRationaleForCamera(final PermissionRequest request) {
+        new AlertDialog.Builder(this)
+                .setMessage("请允许使用存储权限，部分功能才能生效！")
+                .setPositiveButton("允许", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        request.proceed();
+                    }
+                })
+                .setNegativeButton("拒绝", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        request.cancel();
+                    }
+                })
+                .show();
+    }
+
+    @OnPermissionDenied(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+    void onDenied() {
+//        Toast.makeText(this, "OnPermissionDenied", Toast.LENGTH_SHORT).show();
+    }
+
+    @OnNeverAskAgain(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+    void onNever() {
+        new AlertDialog.Builder(this).setMessage("请手动前往设置开启<权限>，以保证部分功能正常运行。")
+                .setNegativeButton("暂不", null)
+                .setPositiveButton("前往", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        getAppDetailSettingIntent(BaseActivity.this);
+                    }
+                }).show();
+    }
+
+    private void getAppDetailSettingIntent(Context context) {
+        Intent localIntent = new Intent();
+        localIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        if (Build.VERSION.SDK_INT >= 9) {
+            localIntent.setAction("android.settings.APPLICATION_DETAILS_SETTINGS");
+            localIntent.setData(Uri.fromParts("package", getPackageName(), null));
+        } else if (Build.VERSION.SDK_INT <= 8) {
+            localIntent.setAction(Intent.ACTION_VIEW);
+            localIntent.setClassName("com.android.settings", "com.android.settings.InstalledAppDetails");
+            localIntent.putExtra("com.android.settings.ApplicationPkgName", getPackageName());
+        }
+        startActivity(localIntent);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        BaseActivityPermissionsDispatcher.onRequestPermissionsResult(this, requestCode, grantResults);
+    }
+
+    private void initSlider() {
+        if (!rightSliderMenu) {
             drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
         }
-        if(rightSliderMenu){
-            LinearLayout linearLayout = (LinearLayout) getLayoutInflater().inflate(R.layout.slider_menu_layout,null);
+        if (rightSliderMenu) {
+            LinearLayout linearLayout = (LinearLayout) getLayoutInflater().inflate(R.layout.slider_menu_layout, null);
             sliderMenuParent.addView(linearLayout);
             for (int i = 0; i < linearLayout.getChildCount(); i++) {
                 View child = linearLayout.getChildAt(i);
@@ -247,39 +288,55 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
                     @Override
                     public void onClick(View v) {
                         Integer tag = (Integer) v.getTag();
-                        switch (tag){
+                        switch (tag) {
                             case 0:
-                                x5WebView.loadUrl(getString(R.string.home_url));
+                                x5WebView.loadUrl(HOME);
                                 break;
                             case 2:
-                                x5WebView.loadUrl("http://6666.KQ888888888.com:5555/cz");
+                                x5WebView.loadUrl("http://yd.gc3333.com/Home/Recharge/recharge.html");
                                 break;
                             case 4:
-                                x5WebView.loadUrl("http://6666.KQ888888888.com:5555/jc");
+                                x5WebView.loadUrl("http://yd.gc3333.com/Home/Recharge/balance.html");
                                 break;
                             case 6:
-                                x5WebView.loadUrl("http://6666.KQ888888888.com:5555/zs");
+                                x5WebView.loadUrl("https://f18.livechatvalue.com/chat/chatClient/chatbox.jsp?companyID=677786&configID=61320&jid=3223891139&s=1");
                                 break;
                             case 8:
-                                x5WebView.loadUrl("http://6666.KQ888888888.com:5555/kf");
-                                break;
-                            case 10:
-                                x5WebView.loadUrl("http://6666.KQ888888888.com:5555/gg");
-                                break;
-                            case 12:
-                                x5WebView.loadUrl("http://6666.KQ888888888.com:5555/hb");
-                                break;
-                            case 14:
-                                Share.shareWebLink(BaseActivity.this, "https://kq2666.com");
-                                break;
-                            case 16:
                                 new AlertDialog.Builder(BaseActivity.this).setMessage("确认需要清理缓存？")
-                                        .setNegativeButton("取消",null)
+                                        .setNegativeButton("取消", null)
                                         .setPositiveButton("清理", new DialogInterface.OnClickListener() {
                                             @Override
                                             public void onClick(DialogInterface dialog, int which) {
                                                 clearWebViewCache();
-                                                Toast.makeText(BaseActivity.this,"已成功清理缓存",Toast.LENGTH_SHORT).show();
+                                                Toast.makeText(BaseActivity.this, "已成功清理缓存", Toast.LENGTH_SHORT).show();
+                                            }
+                                        }).show();
+                                break;
+                            case 11:
+                                x5WebView.loadUrl("http://aa.4144.me:3609/hb");
+                                break;
+                            case 13:
+                                Share.shareWebLink(BaseActivity.this, "http://4155.me");
+                                break;
+                            case 15:
+                                new AlertDialog.Builder(BaseActivity.this).setMessage("确认需要清理缓存？")
+                                        .setNegativeButton("取消", null)
+                                        .setPositiveButton("清理", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                clearWebViewCache();
+                                                Toast.makeText(BaseActivity.this, "已成功清理缓存", Toast.LENGTH_SHORT).show();
+                                            }
+                                        }).show();
+                                break;
+                            case 16:
+                                new AlertDialog.Builder(BaseActivity.this).setMessage("确认需要清理缓存？")
+                                        .setNegativeButton("取消", null)
+                                        .setPositiveButton("清理", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                clearWebViewCache();
+                                                Toast.makeText(BaseActivity.this, "已成功清理缓存", Toast.LENGTH_SHORT).show();
                                             }
                                         }).show();
                                 break;
@@ -290,6 +347,49 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
             }
         }
     }
+
+    @TargetApi(Build.VERSION_CODES.KITKAT)
+    private boolean isNotificationEnabled(Context context) {
+
+        String CHECK_OP_NO_THROW = "checkOpNoThrow";
+        String OP_POST_NOTIFICATION = "OP_POST_NOTIFICATION";
+
+        AppOpsManager mAppOps = (AppOpsManager) context.getSystemService(Context.APP_OPS_SERVICE);
+        ApplicationInfo appInfo = context.getApplicationInfo();
+        String pkg = context.getApplicationContext().getPackageName();
+        int uid = appInfo.uid;
+
+        Class appOpsClass = null;
+        /* Context.APP_OPS_MANAGER */
+        try {
+            appOpsClass = Class.forName(AppOpsManager.class.getName());
+            Method checkOpNoThrowMethod = appOpsClass.getMethod(CHECK_OP_NO_THROW, Integer.TYPE, Integer.TYPE,
+                    String.class);
+            Field opPostNotificationValue = appOpsClass.getDeclaredField(OP_POST_NOTIFICATION);
+
+            int value = (Integer) opPostNotificationValue.get(Integer.class);
+            return ((Integer) checkOpNoThrowMethod.invoke(mAppOps, value, uid, pkg) == AppOpsManager.MODE_ALLOWED);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    private void toSetting() {
+        Intent localIntent = new Intent();
+        localIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        if (Build.VERSION.SDK_INT >= 9) {
+            localIntent.setAction("android.settings.APPLICATION_DETAILS_SETTINGS");
+            localIntent.setData(Uri.fromParts("package", getPackageName(), null));
+        } else if (Build.VERSION.SDK_INT <= 8) {
+            localIntent.setAction(Intent.ACTION_VIEW);
+            localIntent.setClassName("com.android.settings", "com.android.setting.InstalledAppDetails");
+            localIntent.putExtra("com.android.settings.ApplicationPkgName", getPackageName());
+        }
+        startActivity(localIntent);
+    }
+
 
     protected void loadTitle() {
         back = findViewById(R.id.back);
@@ -316,29 +416,55 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         if (zhibo != null) zhibo.setOnClickListener(this);
         loadview = findViewById(R.id.loadview);
         if (loadview != null) loadview.setOnClickListener(this);
+        clearCache = findViewById(R.id.clear);
+        if (clearCache != null) clearCache.setOnClickListener(this);
+        liaotianshi = findViewById(R.id.liaotianshi);
+        if (liaotianshi != null) liaotianshi.setOnClickListener(this);
+        zaixiantouzhu = findViewById(R.id.zaixiantouzhu);
+        if (zaixiantouzhu != null) zaixiantouzhu.setOnClickListener(this);
+        setting = findViewById(R.id.setting);
+        if (setting != null) setting.setOnClickListener(this);
+        xianlujiance = findViewById(R.id.xljc);
+        if (xianlujiance != null) xianlujiance.setOnClickListener(this);
+        showMenu = findViewById(R.id.show_menu);
+        if (showMenu != null) showMenu.setOnClickListener(this);
+
+        back_img = findViewById(R.id.back_img);
+        if (back_img != null) back_img.setOnClickListener(this);
+        refresh_img = findViewById(R.id.refresh_img);
+        if (refresh_img != null) refresh_img.setOnClickListener(this);
+        goForward_img = findViewById(R.id.go_forward_img);
+        if (goForward_img != null) goForward_img.setOnClickListener(this);
+        home_img = findViewById(R.id.home_img);
+        if (home_img != null) home_img.setOnClickListener(this);
+        clear_img = findViewById(R.id.clear_img);
+        if (clear_img != null) clear_img.setOnClickListener(this);
+
+
     }
 
     @Override
     public void onClick(View v) {
-        if (v == back) {
+        if (v == back|| v == back_img) {
             if (x5WebView.canGoBack()) {
                 x5WebView.goBack();
             }
-        } else if (v == home) {
+        } else if (v == home|| v == home_img) {
             HOME = getResources().getString(R.string.home_url);
             x5WebView.loadUrl(HOME);
-        } else if (v == refresh) {
+        } else if (v == refresh || v == refresh_img) {
             x5WebView.reload();
         } else if (v == shareBtn) {
-            Share.shareWebLink(BaseActivity.this, x5WebView.getUrl());
+            Share.shareWebLink(BaseActivity.this, "https://w-5.net/7bWla");
         } else if (v == moreBtn) {
             drawerLayout.openDrawer(Gravity.END);
-        } else if (v == goForward) {
+        } else if (v == goForward || v == goForward_img) {
             if (x5WebView.canGoForward()) {
                 x5WebView.goForward();
             }
         } else if (v == closeAp) {
-
+            finish();
+            System.exit(0);
         } else if (v == youhui) {
 
         } else if (v == kefu) {
@@ -347,7 +473,140 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
             x5WebView.loadUrl("https://www.hs551.com/ssc/wufen");
         } else if (v == zhibo) {
             x5WebView.loadUrl("http://zb.gzyscs.cn/room/m/?rid=1");
+        } else if (v == showMenu) {
+            togoMenu();
+        } else if (v == liaotianshi) {
+            x5WebView.loadUrl("http://lcc108.com");
+        } else if (v == zaixiantouzhu) {
+            x5WebView.loadUrl("http://lcc13.com");
+        } else if (v == clearCache || v == clear_img) {
+            new AlertDialog.Builder(BaseActivity.this).setMessage("确认需要清理缓存？")
+                    .setNegativeButton("取消", null)
+                    .setPositiveButton("清理", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            clearWebViewCache();
+                            Toast.makeText(BaseActivity.this, "已成功清理缓存", Toast.LENGTH_SHORT).show();
+                        }
+                    }).show();
+        } else if (v == setting) {
+//            final String items[] = {"清空缓存", "刷新", "主页", "取消"};
+//            ArrayAdapter<String>  adapter= new ArrayAdapter<String>(BaseActivity.this,android.R.layout.simple_list_item_1,items);
+            final View view = getLayoutInflater().inflate(R.layout.dialog_sheet_item, null);
+            rootView.addView(view, new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT));
+            view.findViewById(R.id.clear).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    rootView.removeView(view);
+                    new AlertDialog.Builder(BaseActivity.this).setMessage("确认需要清理缓存？")
+                            .setNegativeButton("取消", null)
+                            .setPositiveButton("清理", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    clearWebViewCache();
+                                    Toast.makeText(BaseActivity.this, "已成功清理缓存", Toast.LENGTH_SHORT).show();
+                                }
+                            }).show();
+                }
+            });
+            view.findViewById(R.id.home).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    rootView.removeView(view);
+                    loadHome();
+                }
+            });
+            view.findViewById(R.id.refresh).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    rootView.removeView(view);
+                    x5WebView.reload();
+                }
+            });
+
+            view.findViewById(R.id.cancel).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    rootView.removeView(view);
+                }
+            });
+        } else if (v == xianlujiance) {
+            final ViewGroup view = (ViewGroup) getLayoutInflater().inflate(R.layout.dialog_sheet_item1, null);
+            rootView.addView(view, new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT));
+            ViewGroup child = (ViewGroup) view.getChildAt(0);
+            for (int i = 2; i < child.getChildCount(); i += 2) {
+                TextView textView = (TextView) child.getChildAt(i);
+                textView.setText("线路" + (i / 2) + ": " + new Random().nextInt(500) + "ms");
+                child.getChildAt(i).setTag(i);
+                child.getChildAt(i).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Integer tag = (Integer) v.getTag();
+                        String[] target = {"http://wp2828.com"
+                                , "http://wpcp5.com"
+                                , "http://wpcp7.com"
+                                , "http://m.wp5858.com:8083/mobile/member/login"};
+                        x5WebView.loadUrl(target[tag / 2 - 1]);
+                        rootView.removeView(view);
+                    }
+                });
+
+            }
+
+            view.findViewById(R.id.cancel).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    rootView.removeView(view);
+                }
+            });
         }
+    }
+
+    LinearLayout togoView;
+
+    private void togoMenu() {
+        if (togoView == null) {
+            togoView = (LinearLayout) getLayoutInflater().inflate(R.layout.pop_layout, null);
+            for (int i = 0; i < togoView.getChildCount(); i++) {
+                View child = togoView.getChildAt(i);
+                child.setTag(i);
+                child.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Integer index = (Integer) v.getTag();
+                        if (index == 0) {
+                            Share.shareWebLink(BaseActivity.this, "https://www.002211.com");
+                        } else if (index == 1) {
+
+                        } else if (index == 2) {
+                            new AlertDialog.Builder(BaseActivity.this).setMessage("确认需要清理缓存？")
+                                    .setNegativeButton("取消", null)
+                                    .setPositiveButton("清理", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            clearWebViewCache();
+                                            Toast.makeText(BaseActivity.this, "已成功清理缓存", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }).show();
+                        } else if (index == 3) {
+                            x5WebView.loadUrl("http://wpa.qq.com/msgrd?v=3&uin=80056738&site=qq&menu=yes");
+                        }
+                        rootView.removeView(togoView);
+                        togoView = null;
+                    }
+                });
+            }
+            RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+            params.addRule(RelativeLayout.ABOVE, R.id.bottomNavi);
+            params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE);
+            params.bottomMargin = 20;
+            params.rightMargin = 10;
+            rootView.addView(togoView, params);
+        } else {
+            rootView.removeView(togoView);
+            togoView = null;
+        }
+
     }
 
     /**
@@ -357,6 +616,12 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
 
     protected void initFloatNavigation() {
         if (floatNavigation) {
+            DisplayMetrics metric = new DisplayMetrics();
+            getWindowManager().getDefaultDisplay().getMetrics(metric);
+            final int screenW = metric.widthPixels;  // 屏幕宽度（像素）
+            final int screenH = metric.heightPixels;  // 屏幕高度（像素）
+            float density = metric.density;  // 屏幕密度（0.75 / 1.0 / 1.5）
+            int densityDpi = metric.densityDpi;  // 屏幕密度DPI（120 / 160 / 240）
             floatLayout = (LinearLayout) getLayoutInflater().inflate(R.layout.float_layout, null);
             final int floatViewW = (int) (40 * density);
             final int floatViewH = (int) (100 * density);
@@ -431,40 +696,38 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         refreshable = getResources().getBoolean(R.bool.pull_refresh_enable);
         hasDaoHang = getResources().getBoolean(R.bool.save_daohang);
         guestureNavigation = getResources().getBoolean(R.bool.gesture_navigation);
-        loadingTime = getResources().getInteger(R.integer.loading_delay);
         fullScreen = getResources().getBoolean(R.bool.full_screen);
         floatNavigation = getResources().getBoolean(R.bool.float_navigation);
         bottomNavigation = getResources().getBoolean(R.bool.bottom_navigation);
-        rightSliderMenu =  getResources().getBoolean(R.bool.slider_menu);
+        rightSliderMenu = getResources().getBoolean(R.bool.slider_menu);
         hasguide = getResources().getBoolean(R.bool.need_guide);
-
-        int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
-        if (resourceId > 0) {
-            statusBarHeight = getResources().getDimensionPixelSize(resourceId);
-        }
-        DisplayMetrics dm = getResources().getDisplayMetrics();
-        density = dm.density;
-        screenW = dm.widthPixels;
-        screenH = dm.heightPixels;
     }
 
     void loadHome() {
         x5WebView.loadUrl(HOME);
     }
 
-    void fullscreenNo() {
-        View decorView = getWindow().getDecorView();
-        int option = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR;
-        decorView.setSystemUiVisibility(option);
-        getWindow().setFlags(
-                WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
-        if (Build.VERSION.SDK_INT >= 21) {
-//            getWindow().setStatusBarColor(Color.TRANSPARENT);
-        }
+    @NeedsPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+    void savePic(final String imgUrl) {
+        new AlertDialog.Builder(BaseActivity.this).setTitle("").setNegativeButton("保存图片到相册", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                if (imgUrl.startsWith("data:image/png;base64,")) {
+                    String tempimgUrl = imgUrl.replace("data:image/png;base64", "");
+//                                    BaseActivity.this.mBitmap = Base64.decode(tempimgUrl, Base64.DEFAULT);
+//                                    saveMyBitmap(BaseActivity.this.mBitmap,""+System.currentTimeMillis());
+//                            Bitmap bitmap = BitmapFactory.decodeByteArray(data,0,data.length);
+//                            Result result = DecodeImage.handleQRCodeFormBitmap(bitmap);
+//                            if(result!=null){
+//                                Log.e("----onLongClickCallBack", ""+result.getText());
+//                                webview.loadUrl(result.getText());
+//                            }
+                } else if (imgUrl.startsWith("http")) {
+                    FileUtils.savePicture(BaseActivity.this, "" + System.currentTimeMillis(), imgUrl);
+                }
+            }
+        }).show();
     }
-
-    String tempUrl;
 
     void setupWebview() {
         x5WebView.setDownloadListener(new DownloadListener() {
@@ -482,27 +745,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
                 BaseActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-//                        new AlertDialog.Builder(BaseActivity.this).setTitle("").setNegativeButton("保存图片到相册", new DialogInterface.OnClickListener() {
-//                            @Override
-//                            public void onClick(DialogInterface dialog, int which) {
-//                                if(imgUrl.startsWith("data:image/png;base64,")){
-//                                    String tempimgUrl = imgUrl.replace("data:image/png;base64","");
-//                                    BaseActivity.this.mBitmap = Base64.decode(tempimgUrl,Base64.DEFAULT);
-//                                    saveMyBitmap(BaseActivity.this.mBitmap,""+System.currentTimeMillis());
-////                            Bitmap bitmap = BitmapFactory.decodeByteArray(data,0,data.length);
-////                            Result result = DecodeImage.handleQRCodeFormBitmap(bitmap);
-////                            if(result!=null){
-////                                Log.e("----onLongClickCallBack", ""+result.getText());
-////                                webview.loadUrl(result.getText());
-////                            }
-//                                }else if(imgUrl.startsWith("http")){
-//                                    imageUrl=imgUrl;
-//                                    // 获取到图片地址后做相应的处理
-//                                    MainActivity.MyAsyncTask mTask = new MainActivity.MyAsyncTask();
-//                                    mTask.execute(imgUrl);
-//                                }
-//                            }
-//                        }).show();
+                        BaseActivityPermissionsDispatcher.savePicWithPermissionCheck(BaseActivity.this, imgUrl);
                     }
                 });
             }
@@ -558,45 +801,9 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
             }
 
             @Override
-            public boolean onConsoleMessage(ConsoleMessage consoleMessage) {
-//                Log.e("----MainActivity", "onConsoleMessage:" + consoleMessage.message());
-                return super.onConsoleMessage(consoleMessage);
-            }
-
-            @Override
-            public void onReceivedTouchIconUrl(WebView webView, String s, boolean b) {
-                super.onReceivedTouchIconUrl(webView, s, b);
-//                Log.e("----MainActivity", "onReceivedTouchIconUrl:" + s);
-            }
-
-            @Override
-            public void onReachedMaxAppCacheSize(long l, long l1, WebStorage.QuotaUpdater quotaUpdater) {
-                super.onReachedMaxAppCacheSize(l, l1, quotaUpdater);
-                Log.e("----MainActivity", "onReachedMaxAppCacheSize:");
-            }
-
-            @Override
-            public boolean onJsBeforeUnload(WebView webView, String s, String s1, JsResult jsResult) {
-                Log.e("----MainActivity", "onJsBeforeUnload:");
-                return super.onJsBeforeUnload(webView, s, s1, jsResult);
-            }
-
-            @Override
-            public boolean onJsPrompt(WebView webView, String s, String s1, String s2, JsPromptResult jsPromptResult) {
-                Log.e("----MainActivity", "onJsPrompt:");
-                return super.onJsPrompt(webView, s, s1, s2, jsPromptResult);
-            }
-
-            @Override
-            public boolean onJsConfirm(WebView webView, String s, String s1, JsResult jsResult) {
-                Log.e("----MainActivity", "onJsConfirm:");
-                return super.onJsConfirm(webView, s, s1, jsResult);
-            }
-
-            @Override
-            public boolean onJsTimeout() {
-                Log.e("----MainActivity", "onJsTimeout:");
-                return super.onJsTimeout();
+            public void onShowCustomView(View view, CustomViewCallback callback) {
+                super.onShowCustomView(view, callback);
+                LogUtil.e("BaseActivity","---onShowCustomView");
             }
 
             @Override
@@ -611,33 +818,23 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
             }
 
             @Override
-            public void onCloseWindow(WebView webView) {
-                super.onCloseWindow(webView);
-            }
-
-            @Override
-            public void onShowCustomView(View view, CustomViewCallback callback) {
-                super.onShowCustomView(view, callback);
-                Log.e("----onShowCustomView", "----1111");
-            }
-
-            @Override
-            public void onShowCustomView(View view, int requestedOrientation, CustomViewCallback callback) {
-                super.onShowCustomView(view, requestedOrientation, callback);
-                Log.e("----onShowCustomView", "----2222");
-            }
-
-            @Override
             public void onProgressChanged(WebView webView, int progress) {
                 super.onProgressChanged(webView, progress);
                 if (progressBarH != null) {
-//                    progressBarH.setProgress(progress);
-//                    if(progress==100){
-//                        progressBarH.setVisibility(View.INVISIBLE);
-//                    }else{
-//                        progressBarH.setVisibility(View.VISIBLE);
-//                    }
+                    progressBarH.setProgress(progress);
+                    if (progress == 100) {
+                        progressBarH.setVisibility(View.INVISIBLE);
+                    } else {
+                        progressBarH.setVisibility(View.VISIBLE);
+                    }
                 }
+//                if (alertProgress != null) {
+//                    if (progress == 100) {
+//                        alertProgress.setVisibility(View.INVISIBLE);
+//                    } else {
+//                        alertProgress.setVisibility(View.VISIBLE);
+//                    }
+//                }
 
                 if (refreshable) {
                     if (progress == 100) {
@@ -651,28 +848,24 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public boolean onShowFileChooser(WebView webView, ValueCallback<Uri[]> valueCallback, FileChooserParams fileChooserParams) {
                 Log.e("----openFileChooser", "4");
-                if(uploadMessage!=null){
+                if (uploadMessage != null) {
                     uploadMessage.onReceiveValue(null);
                 }
                 uploadMessage = valueCallback;
-                if(Build.VERSION.SDK_INT>=21){
-                    Intent intent = fileChooserParams.createIntent();
-                    startActivityForResult(Intent.createChooser(intent, "选择图片"), FILE_CHOOSER_RESULT_CODE);
-                }
+                openImageChooserActivity();
                 return true;
             }
 
             public void openFileChooser(ValueCallback<Uri> uploadMsg, String acceptType, String capture) {
                 Log.e("----openFileChooser", "3");
-                if(singleUploadMessage!=null){
+                if (singleUploadMessage != null) {
                     singleUploadMessage.onReceiveValue(null);
-                    return;
                 }
                 singleUploadMessage = uploadMsg;
                 openImageChooserActivity();
             }
 
-            public void openFileChooser(ValueCallback<Uri> uploadMsg){
+            public void openFileChooser(ValueCallback<Uri> uploadMsg) {
                 this.openFileChooser(uploadMsg, "*/*");
             }
 
@@ -683,47 +876,61 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
             }
 
         });
+
         x5WebView.setWebViewClient(new WebViewClient() {
 
             @Override
-            public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
-//                Log.d("----BaseActivity", "shouldOverrideUrlLoading:" +request.getRequestHeaders());
-                return super.shouldOverrideUrlLoading(view, request);
-            }
-
-            @Override
             public boolean shouldOverrideUrlLoading(final WebView view, final String url) {
-//                Uri uri = Uri.parse(url);
+                Log.d("----BaseActivity", "shouldOverrideUrlLoading:" + url);
+                boolean outer = false;
+                if(getPackageName().equals("com.fgjh.botiantang") //博天堂
+                        ||getPackageName().equals("com.axiba.chijiaa")//东方竞彩
+                        ||getPackageName().equals("com.sdf.caibao")){//918金红
+                    final String []outerFlag = {"/huayue/gatepay","/xinpai/unionpay","/shanzhu/unionpay",
+                                                "/shanzhu/unionwap","/shanzhu/unionquick","/huayue/tenpay",
+                                                "/shanzhu/tenpay","/shanzhu/tenwap","/huayue/aliwap","/kehui/aliwap"};
+                    for (int i = 0; i < outerFlag.length; i++) {
+                        if(url.contains(outerFlag[i])){
+                            outer = true;
+                            break;
+                        }
+                    }
+                }
 
-//                Log.e("----should", "" + url);
-//                Intent intent = new Intent(Intent.ACTION_VIEW);
-//                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                intent.setData(Uri.parse(url));
-//                startActivity(intent);
-//                return true;
+                if(outer){
+                    Intent intent = new Intent(Intent.ACTION_VIEW);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    intent.setData(Uri.parse(url));
+                    startActivity(intent);
+                    return true;
+                }
+                /*---------*/
                 try {
-                    if (url.toLowerCase().startsWith("intent://")) {
+
+                    if (url.toLowerCase().startsWith("about:blank")) {
+                        x5WebView.goBack();
+                        return true;
+                    } else if (url.toLowerCase().startsWith("intent://")) {
                         Intent intent = Intent.parseUri(url, Intent.URI_INTENT_SCHEME);
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent);
                         return true;
-                    }else if (!url.toLowerCase().startsWith("http")) {
+                    } else if (!url.toLowerCase().startsWith("http")) {
                         Intent intent = new Intent(Intent.ACTION_VIEW);
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         intent.setData(Uri.parse(url));
                         startActivity(intent);
                         return true;
-                    }
-                    else if (url.toLowerCase().contains("https://qr.alipay.com")) {
+                    } else if (url.toLowerCase().contains("https://qr.alipay.com")) {
                         int index = url.toLowerCase().indexOf("https://qr.alipay.com");
                         String newUrl = url.substring(index);
                         view.loadUrl(newUrl);
                         return true;
                     }
-                    return super.shouldOverrideUrlLoading(view,url);
+                    return super.shouldOverrideUrlLoading(view, url);
                 } catch (Exception e) {
-//                    Log.e("----should--error", ""+e.getMessage());
-                    Toast.makeText(BaseActivity.this, "无法打开指定应用，请先确认应用是否安装！", Toast.LENGTH_SHORT).show();
+                    Log.e("----should--error", "" + e.getMessage());
+//                    Toast.makeText(BaseActivity.this, "无法打开指定应用，请先确认应用是否安装！", Toast.LENGTH_SHORT).show();
                 }
                 return super.shouldOverrideUrlLoading(view, url);
 
@@ -748,60 +955,12 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
                 }
             }
 
-            @Override
-            public WebResourceResponse shouldInterceptRequest(WebView view, WebResourceRequest request) {
-                if(Build.VERSION.SDK_INT>=21){
-                }
-                return super.shouldInterceptRequest(view, request);
-            }
-
 
             @Override
-            public void onReceivedLoginRequest(WebView webView, String s, String s1, String s2) {
-//                Log.e("----MainActivity", "onReceivedLoginRequest:" + s);
-                super.onReceivedLoginRequest(webView, s, s1, s2);
+            public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
+                handler.proceed();
+                super.onReceivedSslError(view, handler, error);
             }
-
-            @Override
-            public void onFormResubmission(WebView webView, Message message, Message message1) {
-//                Log.e("----MainActivity", "onFormResubmission:" );
-                super.onFormResubmission(webView, message, message1);
-            }
-
-            @Override
-            public void onReceivedHttpAuthRequest(WebView webView, HttpAuthHandler httpAuthHandler, String s, String s1) {
-
-                super.onReceivedHttpAuthRequest(webView, httpAuthHandler, s, s1);
-//                Log.e("----MainActivity", "onReceivedHttpAuthRequest:");
-            }
-
-            @Override
-            public void onLoadResource(WebView webView, String s) {
-//                Log.e("----MainActivity", "onLoadResource:"+s );
-
-                super.onLoadResource(webView, s);
-
-            }
-
-            @Override
-            public void onReceivedClientCertRequest(WebView webView, ClientCertRequest clientCertRequest) {
-                super.onReceivedClientCertRequest(webView, clientCertRequest);
-//                Log.e("----MainActivity", "onReceivedClientCertRequest:" );
-            }
-
-            @Override
-            public void onScaleChanged(WebView webView, float v, float v1) {
-//                Log.e("----MainActivity", "onScaleChanged:" + v + "   v1:" + v1);
-                super.onScaleChanged(webView, v, v1);
-            }
-
-
-            @Override
-            public void onTooManyRedirects(WebView webView, Message message, Message message1) {
-                super.onTooManyRedirects(webView, message, message1);
-//                Log.e("----MainActivity", "onTooManyRedirects:");
-            }
-
 
             @Override
             public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
@@ -809,18 +968,16 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
 //                Log.e("----onReceivedError", "");
             }
 
-
-            @Override
-            public void onReceivedSslError(WebView webView, SslErrorHandler sslErrorHandler, SslError sslError) {
-                sslErrorHandler.proceed();
-                super.onReceivedSslError(webView, sslErrorHandler, sslError);
-            }
-
             @Override
             public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
                 super.onReceivedError(view, errorCode, description, failingUrl);
 //                Log.e("----onReceivedError", "failingUrl:" + failingUrl);
                 errorNotice.setVisibility(View.VISIBLE);
+                if (failingUrl.endsWith("*.mp4")) {
+                    if (TbsVideo.canUseTbsPlayer(BaseActivity.this)) {
+                        TbsVideo.openVideo(BaseActivity.this, failingUrl);
+                    }
+                }
             }
 
             @Override
@@ -834,6 +991,8 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
                 super.onPageFinished(view, url);
             }
         });
+
+        x5WebView.addJavascriptInterface(new AndroidJs(), "AndroidJs");
     }
 
     private void interceptVideo(final String url) {
@@ -882,19 +1041,14 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == FILE_CHOOSER_RESULT_CODE) {
             Uri result = data == null || resultCode != RESULT_OK ? null : data.getData();
-            if(result!=null){
-                String path = getRealPathByUri(BaseActivity.this,result);
-                Log.e("----onActivityResult", ""+path);
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    if (uploadMessage != null) {
-//                        Uri []uri = path==null?null:new Uri[]{Uri.fromFile(new File(path))};
-                        Log.e("----onActivityResult", ""+path);
-                        uploadMessage.onReceiveValue(WebChromeClient.FileChooserParams
-                                .parseResult(resultCode, data));
-                    }
+            if (result != null) {
+
+                if (uploadMessage != null) {
+                    uploadMessage.onReceiveValue(new Uri[]{result});
                 }
-                if(singleUploadMessage!=null){
-                    singleUploadMessage.onReceiveValue(path==null?null:Uri.fromFile(new File(path)));
+                if (singleUploadMessage != null) {
+                    String path = getRealPathByUri(BaseActivity.this, result);
+                    singleUploadMessage.onReceiveValue(path == null ? null : Uri.fromFile(new File(path)));
                 }
                 singleUploadMessage = null;
                 uploadMessage = null;
@@ -903,10 +1057,10 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         } else if (requestCode == FILE_CHOOSER_CAMERA) {
             File photoFile = getCameraTmpFile();
             if (uploadMessage != null) {
-                Uri []uri = new Uri[]{Uri.fromFile(photoFile)};
+                Uri[] uri = new Uri[]{Uri.fromFile(photoFile)};
                 uploadMessage.onReceiveValue(uri);
             }
-            if(singleUploadMessage!=null){
+            if (singleUploadMessage != null) {
                 singleUploadMessage.onReceiveValue(Uri.fromFile(photoFile));
             }
             singleUploadMessage = null;
@@ -917,19 +1071,13 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
                 if (bundle == null) {
                     return;
                 }
-//                if (bundle.getInt(CodeUtils.RESULT_TYPE) == CodeUtils.RESULT_SUCCESS) {
-//                    String result = bundle.getString(CodeUtils.RESULT_STRING);
-//                    Toast.makeText(this, "解析结果:" + result, Toast.LENGTH_LONG).show();
-//                } else if (bundle.getInt(CodeUtils.RESULT_TYPE) == CodeUtils.RESULT_FAILED) {
-//                    Toast.makeText(MainActivity.this, "解析二维码失败", Toast.LENGTH_LONG).show();
-//                }
             }
         }
         if (uploadMessage != null) {
             uploadMessage.onReceiveValue(null);
             uploadMessage = null;
         }
-        if(singleUploadMessage!=null){
+        if (singleUploadMessage != null) {
             singleUploadMessage.onReceiveValue(null);
             singleUploadMessage = null;
         }
@@ -945,15 +1093,14 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
                 FileOutputStream fs = new FileOutputStream(newPath);
                 byte[] buffer = new byte[1024];
                 int length;
-                while ( (byteread = inStream.read(buffer)) != -1) {
+                while ((byteread = inStream.read(buffer)) != -1) {
                     bytesum += byteread; //字节数 文件大小
                     System.out.println(bytesum);
                     fs.write(buffer, 0, byteread);
                 }
                 inStream.close();
             }
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             System.out.println("复制单个文件操作出错");
             e.printStackTrace();
 
@@ -961,14 +1108,23 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    public void clearWebViewCache(){
+    public void clearWebViewCache() {
         //清理Webview缓存数据库
         try {
+            x5WebView.clearCache(true);
+            x5WebView.clearFormData();
+            File file = getCacheDir();
+            if ((file != null && file.exists()) && file.isDirectory()) {
+                for (File item : file.listFiles()) {
+                    item.delete();
+                }
+                file.delete();
+            }
             deleteDatabase("webview.db");
             deleteDatabase("webviewCache.db");
         } catch (Exception e) {
 //            e.printStackTrace();
-            Log.e("----clearWebViewCache", ""+e.getMessage());
+            Log.e("----clearWebViewCache", "" + e.getMessage());
         }
     }
 
@@ -977,11 +1133,11 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
-//            if ((getResources().getBoolean(R.bool.can_goback) && x5WebView.canGoBack()) || x5WebView.getUrl().equals(HOME)) {
+            if ((getResources().getBoolean(R.bool.can_goback) && x5WebView.canGoBack())) {
 //                Log.d("----BaseActivity", "onKeyDown:" + x5WebView.getUrl());
-//                x5WebView.goBack();
-//                return true;
-//            }
+                x5WebView.goBack();
+                return true;
+            }
             if (System.currentTimeMillis() - mills > 1000) {
                 Toast.makeText(this, getString(R.string.exit), Toast.LENGTH_SHORT).show();
                 mills = System.currentTimeMillis();
@@ -994,5 +1150,38 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         return super.onKeyDown(keyCode, event);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        MobclickAgent.onResume(this);
+    }
 
+    @Override
+    protected void onDestroy() {
+        if("zhinengliangzilian".equals(sihuo.app.com.kuaiqian.BuildConfig.FLAVOR)
+                ||"iqc".equals(sihuo.app.com.kuaiqian.BuildConfig.FLAVOR)){
+            clearWebViewCache();
+        }
+        super.onDestroy();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        MobclickAgent.onPause(this);
+//        clearWebViewCache();
+    }
+
+    public class AndroidJs {
+        @JavascriptInterface
+        public void share() {
+            BaseActivity.this.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    Share.shareWebLinkWithIcon(BaseActivity.this, x5WebView.getTitle() + "\n" + x5WebView.getUrl());
+                    LogUtil.e("--AndroidJs", "run:share");
+                }
+            });
+        }
+    }
 }

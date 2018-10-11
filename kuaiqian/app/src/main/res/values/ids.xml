@@ -2,4 +2,17 @@
 <resources>
     <item name="xiazhu" type="id"/>
     <item name="zhibo" type="id"/>
+    <item name="clear" type="id"/>
+    <item name="liaotianshi" type="id"/>
+    <item name="zaixiantouzhu" type="id"/>
+    <item name="setting" type="id"/>
+    <item name="xljc" type="id"/>
+    <item name="show_menu" type="id"/>
+
+    <item name="home_img" type="id"/>
+    <item name="refresh_img" type="id"/>
+    <item name="back_img" type="id"/>
+    <item name="go_forward_img" type="id"/>
+    <item name="clear_img" type="id"/>
+
 </resources>

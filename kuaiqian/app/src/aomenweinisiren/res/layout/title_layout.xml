@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/titleLayout"
+    android:layout_width="match_parent"
+    android:background="#ffffff"
+    android:layout_height="49dp">
+
+
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:paddingTop="5dp"
+        >
+        <TextView
+            android:id="@+id/home"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="10dp"
+            android:visibility="visible"
+            android:paddingTop="3dp"
+            android:layout_weight="0.25"
+            android:gravity="center"
+            android:drawablePadding="-5dp"
+            android:textSize="12sp"
+            android:textColor="#222222"
+            android:drawableTop="@drawable/dj_home"
+            android:text="主页"/>
+        <TextView
+            android:id="@+id/back"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="#222222"
+            android:layout_weight="0.25"
+            android:paddingTop="1dp"
+            android:gravity="center"
+            android:textSize="12sp"
+            android:drawablePadding="-5dp"
+            android:text="后退"
+            android:drawableTop="@drawable/dj_back"
+            />
+        <TextView
+            android:id="@+id/go_forward"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:paddingTop="1dp"
+            android:textSize="12sp"
+            android:layout_weight="0.25"
+            android:drawablePadding="-5dp"
+            android:text="前进"
+            android:textColor="#222222"
+            android:drawableTop="@drawable/dj_for"
+            />
+
+        <TextView
+            android:id="@+id/refresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="1dp"
+            android:visibility="visible"
+            android:layout_weight="0.25"
+            android:gravity="center"
+            android:drawablePadding="-5dp"
+            android:textSize="12sp"
+            android:textColor="#222222"
+            android:drawableTop="@drawable/dj_re"
+            android:text="刷新"/>
+        <TextView
+            android:id="@+id/clear"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible"
+            android:layout_weight="0.25"
+            android:gravity="center"
+            android:drawablePadding="-5dp"
+            android:paddingTop="2dp"
+            android:textSize="12sp"
+            android:textColor="#222222"
+            android:drawableTop="@drawable/del"
+            android:text="清除缓存"/>
+    </LinearLayout>
+    <View android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#eeeeee"/>
+</RelativeLayout>

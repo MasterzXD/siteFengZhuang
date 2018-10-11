@@ -12,6 +12,10 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 
 
+//import com.tencent.smtt.sdk.CookieSyncManager;
+//import com.tencent.smtt.sdk.WebSettings;
+//import com.tencent.smtt.sdk.WebView;
+
 import sihuo.app.com.kuaiqian.R;
 
 public class X5WebView extends WebView implements View.OnLongClickListener{
@@ -50,7 +54,7 @@ public class X5WebView extends WebView implements View.OnLongClickListener{
 		webSetting.setJavaScriptCanOpenWindowsAutomatically(true);
 		webSetting.setLoadWithOverviewMode(true);
 		webSetting.setAppCacheEnabled(getResources().getBoolean(R.bool.need_cache));
-		// webSetting.setDatabaseEnabled(true);
+		 webSetting.setDatabaseEnabled(true);
 		webSetting.setDomStorageEnabled(true);
 		webSetting.setGeolocationEnabled(true);
 		webSetting.setAppCacheMaxSize(Long.MAX_VALUE);
@@ -61,10 +65,11 @@ public class X5WebView extends WebView implements View.OnLongClickListener{
 		CookieSyncManager.createInstance(getContext());
 		CookieSyncManager.getInstance().sync();
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-			webSetting.setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
+//			webSetting.setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
 		}
 		// this.getSettingsExtension().setPageCacheCapacity(IX5WebSettings.DEFAULT_CACHE_CAPACITY);//extension
 		// settings 的设计
+		webSetting.setUserAgentString(webSetting.getUserAgentString()+" androidapp");
 	}
 
 	@Override
@@ -84,7 +89,7 @@ public class X5WebView extends WebView implements View.OnLongClickListener{
 	}
 
 	public void setmCallBack(LongClickCallBack mCallBack){
-//		this.mCallBack = mCallBack;
+		this.mCallBack = mCallBack;
 	}
 
 	@Override

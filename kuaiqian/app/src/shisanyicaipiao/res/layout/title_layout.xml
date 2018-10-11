@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/titleLayout"
+    android:layout_width="match_parent"
+    android:layout_height="44dp"
+    android:background="#f8f8f8">
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/home"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:paddingTop="5dp"
+            android:layout_centerInParent="true"
+            android:drawableTop="@drawable/home2"
+            android:drawableTint="#aaaaaa"
+            android:visibility="visible" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/refresh"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_alignParentRight="true"
+            android:drawableTop="@drawable/refresh_white"
+            android:paddingTop="5dp"
+            android:drawableTint="#aaaaaa"
+            android:visibility="visible" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/back"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:paddingTop="10dp"
+            android:drawableTint="#aaaaaa"
+            android:drawableTop="@drawable/back_a" />
+
+</RelativeLayout>

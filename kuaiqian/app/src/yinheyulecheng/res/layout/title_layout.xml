@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/titleLayout"
+    android:layout_width="match_parent"
+    android:background="#ffffff"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:orientation="horizontal"
+        android:paddingTop="10dp"
+        >
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@id/home_img"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.2"
+            android:gravity="center"
+            android:textSize="12sp"
+            android:src="@drawable/dj_home"
+            />
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@id/refresh_img"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.2"
+            android:src="@drawable/dj_re"
+            />
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@id/back_img"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.2"
+            android:src="@drawable/dj_back"
+            />
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@id/go_forward_img"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.2"
+            android:src="@drawable/dj_for"
+            />
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@id/clear_img"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.2"
+            android:gravity="center"
+            android:textSize="12sp"
+            android:textColor="#222222"
+            android:src="@drawable/del"
+            />
+    </LinearLayout>
+    <View android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#eeeeee"/>
+</RelativeLayout>

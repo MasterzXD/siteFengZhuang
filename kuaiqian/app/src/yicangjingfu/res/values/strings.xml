@@ -1,8 +1,0 @@
-<resources>
-    <string name="app_name">易昌金服</string>
-    <string name="home_url">http://ycjf.lookfs.com</string>
-    <bool name="show_loadng">false</bool>
-    <integer name="loading_delay">2000</integer>
-    <bool name="can_goback">true</bool>
-    <bool name="save_daohang">true</bool>
-</resources>

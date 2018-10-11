@@ -29,7 +29,6 @@
         android:gravity="center"
         android:textColor="#555555"
         android:paddingRight="10dp"
-        android:drawableRight="@drawable/back_hb"
         />
 
     <TextView
@@ -40,5 +39,5 @@
         android:visibility="visible"
         android:paddingLeft="15dp"
         android:layout_alignParentRight="true"
-        android:drawableLeft="@drawable/home_hb"/>
+        android:drawableLeft="@drawable/home"/>
 </RelativeLayout>

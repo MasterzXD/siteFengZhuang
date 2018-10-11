@@ -1,0 +1,843 @@
+        zhijiao {
+            applicationId = "com.adsk.zhijiao"
+        }
+        kuaiqianyule {
+            applicationId = "sihuo.app.com.kuaiqianyule"
+        }
+        strawberry {
+            applicationId = "sihuo.app.com.strawberry"
+        }
+        goldman {
+            applicationId = "sihuo.app.com.goldman"
+        }
+        guojizaixian {
+            applicationId = "sihuo.app.com.guojizaixian"
+        }
+        yicangjingfu {
+            applicationId = "sihuo.app.com.yicangjingfu"
+        }
+        huangjiaguoji {
+            applicationId = "sihuo.app.com.huangjiaguoji"
+        }
+        shihuijituan {
+            applicationId = "sihuo.app.com.shihuijituan"
+        }
+        aomenweinisiren {
+            applicationId = "sihuo.app.com.aomenweinisiren"
+        }
+        huixinguoji {
+            applicationId = "sihuo.app.com.huixinguoji"
+        }
+        ronghuijituan {
+            applicationId = "sihuo.app.com.ronghuijituan"
+        }
+        xinyunxing {
+            applicationId = "sihuo.app.com.xinyunxing"
+        }
+        baniguoji {
+            applicationId = "sihuo.app.com.baniguoji"
+        }
+        aimaoyingyin {
+            applicationId = "sihuo.app.com.aimaoyingyin"
+        }
+        huanyuguoji {
+            applicationId = "sihuo.app.com.huanyuguoji"
+        }
+        fuhui {
+            applicationId = "sihuo.app.com.fuhui"
+        }
+        shishishangcheng {
+            applicationId = "sihuo.app.com.shishishangcheng"
+        }
+        diaomt4 {
+            applicationId = "sihuo.app.com.diaomt4"
+        }
+        zhongqianhui {
+            applicationId = "sihuo.app.com.zhongqianhui"
+        }
+        jingdongcaipiao {
+            applicationId = "sihuo.app.com.jingdongcaipiao"
+        }
+        dihaoguoji {
+            applicationId = "sihuo.app.com.dihaoguoji"
+        }
+        yongliguojione {
+            applicationId = "sihuo.app.com.yongliguojione"
+        }
+        yongliguojitwo {
+            applicationId = "sihuo.app.com.yongliguojitwo"
+        }
+        zhongfuzaixian {
+            applicationId = "sihuo.app.com.zhongfuzaixian"
+        }
+        xingjiyulecheng {
+            applicationId = "sihuo.app.com.xingjiyulecheng"
+        }
+        huile {
+            applicationId = "sihuo.app.com.huile"
+        }
+        shuzibowuguan {
+            applicationId = "sihuo.app.com.shuzibowuguan"
+        }
+        kuaiqianyule2 {
+            applicationId = "sihuo.app.com.kuaiqianyule2"
+        }
+        languifangyule {
+            applicationId = "sihuo.app.com.languifangyule"
+        }
+        fuhuiguojione {
+            applicationId = "sihuo.app.com.fuhuiguojione"
+        }
+        fuhuiguojitwo {
+            applicationId = "sihuo.app.com.fuhuiguojitwo"
+        }
+        fengkuanghongbao {
+            applicationId = "sihuo.app.com.fengkuanghongbao"
+        }
+        huanyuguojitwo {
+            applicationId = "sihuo.app.com.huanyuguojitwo"
+        }
+         nicai {
+             applicationId = "sihuo.app.com.nicai"
+         }
+        taiyangcheng {
+                   applicationId = "com.app.com.taiyangcheng"
+               }
+        bankujituan {
+            applicationId = "com.asadqwd.com.bankujituan"
+        }
+        tianhuyule {
+            applicationId = "com.sdgaera.com.tianhuyule"
+        }
+        wanzongyi {
+            applicationId = "com.ahgfr.com.wanzongyi"
+        }
+        hexunwaihui {
+            applicationId = "com.adsf.asdf.hexunwaihui"
+        }
+        zzzzzzz {
+            applicationId = "com.adsf.asdf.zzzzzzz"
+        }
+        dinglongguibinhui {
+            applicationId = "com.tyfgh.asdf.dinglongguibinhui"
+        }
+        daijinrongshangxueyuan {
+            applicationId = "com.asdf.daijinrongshangxueyuan"
+        }
+        aiyouyule {
+            applicationId = "com.asdfadsfg.aiyouyulke"
+        }
+        lexunkeji {
+            applicationId = "com.fvrg.lexunkeji"
+        }
+        jiujiubabayule {
+            applicationId = "com.sfsgfhfgh.jiujiubabayule"
+        }
+        aochuangyule {
+            applicationId = "com.uikyiuk.aochuangyule"
+        }
+        motongyouxi {
+            applicationId = "com.sergadsf.motongyouxi"
+        }
+        shenzhouyule {
+            applicationId = "com.kljbhjk.shenzhouyule"
+        }
+        yanmingjishu {
+            applicationId = "com.ytrver.yanmingjishu"
+        }
+        aomenfengyun {
+                applicationId = "com.fhdfth.aomenfengyun"
+            }
+        rongzirongquan {
+            applicationId = "com.astrqw.rongzirongquan"
+        }
+        xindingguoji {
+            applicationId = "com.rtyrrythra.xindingguoji"
+        }
+        yuanjijituan {
+            applicationId = "com.ghjaser.yuanjijituan"
+        }
+        datongwaihui {
+            applicationId = "com.erydfaewf.datongwaihui"
+        }
+        longjuanfeng {
+            applicationId = "com.eyrefw.longjuanfeng"
+        }
+                quanwangyingshi {
+            applicationId = "com.htsrh.quanwangyingshi"
+        }
+        diaomtfour {
+            applicationId = "com.adsfdsf.diaomtfour"
+        }
+        huanqiuhengyi {
+            applicationId = "com.ryergrtg.huanqiuhengyi"
+        }
+        aomenweinisirentwo {
+            applicationId = "com.sdfasdf.aomenweinisirentwo"
+        }
+        lasiweijiasi {
+            applicationId = "com.gfnhty.lasiweijiasi"
+        }
+
+        yunqi {
+            applicationId = "com.adfsgsdrre.yunqi"
+        }
+        2017年12月16日
+        huanqiucaifu {
+            applicationId = "com.adsgfert.huanqiucaifu"
+        }
+        2017年12月17日
+        miju {
+            applicationId = "com.dgfyujdsafg.miju"
+        }
+        qiaooushangcheng {
+            applicationId = "com.ehjtygf.qiaooushangcheng"
+        }
+        tiantianyule {
+            applicationId = "com.dfthwes.tiantianyule"
+        }
+        kuailehongbao {
+            applicationId = "com.uyyyi.kuailehongbao"
+        }
+        ned {
+            applicationId = "com.skjdhga.ned"
+        }
+        meiouguoji {
+            applicationId = "com.tdfhrtd.meiouguoji"
+        }
+        shenpai {
+            applicationId = "com.hndtrwe.shenpai"
+        }
+        2017年12月18日
+        daxiyangcheng {
+            applicationId = "com.asdfasd.daxiyangcheng"
+        }
+        hongyuncaipiao {
+            applicationId = "com.safdsdfas.hongyuncaipiao"
+        }
+        kuaiqianyulethree {
+            applicationId = "com.asdfweghf.kuaiqianyulethree"
+        }
+        2017年12月19日17:15:20
+        aomenweinisirenthree {
+            applicationId = "com.fdgsfdg.aomenweinisirenthree"
+        }
+        jinhuicaifu {
+            applicationId = "com.togjknas.jinhuicaifu"
+        }
+        xapp {
+            applicationId = "com.dfgsdrgf.xapp"
+        }
+        weinisi {
+            applicationId = "com.adgfsdf.weinisi"
+        }
+        hailifang {
+            applicationId = "com.dgjtyrdet.hailifang"
+        }
+        xinhaotiandi {
+            applicationId = "com.sdfgsdre.xinhaotiandi"
+        }
+        xinhaotiandi {
+            applicationId = "com.dfhtfhdt.xinhaotiandi2"
+        }
+        zhifubao {
+            applicationId = "com.erwtwerg.zhifubao"
+        }
+
+        huangguanyule {
+            applicationId = "com.tyrtydrt.huangguanyule"
+        }
+        2017年12月22日18:02:24
+        jinshayulecheng {
+            applicationId = "com.yurrtj.jinshayulecheng"
+        }
+        huoliwangxinjiankang {
+            applicationId = "com.dgsdfg.huoliwangxinjiankang"
+        }
+        weinisi {
+            applicationId = "com.asdfsd.weinisi"
+        }
+        aomenweinisirenfour {
+            applicationId = "com.dsafasd.aomenweinisirenfour"
+        }
+        lefantian {
+            applicationId = "com.sdfgsdgkj.lefantian"
+        }
+        huangjia {
+            applicationId = "com.yurrtsew.huangjia"
+        }
+        bankujituantwo {
+            applicationId = "com.sdfhgsdfg.bankujituantwo"
+        }
+        yundingqipai {
+            applicationId = "com.dhstgse.yundingqipai"
+        }
+        tianshijituan {
+            applicationId = "com.yuasdsgrt.tianshijituan"
+        }
+        mengtekaluoyulecheng {
+            applicationId = "com.grte.mengtekaluoyulecheng"
+        }
+        baniguojitwo {
+            applicationId = "com.adsfsdf.baniguojitwo"
+        }
+        huarenyule {
+            applicationId = "com.dgsdargre.huarenyule"
+        }
+        huarenyule {
+                    applicationId = "com.dgsdargre.huarenyule"
+                }
+        2017年12月26日16:53:18
+        aomenweinisirenyulecheng {
+            applicationId = "com.dfghtsd.aomenweinisirenyulecheng"
+        }
+        wanbaoguoji {
+            applicationId = "com.knakjhe.wanbaoguoji"
+        }
+        tisudai {  50
+            applicationId = "com.yukef.tisudai"
+        }
+        fulicaipiao {
+            applicationId = "com.tyuiykl.fulicaipiao"
+        }
+        yunqitwo {
+            applicationId = "com.tueyrtr.yunqitwo"
+        }
+        shiduhui {
+            applicationId = "com.hfrtsy.shiduhui"
+        }
+        yh {
+            applicationId = "com.rthdrthrth.yh"
+        }
+        zhuimengzhe {
+            applicationId = "com.oefjaki.zhuimengzhe"
+        }
+         eg {
+            applicationId = "com.dfsgsdgf.eg"
+         }
+        huhangguoji {
+            applicationId = "com.dfasgdfg.huhangguoji"
+        }
+        feilvbintaiyangcheng {
+            applicationId = "com.yukyuyu.feilvbintaiyangcheng"
+        }
+        weinisirenyulecheng {
+            applicationId = "com.dgdsgr.weinisirenyulecheng"
+        }
+        jindaotouzi {
+            applicationId = "com.fghdgfhdgf.jindaotouzi"
+        }
+        xxzhibojian {
+            applicationId = "com.rtyhe.xxzhibojian"
+        }
+        hengtaiyulecheng {
+            applicationId = "com.radg.hengtaiyulecheng"
+        }
+        wufulinmen {
+            applicationId = "com.dasfdgf.wufulinmen"
+        }
+        yidaibao {
+            applicationId = "com.drgsre.yidaibao"
+        }
+        wangzheyule {
+            applicationId = "com.dsfad.wangzheyule"
+        }
+        lcc{
+            applicationId = "com.hgjf.lcc"
+        }
+        tiantianhongbaotwo {
+            applicationId = "com.etyj.tiantianhongbaotwo"
+        }
+        hongyunyule {
+            applicationId = "com.sdfagh.hongyunyule"
+        }
+        huangguanxianjinwang {
+            applicationId = "com.dasf.huangguanxianjinwang"
+        }
+        huangguanguiji {
+            applicationId = "com.ewrwer.huangguanguiji"
+        }
+        yilufa {
+            applicationId = "com.fjyj.yilufa"
+        }
+        shuihuzhuan {
+            applicationId = "com.fgsfg.shuihuzhuan"
+        }
+        lasiweijiasitwo {
+            applicationId = "com.ydearf.lasiweijiasitwo"
+        }
+        fuhuiguojithree {
+            applicationId = "com.rtysr.fuhuiguojithree"
+        }
+        2018年1月7日12:52:00
+        xinzongwaihui {
+            applicationId = "com.rtewer.xinzongwaihui"
+        }
+        weichuangcaopan{
+            applicationId = "com.dsfa.weichuangcaopan"
+        }
+        lianyin{
+            applicationId = "com.sdfhsfd.lianyin"
+        }
+        tiantianhongbao {
+            applicationId = "com.dghjghj.tiantianhongbao"
+        }
+        qubocaipiao{ 100
+            applicationId = "com.trrasd.qubocaipiao"
+        }
+        huanqiulicai{
+            applicationId = "com.dfhs.huanqiulicai"
+        }
+        jinbaocheng{
+            applicationId = "com.ytjdty.jinbaocheng"
+        }
+        yundingguoji{
+            applicationId = "com.ruya.yundingguoji"
+        }
+        xinlongguoji {
+            applicationId = "com.ruty.xinlongguoji"
+        }
+        dingjiyule { 70
+            applicationId = "com.rhrte.dingjiyule"
+        }
+        yilianyunjiaoyi {
+            applicationId = "com.dgre.yilianyunjiaoyi"
+        }
+        pingguoyuleguoji{
+            applicationId = "com.uyrji.pingguoyuleguoji"
+        }
+        lasiweijiasithree {
+            applicationId = "com.ertt.lasiweijiasithree"
+        }
+        fffsp { 100
+            applicationId = "com.dytjut.fffsp"
+        }
+        boleyulecheng {
+            applicationId = "com.yuks.boleyulecheng"
+        }
+        longtengyule {
+            applicationId = "com.tyudt.longtengyule"
+        }
+        huangjiaguojitwo{
+            applicationId = "com.rtyhe.huangjiaguojitwo"
+        }
+        yongfengvip{
+            applicationId = "com.ftryua.yongfengvip"
+        }
+
+        dingfengyule{
+            applicationId = "com.akh.dingfengyule"
+        }
+        jinsha{
+            applicationId = "com.dytu.jinsha"
+        }
+        pujing{
+            applicationId = "com.trdqw.pujing"
+        }
+        weinisiren{
+             applicationId = "com.ilea.weinisiren"
+        }
+        yinhe{
+             applicationId = "com.tyje.yinhe"
+        }
+        yongliyule{
+            applicationId = "com.ghfj.yongliyule"
+        }
+        rio{
+            applicationId = "com.ghktyu.rio"
+        }
+        wjs{
+            applicationId = "com.srty.wjs"
+            manifestPlaceholders = [ SCREEN_ORIENTATION:"sensor"]
+        }
+        xxotot{
+            applicationId = "com.rgtae.xxotot"
+        }
+        qingsongdai{
+            applicationId = "com.hfsa.qingsongdai"
+        }
+        wanhaoguoji{
+            applicationId = "com.ryut.wanhaoguoji"
+        }
+        xinpujinyulechang{
+            applicationId = "com.gfkj.xinpujinyulechang"
+        }
+        aomenbnb { 50
+            applicationId = "com.ryhs.aomenbnb"
+            manifestPlaceholders = [ SCREEN_ORIENTATION:"sensor"]
+        }
+        lekaiyule{
+            applicationId = "com.sretg.lekaiyule"
+            manifestPlaceholders = [ SCREEN_ORIENTATION:"sensor"]
+        }
+        jupai{
+            applicationId = "com.shdtd.jupai"
+            manifestPlaceholders = [ SCREEN_ORIENTATION:"sensor"]
+        }
+        mayihuile{
+            applicationId = "com.trab.mayihuile"
+            manifestPlaceholders = [ SCREEN_ORIENTATION:"sensor"]
+        }
+        guibincaipiaowang{
+            applicationId = "com.fdhdf.guibincaipiaowang"
+            manifestPlaceholders = [ SCREEN_ORIENTATION:"sensor"]
+        }
+        jiaoyibao{
+            applicationId = "com.erha.jiaoyibao"
+        }
+        weinisiyule{
+            applicationId = "com.fhdssfh.weinisiyule"
+        }
+        huangguanyule2{
+            applicationId = "com.dgrert.huangguanyule2"
+        }
+        kaisayule{
+            applicationId = "com.ytuka.kaisayule"
+            manifestPlaceholders = [ SCREEN_ORIENTATION:"sensor"]
+        }
+        xinpujing{
+            applicationId = "com.ytuka.xinpujing"
+        }
+        demaxiya{
+            applicationId = "com.dfsg.demaxiya"
+        }
+        weiqile{
+            applicationId = "com.tyrja.weiqile"
+        }
+        youhongbao{
+            applicationId = "com.jkrih.youhongbao"
+        }
+        zhongbaojinfu{
+            applicationId = "com.fgser.zhongbaojinfu"
+        }
+        aomenyinhe {
+            applicationId = "com.xqlwab.aomenyinhe"
+        }
+        yundingguoji2 {
+            applicationId = "com.shtaw.yundingguoji2"
+        }
+        jingangtong0 {
+            applicationId = "com.uiccb.jingangtong0"
+        }
+
+        yongfengvip0 {
+            applicationId = "com.kbwjq.yongfengvip0"
+        }
+        zhizunyule {
+            applicationId = "com.wvfckh.zhizunyule"
+        }
+        twoeightcai {
+            applicationId = "com.gtgiop.twoeightcai"
+        }
+        juyouapp {
+            applicationId = "com.mrplo.juyouapp"
+        }
+        weinisiyule0 {
+            applicationId = "com.wqgseb.weinisiyule0"
+        }
+        lihao0 {
+            applicationId = "com.xtzsm.lihao0"
+        }
+        cts {
+            applicationId = "com.kprfhb.cts"
+        }
+        taiyangchengjituan {
+            applicationId = "com.duxxe.taiyangchengjituan"
+        }
+        pujingguoji {
+            applicationId = "com.rhdpi.pujingguoji"
+        }
+        yiyicao {
+            applicationId = "com.mrwdz.yiyicao"
+        }
+        fuhaoyule {
+            applicationId = "com.sdfgw.fuhaoyule"
+        }
+        hengyinghuanqiu0 {
+            applicationId = "com.ufezc.hengyinghuanqiu0"
+        }
+        hengyinghuanqiu1 {
+            applicationId = "com.hywro.hengyinghuanqiu1"
+        }
+        cangtubajie {
+            applicationId = "com.ytrq.cangtubajie"
+        }
+        xianlaihuyu {
+            applicationId = "com.cjpfnw.xianlaihuyu"
+        }
+        cangshengyule {
+            applicationId = "com.ypek.cangshengyule"
+        }
+        jinghengqiquan {
+            applicationId = "com.hdjxm.jinghengqiquan"
+        }
+        yongliyulecheng {
+            applicationId = "com.lqwi.yongliyulecheng"
+        }
+
+        tisudai0 {
+            applicationId = "com.xavcl.tisudai0"
+        }
+        xinyudai {
+            applicationId = "com.oljld.xinyudai"
+        }
+        dafayule {
+            applicationId = "com.hnwy.dafayule"
+        }
+        tianxiachuangtou {
+            applicationId = "com.ohaft.tianxiachuangtou"
+        }
+        kuaiqiandai69 {
+            applicationId = "com.opdjp.kuaiqiandai69"
+        }
+        kuaiqiandai89 {
+            applicationId = "com.hmski.kuaiqiandai89"
+        }
+
+        yongfengvip0{
+            applicationId = "com.ftryua.yongfengvip"
+        }
+
+        wangpaicaipiao{ // 150
+            applicationId = "com.dfsga.wangpaicaipiao"
+        }
+
+        aomenyongli { //60
+            applicationId = "com.qpwjmd.aomenyongli"
+        }
+        lasiweijiasithree {
+            applicationId = "com.ertt.lasiweijiasithree"
+        }
+        kuaiqiantiyu {
+            applicationId = "com.dyfd.kuaiqiantiyu"
+        }
+        aomenyongli { //30
+            applicationId = "com.qpwjmd.aomenyongli"
+        }
+        bahaocaipiao{ //50
+            applicationId = "com.srtq.bahaocaipiao"
+        }
+        hanqianguoji { //15
+            applicationId = "com.wsuj.hanqianguoji"
+        }
+        nakaguoji {
+            applicationId = "com.qgeitn.nakaguoji"
+        }
+        yibowang { // 80
+            applicationId = "com.stgh.yibowang"
+        }
+        yingbaiwanguoji {
+            applicationId = "com.trwoln.yingbaiwanguoji"
+        }
+        bogouyulecheng{
+            applicationId = "com.khkhu.bogouyulecheng"
+            manifestPlaceholders = [ SCREEN_ORIENTATION:"sensor"]
+        }
+        bangbangsudai{
+            applicationId = "com.rhtyh.bangbangsudai"
+        }
+        xinjiangbaoyou{
+            applicationId = "com.fywe.xinjiangbaoyou"
+        }
+        fucaikuaisan{
+            applicationId = "com.gsdf.fucaikuaisan"
+        }
+        fuyingcaipiao{
+            applicationId = "com.yjdt.fuyingcaipiao"
+        }
+        weinisiren{ //50
+            applicationId = "com.dfgh.weinisiren"
+        }
+        jihualiaotianshi{ //50
+            applicationId = "com.dsfa.jihualiaotianshi"
+        }
+        lecaicheng{
+            applicationId = "com.sfs.lecaicheng"
+        }
+        yingxionglianmeng{ //70
+            applicationId = "com.cva.yingxionglianmeng"
+        }
+        zhongyuancaipiao{
+            applicationId = "com.ghfdj.zhongyuancaipiao"
+        }
+        meiqilin{ //50
+            applicationId = "com.adsfw.meiqilin"
+        }
+        huarenyule2{
+            applicationId = "com.djgh.huarenyule2"
+            manifestPlaceholders = [
+                    SCREEN_ORIENTATION:"sensor",
+                    JPUSH_PKGNAME : applicationId,
+                    JPUSH_APPKEY : "75f414032c55ee00100d0b8a", //JPush上注册的包名对应的appkey.
+                    JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
+            ]
+        }
+        xinfuzhijia{
+            applicationId = "com.sfg.xinfuzhijia"
+        }
+        shengjiyulecheng{ //30*3=90
+            applicationId = "com.fsdhdf.shengjiyulecheng4"
+        }
+        xinpujinyulechang2{
+            applicationId = "com.dfsg.xinpujinyulechang2"
+        }
+        zhiying365{
+            applicationId = "com.asd.zhiying365"
+        }
+        aomenjinshaduchang{
+            applicationId = "com.sgdf.aomenjinshaduchang"
+        }
+        aomenjinshaduchang { //15
+                    applicationId = "com.uykt.aomenjinshaduchang"
+                }
+                aomenbnb { //
+                    applicationId = "com.tehr.aomenbnb"
+                }
+                shengmingshu { //70
+                    applicationId = "com.dfgas.shengmingshu"
+                }
+                bojue2 { //
+                    applicationId = "com.djga.bojue2"
+                }
+                yunduanyule { //
+                    applicationId = "com.fgdhd.yunduanyule"
+                }
+                caibao { //150
+                    applicationId = "com.sdf.caibao"
+                }
+
+        xinweinisiren {
+            applicationId = "com.gfhdf.xinweinisiren"
+        }
+        yinheyulecheng {//100
+            applicationId = "com.a168caiid168a.app"
+            manifestPlaceholders = [
+                 SCREEN_ORIENTATION:"portrait",
+                  JPUSH_PKGNAME : applicationId,
+                  JPUSH_APPKEY : "394bf8b67301ace78ce6ae9b", //JPush上注册的包名对应的appkey.
+                  JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
+            ]
+        }
+        nine928 {
+            applicationId = "com.fdgv.nine928"
+            manifestPlaceholders = [
+                SCREEN_ORIENTATION:"portrait",
+                JPUSH_PKGNAME : applicationId,
+                JPUSH_APPKEY : "bf73f805c1b7aeb7e90a394e", //JPush上注册的包名对应的appkey.
+                JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
+            ]
+        }
+
+        c27 {//100
+            applicationId = "com.myc.c27"
+            manifestPlaceholders = [
+                    SCREEN_ORIENTATION:"portrait",
+                    JPUSH_PKGNAME : applicationId,
+                    JPUSH_APPKEY : "debda5635d7d878228694551", //JPush上注册的包名对应的appkey.
+                    JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
+            ]
+        }
+        //        shisanyicaipiao{
+        //            applicationId 'com.asdas.shisanyicaipiao'
+        //        }
+        //        zhiying365{
+        //            applicationId = "com.asd.zhiying365"
+        //        }
+
+        //        tiantianlecaipiao{ //50
+        //            applicationId = "com.dfsg.tiantianlecaipiao"
+        //        }
+        //        fenghuangcaipiao{
+        //            applicationId = "com.gfj.fenghuangcaipiao"
+        //            versionCode 2
+        //            versionName '3.9'
+        //
+        //        }
+        //        aomenweinisiren2{//50
+        //            applicationId = "com.yutk.aomenweinisiren2"
+        //        }
+        //        licaiwu{
+        //            applicationId = "com.palm.app.autopackapp.gyzh11643"
+        //            versionCode 2
+        //            versionName '1.2'
+        //        }
+        //        caibao { //改图
+        //            applicationId = "com.sdf.caibao"
+        //        }
+        //        dongfangjingcai { //改图
+        //            applicationId = "com.axiba.chijiaa"//东方竞彩
+        //        }
+        //        yidianzixun{
+        //            applicationId = "com.gfa.yidianzixun"
+        //        }
+        //        botiantang{//
+        //            applicationId = "com.fgjh.botiantang"
+        //        }
+        //        wealth{
+        //            applicationId = "com.hujfg.wealth"
+        //        }
+
+        //        wangpaicaipiao{ //
+        //            applicationId = "com.dfsga.wangpaicaipiao"
+        //        }
+        //        ---------------------------------------------
+     wanfulai{
+            applicationId = "com.gfa.wanfulai"
+        }
+        caibao { //改图 15
+            applicationId = "com.sdf.caibao"
+        }
+        caibao { //改图 15
+            applicationId = "com.sdf.caibao"
+        }
+        xinyuncaipiao {
+            applicationId = "com.gfd.xinyuncaipiao"
+        }
+        dongying {
+            applicationId = "com.gfj.dongying"
+        }
+          换链接+30
+        wo {//
+            applicationId = "com.afsdg.wo"
+        }
+        fenghuangcaipiao改链接+15
+
+        hengfacaipiao {//
+            applicationId = "com.khhj.hengfacaipiao"
+        }
+        sijiyule {//
+            applicationId = "com.tfhd.sijiyule"
+        }
+        cai61 {//
+            applicationId = "com.fgha.cai61"
+        }
+        zhinengliangzilian{
+            applicationId = "com.fgha.zhinengliangzilian"
+        }
+        fucai365{
+            applicationId = "com.yujs.fucai365"
+        }
+        //           facaishentuandui{                              //2号打包机
+        //               applicationId = "com.ydlo.guuqpmno"
+        //           }
+        //           fudunguoji{
+        //               applicationId = "com.agc.fudunguoji"
+        //           }
+
+        //        zhinengliangzilian{//15
+        //            applicationId = "com.fgha.zhinengliangzilian"
+        //        }
+
+        //        iqc{//30
+        //            applicationId = "com.fgha.iqc"
+        //        }
+        //        huangzheyule{//
+        //            applicationId = "com.fgha.huangzheyule"
+        //        }
+        //        yundingguoji2{//
+        //            applicationId = "com.asdf.yundingguoji2"
+        //        }
+
+        //        baliguoji{//0
+        //            applicationId = "com.kash.baliguoji"
+        //        }
