@@ -96,8 +96,17 @@ android {
 //                    JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
 //            ]
 //        }
-        baniguoji{ //2018年11月4日01:56:45
-            applicationId = "com.faw.baniguoji"
+//        baniguoji{ //2018年11月4日01:56:45
+//            applicationId = "com.faw.baniguoji"
+//            manifestPlaceholders = [
+//                    SCREEN_ORIENTATION:"portrait",
+//                    JPUSH_PKGNAME : applicationId,
+//                    JPUSH_APPKEY : "e3c0a8afbc571c8154a92cd3", //JPush上注册的包名对应的appkey.
+//                    JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
+//            ]
+//        }
+        fenghuangcaifu{ //2018年11月06日22:48:14   50
+            applicationId = "com.avf.fenghuangcaifu"
             manifestPlaceholders = [
                     SCREEN_ORIENTATION:"portrait",
                     JPUSH_PKGNAME : applicationId,

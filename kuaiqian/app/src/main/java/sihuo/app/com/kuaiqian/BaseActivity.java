@@ -895,6 +895,12 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
                             break;
                         }
                     }
+                }else if(getPackageName().equals("com.avf.fenghuangcaifu")){
+                    outer = url.startsWith("http://api.pop800.com/web800/c.do")
+                    || url.startsWith("https://fir.im/spbx")
+//                    || url.startsWith("http://api.xmshenghui.cn")
+                            || url.startsWith("http://134.175.0.125:81/?user_id=")
+                    || url.startsWith("http://2wy.qr-scan-58.vip/YOCSm2");
                 }
 
                 if(outer){
