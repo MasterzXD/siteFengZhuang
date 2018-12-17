@@ -623,8 +623,8 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
             float density = metric.density;  // 屏幕密度（0.75 / 1.0 / 1.5）
             int densityDpi = metric.densityDpi;  // 屏幕密度DPI（120 / 160 / 240）
             floatLayout = (LinearLayout) getLayoutInflater().inflate(R.layout.float_layout, null);
-            final int floatViewW = (int) (40 * density);
-            final int floatViewH = (int) (100 * density);
+            final int floatViewW = (int) (30 * density);
+            final int floatViewH = (int) (80 * density);
             floatParams = new RelativeLayout.LayoutParams(floatViewW, floatViewH);
             floatParams.leftMargin = (int) (270 * density);
             floatParams.topMargin = (int) (300 * density);
@@ -674,7 +674,8 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
                             if (Math.abs(event.getRawY() - finalFloatViewDownY) < 10) {
                                 if (floatHome.getY() + floatHome.getHeight() >= event.getY()) {
                                     HOME = getResources().getString(R.string.home_url);
-                                    x5WebView.loadUrl(HOME);
+//                                    x5WebView.loadUrl(HOME);
+                                    x5WebView.reload();
                                 } else {
                                     if (x5WebView.canGoBack()) {
                                         x5WebView.goBack();
@@ -828,13 +829,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
                         progressBarH.setVisibility(View.VISIBLE);
                     }
                 }
-//                if (alertProgress != null) {
-//                    if (progress == 100) {
-//                        alertProgress.setVisibility(View.INVISIBLE);
-//                    } else {
-//                        alertProgress.setVisibility(View.VISIBLE);
-//                    }
-//                }
+
 
                 if (refreshable) {
                     if (progress == 100) {
@@ -842,6 +837,13 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
                     }
                 }
                 if (getResources().getBoolean(R.bool.show_loadng)) {
+                    if (alertProgress != null) {
+                        if (progress == 100) {
+                            alertProgress.setVisibility(View.INVISIBLE);
+                        } else {
+                            alertProgress.setVisibility(View.VISIBLE);
+                        }
+                    }
                 }
             }
 

@@ -105,15 +105,15 @@ android {
 //                    JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
 //            ]
 //        }
-        fenghuangcaifu{ //2018年11月06日22:48:14   50
-            applicationId = "com.avf.fenghuangcaifu"
-            manifestPlaceholders = [
-                    SCREEN_ORIENTATION:"portrait",
-                    JPUSH_PKGNAME : applicationId,
-                    JPUSH_APPKEY : "e3c0a8afbc571c8154a92cd3", //JPush上注册的包名对应的appkey.
-                    JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
-            ]
-        }
+//        fenghuangcaifu{ //2018年11月06日22:48:14   50
+//            applicationId = "com.avf.fenghuangcaifu"
+//            manifestPlaceholders = [
+//                    SCREEN_ORIENTATION:"portrait",
+//                    JPUSH_PKGNAME : applicationId,
+//                    JPUSH_APPKEY : "e3c0a8afbc571c8154a92cd3", //JPush上注册的包名对应的appkey.
+//                    JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
+//            ]
+//        }
 //        ---蜂鸟签名
 
 //        pingmingyingyuan {//100
@@ -142,7 +142,16 @@ android {
 //                    JPUSH_APPKEY : "79db8f14365086a14c805a02", //JPush上注册的包名对应的appkey.
 //                    JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
 //            ]
-//        }
+//        }˙
+        jincai100 {
+            applicationId = "com.ac.jincai100"
+            manifestPlaceholders = [
+                    SCREEN_ORIENTATION:"portrait",
+                    JPUSH_PKGNAME : applicationId,
+                    JPUSH_APPKEY : "79db8f14365086a14c805a02", //JPush上注册的包名对应的appkey.
+                    JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
+            ]
+        }
     }
 }
 dependencies {
