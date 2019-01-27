@@ -16,13 +16,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/home"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="2dp"
         android:tint="#ffffff" />
     <android.support.v7.widget.AppCompatImageView
         android:id="@+id/float_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         android:src="@drawable/back1"
         android:tint="#ffffff" />
 
