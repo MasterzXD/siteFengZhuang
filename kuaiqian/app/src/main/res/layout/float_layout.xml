@@ -10,20 +10,20 @@
     android:paddingLeft="5dp"
     android:paddingRight="5dp">
 
+
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/float_home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/home"
+        android:layout_marginTop="5dp"
+        android:tint="#ffffff" />
     <android.support.v7.widget.AppCompatImageView
         android:id="@+id/float_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:src="@drawable/back1"
-        android:tint="#ffffff" />
-
-    <android.support.v7.widget.AppCompatImageView
-        android:id="@+id/float_home"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/refresh"
-        android:layout_marginTop="5dp"
         android:tint="#ffffff" />
 
 

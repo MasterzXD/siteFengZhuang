@@ -674,8 +674,8 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
                             if (Math.abs(event.getRawY() - finalFloatViewDownY) < 10) {
                                 if (floatHome.getY() + floatHome.getHeight() >= event.getY()) {
                                     HOME = getResources().getString(R.string.home_url);
-//                                    x5WebView.loadUrl(HOME);
-                                    x5WebView.reload();
+                                    x5WebView.loadUrl(HOME);
+//                                    x5WebView.reload();
                                 } else {
                                     if (x5WebView.canGoBack()) {
                                         x5WebView.goBack();
