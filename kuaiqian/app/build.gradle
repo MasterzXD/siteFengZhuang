@@ -152,6 +152,15 @@ android {
                     JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
             ]
         }
+//        huarenyule {
+//            applicationId = "com.ac.huarenyule"
+//            manifestPlaceholders = [
+//                    SCREEN_ORIENTATION:"portrait",
+//                    JPUSH_PKGNAME : applicationId,
+//                    JPUSH_APPKEY : "79db8f14365086a14c805a02", //JPush上注册的包名对应的appkey.
+//                    JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
+//            ]
+//        }
     }
 }
 dependencies {
