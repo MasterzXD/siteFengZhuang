@@ -672,11 +672,13 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
                             break;
                         case MotionEvent.ACTION_UP:
                             if (Math.abs(event.getRawY() - finalFloatViewDownY) < 10) {
-                                if (floatHome.getY() + floatHome.getHeight() >= event.getY()) {
-                                    HOME = getResources().getString(R.string.home_url);
-                                    x5WebView.loadUrl(HOME);
-//                                    x5WebView.reload();
+                                if (floatBack.getY() + floatBack.getHeight() <= event.getY()) {
+//                                    HOME = getResources().getString(R.string.home_url);
+//                                    x5WebView.loadUrl(HOME);
+                                    Log.d("float","reload");
+                                    x5WebView.reload();
                                 } else {
+                                    Log.d("float","goback");
                                     if (x5WebView.canGoBack()) {
                                         x5WebView.goBack();
                                     }
